@@ -53,21 +53,31 @@ class Component extends DCLogic {
     const el = this.el; if (!el) return;
     const s = this.st();
     const now = performance.now(); const dt = Math.min(0.1, (now - (this.last || now)) / 1000); this.last = now;
+    const userScrolling = this.hold || now < (this.userUntil || 0);
     const blocks = el.querySelectorAll('[data-kind]');
     const line = el.scrollTop + el.clientHeight * LINE;
     let cur = 0; blocks.forEach((b, i) => { if (b.offsetTop <= line) cur = i; });
     if (cur !== s.cur) this.setState({ cur });
-    if (!s.playing) { this.pos = el.scrollTop; return; }
+    if (!s.playing || userScrolling) { this.pos = el.scrollTop; return; }
     const kind = blocks[cur] ? blocks[cur].getAttribute('data-kind') : 'mikra';
     const base = [0, 9, 14, 20, 28, 38][s.speed];
     this.pos = (this.pos ?? el.scrollTop) + base * (kind === 'targum' ? s.tf : 1) * dt;
-    el.scrollTop = this.pos;
+    el.scrollTop = this.pos; this.lastSet = el.scrollTop;
     if (el.scrollTop + el.clientHeight >= el.scrollHeight - 2) this.setState({ playing: false, finished: true });
   }
   handlers() {
     if (this._h) return this._h;
     this._h = {
-      setEl: (el) => { this.el = el; },
+      setEl: (el) => {
+        this.el = el; if (!el || el.__smBound) return; el.__smBound = true;
+        const later = (ms) => { this.userUntil = performance.now() + ms; };
+        el.addEventListener('touchstart', () => { this.hold = true; }, { passive: true });
+        const up = () => { this.hold = false; later(700); };
+        el.addEventListener('touchend', up, { passive: true }); el.addEventListener('touchcancel', up, { passive: true });
+        el.addEventListener('wheel', () => later(700), { passive: true });
+        el.addEventListener('pointerdown', (e) => { if (e.pointerType === 'mouse') later(700); }, { passive: true });
+        el.addEventListener('scroll', () => { if (Math.abs(el.scrollTop - (this.lastSet ?? -99)) > 2) { later(500); this.pos = el.scrollTop; } }, { passive: true });
+      },
       toggle: () => { const s = this.st(); if (this.el) this.pos = this.el.scrollTop; this.setState({ playing: !s.playing }); },
       slower: () => { const s = this.st(); this.setState({ speed: Math.max(1, s.speed - 1) }); },
       faster: () => { const s = this.st(); this.setState({ speed: Math.min(5, s.speed + 1) }); },
