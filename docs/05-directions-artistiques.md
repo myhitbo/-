@@ -38,6 +38,11 @@ Retour du 17/11 : priorité à ce qui est **pratique et utile**, pas aux symbole
 - **Clair** : fond crème chaud avec halo pêche discret. **Sombre** : brun-noir chaud, accents dorés. **Texte** : papier, interface masquée.
 - Mise en page fluide, testée à 320×568, 360×640, 360×800, 390×844, 430×932, 480×854, 768×1024 et 854×480.
 
+## Pages de la V2 (18/11)
+- Bienvenue en 3 étapes : langue, lieu (Israël / diaspora + ville), rythme + heure du rappel.
+- Accueil, Lecteur, **Année** (54 parachiyot par livre), **Groupes** (famille nominative, synagogue en vue anonyme), **Réglages** (4 apparences, 6 langues, 5 polices, taille, lieu, rappel, lecture), **Imprimer pour Shabbat**.
+- Quatre apparences : Clair, Sombre, Texte et **Parchemin** (texture de la direction A, titres dorés), validée par l'utilisateur.
+
 ## À faire
 - Choisir une direction (ou un mélange, par ex. la ménorah de B avec le côté communautaire de C).
 - Vérifier le texte hébreu et araméen des maquettes (Béréchit 29:18–22) contre Sefaria.
