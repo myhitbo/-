@@ -25,6 +25,13 @@ Trois pistes, chacune avec une idée visuelle forte. Les maquettes sont dans le 
 - **Typo :** Rubik (interface) · David Libre (texte)
 - **Pour :** très motivant pour familles, débutants, enfants. **Contre :** moins solennel.
 
+## Orientation retenue : « Pratique »
+Retour du 17/11 : priorité à ce qui est **pratique et utile**, pas aux symboles décoratifs.
+- Écartés : la ménorah (sans rapport avec Shnayim Mikra) et une direction calligraphique (difficile à lire).
+- Accueil : temps de lecture restant avant Shabbat, heure d'allumage selon la ville, liste des 7 alyot (jour, versets, durée, état), bouton « Lire l'alya du jour », bouton « Imprimer pour Shabbat ».
+- Trois modes : clair, sombre, texte (voir [03-lecteur-v1.md](03-lecteur-v1.md)).
+- Style sobre et très lisible, une seule couleur d'action ; des pistes A, B, C ne restent que couleurs et typographie si besoin.
+
 ## À faire
 - Choisir une direction (ou un mélange, par ex. la ménorah de B avec le côté communautaire de C).
 - Vérifier le texte hébreu et araméen des maquettes (Béréchit 29:18–22) contre Sefaria.
