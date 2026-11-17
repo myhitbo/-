@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F6F2EC">
+<title>Shnayim Mikra</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;family=Inter:wght@400;500;600;700&amp;family=Frank+Ruhl+Libre:wght@400;500&amp;family=David+Libre:wght@400;500&amp;family=Noto+Serif+Hebrew:wght@400;500&amp;family=Noto+Rashi+Hebrew:wght@400&amp;family=Heebo:wght@400;500&amp;family=Noto+Sans+Arabic:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;height:100%;-webkit-tap-highlight-color:transparent;overscroll-behavior:none}
+body{background:#F6F2EC}
+button{cursor:pointer}
+
+body{margin:0}
+*{box-sizing:border-box}
+a{color:var(--accent)}
+[dir=rtl] .flip{transform:scaleX(-1)}
+.t, .t *{transition: background-color .45s ease, color .45s ease, border-color .45s ease}
+.cap{font-family:Inter,'Heebo',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+.serif{font-family:Newsreader,'Frank Ruhl Libre',Georgia,serif}
+.glass{background:var(--glass);border:1px solid var(--glass-b);-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4)}
+.scroll{scrollbar-width:none}.scroll::-webkit-scrollbar{display:none}
+.wave{transition: transform .7s cubic-bezier(.3,1.25,.4,1)}
+.ring{stroke-dasharray:76;stroke-dashoffset:76;animation:dr .5s ease-out forwards}
+.tick{stroke-dasharray:22;stroke-dashoffset:22;animation:dr .35s .45s ease-out forwards}
+@keyframes dr{to{stroke-dashoffset:0}}
+.toast{animation:ts 2.4s ease forwards}
+@keyframes ts{0%{transform:translateY(24px);opacity:0}12%{transform:none;opacity:1}85%{opacity:1}100%{opacity:0}}
+.rise{animation:rs .55s ease-out both}
+@keyframes rs{0%{transform:translateY(14px);opacity:0}100%{transform:none;opacity:1}}
+.count{font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion: reduce){.wave,.ring,.tick,.toast,.rise{animation:none;transition:none;stroke-dashoffset:0}}
+.th-parchemin .foil{background:linear-gradient(175deg,#C9A24A 0%,#7A520C 55%,#B98A2C 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.field{height:48px;border-radius:16px;border:1px solid var(--line2);background:var(--bg2);color:var(--text);padding:0 14px;font:500 16px Inter,'Heebo','Noto Sans Arabic',sans-serif;width:100%}
+
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script src="data/text.js"></script>
+<script src="globals.js"></script>
+<script src="runtime.js"></script>
+<script src="screens.js"></script>
+</body>
+</html>

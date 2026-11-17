@@ -1,0 +1,47 @@
+name: APK de test
+
+on:
+  push:
+    branches: [main]
+    paths: ['web/**', 'android/**', 'tools/**', '.github/workflows/android.yml']
+  workflow_dispatch:
+    inputs:
+      diaspora:
+        description: "Calendrier de la diaspora (1) ou d'Israël (0)"
+        default: '1'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Textes de la semaine depuis Sefaria
+        env:
+          SM_DIASPORA: ${{ github.event.inputs.diaspora || '1' }}
+        run: python3 tools/fetch_sefaria.py
+
+      - name: Copier l'application web dans l'APK
+        run: |
+          mkdir -p android/app/src/main/assets/www
+          cp -r web/. android/app/src/main/assets/www/
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: android-actions/setup-android@v3
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+
+      - name: Compiler l'APK
+        working-directory: android
+        run: gradle assembleDebug --no-daemon
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shnayim-mikra-test-apk
+          path: android/app/build/outputs/apk/debug/*.apk
