@@ -25,7 +25,13 @@
 - **Texte** (mode lecture) : fond papier `#F1E7D0`, encre brune `#2E241A`, interface masquée (toucher le texte pour l'afficher), interlignage élargi (≈ 2) pour les voyelles et les te'amim.
 - Taille du texte réglable directement dans le lecteur (20 à 40 px ; 25 px par défaut, 28 px en mode texte).
 - Changement de mode en fondu doux.
-- Police hébraïque à prévoir qui gère complètement voyelles **et** te'amim (ex. Taamey Frank CLM, SBL Hebrew, Ezra SIL).
+- **Plusieurs polices au choix**, modifiables depuis les Réglages et depuis le bouton « Aa » du lecteur :
+  - Frank Ruhl — classique, proche du Houmash imprimé
+  - David — traditionnelle, aérée
+  - Noto Serif Hebrew — moderne, voyelles et te'amim complets
+  - Heebo — sans empattement, pour petits écrans
+  - Ktav Rashi — pour l'option Rashi
+- Vérifier pour chaque police le rendu complet des voyelles **et** des te'amim ; prévoir au besoin Taamey Frank CLM, SBL Hebrew ou Ezra SIL.
 
 ## Options incluses
 - Rashi à la place du Targoum ou en complément
