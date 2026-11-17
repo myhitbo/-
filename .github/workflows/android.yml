@@ -10,6 +10,9 @@ on:
         description: "Calendrier de la diaspora (1) ou d'Israël (0)"
         default: '1'
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -43,3 +46,13 @@ jobs:
         with:
           name: shnayim-mikra-test-apk
           path: android/app/build/outputs/apk/debug/*.apk
+
+      - name: Publier l'APK dans les Releases du dépôt
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp android/app/build/outputs/apk/debug/app-debug.apk shnayim-mikra-test.apk
+          TAG="test-${{ github.run_number }}"
+          PARASHA=$(python3 -c "import json,re;t=open('web/data/text.js').read();m=re.search(r'= (\{.*\});',t,re.S);print(json.loads(m.group(1))['parasha'] if m else 'textes d exemple')")
+          gh release create "$TAG" shnayim-mikra-test.apk --prerelease --title "APK de test n°${{ github.run_number }} — $PARASHA" \
+            --notes "Version de test. Paracha : $PARASHA (textes de Sefaria). Sur Android : télécharger shnayim-mikra-test.apk puis autoriser l'installation depuis cette source."
