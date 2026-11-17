@@ -83,7 +83,7 @@
     const href = a.getAttribute('href');
     if (href.startsWith('#mode=')) { e.preventDefault(); APP.set('mode', href.slice(6)); return; }
     const m = href.match(/V2-([A-Za-z]+)/);
-    if (m && MAP[m[1]]) { e.preventDefault(); const target = MAP[m[1]]; const q = href.match(/alya=(\d)/); if (q) APP.set('alya', Number(q[1])); else if (target === 'lecteur') APP.set('alya', null); if (cur && document.title === 'Bienvenue' && target === 'accueil') APP.set('onboarded', true); location.hash = '#/' + target; return; }
+    if (m && MAP[m[1]]) { e.preventDefault(); const target = MAP[m[1]]; const q = href.match(/alya=(\d)/); const pq = href.match(/par=(\d)/); if (target === 'lecteur') { APP.set('par', pq ? Number(pq[1]) : 0); APP.set('alya', q ? Number(q[1]) : null); } if (cur && document.title === 'Bienvenue' && target === 'accueil') APP.set('onboarded', true); location.hash = '#/' + target; return; }
     if (href === '#' || href === '') e.preventDefault();
   });
   window.addEventListener('hashchange', route);
