@@ -22,11 +22,18 @@
   const NO_TARGUM = { 'Numbers 32:3': 1 };
   const YER_TITLES = ['Targum Jerusalem, ', 'Targum Jonathan on '];
 
+  const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+  let last = 0;
+  /* Requêtes espacées (~0,4 s) et nouvelles tentatives si Sefaria répond 429 (trop de requêtes) */
   async function get(path, params) {
     const q = params ? '?' + Object.keys(params).map(k => k + '=' + encodeURIComponent(params[k])).join('&') : '';
-    const r = await fetch(API + path + q, { headers: { Accept: 'application/json' } });
-    if (!r.ok) throw new Error('HTTP ' + r.status + ' ' + path);
-    return r.json();
+    for (let k = 0; ; k++) {
+      const wait = last + 400 - Date.now(); if (wait > 0) await sleep(wait); last = Date.now();
+      const r = await fetch(API + path + q, { headers: { Accept: 'application/json' } });
+      if (r.ok) return r.json();
+      if ((r.status === 429 || r.status >= 500) && k < 6) { const ra = +(r.headers.get('retry-after') || 0); await sleep(Math.max(ra * 1000, 2000 * Math.pow(2, k))); continue; }
+      throw new Error('HTTP ' + r.status + ' ' + path);
+    }
   }
   function clean(s) {
     s = String(s || '').replace(/<[^>]+>/g, '');

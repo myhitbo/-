@@ -17,9 +17,9 @@ const log = (m) => console.error(m);
   for (const [key, dia] of [['diaspora', true], ['israel', false]]) {
     log('=== ' + key);
     const weeks = await S.weeks(from, COUNT, dia, log);
-    if (!weeks.some(w => w.alyot)) { log('Aucune paracha pour ' + key + ', texte de secours conservé.'); return; }
+    if (!weeks.some(w => w.alyot)) { log('Aucune paracha pour ' + key + ', texte de secours conservé.'); process.exitCode = 1; return; }
     data[key] = { weeks };
   }
   fs.writeFileSync(OUT, 'window.SM_TEXT = ' + JSON.stringify(data) + ';\n');
   log('OK : ' + data.diaspora.weeks.map(w => w.parasha).join(', ') + ' | Israël : ' + data.israel.weeks.map(w => w.parasha).join(', '));
-})().catch(e => log('Sefaria indisponible, texte de secours conservé : ' + e.message));
+})().catch(e => { log('Sefaria indisponible : ' + e.message); process.exitCode = 1; });
