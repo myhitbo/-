@@ -2,6 +2,8 @@ package org.shnayimmikra.app;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.print.PrintManager;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -20,10 +22,24 @@ public class MainActivity extends Activity {
         s.setAllowFileAccess(true);
         s.setTextZoom(100);
         web.setWebViewClient(new WebViewClient());
+        web.addJavascriptInterface(new Bridge(), "SMAndroid");
         web.setOverScrollMode(WebView.OVER_SCROLL_NEVER);
         setContentView(web);
         if (savedInstanceState != null) web.restoreState(savedInstanceState);
         else web.loadUrl("file:///android_asset/www/index.html");
+    }
+
+    /** Impression (ou PDF) de la page : appelée par SM_PRINT() dans globals.js. */
+    private class Bridge {
+        @JavascriptInterface
+        public void print(final String title) {
+            runOnUiThread(new Runnable() {
+                @Override public void run() {
+                    PrintManager pm = (PrintManager) getSystemService(PRINT_SERVICE);
+                    if (pm != null) pm.print(title, web.createPrintDocumentAdapter(title), null);
+                }
+            });
+        }
     }
 
     @Override

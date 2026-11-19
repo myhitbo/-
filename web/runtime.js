@@ -1,12 +1,12 @@
 /* Shnayim Mikra — mini runtime: templates {{ }}, sc-for, sc-if, DOM patching, router, settings */
 (function () {
-  const DEF = { mode: 'clair', lang: 'fr', font: 'frank', fs: 25, place: 0, onboarded: false };
+  const DEF = { mode: 'clair', lang: 'fr', font: 'frank', fs: 25, place: 0, city: null, nt: 'deux', onboarded: false };
   let data; try { data = Object.assign({}, DEF, JSON.parse(localStorage.getItem('sm.settings') || '{}')); } catch (e) { data = Object.assign({}, DEF); }
   const APP = window.APP = {
-    get: (k) => data[k],
-    set: (k, v) => { if (data[k] === v) return; data[k] = v; try { localStorage.setItem('sm.settings', JSON.stringify(data)); } catch (e) {} if (k === 'mode') rerenderWithProps(); }
+    get: (k) => (k === 'done' && window.SM_DONE) ? SM_DONE.get() : data[k],
+    set: (k, v) => { if (k === 'done' && window.SM_DONE) { SM_DONE.set(v); return; } if (data[k] === v) return; data[k] = v; try { localStorage.setItem('sm.settings', JSON.stringify(data)); } catch (e) {} if (k === 'mode') rerenderWithProps(); if (k === 'place') { schedule(); if (window.SM_REFRESH) SM_REFRESH(); } if (k === 'city' || k === 'nt') schedule(); }
   };
-  const SYNC = ['mode', 'lang', 'font', 'fs', 'place', 'done'];
+  const SYNC = ['mode', 'lang', 'font', 'fs', 'place', 'city', 'nt', 'done'];
 
   window.DCLogic = class {
     constructor(props) { this.props = props; this.state = undefined; }
@@ -83,9 +83,10 @@
     const href = a.getAttribute('href');
     if (href.startsWith('#mode=')) { e.preventDefault(); APP.set('mode', href.slice(6)); return; }
     const m = href.match(/V2-([A-Za-z]+)/);
-    if (m && MAP[m[1]]) { e.preventDefault(); const target = MAP[m[1]]; const q = href.match(/alya=(\d)/); const pq = href.match(/par=(\d)/); if (target === 'lecteur') { APP.set('par', pq ? Number(pq[1]) : 0); APP.set('alya', q ? Number(q[1]) : null); } if (cur && document.title === 'Bienvenue' && target === 'accueil') APP.set('onboarded', true); location.hash = '#/' + target; return; }
+    if (m && MAP[m[1]]) { e.preventDefault(); const target = MAP[m[1]]; const q = href.match(/alya=(\d)/); const pq = href.match(/par=([^&]+)/); if (target === 'lecteur') { APP.set('par', pq ? (/^\d{4}-/.test(pq[1]) ? pq[1] : Number(pq[1])) : 0); APP.set('alya', q ? Number(q[1]) : null); } if (cur && document.title === 'Bienvenue' && target === 'accueil') APP.set('onboarded', true); location.hash = '#/' + target; return; }
     if (href === '#' || href === '') e.preventDefault();
   });
   window.addEventListener('hashchange', route);
-  window.addEventListener('DOMContentLoaded', route);
+  window.addEventListener('DOMContentLoaded', () => { route(); if (window.SM_REFRESH) setTimeout(() => SM_REFRESH(), 1500); });
+  window.SM_RERENDER = schedule;
 })();

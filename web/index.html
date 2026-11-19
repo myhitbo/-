@@ -10,6 +10,16 @@
 html,body{margin:0;height:100%;-webkit-tap-highlight-color:transparent;overscroll-behavior:none}
 body{background:#F6F2EC}
 button{cursor:pointer}
+#print{display:none}
+@media print{@page{size:A4;margin:14mm}html,body{height:auto;background:#fff!important}#app{display:none!important}
+#print{display:block;color:#000;font-family:'Frank Ruhl Libre','David Libre',serif}
+#print header{display:flex;justify-content:space-between;font:600 10pt Inter,sans-serif;border-bottom:1px solid #999;padding-bottom:4px}
+#print .how{font:9pt Inter,sans-serif;color:#444;margin:4px 0 8px}
+#print h2{display:flex;justify-content:space-between;font:700 11pt Inter,sans-serif;margin:12px 0 4px;break-after:avoid}
+#print .pv{break-inside:avoid;margin:0 0 5px}
+#print .he{margin:0;font-size:15pt;line-height:1.55;text-align:right}
+#print .he b{font:600 8pt Inter,sans-serif;color:#555}
+#print .tg{margin:1px 0 0;font-size:12pt;line-height:1.45;color:#333;text-align:right}}
 
 body{margin:0}
 *{box-sizing:border-box}
@@ -38,6 +48,7 @@ a{color:var(--accent)}
 <body>
 <div id="app"></div>
 <script src="data/text.js"></script>
+<script src="sefaria.js"></script>
 <script src="globals.js"></script>
 <script src="runtime.js"></script>
 <script src="screens.js"></script>

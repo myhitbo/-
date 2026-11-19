@@ -5,10 +5,6 @@ on:
     branches: [main]
     paths: ['web/**', 'android/**', 'tools/**', '.github/workflows/android.yml']
   workflow_dispatch:
-    inputs:
-      diaspora:
-        description: "Calendrier de la diaspora (1) ou d'Israël (0)"
-        default: '1'
 
 permissions:
   contents: write
@@ -19,10 +15,12 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - name: Textes de la semaine depuis Sefaria
-        env:
-          SM_DIASPORA: ${{ github.event.inputs.diaspora || '1' }}
-        run: python3 tools/fetch_sefaria.py
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Textes depuis Sefaria (Israël et diaspora)
+        run: node tools/fetch_sefaria.js
 
       - name: Copier l'application web dans l'APK
         run: |
@@ -53,6 +51,6 @@ jobs:
         run: |
           cp android/app/build/outputs/apk/debug/app-debug.apk shnayim-mikra-test.apk
           TAG="test-${{ github.run_number }}"
-          PARASHA=$(python3 -c "import json,re;t=open('web/data/text.js').read();m=re.search(r'= (\{.*\});',t,re.S);print(json.loads(m.group(1))['parasha'] if m else 'textes d exemple')")
+          PARASHA=$(node -e "global.window={};require('./web/data/text.js');const T=window.SM_TEXT;const t=new Date().toISOString().slice(0,10);const w=T&&T.diaspora?T.diaspora.weeks.find(x=>x.shabbatISO>=t&&!x.holiday):null;console.log(w?w.parasha:'textes d exemple')")
           gh release create "$TAG" shnayim-mikra-test.apk --prerelease --title "APK de test n°${{ github.run_number }} — $PARASHA" \
             --notes "Version de test. Paracha : $PARASHA (textes de Sefaria). Sur Android : télécharger shnayim-mikra-test.apk puis autoriser l'installation depuis cette source."
