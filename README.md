@@ -19,5 +19,7 @@ Phase de cadrage et de conception. Pas encore de code.
 | 5 | [Directions artistiques](docs/05-directions-artistiques.md) | En choix |
 | 6 | [Autres aspects de l'app](docs/06-autres-aspects.md) | Propositions |
 | 7 | [Mise en place de 21st.dev UI Build](docs/07-setup-21st-dev.md) | Guide |
+| 8 | [Valeur pratique](docs/08-valeur-pratique.md) | En cours |
+| 9 | [Licences des textes et demande à Metsudah](docs/09-licences-textes.md) | Décidé, lettre à envoyer |
 
 Les maquettes visuelles (canevas de design) sont tenues à part, hors de ce dépôt.
