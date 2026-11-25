@@ -1,6 +1,6 @@
 /* Shnayim Mikra — mini runtime: templates {{ }}, sc-for, sc-if, DOM patching, router, settings */
 (function () {
-  const DEF = { mode: 'clair', lang: 'fr', font: 'frank', fs: 25, place: 0, city: null, nt: 'deux', rh: 0, rhDay: 4, rhN: 3, order: 0, rem: true, remAt: '07:30', onboarded: false };
+  const DEF = { mode: 'clair', lang: 'fr', font: 'frank', fs: 25, place: 0, city: null, nt: 'deux', rh: 0, rhDay: 4, rhN: 3, order: 0, rem: true, remAt: '07:30', spd: 2, tf: 0.8, onboarded: false };
   let data; try { data = Object.assign({}, DEF, JSON.parse(localStorage.getItem('sm.settings') || '{}')); } catch (e) { data = Object.assign({}, DEF); }
   if (data.font === 'rashi') data.font = 'frank'; /* police retirée (pas de Rachi dans cette version) */
   const APP = window.APP = {
@@ -11,10 +11,10 @@
       if (k === 'lang') schedule(); }
   };
   /* Réglages qui changent les rappels */
-  const REMIND = ['rem', 'remAt', 'rh', 'rhDay', 'rhN', 'city', 'place', 'lang', 'onboarded'];
+  const REMIND = ['rem', 'remAt', 'rh', 'rhDay', 'rhN', 'city', 'place', 'lang', 'spd', 'tf', 'onboarded'];
   /* Couleur des barres du téléphone, accordée à l'apparence choisie (app Android) */
   function syncTheme() { try { const th = (window.SM_THEMES || {})[data.mode]; if (window.SMAndroid && SMAndroid.theme && th) SMAndroid.theme(th['--bg'], data.mode === 'sombre'); } catch (e) {} }
-  const SYNC = ['mode', 'lang', 'font', 'fs', 'place', 'city', 'nt', 'rh', 'rhDay', 'rhN', 'order', 'rem', 'remAt', 'done'];
+  const SYNC = ['mode', 'lang', 'font', 'fs', 'place', 'city', 'nt', 'rh', 'rhDay', 'rhN', 'order', 'rem', 'remAt', 'spd', 'tf', 'done'];
 
   window.DCLogic = class {
     constructor(props) { this.props = props; this.state = undefined; }

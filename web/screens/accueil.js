@@ -147,7 +147,7 @@ const READER = 'V2-Lecteur.dc.html';
 
 class Component extends DCLogic {
   componentWillUnmount() { clearInterval(this.cnt); clearTimeout(this.tt); }
-  st() { const s = this.state || {}; const total = (d) => ALYOT.slice(d).reduce((a, x) => a + x.min, 0); const done = s.done ?? (APP.get('done') ?? 0); return { mode: this.props.mode || 'clair', done, sel: Math.min(6, s.sel ?? done), shown: s.shown ?? total(done), toast: !!s.toast, total, toastName: s.toastName, toastMin: s.toastMin }; }
+  st() { const s = this.state || {}; const total = (d) => { const sec = ALYOT.slice(d).reduce((a, x) => a + (x.sec || x.min * 60), 0); return sec ? Math.max(1, Math.round(sec / 60)) : 0; }; const done = s.done ?? (APP.get('done') ?? 0); return { mode: this.props.mode || 'clair', done, sel: Math.min(6, s.sel ?? done), shown: s.shown ?? total(done), toast: !!s.toast, total, toastName: s.toastName, toastMin: s.toastMin }; }
   markRead() {
     const s = this.st(); if (s.done >= 7) return;
     const target = s.total(s.done + 1), from = s.shown;

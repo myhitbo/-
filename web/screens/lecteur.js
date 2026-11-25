@@ -101,7 +101,7 @@ const PORTION = window.SM_PORTION ? SM_PORTION() : null;   /* séance ouverte : 
 class Component extends DCLogic {
   componentDidMount() { this.timer = setInterval(() => this.tick(), 33); }
   componentWillUnmount() { clearInterval(this.timer); }
-  st() { const s = this.state || {}; return { playing: s.playing ?? false, speed: s.speed ?? 3, tf: s.tf ?? 0.8, cur: s.cur ?? 0 }; }
+  st() { const s = this.state || {}; return { playing: s.playing ?? false, spd: s.spd ?? SM_SPEED_INDEX(), tf: s.tf ?? (APP.get('tf') ?? 0.8), cur: s.cur ?? 0 }; }
   tick() {
     const el = this.el; if (!el) return;
     const s = this.st();
@@ -113,16 +113,22 @@ class Component extends DCLogic {
     if (cur !== s.cur) this.setState({ cur });
     /* Progression : la séance est comptée quand on arrive tout en bas ; dans une séance de plusieurs alyot
        lues à la suite, chaque alya est comptée dès qu'on entre dans la suivante. */
-    const atEnd = el.scrollTop + el.clientHeight >= el.scrollHeight - 2;
+    const lastB = blocks[blocks.length - 1];
+    const atEnd = el.scrollTop + el.clientHeight >= el.scrollHeight - 2 || (!!lastB && line >= lastB.offsetTop + lastB.offsetHeight + 16);
     if (PORTION && window.SM_MARK) {
       if (atEnd) { if (!this.ended) { this.ended = true; SM_MARK(); } }
       else if (PORTION.order !== 3 && BLOCKS[cur] && BLOCKS[cur].al > (this.marked ?? PORTION.from)) { this.marked = BLOCKS[cur].al; SM_MARK(this.marked); }
     }
     if (atEnd && !(this.state && this.state.finished)) { this.setState({ playing: false, finished: true }); return; }
     if (!s.playing || userScrolling) { this.pos = el.scrollTop; return; }
-    const kind = blocks[cur] ? blocks[cur].getAttribute('data-kind') : 'mikra';
-    const base = [0, 9, 14, 20, 28, 38][s.speed];
-    this.pos = (this.pos ?? el.scrollTop) + base * (kind === 'targum' ? s.tf : 1) * dt;
+    /* Vitesse : chaque bloc met exactement son temps de lecture à passer sous la ligne de lecture
+       (nombre de mots ÷ vitesse choisie), quelle que soit la taille du texte. La vitesse en pixels est lissée
+       pour éviter les à-coups entre un verset court et un verset long. */
+    const blk = blocks[cur], nxt = blocks[cur + 1];
+    const h = blk ? (nxt ? nxt.offsetTop - blk.offsetTop : blk.offsetHeight + 16) : 100;
+    const target = h / (BLOCKS[cur] ? SM_BLOCK_SEC(BLOCKS[cur]) : 5);
+    this.v = this.v ? this.v + (target - this.v) * Math.min(1, dt * 2.5) : target;
+    this.pos = (this.pos ?? el.scrollTop) + this.v * dt;
     el.scrollTop = this.pos; this.lastSet = el.scrollTop;
   }
   handlers() {
@@ -138,19 +144,17 @@ class Component extends DCLogic {
         el.addEventListener('pointerdown', (e) => { if (e.pointerType === 'mouse') later(700); }, { passive: true });
         el.addEventListener('scroll', () => { if (Math.abs(el.scrollTop - (this.lastSet ?? -99)) > 2) { later(500); this.pos = el.scrollTop; } }, { passive: true });
       },
-      toggle: () => { const s = this.st(); if (this.el) this.pos = this.el.scrollTop; this.setState({ playing: !s.playing }); },
-      slower: () => { const s = this.st(); this.setState({ speed: Math.max(1, s.speed - 1) }); },
-      faster: () => { const s = this.st(); this.setState({ speed: Math.min(5, s.speed + 1) }); },
-      onSpeed: (e) => { this.setState({ speed: Number(e.target.value) }); },
+      toggle: () => { const s = this.st(); if (this.el) this.pos = this.el.scrollTop; this.v = 0; this.setState({ playing: !s.playing }); },
+      slower: () => { const s = this.st(); this.setState({ spd: Math.max(0, s.spd - 1) }); },
+      faster: () => { const s = this.st(); this.setState({ spd: Math.min(SM_SPEEDS.length - 1, s.spd + 1) }); },
       restart: () => { if (this.el) { this.el.scrollTop = 0; this.pos = 0; } }
     };
     return this._h;
   }
   common() {
     const s = this.st(); const h = this.handlers();
-    const labels = ['', '×0.5', '×0.75', '×1', '×1.3', '×1.7'];
     const tfs = [{ v: 1, l: 'Même vitesse' }, { v: 0.8, l: '−20 %' }, { v: 0.6, l: '−40 %' }];
-    return { s, h, speedLabel: labels[s.speed], playLabel: s.playing ? SM_TR().pause : SM_TR().autoRead, tfs: tfs.map(t => ({ ...t, on: s.tf === t.v, pick: () => this.setState({ tf: t.v }) })) };
+    return { s, h, speedLabel: '×' + SM_SPEEDS[s.spd], playLabel: s.playing ? SM_TR().pause : SM_TR().autoRead, tfs: tfs.map(t => ({ ...t, on: s.tf === t.v, pick: () => this.setState({ tf: t.v }) })) };
   }
 
   renderVals() {
@@ -163,7 +167,7 @@ class Component extends DCLogic {
       toggleChrome: () => { const z = this.state || {}; if ((this.props.mode || MODE) === 'texte') this.setState({ chrome: !z.chrome }); },
       smaller: () => { const z = this.state || {}; this.setState({ fs: Math.max(20, (z.fs ?? APP.get('fs')) - 2) }); },
       bigger: () => { const z = this.state || {}; this.setState({ fs: Math.min(40, (z.fs ?? APP.get('fs')) + 2) }); },
-      cycleTf: () => { const z = this.c2 || 0.8; const order = [1, 0.8, 0.6]; const cur = (this.state && this.state.tf) ?? 0.8; this.setState({ tf: order[(order.indexOf(cur) + 1) % 3] }); },
+      cycleTf: () => { const order = [1, 0.8, 0.6]; this.setState({ tf: order[(order.indexOf(this.st().tf) + 1) % 3] }); },
       again: () => { if (this.el) { this.el.scrollTop = 0; this.pos = 0; } this.ended = false; this.setState({ finished: false, playing: false }); }
     };
     const x = this._x; const t = SM_TR(), F = SM_FMT;
@@ -175,7 +179,9 @@ class Component extends DCLogic {
     });
     const fade = 'transition: opacity .35s ease, transform .35s ease; ' + (chrome ? 'opacity: 1;' : 'opacity: 0; pointer-events: none;');
     const tfLabel = s.tf === 1 ? '=' : s.tf === 0.8 ? '−20 %' : '−40 %';
-    const remainingMin = Math.max(1, Math.round((BLOCKS.length - s.cur) / 3 * 0.4));
+    /* Temps restant : la somme des temps de lecture des blocs qui restent, à la vitesse choisie */
+    let remSec = 0; for (let i = s.cur; i < BLOCKS.length; i++) remSec += SM_BLOCK_SEC(BLOCKS[i]);
+    const remainingMin = Math.max(1, Math.round(remSec / 60));
     const B = BLOCKS[s.cur] || BLOCKS[0] || {};
     const vTotal = BLOCKS.reduce((m, b) => Math.max(m, b.vi || 0), 0) || BLOCKS.filter(b => b.n === 1).length;
     const vCur = B.vi || Math.max(1, BLOCKS.slice(0, s.cur + 1).filter(b => b.n === 1).length);

@@ -33,6 +33,13 @@
 - Les fins de paragraphe viennent du texte de Sefaria (marques {פ} et {ס}) ; un paragraphe ne chevauche jamais deux alyot.
 - Une séance est comptée quand on arrive au bout du texte, à la main comme en défilement automatique. Dans une séance de plusieurs alyot lues à la suite, chaque alya est comptée dès qu'on entre dans la suivante.
 
+### Vitesse de lecture et durées
+- Tout part du nombre de mots à lire et de la vitesse choisie dans le lecteur : à ×1, 160 mots à la minute pour le texte hébreu ; le Targoum est lu 20 % plus lentement par défaut (réglable : même vitesse, −20 %, −40 %).
+- Huit vitesses, de ×0,5 à ×3 (80 à 480 mots à la minute). La vitesse et le réglage du Targoum sont enregistrés.
+- Défilement automatique : chaque bloc met exactement son temps de lecture à passer sous la ligne de lecture, quelle que soit la taille du texte ou la largeur de l'écran.
+- Le même calcul donne le temps restant dans le lecteur, la durée de chaque alya, la lecture restante de l'accueil, les durées des rappels et de la feuille imprimée.
+- Avant : le défilement avançait en pixels par seconde (environ 100 mots à la minute en taille normale, 49 en grande taille) et les durées comptaient 24 secondes par verset, quelle que soit sa longueur.
+
 ### Rappel de lecture (notification Android)
 - Réglage dans l'accueil de bienvenue et dans les Réglages : interrupteur et heure (07:30 par défaut).
 - Un rappel par jour où une séance est prévue et pas encore lue ; les séances en retard s'y ajoutent (« dont 2 alyot en retard »). En rythme libre : un rappel par jour tant que la paracha n'est pas finie.
@@ -62,7 +69,7 @@
 - Mise à jour en ligne : l'app retélécharge les semaines depuis Sefaria quand le texte embarqué arrive à sa fin. Si elle est hors ligne, elle garde le texte embarqué.
 
 ## Prochaines idées
-- Compter en minutes (vitesse de lecture mesurée) au lieu de versets.
+- Mesurer la vitesse réelle du lecteur (temps passé sur une alya) pour ajuster les durées sans réglage.
 - Toucher un mot araméen pour voir son sens (dictionnaire Jastrow sur Sefaria).
 - Widget Android.
 - Mode Rachi à la place du Targoum : les versets sans Rachi lus 3 fois (Michna Beroura 285:5).

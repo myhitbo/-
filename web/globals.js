@@ -125,7 +125,8 @@
   }
   function alyaIndex() { const a = get('alya'); return (a === undefined || a === null) ? Math.min(6, progN(state().cur)) : a; }
   window.SM_WEEK = (par) => weekFor(par === undefined ? get('par') : par);
-  window.SM_ALYOT = () => { const w = state().cur; return w && w.alyot ? w.alyot : null; };
+  /* Les 7 alyot de la semaine, avec leur durée calculée (sec = secondes, min = minutes arrondies) */
+  window.SM_ALYOT = () => { const w = state().cur; return w && w.alyot ? w.alyot.map(a => { const sec = alyaSec(a); return Object.assign({}, a, { sec, min: toMin(sec) }); }) : null; };
   /* Fin d'une alya dans le lecteur */
   /* Séance ouverte dans le lecteur : alyot from..to de la semaine choisie (une seule alya si `alyaTo` est absent) */
   function portion() {
@@ -146,8 +147,33 @@
     if (rh === 2) return get('rhN') === 2 ? [{ from: 0, to: 3, day: 1 }, { from: 4, to: 6, day: 4 }] : [{ from: 0, to: 2, day: 0 }, { from: 3, to: 4, day: 2 }, { from: 5, to: 6, day: 4 }];
     return [0, 1, 2, 3, 4, 5, 6].map(i => ({ from: i, to: i, day: i }));
   }
+  /* ---------- Temps de lecture ----------
+     Tout part du nombre de mots à lire et de la vitesse choisie dans le lecteur (réglage `spd`) :
+     à ×1, WPM mots à la minute pour le texte hébreu ; le Targoum est lu plus lentement (réglage `tf`, 0,8 = 20 % plus lent).
+     Le même calcul sert au défilement automatique, au temps restant et à toutes les durées affichées :
+     ils ne dépendent donc ni de la taille du texte ni de la largeur de l'écran. */
+  const WPM = 160, SPEEDS = [0.5, 0.75, 1, 1.25, 1.5, 2, 2.5, 3], SPEED0 = 2;
+  const wordCount = (s) => { const m = String(s || '').trim(); return m ? m.split(/[\s\u05BE]+/).length : 0; };
+  const speedIndex = () => { const i = get('spd'); return (i === undefined || i === null || !SPEEDS[i]) ? SPEED0 : i; };
+  const targumFactor = () => { const t = get('tf'); return (t === undefined || t === null) ? 0.8 : t; };
+  /* Secondes pour lire un texte une fois (au moins une seconde) */
+  const readSec = (text, isTargum) => Math.max(1, wordCount(text) / (WPM * SPEEDS[speedIndex()] / 60 * (isTargum ? targumFactor() : 1)));
+  /* Secondes pour une alya : chaque verset deux fois, puis son Targoum (ou ce qui le remplace quand Onkelos ne traduit pas) */
+  function alyaSec(a) {
+    if (!a || !a.v) return ((a && a.min) || 0) * 60;
+    const nt = get('nt') || 'deux'; let s = 0;
+    a.v.forEach(v => { s += 2 * readSec(v.he);
+      if (!v.nt) { s += readSec(v.onk, true); return; }
+      const yer = nt !== 'trois' && v.yer; if (nt !== 'yer' || !yer) s += readSec(v.he); if (yer) s += readSec(v.yer, true); });
+    return s;
+  }
+  const toMin = (sec) => Math.max(1, Math.round(sec / 60));
+  window.SM_SPEEDS = SPEEDS;
+  window.SM_SPEED_INDEX = speedIndex;
+  window.SM_BLOCK_SEC = (b) => readSec(b.text, b.kind === 'targum');   /* durée d'un bloc du lecteur */
+
   const sessionAt = (n) => { const from = Math.min(6, n); return sessions().find(x => from >= x.from && from <= x.to) || { from, to: 6, day: 6 }; };
-  const rangeMin = (w, from, to) => w && w.alyot ? w.alyot.slice(from, to + 1).reduce((a, x) => a + x.min, 0) : 0;
+  const rangeMin = (w, from, to) => w && w.alyot ? toMin(w.alyot.slice(from, to + 1).reduce((a, x) => a + alyaSec(x), 0)) : 0;
   /* Jour dans la semaine de lecture : 0 = dimanche … 6 = Shabbat ; −1 le samedi soir, une fois le Shabbat précédent sorti */
   function dayInWeek(s) {
     const today = localISO(s.t, s.c.tz); if (!s.cur) return dow(today);
@@ -311,7 +337,7 @@
     const w = state().cur; if (!w || !w.alyot) return null; const from = all ? 0 : Math.min(6, progN(w));
     const al = w.alyot.slice(from); const chars = al.reduce((a, x) => a + x.v.reduce((b, v) => b + v.he.length + (v.onk || '').length, 0), 0);
     return { from, names: al.map((a, k) => AN(from + k)), range: al.length > 1 ? AN(from) + ' – ' + AN(6) : AN(from), first: AN(from) + ' · ' + al[0].v[0].ref,
-      min: al.reduce((a, x) => a + x.min, 0), pages: Math.max(1, Math.ceil(chars / 3400)), count: al.length };
+      min: rangeMin(w, from, 6), pages: Math.max(1, Math.ceil(chars / 3400)), count: al.length };
   };
   const esc = (s) => String(s || '').replace(/[&<>]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[ch]);
   window.SM_PRINT = function (all) {
