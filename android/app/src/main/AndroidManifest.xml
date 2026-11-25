@@ -5,6 +5,8 @@
     <!-- Rappel de lecture : notification, et reprogrammation après un redémarrage du téléphone -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- Rappel à l'heure choisie. Sur Android 14 et plus, l'utilisateur l'accorde dans « Alarmes et rappels » ; sinon le rappel peut arriver avec quelques minutes de retard. -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <application
         android:label="@string/app_name"
         android:icon="@mipmap/ic_launcher"
@@ -24,6 +26,7 @@
         <receiver android:name=".ReminderReceiver" android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED" />
             </intent-filter>
         </receiver>
     </application>

@@ -46,6 +46,10 @@
 - Jamais pendant Shabbat ni les fêtes, de l'allumage des bougies à la sortie des étoiles, selon la ville ; second jour de fête en diaspora seulement.
 - L'app calcule les rappels des 21 prochains jours et les confie à Android ; la liste est refaite à chaque ouverture et à chaque alya lue.
 - Si Android bloque les notifications, les Réglages l'indiquent et proposent de les autoriser.
+- L'heure choisie est celle du téléphone (la ville ne sert qu'aux horaires de Shabbat et des fêtes).
+- Heure exacte : Android livre le rappel à la minute près quand l'app a l'accès « Alarmes et rappels » (accordé d'office jusqu'à Android 13 ; à autoriser par l'utilisateur à partir d'Android 14, les Réglages le proposent). Sans cet accès, le rappel arrive dans les dix minutes.
+- Un rappel arrivé à échéance n'est jamais perdu : si Android a pris du retard et que l'app est rouverte entre-temps, il est affiché à ce moment-là.
+- Réglages : la ligne « Prochain rappel » indique quand il arrivera, et le bouton « Tester » envoie une notification tout de suite.
 
 ### Six langues
 - Français, hébreu, anglais, espagnol (Amérique latine), tounsi, darija : tous les écrans, la feuille imprimée et les rappels.

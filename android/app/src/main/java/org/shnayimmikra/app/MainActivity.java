@@ -123,7 +123,8 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        notifyChanged();   // l'utilisateur a pu changer l'autorisation dans les réglages d'Android
+        Reminders.schedule(this);   // l'autorisation de l'heure exacte a pu changer
+        notifyChanged();            // l'utilisateur a pu changer une autorisation dans les réglages d'Android
     }
 
     /** Pont appelé par l'app web (window.SMAndroid). */
@@ -169,6 +170,31 @@ public class MainActivity extends Activity {
                     }
                 }
             });
+        }
+
+        /** Vrai si Android permet un rappel à l'heure exacte. */
+        @JavascriptInterface
+        public boolean canExact() {
+            return Reminders.canExact(MainActivity.this);
+        }
+
+        /** Ouvre le réglage « Alarmes et rappels » d'Android pour autoriser l'heure exacte (Android 12 et plus). */
+        @JavascriptInterface
+        public void askExact() {
+            runOnUiThread(new Runnable() {
+                @Override public void run() {
+                    if (Build.VERSION.SDK_INT < 31) return;
+                    try {
+                        startActivity(new Intent(android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM, Uri.parse("package:" + getPackageName())));
+                    } catch (ActivityNotFoundException e) { /* réglage indisponible sur ce téléphone */ }
+                }
+            });
+        }
+
+        /** Affiche tout de suite une notification d'essai. Renvoie faux si Android bloque les notifications. */
+        @JavascriptInterface
+        public boolean testNotify(String title, String text) {
+            return Reminders.show(MainActivity.this, title, text);
         }
 
         /** Impression (ou PDF) de la page : appelée par SM_PRINT() dans globals.js. */

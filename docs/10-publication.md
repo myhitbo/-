@@ -38,7 +38,7 @@ Avec le compte d'organisation :
 - **Sécurité des données** : l'app ne demande pas de compte, ne collecte et ne partage aucune donnée personnelle ; la progression et les réglages restent sur le téléphone. Seul échange réseau : le téléchargement des textes sur sefaria.org.
 - **Politique de confidentialité** : adresse d'une page publique. Texte proposé plus bas.
 - **Dons** : le bouton ouvre la page de don de l'organisme hors de l'app. Google l'autorise pour un organisme exonéré d'impôt : fournir le justificatif dans la déclaration sur les paiements.
-- **Notifications** : l'app demande l'autorisation pour le rappel de lecture ; rien à déclarer de plus.
+- **Notifications** : l'app demande l'autorisation pour le rappel de lecture. Elle déclare aussi l'accès « Alarmes et rappels » (`SCHEDULE_EXACT_ALARM`), pour que le rappel choisi par l'utilisateur arrive à l'heure ; si Google Play pose la question, c'est l'usage à indiquer.
 
 ## Étape 4 — Vérifier sur un vrai téléphone, puis publier
 À contrôler avec la version de test avant de passer en production :

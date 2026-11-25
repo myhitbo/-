@@ -24,21 +24,34 @@ final class Reminders {
     static final String ACTION = "org.shnayimmikra.app.RAPPEL";
     private static final String PREFS = "rappels", KEY = "liste", CHANNEL = "rappel";
     private static final long MAX_LATE_MS = 12L * 3600 * 1000;   // un rappel resté en attente plus de 12 h n'est plus affiché
+    private static final long SOON_MS = 60 * 1000;               // un rappel prévu dans moins d'une minute est considéré comme arrivé
+    private static final long WINDOW_MS = 10 * 60 * 1000;        // sans heure exacte : Android livre l'alarme dans les 10 minutes
 
     private Reminders() {}
 
     /** Remplace la liste des rappels (JSON : [{"at": ms, "title": "…", "text": "…"}]) et programme le prochain. */
     static void save(Context ctx, String json) {
+        /* L'alarme d'Android peut avoir du retard : si un rappel de l'ancienne liste est déjà arrivé à échéance
+           sans avoir été affiché, on l'affiche maintenant au lieu de le perdre en remplaçant la liste. */
+        flush(ctx);
         prefs(ctx).edit().putString(KEY, json == null ? "[]" : json).apply();
         schedule(ctx);
     }
 
-    /** Programme une alarme pour le prochain rappel à venir, ou annule l'alarme s'il n'y en a plus. */
+    /** Vrai si Android permet à l'app de programmer une alarme à l'heure exacte. */
+    static boolean canExact(Context ctx) {
+        if (Build.VERSION.SDK_INT < 31) return true;
+        AlarmManager am = (AlarmManager) ctx.getSystemService(Context.ALARM_SERVICE);
+        return am != null && am.canScheduleExactAlarms();
+    }
+
+    /** Programme une alarme pour le prochain rappel à venir, ou annule les alarmes s'il n'y en a plus. */
     static void schedule(Context ctx) {
         AlarmManager am = (AlarmManager) ctx.getSystemService(Context.ALARM_SERVICE);
         if (am == null) return;
-        PendingIntent pi = PendingIntent.getBroadcast(ctx, 0, new Intent(ctx, ReminderReceiver.class).setAction(ACTION),
-                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+        PendingIntent main = pending(ctx, 0), idle = pending(ctx, 2);
+        am.cancel(main);
+        am.cancel(idle);
         long now = System.currentTimeMillis(), next = 0;
         try {
             JSONArray list = new JSONArray(prefs(ctx).getString(KEY, "[]"));
@@ -47,12 +60,25 @@ final class Reminders {
                 if (at > now - MAX_LATE_MS && (next == 0 || at < next)) next = at;
             }
         } catch (Exception e) { next = 0; }
-        if (next == 0) { am.cancel(pi); return; }
-        am.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, Math.max(next, now + 1000), pi);
+        if (next == 0) return;
+        long at = Math.max(next, now + 1000);
+        if (canExact(ctx)) {
+            try { am.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, at, main); return; } catch (SecurityException e) { /* autorisation retirée entre-temps */ }
+        }
+        /* Sans heure exacte : une alarme livrée dans les 10 minutes quand le téléphone est actif,
+           et une seconde qui peut le réveiller s'il est en veille. La première arrivée affiche le rappel. */
+        am.setWindow(AlarmManager.RTC_WAKEUP, at, WINDOW_MS, main);
+        am.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, at, idle);
     }
 
-    /** Alarme reçue : affiche le rappel arrivé à échéance (le plus récent), l'enlève de la liste, programme le suivant. */
+    /** Alarme reçue : affiche le rappel arrivé à échéance et programme le suivant. */
     static void fire(Context ctx) {
+        flush(ctx);
+        schedule(ctx);
+    }
+
+    /** Affiche le rappel arrivé à échéance (le plus récent) et retire de la liste tous ceux qui sont passés. */
+    private static void flush(Context ctx) {
         long now = System.currentTimeMillis();
         JSONObject due = null;
         JSONArray rest = new JSONArray();
@@ -61,13 +87,12 @@ final class Reminders {
             for (int i = 0; i < list.length(); i++) {
                 JSONObject r = list.getJSONObject(i);
                 long at = r.optLong("at");
-                if (at > now + 60000) { rest.put(r); continue; }
+                if (at > now + SOON_MS) { rest.put(r); continue; }
                 if (at > now - MAX_LATE_MS && (due == null || at > due.optLong("at"))) due = r;
             }
         } catch (Exception e) { /* liste illisible : on repart de zéro */ }
         prefs(ctx).edit().putString(KEY, rest.toString()).apply();
         if (due != null) show(ctx, due.optString("title"), due.optString("text"));
-        schedule(ctx);
     }
 
     /** Vrai si Android laisse l'app afficher des notifications. */
@@ -77,9 +102,10 @@ final class Reminders {
         return nm != null && nm.areNotificationsEnabled();
     }
 
-    private static void show(Context ctx, String title, String text) {
+    /** Affiche une notification tout de suite. Renvoie faux si Android ne le permet pas. */
+    static boolean show(Context ctx, String title, String text) {
         NotificationManager nm = (NotificationManager) ctx.getSystemService(Context.NOTIFICATION_SERVICE);
-        if (nm == null || !allowed(ctx)) return;
+        if (nm == null || !allowed(ctx)) return false;
         Notification.Builder b;
         if (Build.VERSION.SDK_INT >= 26) {
             nm.createNotificationChannel(new NotificationChannel(CHANNEL, ctx.getString(R.string.channel_reminder), NotificationManager.IMPORTANCE_DEFAULT));
@@ -94,6 +120,12 @@ final class Reminders {
                 .setStyle(new Notification.BigTextStyle().bigText(text))
                 .setAutoCancel(true).setContentIntent(open);
         nm.notify(1, b.build());
+        return true;
+    }
+
+    private static PendingIntent pending(Context ctx, int code) {
+        return PendingIntent.getBroadcast(ctx, code, new Intent(ctx, ReminderReceiver.class).setAction(ACTION),
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
     }
 
     private static SharedPreferences prefs(Context ctx) { return ctx.getSharedPreferences(PREFS, Context.MODE_PRIVATE); }

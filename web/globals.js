@@ -272,13 +272,6 @@
     return out;
   };
   /* ---------- Rappels : liste des prochaines notifications, confiée à Android ---------- */
-  /* Heure locale d'une ville (date ISO, heures, minutes) → instant en millisecondes */
-  function zoned(iso, hh, mm, tz) {
-    const [y, m, d] = iso.split('-').map(Number), want = Date.UTC(y, m - 1, d, hh, mm); let t = want;
-    for (let k = 0; k < 2; k++) { const p = {}; f(tz, { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(t).forEach(x => p[x.type] = x.value);
-      t += want - Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour % 24, +p.minute); }
-    return t;
-  }
   /* Jours de fête où l'on n'écrit pas (Yom Tov) ; le second jour ne vaut qu'en diaspora */
   const YT = { Tishri: [1, 2, 10, 15, 22], Nisan: [15, 21], Sivan: [6] }, YT2 = { Tishri: [16, 23], Nisan: [16, 22], Sivan: [7] };
   function yomTov(iso, il) {
@@ -299,9 +292,10 @@
   window.SM_REMINDERS = function () {
     if (get('rem') === false) return [];
     const hm = String(get('remAt') || '07:30').split(':').map(Number); if (isNaN(hm[0])) return [];
-    const s = state(), c = s.c, T = window.SM_TR(), F = window.SM_FMT, today = localISO(s.t, c.tz), rh = get('rh') || 0, ss = sessions(), out = [];
+    const s = state(), c = s.c, T = window.SM_TR(), F = window.SM_FMT, rh = get('rh') || 0, ss = sessions(), out = [], d0 = new Date(s.t);
     for (let k = 0; k < 21; k++) {
-      const D = addDays(today, k), t = zoned(D, hm[0], hm[1] || 0, c.tz);
+      /* L'heure choisie est celle du téléphone (pas celle de la ville, qui ne sert qu'aux horaires de Shabbat) */
+      const t = new Date(d0.getFullYear(), d0.getMonth(), d0.getDate() + k, hm[0], hm[1] || 0, 0, 0).getTime(), D = localISO(t, c.tz);
       if (t <= s.t + 60e3 || isRest(t, c)) continue;
       const w = s.W.find(x => shabbatEnd(x.shabbatISO, c) > t);   /* la semaine de lecture à cet instant */
       if (!w) { out.push({ at: t, title: 'Shnayim Mikra', text: T.remGeneric }); continue; }

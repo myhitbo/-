@@ -80,6 +80,8 @@ window.SM_I18N.en = {
 
   remTime: 'Reminder time', remBlocked: 'Notifications are blocked for the app: the reminder cannot be shown.', remAllow: 'Allow',
   remHelp: 'A notification on reading days, never during Shabbat or festivals.',
+  remNext: 'Next reminder: {when}', remNone: 'No reminder planned: nothing to read until then, or the reminder is off.', remTest: 'Test', remTestText: 'The reminder works.',
+  remExact: 'To get the reminder at the exact time, allow “Alarms & reminders”. Otherwise it may arrive a few minutes late.',
   remMin: 'About {min} min', remLate1: ' · including 1 aliyah to catch up', remLateN: ' · including {n} aliyot to catch up',
   remGeneric: 'Time for your reading.', wholeParasha: 'the whole parashah',
 

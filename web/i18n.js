@@ -85,6 +85,8 @@
       /* Rappel */
       remTime: 'Heure du rappel', remBlocked: 'Les notifications sont bloquées pour l\'app : le rappel ne peut pas s\'afficher.', remAllow: 'Autoriser',
       remHelp: 'Une notification les jours de lecture, jamais pendant Shabbat ni les fêtes.',
+      remNext: 'Prochain rappel : {when}', remNone: 'Aucun rappel prévu : rien à lire d\'ici là, ou rappel coupé.', remTest: 'Tester', remTestText: 'Le rappel fonctionne.',
+      remExact: 'Pour recevoir le rappel à l\'heure exacte, autorise « Alarmes et rappels ». Sinon il peut arriver avec quelques minutes de retard.',
       remMin: 'Environ {min} min', remLate1: ' · dont 1 alya en retard', remLateN: ' · dont {n} alyot en retard',
       remGeneric: 'C\'est l\'heure de ta lecture.', wholeParasha: 'toute la paracha',
 

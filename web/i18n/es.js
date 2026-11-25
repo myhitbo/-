@@ -80,6 +80,8 @@ window.SM_I18N.es = {
 
   remTime: 'Hora del recordatorio', remBlocked: 'Las notificaciones están bloqueadas para la app: el recordatorio no puede mostrarse.', remAllow: 'Permitir',
   remHelp: 'Una notificación los días de lectura, nunca en Shabat ni en las festividades.',
+  remNext: 'Próximo recordatorio: {when}', remNone: 'No hay recordatorio previsto: nada por leer hasta entonces, o el recordatorio está apagado.', remTest: 'Probar', remTestText: 'El recordatorio funciona.',
+  remExact: 'Para recibir el recordatorio a la hora exacta, permite «Alarmas y recordatorios». Si no, puede llegar con unos minutos de retraso.',
   remMin: 'Alrededor de {min} min', remLate1: ' · incluye 1 aliá atrasada', remLateN: ' · incluye {n} aliot atrasadas',
   remGeneric: 'Es la hora de tu lectura.', wholeParasha: 'toda la parashá',
 
