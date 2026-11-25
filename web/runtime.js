@@ -7,7 +7,8 @@
     get: (k) => (k === 'done' && window.SM_DONE) ? SM_DONE.get() : data[k],
     set: (k, v) => { if (k === 'done' && window.SM_DONE) { SM_DONE.set(v); return; } if (data[k] === v) return; data[k] = v; try { localStorage.setItem('sm.settings', JSON.stringify(data)); } catch (e) {} if (k === 'mode') rerenderWithProps(); if (k === 'place') { schedule(); if (window.SM_REFRESH) SM_REFRESH(); } if (k === 'city' || k === 'nt') schedule();
       if (k === 'mode') syncTheme();
-      if (REMIND.indexOf(k) >= 0 && window.SM_SYNC_REMINDERS) SM_SYNC_REMINDERS(); }
+      if (REMIND.indexOf(k) >= 0 && window.SM_SYNC_REMINDERS) SM_SYNC_REMINDERS();
+      if (k === 'lang') schedule(); }
   };
   /* Réglages qui changent les rappels */
   const REMIND = ['rem', 'remAt', 'rh', 'rhDay', 'rhN', 'city', 'place', 'lang', 'onboarded'];
@@ -67,9 +68,10 @@
   }
 
   const root = () => document.getElementById('app');
-  let cur = null, tplEl = null, pending = false;
+  let cur = null, curName = '', tplEl = null, pending = false;
   function schedule() { if (pending) return; pending = true; requestAnimationFrame(() => { pending = false; draw(); }); }
-  function draw() { if (!cur) return; refs = []; const vals = Object.assign({}, cur.props, { G: window.SM_G ? SM_G() : {}, t: window.SM_TR ? SM_TR() : {} }, cur.renderVals()); const out = []; tplEl.childNodes.forEach(c => render(c, vals, out));
+  function draw() { if (!cur) return; refs = []; const rtl = !!(window.SM_RTL && SM_RTL()); if (document.documentElement.dir !== (rtl ? 'rtl' : 'ltr')) { document.documentElement.dir = rtl ? 'rtl' : 'ltr'; document.documentElement.lang = ({ tn: 'ar-TN', ma: 'ar-MA' })[data.lang] || data.lang || 'fr'; }
+    const vals = Object.assign({}, cur.props, { G: window.SM_G ? SM_G() : {}, t: window.SM_TR ? SM_TR() : {}, dir: rtl ? 'rtl' : 'ltr' }, cur.renderVals()); const out = []; tplEl.childNodes.forEach(c => render(c, vals, out));
     patchChildren(root(), out); refs.forEach(([fn, el]) => fn(el.__target || el)); }
   function rerenderWithProps() { if (cur) { cur.props = Object.assign({}, cur.props, { mode: APP.get('mode') }); schedule(); } }
 
@@ -82,7 +84,7 @@
     const C = S.make(); cur = new C({ mode: APP.get('mode') });
     draw(); window.scrollTo(0, 0);
     if (cur.componentDidMount) cur.componentDidMount();
-    document.title = S.title;
+    document.title = S.title; curName = window.SCREENS[name] ? name : 'accueil';
   }
   function route() { const h = location.hash.replace(/^#\/?/, ''); const name = window.SCREENS[h] ? h : (APP.get('onboarded') ? 'accueil' : 'bienvenue'); mount(name); }
   document.addEventListener('click', (e) => {
@@ -92,7 +94,7 @@
     if (/^https?:/.test(href)) { if (window.SMAndroid && SMAndroid.open) { e.preventDefault(); SMAndroid.open(href); } return; }
     if (href.startsWith('#mode=')) { e.preventDefault(); APP.set('mode', href.slice(6)); return; }
     const m = href.match(/V2-([A-Za-z]+)/);
-    if (m && MAP[m[1]]) { e.preventDefault(); const target = MAP[m[1]]; const q = href.match(/alya=(\d)/); const tq = href.match(/to=(\d)/); const pq = href.match(/par=([^&]+)/); if (target === 'lecteur') { APP.set('alyaTo', tq ? Number(tq[1]) : null); APP.set('par', pq ? (/^\d{4}-/.test(pq[1]) ? pq[1] : Number(pq[1])) : 0); APP.set('alya', q ? Number(q[1]) : null); } if (cur && document.title === 'Bienvenue' && target === 'accueil') { APP.set('onboarded', true); if (APP.get('rem') !== false && window.SMAndroid && SMAndroid.askNotify) SMAndroid.askNotify(); } location.hash = '#/' + target; return; }
+    if (m && MAP[m[1]]) { e.preventDefault(); const target = MAP[m[1]]; const q = href.match(/alya=(\d)/); const tq = href.match(/to=(\d)/); const pq = href.match(/par=([^&]+)/); if (target === 'lecteur') { APP.set('alyaTo', tq ? Number(tq[1]) : null); APP.set('par', pq ? (/^\d{4}-/.test(pq[1]) ? pq[1] : Number(pq[1])) : 0); APP.set('alya', q ? Number(q[1]) : null); } if (cur && curName === 'bienvenue' && target === 'accueil') { APP.set('onboarded', true); if (APP.get('rem') !== false && window.SMAndroid && SMAndroid.askNotify) SMAndroid.askNotify(); } location.hash = '#/' + target; return; }
     if (href === '#' || href === '') e.preventDefault();
   });
   window.addEventListener('hashchange', route);

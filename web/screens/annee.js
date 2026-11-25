@@ -8,17 +8,17 @@ SCREENS.annee = {
 <div aria-hidden="true" style="position: absolute; top: -60px; left: -120px; width: 300px; height: 260px; border-radius: 50%; background: radial-gradient(circle, var(--blob2), transparent 70%); opacity: var(--blobop); filter: blur(40px); pointer-events: none"></div>
 <div class="scroll" style="position: absolute; inset: 0; overflow-y: auto">
 <main style="position: relative; max-width: 560px; margin: 0 auto; padding: 22px 20px 120px; display: flex; flex-direction: column; gap: 24px">
-<header style="display: flex; flex-direction: column; gap: 4px"><p class="cap" style="margin: 0">Année {{year}}</p><h1 class="serif foil" style="margin: 0; font-size: clamp(36px, 11vw, 52px); font-weight: 500; line-height: 1; letter-spacing: -0.02em">Ton année</h1></header>
+<header style="display: flex; flex-direction: column; gap: 4px"><p class="cap" style="margin: 0">{{yearLabel}}</p><h1 class="serif foil" style="margin: 0; font-size: clamp(36px, 11vw, 52px); font-weight: 500; line-height: 1; letter-spacing: -0.02em">{{t.yearTitle}}</h1></header>
 <section style="display: flex; gap: 28px; flex-wrap: wrap; align-items: flex-end">
-  <div><p class="cap" style="margin: 0">Parachiyot terminées</p><p class="serif count" style="margin: 4px 0 0; font-size: 48px; font-weight: 500; line-height: 1">{{doneCount}}<span style="font-size: 22px; color: var(--soft)">/54</span></p></div>
-  <div><p class="cap" style="margin: 0">Série</p><p class="serif" style="margin: 4px 0 0; font-size: 30px; font-weight: 500; line-height: 1">{{G.streak}} <span style="font-family: Inter, sans-serif; font-size: 13px; color: var(--soft)">semaines</span></p></div>
-  <div style="flex: 1; min-width: 160px"><p class="cap" style="margin: 0 0 8px">Jusqu'à Simhat Torah</p><div style="height: 6px; border-radius: 3px; background: var(--line)"><div style="{{yearBar}}"></div></div></div>
+  <div><p class="cap" style="margin: 0">{{t.parashiyotDone}}</p><p class="serif count" style="margin: 4px 0 0; font-size: 48px; font-weight: 500; line-height: 1">{{doneCount}}<span style="font-size: 22px; color: var(--soft)">/54</span></p></div>
+  <div><p class="cap" style="margin: 0">{{t.streak}}</p><p class="serif" style="margin: 4px 0 0; font-size: 30px; font-weight: 500; line-height: 1">{{G.streak}} <span style="font-family: Inter, sans-serif; font-size: 13px; color: var(--soft)">{{t.weeks}}</span></p></div>
+  <div style="flex: 1; min-width: 160px"><p class="cap" style="margin: 0 0 8px">{{t.untilST}}</p><div style="height: 6px; border-radius: 3px; background: var(--line)"><div style="{{yearBar}}"></div></div></div>
 </section>
 <div style="display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: var(--soft)">
-  <span style="display: flex; align-items: center; gap: 6px"><span style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent-line)"></span>Terminée</span>
-  <span style="display: flex; align-items: center; gap: 6px"><span style="width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--text); box-sizing: border-box"></span>Cette semaine</span>
-  <span style="display: flex; align-items: center; gap: 6px"><span style="width: 10px; height: 10px; border-radius: 50%; border: 1px solid var(--line2); box-sizing: border-box"></span>À venir</span>
-  <span style="display: flex; align-items: center; gap: 6px"><span style="width: 10px; height: 10px; border-radius: 50%; border: 1.5px dashed var(--accent-line); box-sizing: border-box"></span>À compléter</span>
+  <span style="display: flex; align-items: center; gap: 6px"><span style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent-line)"></span>{{t.lgDone}}</span>
+  <span style="display: flex; align-items: center; gap: 6px"><span style="width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--text); box-sizing: border-box"></span>{{t.lgWeek}}</span>
+  <span style="display: flex; align-items: center; gap: 6px"><span style="width: 10px; height: 10px; border-radius: 50%; border: 1px solid var(--line2); box-sizing: border-box"></span>{{t.lgLater}}</span>
+  <span style="display: flex; align-items: center; gap: 6px"><span style="width: 10px; height: 10px; border-radius: 50%; border: 1.5px dashed var(--accent-line); box-sizing: border-box"></span>{{t.lgLate}}</span>
 </div>
 <sc-for list="{{books}}" as="bk" hint-placeholder-count="5">
   <section style="display: flex; flex-direction: column; gap: 10px">
@@ -40,19 +40,20 @@ ${SM_NAV('annee')}
 `,
   make: function () {
 const THEMES = SM_THEMES, rootVars = SM_ROOTVARS;
-const BOOKS = [{"name": "Béréchit", "heb": "בראשית", "items": [{"name": "Béréchit", "heb": "בראשית"}, {"name": "Noa'h", "heb": "נח"}, {"name": "Lekh Lekha", "heb": "לך לך"}, {"name": "Vayéra", "heb": "וירא"}, {"name": "'Hayé Sarah", "heb": "חיי שרה"}, {"name": "Toledot", "heb": "תולדות"}, {"name": "Vayétsé", "heb": "ויצא"}, {"name": "Vayichla'h", "heb": "וישלח"}, {"name": "Vayéchev", "heb": "וישב"}, {"name": "Mikets", "heb": "מקץ"}, {"name": "Vayigach", "heb": "ויגש"}, {"name": "Vayé'hi", "heb": "ויחי"}]}, {"name": "Chemot", "heb": "שמות", "items": [{"name": "Chemot", "heb": "שמות"}, {"name": "Vaéra", "heb": "וארא"}, {"name": "Bo", "heb": "בא"}, {"name": "Bechala'h", "heb": "בשלח"}, {"name": "Yitro", "heb": "יתרו"}, {"name": "Michpatim", "heb": "משפטים"}, {"name": "Terouma", "heb": "תרומה"}, {"name": "Tetsavé", "heb": "תצוה"}, {"name": "Ki Tissa", "heb": "כי תשא"}, {"name": "Vayakhel", "heb": "ויקהל"}, {"name": "Pekoudé", "heb": "פקודי"}]}, {"name": "Vayikra", "heb": "ויקרא", "items": [{"name": "Vayikra", "heb": "ויקרא"}, {"name": "Tsav", "heb": "צו"}, {"name": "Chemini", "heb": "שמיני"}, {"name": "Tazria", "heb": "תזריע"}, {"name": "Metsora", "heb": "מצורע"}, {"name": "A'harei Mot", "heb": "אחרי מות"}, {"name": "Kedochim", "heb": "קדושים"}, {"name": "Emor", "heb": "אמור"}, {"name": "Behar", "heb": "בהר"}, {"name": "Be'houkotaï", "heb": "בחוקותי"}]}, {"name": "Bamidbar", "heb": "במדבר", "items": [{"name": "Bamidbar", "heb": "במדבר"}, {"name": "Nasso", "heb": "נשא"}, {"name": "Behaalotekha", "heb": "בהעלותך"}, {"name": "Chela'h", "heb": "שלח"}, {"name": "Kora'h", "heb": "קרח"}, {"name": "'Houkat", "heb": "חקת"}, {"name": "Balak", "heb": "בלק"}, {"name": "Pin'has", "heb": "פינחס"}, {"name": "Matot", "heb": "מטות"}, {"name": "Massé'i", "heb": "מסעי"}]}, {"name": "Devarim", "heb": "דברים", "items": [{"name": "Devarim", "heb": "דברים"}, {"name": "Vaet'hanan", "heb": "ואתחנן"}, {"name": "Ekev", "heb": "עקב"}, {"name": "Reé", "heb": "ראה"}, {"name": "Choftim", "heb": "שופטים"}, {"name": "Ki Tetsé", "heb": "כי תצא"}, {"name": "Ki Tavo", "heb": "כי תבוא"}, {"name": "Nitsavim", "heb": "נצבים"}, {"name": "Vayélekh", "heb": "וילך"}, {"name": "Haazinou", "heb": "האזינו"}, {"name": "Vezot Haberakha", "heb": "וזאת הברכה"}]}];
+/* Les cinq livres : nom hébreu, et nom hébreu de chacune de leurs parachiyot (54 en tout) */
+const BOOKS = [{"heb": "בראשית", "items": ["בראשית", "נח", "לך לך", "וירא", "חיי שרה", "תולדות", "ויצא", "וישלח", "וישב", "מקץ", "ויגש", "ויחי"]}, {"heb": "שמות", "items": ["שמות", "וארא", "בא", "בשלח", "יתרו", "משפטים", "תרומה", "תצוה", "כי תשא", "ויקהל", "פקודי"]}, {"heb": "ויקרא", "items": ["ויקרא", "צו", "שמיני", "תזריע", "מצורע", "אחרי מות", "קדושים", "אמור", "בהר", "בחוקותי"]}, {"heb": "במדבר", "items": ["במדבר", "נשא", "בהעלותך", "שלח", "קרח", "חקת", "בלק", "פינחס", "מטות", "מסעי"]}, {"heb": "דברים", "items": ["דברים", "ואתחנן", "עקב", "ראה", "שופטים", "כי תצא", "כי תבוא", "נצבים", "וילך", "האזינו", "וזאת הברכה"]}];
 class Component extends DCLogic {
   renderVals() {
     /* Vraie progression : terminée = les 7 alyot lues cette année ; à compléter = semaine passée non terminée */
     const mode = this.props.mode || 'clair'; let k = 0;
     const Y = window.SM_YEAR ? SM_YEAR() : { year: '', done: {}, part: {}, cur: [], count: 0 };
     const first = Y.cur.length ? Math.min.apply(null, Y.cur) : -1;
-    const books = BOOKS.map(b => ({ ...b, items: b.items.map(p => { const i = k++;
+    const books = BOOKS.map((b, bi) => ({ heb: SM_HEB(SM_BOOK(bi), b.heb), name: SM_BOOK(bi), items: b.items.map(heb => { const i = k++; const p = { name: SM_PARASHA([i]) }; p.heb = SM_HEB(p.name, heb);
       const st = Y.done[i] ? 'done' : Y.cur.indexOf(i) >= 0 ? 'cur' : (first >= 0 && i < first) ? 'late' : 'todo';
       return { ...p, note: st !== 'done' && Y.part[i] ? Y.part[i] + '/7' : '', style: 'min-width: 0; min-height: 52px; padding: 8px 10px; border-radius: 14px; display: flex; flex-direction: column; justify-content: center; gap: 1px; ' +
         (st === 'done' ? 'background: var(--accent-line); color: #1C1A17;' : st === 'cur' ? 'border: 2px solid var(--text); background: var(--glass);' :
          st === 'late' ? 'border: 1.5px dashed var(--accent-line); color: var(--soft);' : 'border: 1px solid var(--line); color: var(--soft);') }; }) }));
-    return { themeClass: 'th-' + mode, isParch: mode === 'parchemin', dir: 'ltr', rootStyle: rootVars(mode), books, year: Y.year, doneCount: Y.count,
+    return { themeClass: 'th-' + mode, isParch: mode === 'parchemin', rootStyle: rootVars(mode), books, yearLabel: SM_FMT(SM_TR().yearN, { year: Y.year }), doneCount: Y.count,
       yearBar: 'height: 100%; border-radius: 3px; background: var(--accent-line); width: ' + Math.round(Y.count / 54 * 100) + '%' };
   }
 }

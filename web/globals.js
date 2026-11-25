@@ -1,9 +1,12 @@
 /* Shnayim Mikra — données partagées : semaines (Sefaria), Israël/diaspora, heure d'allumage,
    échéances, progression par semaine, textes du lecteur, impression. */
 (function () {
-  const NAMES = ['Rishon', 'Sheni', 'Shlishi', "Revi'i", 'Hamishi', 'Shishi', "Shvi'i"];
-  const MONTHS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
-  const DAYS = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+  /* Noms dans la langue de l'interface (voir i18n.js) : alya n° i, paracha d'une semaine, référence « Livre chap:verset » */
+  const AN = (i) => window.SM_ALYA(i);
+  const FR_BOOKS = ['Béréchit', 'Chemot', 'Vayikra', 'Bamidbar', 'Devarim'];
+  const pn = (w) => w ? window.SM_PARASHA(idxOf(w), w.parasha || w.name || '') : '';
+  const pref = (w) => { const m = String((w && w.parashaRef) || '').match(/^(.+?) (\d.*)$/); if (!m) return (w && w.parashaRef) || ''; const i = FR_BOOKS.indexOf(m[1]); return (i >= 0 ? window.SM_BOOK(i) : m[1]) + ' ' + m[2]; };
+  const noon = (iso) => Date.parse(iso + 'T12:00:00Z');
   const FALLBACK = { parasha: 'Vayétsé', parashaHe: 'וַיֵּצֵא', parashaRef: 'Béréchit 28:10 – 32:3' };
   const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
@@ -33,7 +36,7 @@
   const isIL = () => (get('place') ?? 0) === 0;
   function city() { const c = CITIES.find(x => x.id === get('city')); return c && c.il === isIL() ? c : CITIES.find(x => x.il === isIL()); }
   window.SM_CITY = city;
-  window.SM_CITY_LIST = () => { const cur = city(); return CITIES.filter(c => c.il === isIL()).map(c => ({ id: c.id, name: c.name, on: c.id === cur.id })); };
+  window.SM_CITY_LIST = () => { const cur = city(); return CITIES.filter(c => c.il === isIL()).map(c => ({ id: c.id, name: window.SM_CITY_NAME(c), on: c.id === cur.id })); };
 
   /* ---------- Coucher du soleil (algorithme de l'Almanac / NOAA simplifié) ---------- */
   const rad = Math.PI / 180;
@@ -57,12 +60,12 @@
   function localISO(ms, tz) { const p = {}; f(tz, { year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(ms).forEach(x => p[x.type] = x.value); return p.year + '-' + p.month + '-' + p.day; }
   function addDays(iso, n) { const [y, m, d] = iso.split('-').map(Number); const t = new Date(Date.UTC(y, m - 1, d + n)); return t.toISOString().slice(0, 10); }
   const dow = (iso) => new Date(iso + 'T12:00:00Z').getUTCDay();
-  const dayLabel = (iso, y) => { const t = new Date(iso + 'T12:00:00Z'); return DAYS[t.getUTCDay()] + ' ' + t.getUTCDate() + ' ' + MONTHS[t.getUTCMonth()] + (y ? ' ' + t.getUTCFullYear() : ''); };
+  const dayLabel = (iso, y) => window.SM_DATE(noon(iso), y ? { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' } : { weekday: 'long', day: 'numeric', month: 'long' });
   const candle = (shIso, c) => sunset(addDays(shIso, -1), c) - c.off * 60e3;
   const shabbatEnd = (shIso, c) => sunset(shIso, c) + 42 * 60e3;
   const tuesdayEnd = (shIso, c) => sunset(addDays(shIso, 3), c);
-  function inDur(ms) { const m = Math.max(0, Math.round(ms / 60e3)); const d = Math.floor(m / 1440), h = Math.floor(m % 1440 / 60), mi = m % 60;
-    return d ? d + ' j ' + h + ' h' : h ? h + ' h ' + String(mi).padStart(2, '0') : mi + ' min'; }
+  function inDur(ms) { const m = Math.max(0, Math.round(ms / 60e3)); const d = Math.floor(m / 1440), h = Math.floor(m % 1440 / 60), mi = m % 60, T = window.SM_TR(), F = window.SM_FMT;
+    return d ? F(T.durDH, { d, h }) : h ? F(T.durHM, { h, m: String(mi).padStart(2, '0') }) : F(T.durM, { m: mi }); }
   window.SM_ZMAN = { sunset, candle, hhmm, localISO, addDays };
 
   /* ---------- Sim'hat Torah : 22 Tichri en Israël (Chemini Atséret), 23 Tichri en diaspora ---------- */
@@ -130,7 +133,7 @@
     const from = alyaIndex(); let to = get('alyaTo'); to = (to === undefined || to === null || to < from) ? from : Math.min(6, to);
     return { W, from, to };
   }
-  window.SM_PORTION = function () { const P = portion(); return P ? { from: P.from, to: P.to, order: get('order') || 0, names: NAMES } : null; };
+  window.SM_PORTION = function () { const P = portion(); return P ? { from: P.from, to: P.to, order: get('order') || 0, names: [0, 1, 2, 3, 4, 5, 6].map(AN) } : null; };
   /* Progression depuis le lecteur : `upTo` alyot lues (sans argument : toute la séance) */
   window.SM_MARK = function (upTo) { const P = portion(); if (!P) return; progSet(P.W, Math.max(progN(P.W), upTo === undefined ? P.to + 1 : upTo)); };
 
@@ -154,7 +157,7 @@
   window.SM_PLAN = function () {
     const s = state(), n = progN(s.cur), rh = get('rh') || 0, d = dayInWeek(s), cur = sessionAt(n);
     const due = rh === 3 ? 0 : sessions().filter(x => x.day < d).reduce((a, x) => Math.max(a, x.to + 1), 0);
-    return { rh, from: Math.min(6, n), to: cur.to, day: cur.day, today: d, late: n >= 7 ? 0 : Math.max(0, due - n), done: n >= 7, min: rangeMin(s.cur, Math.min(6, n), cur.to), names: NAMES };
+    return { rh, from: Math.min(6, n), to: cur.to, day: cur.day, today: d, late: n >= 7 ? 0 : Math.max(0, due - n), done: n >= 7, min: rangeMin(s.cur, Math.min(6, n), cur.to), names: [0, 1, 2, 3, 4, 5, 6].map(AN) };
   };
 
   /* Année en cours (depuis le dernier Sim'hat Torah) : parachiyot vraiment terminées, commencées, et celle(s) de la semaine */
@@ -174,34 +177,35 @@
     const nRead = progN(R);
     const T = window.SM_TR(), F = window.SM_FMT, nx = nRead < 7 && al ? sessionAt(nRead) : null, nf = Math.min(6, nRead);
     const d = new Date(s.t), todayIso = localISO(s.t, c.tz);
-    const out = { parasha: w.parasha, parashaHe: w.parashaHe, parashaRef: w.parashaRef, readParasha: R.parasha, readIso: R.shabbatISO || '',
-      date: cap(DAYS[dow(todayIso)]) + ' ' + d.getDate() + ' ' + MONTHS[d.getMonth()], alyaName: NAMES[i] || NAMES[0],
-      afterText: !nx ? T.nextNone : nx.to > nf ? F(T.nextRange, { a: NAMES[nf], b: NAMES[nx.to], min: rangeMin(R, nf, nx.to) }) : F(T.nextOne, { name: NAMES[nf], min: rangeMin(R, nf, nf) }), cityName: c.name, place: isIL() ? 'Israël' : 'Diaspora' };
+    const out = { parasha: pn(w), parashaHe: window.SM_HEB(pn(w), w.parashaHe), parashaRef: pref(w), readParasha: pn(R), readIso: R.shabbatISO || '',
+      date: cap(window.SM_DATE(s.t, { weekday: 'long', day: 'numeric', month: 'long' }, c.tz)), alyaName: AN(i) || AN(0),
+      afterText: !nx ? T.nextNone : nx.to > nf ? F(T.nextRange, { a: AN(nf), b: AN(nx.to), min: rangeMin(R, nf, nx.to) }) : F(T.nextOne, { name: AN(nf), min: rangeMin(R, nf, nf) }), cityName: window.SM_CITY_NAME(c), place: isIL() ? T.israel : T.diaspora };
+    out.allReadLine = F(T.allRead, { parasha: out.parasha });
     /* Allumage et compte à rebours */
     if (s.cur) {
       const cl = candle(s.cur.shabbatISO, c), left = cl - s.t, n = progN(s.cur);
       out.candle = hhmm(cl, c.tz);
-      out.candleLine = 'Allumage ' + (left > 0 ? 'vendredi' : '') + ' à ' + out.candle + ' · ' + c.name + ' (coucher du soleil − ' + c.off + ' min)';
-      out.countdown = left > 0 ? 'Chabbat dans ' + inDur(left) : 'Chabbat Chalom';
-      out.goal = n >= 7 ? 'Paracha terminée' : left > 0 ? 'Objectif : finir avant Chabbat' : 'Encore possible ce Chabbat, avant le repas de midi';
+      out.candleLine = F(left > 0 ? T.candleFri : T.candle, { time: out.candle, city: window.SM_CITY_NAME(c), min: c.off });
+      out.countdown = left > 0 ? F(T.shabbatIn, { dur: inDur(left) }) : T.shabbatShalom;
+      out.goal = n >= 7 ? T.doneAll : left > 0 ? T.goalBefore : T.goalShabbat;
       out.friday = left > 0 && left < 30 * 3600e3 && dow(todayIso) === 5 && n < 7;
-    } else { out.candleLine = 'Allumage selon ta ville (textes en cours de téléchargement)'; out.countdown = ''; out.goal = ''; out.friday = false; }
+    } else { out.candleLine = T.candleNoData; out.countdown = ''; out.goal = ''; out.friday = false; }
     /* Rattrapage de la semaine passée : jusqu'à mardi soir */
     out.prev = null;
     const P = s.W[s.ci - 1];
     if (P && progN(P) < 7 && progAll()[P.shabbatISO]) {
       const end = tuesdayEnd(P.shabbatISO, c);
       if (s.t < end && s.t > shabbatEnd(P.shabbatISO, c)) { const n = progN(P);
-        out.prev = { name: P.parasha, n, left: 7 - n, until: 'mardi ' + hhmm(end, c.tz), href: 'V2-Lecteur.dc.html?par=' + P.shabbatISO + '&alya=' + Math.min(6, n), canRead: !!P.alyot }; }
+        out.prev = { name: pn(P), n, left: 7 - n, title: F(T.prevUntil, { time: hhmm(end, c.tz) }), line: F(T.prevLine, { n, left: 7 - n }), href: 'V2-Lecteur.dc.html?par=' + P.shabbatISO + '&alya=' + Math.min(6, n), canRead: !!P.alyot }; }
     }
     out.hasPrev = !!out.prev;
     /* Carnet : semaines non terminées, à compléter avant Sim'hat Torah */
     const st = simhatTorah(todayIso, 1, isIL()), stPrev = simhatTorah(todayIso, -1, isIL());
     const p = progAll(); const avail = {}; weeks().forEach(x => avail[x.shabbatISO] = x);
     out.carnet = Object.keys(p).sort().filter(iso => p[iso].n < 7 && (!s.cur || iso < s.cur.shabbatISO) && (!out.prev || iso !== P.shabbatISO) && (!stPrev || iso > stPrev))
-      .map(iso => ({ name: p[iso].name, n: p[iso].n, label: p[iso].n + '/7 alyot', href: avail[iso] && avail[iso].alyot ? 'V2-Lecteur.dc.html?par=' + iso + '&alya=' + Math.min(6, p[iso].n) : '', canRead: !!(avail[iso] && avail[iso].alyot) }));
+      .map(iso => ({ name: pn(p[iso]), n: p[iso].n, label: F(T.nOf7, { n: p[iso].n }), href: avail[iso] && avail[iso].alyot ? 'V2-Lecteur.dc.html?par=' + iso + '&alya=' + Math.min(6, p[iso].n) : '', canRead: !!(avail[iso] && avail[iso].alyot) }));
     out.hasCarnet = out.carnet.length > 0;
-    out.stLabel = st ? "avant Sim'hat Torah (" + dayLabel(st, 1) + ')' : "avant Sim'hat Torah";
+    out.stLabel = st ? F(T.completeBeforeST, { date: dayLabel(st, 1) }) : T.completeBeforeST0;
     /* Série : semaines terminées d'affilée */
     let streak = 0; const isos = Object.keys(p).sort().reverse();
     for (const iso of isos) { if (s.cur && iso === s.cur.shabbatISO && p[iso].n < 7) continue; if (p[iso].n >= 7) streak++; else break; }
@@ -218,7 +222,7 @@
     const t = window.SM_TR(), ntMode = get('nt') || 'deux', order = get('order') || 0, out = [];
     /* Versets de la séance, dans l'ordre : al = numéro de l'alya, vi = rang du verset dans la séance */
     const V = []; al.forEach((a, k) => a.v.forEach(v => V.push({ v, al: P.from + k, vi: V.length + 1 })));
-    const add = (x, kind, n, text, label) => out.push({ kind, n, ref: x.v.ref, text, al: x.al, aln: NAMES[x.al], vi: x.vi, label: label || '' });
+    const add = (x, kind, n, text, label) => out.push({ kind, n, ref: x.v.ref, text, al: x.al, aln: AN(x.al), vi: x.vi, label: label || '' });
     const mik = (x, n) => add(x, 'mikra', n, x.v.he);
     const tg = (x) => {   /* le Targoum du verset, ou ce qui le remplace quand Onkelos ne le traduit pas */
       if (!x.v.nt) { add(x, 'targum', 3, x.v.onk); return; }
@@ -235,7 +239,7 @@
     else { let cur = []; V.forEach((x, i) => { cur.push(x); if (x.v.pb || i === V.length - 1 || V[i + 1].al !== x.al) { groups.push(cur); cur = []; } }); }
     groups.forEach(grp => { if (!grp.length) return;
       const a = grp[0], b = grp[grp.length - 1];
-      const name = order === 1 ? (a.v.ref === b.v.ref ? a.v.ref : a.v.ref + ' – ' + b.v.ref) : a.al === b.al ? NAMES[a.al] : (a.al === 0 && b.al === 6) ? P.W.parasha : NAMES[a.al] + ' – ' + NAMES[b.al];
+      const name = order === 1 ? (a.v.ref === b.v.ref ? a.v.ref : a.v.ref + ' – ' + b.v.ref) : a.al === b.al ? AN(a.al) : (a.al === 0 && b.al === 6) ? pn(P.W) : AN(a.al) + ' – ' + AN(b.al);
       [[1, t.read1], [2, t.read2]].forEach(pass => { const i = out.length; grp.forEach(x => mik(x, pass[0])); out[i].head = name + ' · ' + pass[1]; });
       const i = out.length; grp.forEach(tg); out[i].head = name + ' · ' + t.targum;
     });
@@ -282,9 +286,9 @@
       else { const due = ss.filter(x => x.day <= d); if (!due.length) continue;
         to = due.reduce((a, x) => Math.max(a, x.to), 0); if (n > to) continue;
         late = Math.max(0, ss.filter(x => x.day < d).reduce((a, x) => Math.max(a, x.to + 1), 0) - n); }
-      const from = Math.min(6, n), name = from === to ? NAMES[from] : (from === 0 && to === 6) ? T.wholeParasha : NAMES[from] + ' – ' + NAMES[to];
+      const from = Math.min(6, n), name = from === to ? AN(from) : (from === 0 && to === 6) ? T.wholeParasha : AN(from) + ' – ' + AN(to);
       const text = !w.alyot ? T.remGeneric : F(T.remMin, { min: rangeMin(w, from, to) }) + (late === 1 ? T.remLate1 : late > 1 ? F(T.remLateN, { n: late }) : '');
-      out.push({ at: t, title: w.parasha + ' — ' + name, text });
+      out.push({ at: t, title: pn(w) + ' — ' + name, text });
     }
     return out;
   };
@@ -297,7 +301,8 @@
   /* Les 3 prochaines parachiyot */
   window.SM_NEXT = function () {
     const s = state(); const list = s.W.slice(s.ci + 1, s.ci + 4);
-    return list.map((w, k) => ({ name: w.parasha, heb: w.parashaHe, ref: w.parashaRef, when: 'Shabbat ' + w.shabbat,
+    const T = window.SM_TR();
+    return list.map((w, k) => ({ name: pn(w), heb: window.SM_HEB(pn(w), w.parashaHe), ref: pref(w), when: window.SM_FMT(T.shabbatDate, { date: window.SM_DATE(noon(w.shabbatISO), { day: 'numeric', month: 'long' }) }),
       href: w.alyot ? 'V2-Lecteur.dc.html?par=' + (k + 1) + '&alya=0' : '#', canRead: !!w.alyot }));
   };
 
@@ -305,27 +310,27 @@
   window.SM_PRINT_INFO = function (all) {
     const w = state().cur; if (!w || !w.alyot) return null; const from = all ? 0 : Math.min(6, progN(w));
     const al = w.alyot.slice(from); const chars = al.reduce((a, x) => a + x.v.reduce((b, v) => b + v.he.length + (v.onk || '').length, 0), 0);
-    return { from, names: al.map(a => a.name), range: al.length > 1 ? al[0].name + ' – ' + al[al.length - 1].name : al[0].name, first: al[0].name + ' · ' + al[0].v[0].ref,
+    return { from, names: al.map((a, k) => AN(from + k)), range: al.length > 1 ? AN(from) + ' – ' + AN(6) : AN(from), first: AN(from) + ' · ' + al[0].v[0].ref,
       min: al.reduce((a, x) => a + x.min, 0), pages: Math.max(1, Math.ceil(chars / 3400)), count: al.length };
   };
   const esc = (s) => String(s || '').replace(/[&<>]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[ch]);
   window.SM_PRINT = function (all) {
     const w = state().cur; const info = window.SM_PRINT_INFO(all); if (!info) return false;
-    const ntMode = get('nt') || 'deux';
-    let h = '<header><span>' + esc(w.parasha) + ' · ' + esc(info.range) + '</span><span lang="he" dir="rtl">' + esc(w.parashaHe) + '</span></header>' +
-      '<p class="how">Chaque verset deux fois, puis le Targoum. ✱ = verset sans Targoum Onkelos : le lire trois fois.</p>';
-    w.alyot.slice(info.from).forEach(a => {
-      h += '<h2><span>' + esc(a.name) + ' · ' + esc(a.verses) + '</span><span lang="he" dir="rtl">' + esc(a.heb) + '</span></h2>';
+    const ntMode = get('nt') || 'deux', T = window.SM_TR();
+    let h = '<header><span>' + esc(pn(w)) + ' · ' + esc(info.range) + '</span><span lang="he" dir="rtl">' + esc(window.SM_HEB(pn(w), w.parashaHe)) + '</span></header>' +
+      '<p class="how">' + esc(T.printHow) + '</p>';
+    w.alyot.slice(info.from).forEach((a, k) => {
+      h += '<h2><span>' + esc(AN(info.from + k)) + ' · ' + esc(a.verses) + '</span><span lang="he" dir="rtl">' + esc(window.SM_HEB(AN(info.from + k), a.heb)) + '</span></h2>';
       a.v.forEach(v => {
         h += '<div class="pv"><p class="he" dir="rtl" lang="he"><b>' + esc(v.ref) + '</b> ' + esc(v.he) + (v.nt ? ' ✱' : '') + '</p>';
         if (!v.nt) h += '<p class="tg" dir="rtl" lang="arc">' + esc(v.onk) + '</p>';
-        else if (v.yer && ntMode !== 'trois') h += '<p class="tg" dir="rtl" lang="arc"><i>Targoum Yerouchalmi</i> · ' + esc(v.yer) + '</p>';
+        else if (v.yer && ntMode !== 'trois') h += '<p class="tg" dir="rtl" lang="arc"><i>' + esc(T.yer) + '</i> · ' + esc(v.yer) + '</p>';
         h += '</div>';
       });
     });
     let el = document.getElementById('print'); if (!el) { el = document.createElement('div'); el.id = 'print'; document.body.appendChild(el); }
-    el.innerHTML = h; document.title = 'Shnayim Mikra — ' + w.parasha;
-    if (window.SMAndroid && SMAndroid.print) SMAndroid.print('Shnayim Mikra — ' + w.parasha); else window.print();
+    el.innerHTML = h; document.title = 'Shnayim Mikra — ' + pn(w);
+    if (window.SMAndroid && SMAndroid.print) SMAndroid.print('Shnayim Mikra — ' + pn(w)); else window.print();
     return true;
   };
 

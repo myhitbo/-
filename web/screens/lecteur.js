@@ -22,12 +22,12 @@ SCREENS.lecteur = {
 </div>
 
 <header style="{{chromeTop}}">
-  <a href="V2-Accueil.dc.html" aria-label="Retour" class="glass" style="flex-shrink: 0; width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center; color: var(--text)"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></a>
+  <a href="V2-Accueil.dc.html" aria-label="{{t.back}}" class="glass" style="flex-shrink: 0; width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center; color: var(--text)"><svg aria-hidden="true" class="flip" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></a>
   <div style="flex: 1; min-width: 0; text-align: center">
     <p class="cap" style="margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{alyaName}} · {{verse}}</p>
     <p class="serif" style="margin: 1px 0 0; font-size: 18px; font-weight: 500">{{G.readParasha}}</p>
   </div>
-  <button onClick="{{togglePanel}}" aria-label="Affichage du texte" class="glass" style="flex-shrink: 0; width: 44px; height: 44px; border-radius: 22px; color: var(--text); font-family: Newsreader, serif; font-size: 18px; font-weight: 500; padding: 0">Aa</button>
+  <button onClick="{{togglePanel}}" aria-label="{{t.displayText}}" class="glass" style="flex-shrink: 0; width: 44px; height: 44px; border-radius: 22px; color: var(--text); font-family: Newsreader, serif; font-size: 18px; font-weight: 500; padding: 0">Aa</button>
 </header>
 
 <div style="{{chromeBottom}}">
@@ -35,16 +35,16 @@ SCREENS.lecteur = {
   <div style="height: 3px; border-radius: 2px; background: var(--line); margin: 0 6px"><div style="{{progress}}"></div></div>
   <div style="display: flex; gap: 8px; align-items: center">
     <div style="flex: 1; min-width: 0; height: 56px; border-radius: 28px; background: var(--pill); color: var(--on-pill); display: flex; align-items: center; padding: 0 4px; box-shadow: var(--shadow)">
-      <button onClick="{{slower}}" aria-label="Plus lent" style="flex-shrink: 0; width: 46px; height: 48px; border: none; background: none; color: inherit; font-size: 22px; padding: 0">−</button>
+      <button onClick="{{slower}}" aria-label="{{t.slower}}" style="flex-shrink: 0; width: 46px; height: 48px; border: none; background: none; color: inherit; font-size: 22px; padding: 0">−</button>
       <button onClick="{{toggle}}" aria-label="{{playLabel}}" style="flex: 1; min-width: 0; height: 48px; border: none; background: none; color: inherit; display: flex; align-items: center; justify-content: center; gap: 8px; font-family: Inter, sans-serif; font-size: 15px; font-weight: 600; padding: 0; white-space: nowrap">
         <sc-if value="{{paused}}" hint-placeholder-val="{{true}}"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z" fill="currentColor"></path></svg></sc-if>
         <sc-if value="{{playing}}" hint-placeholder-val="{{false}}"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24"><rect x="5" y="4" width="5" height="16" fill="currentColor"></rect><rect x="14" y="4" width="5" height="16" fill="currentColor"></rect></svg></sc-if>
-        <span>Auto</span><span class="count" style="opacity: 0.7">{{speedLabel}}</span>
+        <span>{{t.auto}}</span><span class="count" dir="ltr" style="opacity: 0.7">{{speedLabel}}</span>
       </button>
-      <button onClick="{{faster}}" aria-label="Plus rapide" style="flex-shrink: 0; width: 46px; height: 48px; border: none; background: none; color: inherit; font-size: 22px; padding: 0">+</button>
+      <button onClick="{{faster}}" aria-label="{{t.faster}}" style="flex-shrink: 0; width: 46px; height: 48px; border: none; background: none; color: inherit; font-size: 22px; padding: 0">+</button>
     </div>
-    <button onClick="{{cycleTf}}" aria-label="Vitesse du Targoum : {{tfLabel}}" class="glass" style="flex-shrink: 0; height: 56px; padding: 0 14px; border-radius: 28px; color: var(--text); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; font-family: Inter, sans-serif">
-      <span class="cap" style="font-size: 9px">Targoum</span><span style="font-size: 14px; font-weight: 700">{{tfLabel}}</span>
+    <button onClick="{{cycleTf}}" aria-label="{{t.targumSpeed}} : {{tfLabel}}" class="glass" style="flex-shrink: 0; height: 56px; padding: 0 14px; border-radius: 28px; color: var(--text); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; font-family: Inter, sans-serif">
+      <span class="cap" style="font-size: 9px">{{t.targum}}</span><span dir="ltr" style="font-size: 14px; font-weight: 700">{{tfLabel}}</span>
     </button>
   </div>
 </div>
@@ -52,15 +52,15 @@ SCREENS.lecteur = {
 <sc-if value="{{panel}}" hint-placeholder-val="{{false}}">
   <div onClick="{{togglePanel}}" style="position: absolute; inset: 0; z-index: 7; background: rgba(0,0,0,0.25)"></div>
   <div style="position: absolute; left: 12px; right: 12px; bottom: 12px; z-index: 8; display: flex; justify-content: center">
-  <div class="rise glass" role="dialog" aria-label="Affichage" style="width: 100%; max-width: 520px; border-radius: 28px; padding: 18px; display: flex; flex-direction: column; gap: 16px; box-shadow: var(--shadow)">
-    <div style="display: flex; justify-content: space-between; align-items: center"><p class="serif" style="margin: 0; font-size: 22px; font-weight: 500">Affichage</p><button onClick="{{togglePanel}}" style="height: 40px; padding: 0 14px; border-radius: 20px; border: none; background: var(--pill); color: var(--on-pill); font-family: Inter, sans-serif; font-size: 13px; font-weight: 600">OK</button></div>
+  <div class="rise glass" role="dialog" aria-label="{{t.display}}" style="width: 100%; max-width: 520px; border-radius: 28px; padding: 18px; display: flex; flex-direction: column; gap: 16px; box-shadow: var(--shadow)">
+    <div style="display: flex; justify-content: space-between; align-items: center"><p class="serif" style="margin: 0; font-size: 22px; font-weight: 500">{{t.display}}</p><button onClick="{{togglePanel}}" style="height: 40px; padding: 0 14px; border-radius: 20px; border: none; background: var(--pill); color: var(--on-pill); font-family: Inter, sans-serif; font-size: 13px; font-weight: 600">{{t.ok}}</button></div>
     <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px">
       <sc-for list="{{modeCards}}" as="m" hint-placeholder-count="3">
         <a href="{{m.href}}" aria-current="{{m.on}}" style="{{m.style}}"><span lang="he" style="font-family: 'Frank Ruhl Libre', serif; font-size: 22px">אָ</span><span style="font-size: 11px; font-weight: 600; max-width: 100%; overflow: hidden; text-overflow: ellipsis">{{m.name}}</span></a>
       </sc-for>
     </div>
     <div>
-      <p class="cap" style="margin: 0 0 8px">Police</p>
+      <p class="cap" style="margin: 0 0 8px">{{t.fontLabel}}</p>
       <div class="scroll" style="display: flex; gap: 6px; overflow-x: auto">
         <sc-for list="{{fontChips}}" as="f" hint-placeholder-count="5">
           <button onClick="{{f.pick}}" aria-pressed="{{f.on}}" style="{{f.style}}"><span lang="he" style="{{f.sample}}">אָב</span><span style="font-size: 11px">{{f.name}}</span></button>
@@ -68,16 +68,16 @@ SCREENS.lecteur = {
       </div>
     </div>
     <div style="display: flex; align-items: center; gap: 10px">
-      <span class="cap" style="flex: 1">Taille</span>
-      <button onClick="{{smaller}}" aria-label="Texte plus petit" style="width: 44px; height: 44px; border-radius: 22px; border: 1px solid var(--line2); background: transparent; color: var(--text); font-size: 14px">A−</button>
+      <span class="cap" style="flex: 1">{{t.sizeLabel}}</span>
+      <button onClick="{{smaller}}" aria-label="{{t.smaller}}" style="width: 44px; height: 44px; border-radius: 22px; border: 1px solid var(--line2); background: transparent; color: var(--text); font-size: 14px">A−</button>
       <span class="count" style="min-width: 28px; text-align: center; font-weight: 700">{{fs}}</span>
-      <button onClick="{{bigger}}" aria-label="Texte plus grand" style="width: 44px; height: 44px; border-radius: 22px; border: 1px solid var(--line2); background: transparent; color: var(--text); font-size: 18px">A+</button>
+      <button onClick="{{bigger}}" aria-label="{{t.bigger}}" style="width: 44px; height: 44px; border-radius: 22px; border: 1px solid var(--line2); background: transparent; color: var(--text); font-size: 18px">A+</button>
     </div>
   </div>
   </div>
 </sc-if>
 <sc-if value="{{hint}}" hint-placeholder-val="{{false}}">
-  <p class="cap" style="position: absolute; left: 0; right: 0; bottom: 18px; margin: 0; text-align: center; pointer-events: none; opacity: 0.8">Touchez le texte pour les commandes</p>
+  <p class="cap" style="position: absolute; left: 0; right: 0; bottom: 18px; margin: 0; text-align: center; pointer-events: none; opacity: 0.8">{{t.tapHint}}</p>
 </sc-if>
 
 <sc-if value="{{finished}}" hint-placeholder-val="{{false}}">
@@ -85,8 +85,8 @@ SCREENS.lecteur = {
     <svg aria-hidden="true" width="88" height="88" viewBox="0 0 30 30"><circle class="ring" cx="15" cy="15" r="12" fill="none" stroke="var(--accent-line)" stroke-width="1.6" transform="rotate(-90 15 15)"></circle><path class="tick" d="M9.5 15.5l4 4 7.5-8.5" fill="none" stroke="var(--accent-line)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
     <p class="serif rise" style="margin: 0; font-size: 34px; font-weight: 500; animation-delay: .6s">{{doneTitle}}</p>
     <p class="rise" style="margin: 0; font-size: 15px; line-height: 1.5; color: var(--soft); animation-delay: .75s">{{G.afterText}}</p>
-    <a class="rise" href="V2-Accueil.dc.html" style="margin-top: 8px; width: 100%; max-width: 360px; height: 56px; border-radius: 28px; background: var(--pill); color: var(--on-pill); display: flex; align-items: center; justify-content: center; font-weight: 600; text-decoration: none; animation-delay: .9s">Retour à l'accueil</a>
-    <button class="rise" onClick="{{again}}" style="height: 44px; border: none; background: none; color: var(--soft); font-family: Inter, sans-serif; font-size: 14px; animation-delay: 1s">Relire depuis le début</button>
+    <a class="rise" href="V2-Accueil.dc.html" style="margin-top: 8px; width: 100%; max-width: 360px; height: 56px; border-radius: 28px; background: var(--pill); color: var(--on-pill); display: flex; align-items: center; justify-content: center; font-weight: 600; text-decoration: none; animation-delay: .9s">{{t.backHome}}</a>
+    <button class="rise" onClick="{{again}}" style="height: 44px; border: none; background: none; color: var(--soft); font-family: Inter, sans-serif; font-size: 14px; animation-delay: 1s">{{t.readAgain}}</button>
   </div>
 </sc-if>
 </div>
@@ -150,7 +150,7 @@ class Component extends DCLogic {
     const s = this.st(); const h = this.handlers();
     const labels = ['', '×0.5', '×0.75', '×1', '×1.3', '×1.7'];
     const tfs = [{ v: 1, l: 'Même vitesse' }, { v: 0.8, l: '−20 %' }, { v: 0.6, l: '−40 %' }];
-    return { s, h, speedLabel: labels[s.speed], playLabel: s.playing ? 'Pause' : 'Lecture auto', tfs: tfs.map(t => ({ ...t, on: s.tf === t.v, pick: () => this.setState({ tf: t.v }) })) };
+    return { s, h, speedLabel: labels[s.speed], playLabel: s.playing ? SM_TR().pause : SM_TR().autoRead, tfs: tfs.map(t => ({ ...t, on: s.tf === t.v, pick: () => this.setState({ tf: t.v }) })) };
   }
 
   renderVals() {
@@ -190,7 +190,7 @@ class Component extends DCLogic {
       chromeTop: 'position: absolute; top: 0; left: 0; right: 0; z-index: 4; padding: 12px 14px 28px; display: flex; align-items: center; gap: 10px; background: linear-gradient(var(--bg) 62%, transparent); ' + fade + (chrome ? '' : ' transform: translateY(-12px);'),
       chromeBottom: 'position: absolute; left: 50%; bottom: 0; transform: translateX(-50%)' + (chrome ? '' : ' translateY(16px)') + '; width: 100%; max-width: 560px; z-index: 4; padding: 26px 14px 16px; display: flex; flex-direction: column; gap: 8px; background: linear-gradient(transparent, var(--bg) 30%); ' + fade,
       panel: !!st.panel, togglePanel: x.togglePanel, toggleChrome: x.toggleChrome, smaller: x.smaller, bigger: x.bigger, fs,
-      modeCards: ['clair', 'sombre', 'texte', 'parchemin'].map(m => { const t = THEMES[m]; const on = m === mode; return { name: m === 'clair' ? 'Clair' : m === 'sombre' ? 'Sombre' : m === 'texte' ? 'Texte' : 'Parchemin', on, href: hrefs[m], style: 'height: 72px; min-width: 0; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-decoration: none; background: ' + t['--bg'] + '; color: ' + t['--text'] + '; border: ' + (on ? '2px solid var(--accent-line)' : '1px solid ' + t['--line2']) }; }),
+      modeCards: ['clair', 'sombre', 'texte', 'parchemin'].map(m => { const t = THEMES[m]; const on = m === mode; return { name: SM_TR()[m], on, href: hrefs[m], style: 'height: 72px; min-width: 0; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-decoration: none; background: ' + t['--bg'] + '; color: ' + t['--text'] + '; border: ' + (on ? '2px solid var(--accent-line)' : '1px solid ' + t['--line2']) }; }),
       fontChips: HFONTS.map(f => ({ name: f[1], on: f[0] === fontId, pick: () => this.setState({ font: f[0] }), sample: 'font-family: ' + f[2] + '; font-size: 20px; line-height: 1.3', style: 'flex-shrink: 0; width: 64px; height: 60px; border-radius: 16px; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text); font-family: Inter, sans-serif; background: ' + (f[0] === fontId ? 'var(--hl)' : 'transparent') + '; border: ' + (f[0] === fontId ? '2px solid var(--accent-line)' : '1px solid var(--line2)') })),
       hint: isText && !chrome && !st.panel, finished: !!st.finished, again: x.again };
   }

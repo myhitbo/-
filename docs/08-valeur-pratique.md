@@ -40,6 +40,13 @@
 - L'app calcule les rappels des 21 prochains jours et les confie à Android ; la liste est refaite à chaque ouverture et à chaque alya lue.
 - Si Android bloque les notifications, les Réglages l'indiquent et proposent de les autoriser.
 
+### Six langues
+- Français, hébreu, anglais, espagnol (Amérique latine), tounsi, darija : tous les écrans, la feuille imprimée et les rappels.
+- Hébreu, tounsi et darija s'affichent de droite à gauche. Les dates suivent la langue ; les noms des parachiyot, des alyot et des villes aussi.
+- En tounsi et en darija, les noms des parachiyot et des alyot sont écrits en lettres hébraïques.
+- Tounsi et darija sont des brouillons à faire relire (`docs/traductions-a-relire.csv`).
+- Les textes sont dans `web/i18n.js` (français) et `web/i18n/<langue>.js`.
+
 ### Écran Année : la vraie progression
 - Une paracha est « terminée » quand ses 7 alyot sont lues depuis le dernier Sim'hat Torah ; l'année hébraïque affichée est celle de ce cycle.
 - Les semaines passées non terminées sont marquées « à compléter », avec le nombre d'alyot lues.

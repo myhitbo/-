@@ -8,7 +8,7 @@ SCREENS.sources = {
 <div aria-hidden="true" style="position: absolute; top: -60px; left: -120px; width: 300px; height: 260px; border-radius: 50%; background: radial-gradient(circle, var(--blob2), transparent 70%); opacity: var(--blobop); filter: blur(40px); pointer-events: none"></div>
 <div class="scroll" style="position: absolute; inset: 0; overflow-y: auto">
 <main style="position: relative; max-width: 560px; margin: 0 auto; padding: 22px 20px 40px; display: flex; flex-direction: column; gap: 24px">
-<a href="V2-Reglages.dc.html" aria-label="{{t.back}}" class="glass" style="width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center; color: var(--text)"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></a>
+<a href="V2-Reglages.dc.html" aria-label="{{t.back}}" class="glass" style="width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center; color: var(--text)"><svg aria-hidden="true" class="flip" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></a>
 <header style="display: flex; flex-direction: column; gap: 4px"><p class="cap" style="margin: 0">{{t.srcKicker}}</p><h1 class="serif foil" style="margin: 0; font-size: clamp(36px, 11vw, 52px); font-weight: 500; line-height: 1; letter-spacing: -0.02em">{{t.srcTitle}}</h1></header>
 <section style="display: flex; flex-direction: column; gap: 10px">
   <h2 class="cap" style="margin: 0">{{t.srcTexts}}</h2>
@@ -43,7 +43,7 @@ class Component extends DCLogic {
     const row = (name, m, extra) => { const lic = LICENSES[m.license];
       return { name, edition: m.title + (extra ? ' — ' + extra : ''), license: lic ? lic[0] : (m.license === 'Public Domain' || m.license === 'PD') ? t.srcPD : (m.license || '—'),
         url: lic ? lic[1] : '', hasUrl: !!lic, noUrl: !lic, note: m.license === 'CC-BY-NC' ? ' (' + t.srcNC + ')' : '' }; };
-    return { themeClass: 'th-' + mode, isParch: mode === 'parchemin', dir: 'ltr', rootStyle: rootVars(mode),
+    return { themeClass: 'th-' + mode, isParch: mode === 'parchemin', rootStyle: rootVars(mode),
       texts: [row(t.srcMikra, src.mikra), row(t.srcOnk, src.onk), row(t.srcYer, src.yer, t.srcYerNote)] };
   }
 }

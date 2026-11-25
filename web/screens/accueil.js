@@ -11,11 +11,11 @@ SCREENS.accueil = {
 
   <header style="display: flex; justify-content: space-between; align-items: center">
     <p style="margin: 0; font-size: 13px; color: var(--soft)">{{G.date}}</p>
-    <a href="V2-Imprimer.dc.html" aria-label="Imprimer pour Shabbat" class="glass" style="height: 40px; padding: 0 14px; border-radius: 20px; display: flex; align-items: center; gap: 8px; color: var(--text); text-decoration: none; font-size: 13px; font-weight: 600"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9V3h10v6"></path><rect x="4" y="9" width="16" height="8" rx="2"></rect><path d="M7 14h10v7H7z"></path></svg><span>Shabbat</span></a>
+    <a href="V2-Imprimer.dc.html" aria-label="{{t.printTitle}}" class="glass" style="height: 40px; padding: 0 14px; border-radius: 20px; display: flex; align-items: center; gap: 8px; color: var(--text); text-decoration: none; font-size: 13px; font-weight: 600"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9V3h10v6"></path><rect x="4" y="9" width="16" height="8" rx="2"></rect><path d="M7 14h10v7H7z"></path></svg><span>{{t.shabbat}}</span></a>
   </header>
 
   <section style="display: flex; flex-direction: column; gap: 6px">
-    <p class="cap" style="margin: 0">Paracha de la semaine</p>
+    <p class="cap" style="margin: 0">{{t.parashaOfWeek}}</p>
     <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap">
       <h1 class="serif foil" style="margin: 0; font-size: clamp(40px, 13vw, 60px); font-weight: 500; line-height: 0.95; letter-spacing: -0.02em">{{G.parasha}}</h1>
       <p lang="he" dir="rtl" class="foil" style="margin: 0; font-family: 'Frank Ruhl Libre', serif; font-size: clamp(26px, 8vw, 36px); color: var(--soft)">{{G.parashaHe}}</p>
@@ -24,22 +24,22 @@ SCREENS.accueil = {
   </section>
 
   <sc-if value="{{G.hasPrev}}" hint-placeholder-val="{{false}}">
-    <section aria-label="Rattrapage" style="border-radius: 22px; padding: 14px 16px; border: 2px solid var(--accent-line); display: flex; align-items: center; gap: 12px; flex-wrap: wrap">
+    <section aria-label="{{t.catchUp}}" style="border-radius: 22px; padding: 14px 16px; border: 2px solid var(--accent-line); display: flex; align-items: center; gap: 12px; flex-wrap: wrap">
       <div style="flex: 1; min-width: 160px">
-        <p class="cap" style="margin: 0">À rattraper · jusqu'à {{G.prev.until}}</p>
+        <p class="cap" style="margin: 0">{{G.prev.title}}</p>
         <p class="serif" style="margin: 2px 0 0; font-size: 24px; font-weight: 500; line-height: 1.1">{{G.prev.name}}</p>
-        <p style="margin: 2px 0 0; font-size: 13px; color: var(--soft)">{{G.prev.n}}/7 alyot lues · encore {{G.prev.left}}</p>
+        <p style="margin: 2px 0 0; font-size: 13px; color: var(--soft)">{{G.prev.line}}</p>
       </div>
-      <a href="{{G.prev.href}}" style="flex-shrink: 0; height: 48px; padding: 0 20px; border-radius: 24px; background: var(--pill); color: var(--on-pill); display: flex; align-items: center; font-size: 15px; font-weight: 600; text-decoration: none">Continuer</a>
+      <a href="{{G.prev.href}}" style="flex-shrink: 0; height: 48px; padding: 0 20px; border-radius: 24px; background: var(--pill); color: var(--on-pill); display: flex; align-items: center; font-size: 15px; font-weight: 600; text-decoration: none">{{t.continue}}</a>
     </section>
   </sc-if>
-  <section aria-label="Avancée de la semaine" style="display: flex; gap: 6px; align-items: stretch">
+  <section aria-label="{{t.weekProgress}}" style="display: flex; gap: 6px; align-items: stretch">
     <div role="list" style="flex-shrink: 0; width: 70px; display: flex; flex-direction: column">
       <sc-for list="{{scale}}" as="r" hint-placeholder-count="7">
         <button role="listitem" onClick="{{r.pick}}" aria-label="{{r.name}}" style="{{r.style}}"><span>{{r.name}}</span></button>
       </sc-for>
     </div>
-    <svg aria-hidden="true" width="58" height="294" viewBox="0 0 58 294" style="flex-shrink: 0; overflow: hidden">
+    <svg aria-hidden="true" class="flip" width="58" height="294" viewBox="0 0 58 294" style="flex-shrink: 0; overflow: hidden">
       <defs>
         <clipPath id="below"><rect x="-10" y="0" width="80" height="294"></rect></clipPath>
         <clipPath id="above"><rect x="-10" y="-294" width="80" height="294"></rect></clipPath>
@@ -59,17 +59,17 @@ SCREENS.accueil = {
         <p lang="he" dir="rtl" style="margin: 4px 0 0; text-align: left; font-family: 'Frank Ruhl Libre', serif; font-size: 20px; color: var(--soft)">{{sel.heb}}</p>
       </div>
       <div style="display: flex; gap: 18px; flex-wrap: wrap">
-        <div><p class="cap" style="margin: 0">Versets</p><p style="margin: 3px 0 0; font-size: 16px; font-weight: 600">{{sel.verses}}</p></div>
-        <div><p class="cap" style="margin: 0">Durée</p><p style="margin: 3px 0 0; font-size: 16px; font-weight: 600">{{sel.min}} min</p></div>
+        <div><p class="cap" style="margin: 0">{{t.verses}}</p><p style="margin: 3px 0 0; font-size: 16px; font-weight: 600">{{sel.verses}}</p></div>
+        <div><p class="cap" style="margin: 0">{{t.duration}}</p><p style="margin: 3px 0 0; font-size: 16px; font-weight: 600">{{sel.min}} {{t.min}}</p></div>
       </div>
       <div>
-        <p class="cap" style="margin: 0">Lecture restante</p>
-        <p class="serif count" style="margin: 2px 0 0; font-size: 34px; font-weight: 500; line-height: 1">{{minLeft}}<span style="font-size: 16px; font-family: Inter, sans-serif; font-weight: 600; margin-left: 4px">min</span></p>
+        <p class="cap" style="margin: 0">{{t.remaining}}</p>
+        <p class="serif count" style="margin: 2px 0 0; font-size: 34px; font-weight: 500; line-height: 1">{{minLeft}}<span style="font-size: 16px; font-family: Inter, sans-serif; font-weight: 600; margin-inline-start: 4px">{{t.min}}</span></p>
       </div>
     </div>
   </section>
 
-  <section aria-label="Échéance" class="glass" style="margin-top: -8px; border-radius: 22px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px">
+  <section aria-label="{{t.deadline}}" class="glass" style="margin-top: -8px; border-radius: 22px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px">
     <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 4px 12px; flex-wrap: wrap">
       <p style="margin: 0; font-size: 15px; font-weight: 600">{{G.goal}}</p>
       <p class="count" style="margin: 0; font-size: 15px; font-weight: 700; color: var(--accent)">{{G.countdown}}</p>
@@ -77,26 +77,26 @@ SCREENS.accueil = {
     <p style="margin: 0; font-size: 13px; line-height: 1.45; color: var(--soft)">{{G.candleLine}}</p>
     <sc-if value="{{G.hasLate}}" hint-placeholder-val="{{false}}"><p style="margin: 0; font-size: 13px; font-weight: 600; color: var(--accent)">{{G.lateLine}}</p></sc-if>
     <sc-if value="{{G.friday}}" hint-placeholder-val="{{false}}">
-      <a href="V2-Imprimer.dc.html" style="margin-top: 6px; min-height: 44px; display: flex; align-items: center; gap: 8px; color: var(--accent); font-size: 14px; font-weight: 600; text-decoration: none"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"></path><rect x="3" y="9" width="18" height="8" rx="2"></rect><path d="M7 14h10v7H7z"></path></svg><span>Pas fini ? Imprime le reste pour Chabbat matin</span></a>
+      <a href="V2-Imprimer.dc.html" style="margin-top: 6px; min-height: 44px; display: flex; align-items: center; gap: 8px; color: var(--accent); font-size: 14px; font-weight: 600; text-decoration: none"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"></path><rect x="3" y="9" width="18" height="8" rx="2"></rect><path d="M7 14h10v7H7z"></path></svg><span>{{t.printRest}}</span></a>
     </sc-if>
   </section>
 
   <sc-if value="{{notFinished}}" hint-placeholder-val="{{true}}">
     <div style="display: flex; gap: 10px">
       <a href="{{readHref}}" style="flex: 1; min-width: 0; height: 56px; border-radius: 28px; background: var(--pill); color: var(--on-pill); display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; font-size: 16px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 0 18px"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z" fill="currentColor"></path></svg>{{readLabel}}</a>
-      <button onClick="{{markRead}}" aria-label="Marquer {{today.name}} comme lue (lue dans mon Houmash)" class="glass" style="flex-shrink: 0; height: 56px; padding: 0 18px; border-radius: 28px; color: var(--text); display: flex; align-items: center; gap: 8px; font-family: Inter, sans-serif; font-size: 15px; font-weight: 600"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg><span>Lue</span></button>
+      <button onClick="{{markRead}}" aria-label="{{markLabel}}" class="glass" style="flex-shrink: 0; height: 56px; padding: 0 18px; border-radius: 28px; color: var(--text); display: flex; align-items: center; gap: 8px; font-family: Inter, sans-serif; font-size: 15px; font-weight: 600"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg><span>{{t.stRead}}</span></button>
     </div>
   </sc-if>
   <sc-if value="{{finished}}" hint-placeholder-val="{{false}}">
     <div class="rise" style="text-align: center; display: flex; flex-direction: column; gap: 8px; align-items: center">
-      <p class="serif" style="margin: 0; font-size: 30px; font-weight: 500">Paracha terminée</p>
-      <p style="margin: 0; color: var(--soft); font-size: 14px">Les 7 alyot de {{G.parasha}} sont lues. Shabbat Shalom.</p>
+      <p class="serif" style="margin: 0; font-size: 30px; font-weight: 500">{{t.doneAll}}</p>
+      <p style="margin: 0; color: var(--soft); font-size: 14px">{{G.allReadLine}}</p>
     </div>
   </sc-if>
 
   <sc-if value="{{G.hasCarnet}}" hint-placeholder-val="{{false}}">
-    <section aria-label="Carnet de rattrapage" style="display: flex; flex-direction: column">
-      <h2 class="cap" style="margin: 0 0 4px">À compléter {{G.stLabel}}</h2>
+    <section aria-label="{{t.notebook}}" style="display: flex; flex-direction: column">
+      <h2 class="cap" style="margin: 0 0 4px">{{G.stLabel}}</h2>
       <sc-for list="{{G.carnet}}" as="k" hint-placeholder-count="2">
         <a href="{{k.href}}" style="min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid var(--line); color: var(--text); text-decoration: none">
           <span class="serif" style="font-size: 20px; font-weight: 500">{{k.name}}</span><span style="font-size: 13px; color: var(--soft)">{{k.label}}</span>
@@ -106,24 +106,24 @@ SCREENS.accueil = {
   </sc-if>
   <section style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
     <div class="glass" style="border-radius: 22px; padding: 16px; display: flex; flex-direction: column; gap: 6px">
-      <p class="cap" style="margin: 0; display: flex; align-items: center; gap: 6px">Série</p>
-      <p class="serif" style="margin: 0; font-size: 32px; font-weight: 500; line-height: 1">{{G.streak}} <span style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 500; color: var(--soft)">semaines</span></p>
+      <p class="cap" style="margin: 0; display: flex; align-items: center; gap: 6px">{{t.streak}}</p>
+      <p class="serif" style="margin: 0; font-size: 32px; font-weight: 500; line-height: 1">{{G.streak}} <span style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 500; color: var(--soft)">{{t.weeks}}</span></p>
     </div>
     <a href="V2-Annee.dc.html" class="glass" style="border-radius: 22px; padding: 16px; display: flex; flex-direction: column; gap: 6px; color: var(--text); text-decoration: none">
-      <p class="cap" style="margin: 0">Cette année</p>
-      <p class="serif" style="margin: 0; font-size: 32px; font-weight: 500; line-height: 1">{{G.yearDone}}<span style="font-size: 20px; color: var(--soft)">/54</span> <span style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 500; color: var(--soft)">terminées</span></p>
+      <p class="cap" style="margin: 0">{{t.thisYear}}</p>
+      <p class="serif" style="margin: 0; font-size: 32px; font-weight: 500; line-height: 1">{{G.yearDone}}<span style="font-size: 20px; color: var(--soft)">/54</span> <span style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 500; color: var(--soft)">{{t.finishedPl}}</span></p>
     </a>
   </section>
 
-  <section aria-label="Prochaines parachiyot" style="display: flex; flex-direction: column; gap: 4px">
-    <h2 class="cap" style="margin: 0 0 6px">Prochaines parachiyot</h2>
+  <section aria-label="{{t.nextParashiyot}}" style="display: flex; flex-direction: column; gap: 4px">
+    <h2 class="cap" style="margin: 0 0 6px">{{t.nextParashiyot}}</h2>
     <sc-for list="{{next}}" as="w" hint-placeholder-count="3">
       <a href="{{w.href}}" aria-disabled="{{w.locked}}" style="display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 8px 0; border-top: 1px solid var(--line); color: var(--text); text-decoration: none">
         <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
           <span style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap"><span class="serif" style="font-size: 22px; font-weight: 500; line-height: 1.1">{{w.name}}</span><span lang="he" dir="rtl" style="font-family: 'Frank Ruhl Libre', serif; font-size: 17px; color: var(--soft)">{{w.heb}}</span></span>
           <span style="font-size: 12px; color: var(--soft)">{{w.when}}</span><span style="font-size: 12px; color: var(--soft)">{{w.ref}}</span>
         </span>
-        <sc-if value="{{w.canRead}}" hint-placeholder-val="{{true}}"><span style="flex-shrink: 0; font-size: 13px; font-weight: 600; color: var(--accent)">Lire en avance</span></sc-if>
+        <sc-if value="{{w.canRead}}" hint-placeholder-val="{{true}}"><span style="flex-shrink: 0; font-size: 13px; font-weight: 600; color: var(--accent)">{{t.readAhead}}</span></sc-if>
       </a>
     </sc-for>
   </section>
@@ -133,7 +133,7 @@ ${SM_NAV('accueil')}
 <sc-if value="{{showToast}}" hint-placeholder-val="{{false}}">
   <div style="position: absolute; left: 16px; right: 16px; bottom: 82px; display: flex; justify-content: center; z-index: 6; pointer-events: none">
     <div class="toast glass" role="status" style="width: 100%; max-width: 420px; padding: 14px 18px; border-radius: 22px; box-shadow: var(--shadow); display: flex; justify-content: space-between; gap: 10px; font-size: 14px; font-weight: 600">
-      <span>Yasher koah ! {{toastName}} est lue</span><span class="count" style="flex-shrink: 0; color: var(--soft)">−{{toastMin}} min</span>
+      <span>{{toastLine}}</span><span class="count" style="flex-shrink: 0; color: var(--soft)">−{{toastMin}} {{t.min}}</span>
     </div>
   </div>
 </sc-if>
@@ -147,11 +147,11 @@ const READER = 'V2-Lecteur.dc.html';
 
 class Component extends DCLogic {
   componentWillUnmount() { clearInterval(this.cnt); clearTimeout(this.tt); }
-  st() { const s = this.state || {}; const total = (d) => ALYOT.slice(d).reduce((a, x) => a + x.min, 0); const done = s.done ?? (APP.get('done') ?? 0); return { mode: this.props.mode || 'clair', done, sel: s.sel ?? done, shown: s.shown ?? total(done), toast: !!s.toast, total, toastName: s.toastName, toastMin: s.toastMin }; }
+  st() { const s = this.state || {}; const total = (d) => ALYOT.slice(d).reduce((a, x) => a + x.min, 0); const done = s.done ?? (APP.get('done') ?? 0); return { mode: this.props.mode || 'clair', done, sel: Math.min(6, s.sel ?? done), shown: s.shown ?? total(done), toast: !!s.toast, total, toastName: s.toastName, toastMin: s.toastMin }; }
   markRead() {
     const s = this.st(); if (s.done >= 7) return;
     const target = s.total(s.done + 1), from = s.shown;
-    this.setState({ done: s.done + 1, sel: Math.min(6, s.done + 1), toast: true, toastName: ALYOT[s.done].name, toastMin: ALYOT[s.done].min });
+    this.setState({ done: s.done + 1, sel: Math.min(6, s.done + 1), toast: true, toastName: SM_ALYA(s.done), toastMin: ALYOT[s.done].min });
     clearInterval(this.cnt); const t0 = performance.now();
     this.cnt = setInterval(() => { const p = Math.min(1, (performance.now() - t0) / 700); this.setState({ shown: Math.round(from + (target - from) * p) }); if (p >= 1) clearInterval(this.cnt); }, 30);
     clearTimeout(this.tt); this.tt = setTimeout(() => this.setState({ toast: false }), 2400);
@@ -161,19 +161,20 @@ class Component extends DCLogic {
     if (!this._x) this._x = { mr: () => this.markRead(), rs: () => this.setState({ done: 2, sel: 2, shown: undefined, toast: false }) };
     const H = ROWH * 7;
     const yOf = (i) => H - (i + 0.5) * ROWH;
-    const scale = ALYOT.map((a, i) => ({ ...a, i })).reverse().map(a => ({ name: a.name, pick: () => this.setState({ sel: a.i }),
+    const scale = ALYOT.map((a, i) => ({ ...a, i })).reverse().map(a => ({ name: SM_ALYA(a.i), pick: () => this.setState({ sel: a.i }),
       style: 'height: ' + ROWH + 'px; border: none; background: none; padding: 0 4px 0 0; display: flex; align-items: center; justify-content: flex-end; text-align: right; font-family: Inter, sans-serif; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; ' +
         (a.i === s.sel ? 'color: var(--text); font-weight: 800; font-size: 12px;' : a.i < s.done ? 'color: var(--accent); font-weight: 600;' : 'color: var(--soft); font-weight: 500;') }));
     const ticks = []; for (let k = 0; k <= 28; k++) { const y = k * (H / 28); ticks.push({ y: y.toFixed(1), x1: k % 4 === 2 ? 4 : 9 }); }
-    const a = ALYOT[s.sel];
+    const a = { ...ALYOT[s.sel], name: SM_ALYA(s.sel), day: s.sel === 6 ? SM_TR().shabbat : SM_WEEKDAY(s.sel) };
+    a.day = a.day.charAt(0).toUpperCase() + a.day.slice(1); a.heb = SM_HEB(a.name, a.heb);
     /* Prochaine séance selon le rythme choisi : une alya, plusieurs, ou toute la paracha */
     const t = SM_TR(), F = SM_FMT, plan = window.SM_PLAN ? SM_PLAN() : { rh: 0, from: Math.min(s.done, 6), to: Math.min(s.done, 6), today: new Date().getDay() };
     const from = Math.min(s.done, 6), to = Math.max(from, plan.to);
     const status = s.sel < s.done ? t.stRead : (s.sel >= from && s.sel <= to) ? (plan.rh === 0 && s.sel === plan.today ? t.stToday : t.stToRead) : t.stLater;
     const today = ALYOT[from];
-    const readLabel = from === to ? F(t.readOne, { name: ALYOT[from].name }) : (from === 0 && to === 6) ? t.readAll : (to === 6 && plan.rh === 1) ? t.readRest : F(t.readRange, { a: ALYOT[from].name, b: ALYOT[to].name });
+    const readLabel = from === to ? F(t.readOne, { name: SM_ALYA(from) }) : (from === 0 && to === 6) ? t.readAll : (to === 6 && plan.rh === 1) ? t.readRest : F(t.readRange, { a: SM_ALYA(from), b: SM_ALYA(to) });
     return { next: window.SM_NEXT ? SM_NEXT().map(w => ({ ...w, locked: !w.canRead })) : [], themeClass: 'th-' + s.mode, isParch: s.mode === 'parchemin', rootStyle: rootVars(s.mode), scale, ticks, waveStyle: 'transform: translateY(' + yOf(s.sel) + 'px)',
-      sel: { ...a, status }, today, minLeft: s.shown, markRead: this._x.mr, reset: this._x.rs, readLabel, readHref: 'V2-Lecteur.dc.html?par=0&alya=' + from + '&to=' + to,
+      sel: { ...a, status }, today, minLeft: s.shown, markRead: this._x.mr, reset: this._x.rs, readLabel, markLabel: F(t.markRead, { name: SM_ALYA(from) }), toastLine: F(t.toast, { name: s.toastName || '' }), readHref: 'V2-Lecteur.dc.html?par=0&alya=' + from + '&to=' + to,
       finished: s.done >= 7, notFinished: s.done < 7, showToast: s.toast, toastName: s.toastName || '', toastMin: s.toastMin || 0 };
   }
 }

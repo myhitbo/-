@@ -8,24 +8,24 @@ SCREENS.imprimer = {
 <div aria-hidden="true" style="position: absolute; top: -60px; left: -120px; width: 300px; height: 260px; border-radius: 50%; background: radial-gradient(circle, var(--blob2), transparent 70%); opacity: var(--blobop); filter: blur(40px); pointer-events: none"></div>
 <div class="scroll" style="position: absolute; inset: 0; overflow-y: auto">
 <main style="position: relative; max-width: 560px; margin: 0 auto; padding: 22px 20px 40px; display: flex; flex-direction: column; gap: 24px">
-<a href="V2-Accueil.dc.html" aria-label="Retour" class="glass" style="width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center; color: var(--text)"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></a>
-<header style="display: flex; flex-direction: column; gap: 4px"><p class="cap" style="margin: 0">Pour lire sans téléphone</p><h1 class="serif foil" style="margin: 0; font-size: clamp(36px, 11vw, 52px); font-weight: 500; line-height: 1; letter-spacing: -0.02em">Imprimer pour Shabbat</h1></header>
-<div role="radiogroup" aria-label="Contenu" style="display: flex; flex-direction: column; gap: 8px">
+<a href="V2-Accueil.dc.html" aria-label="{{t.back}}" class="glass" style="width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center; color: var(--text)"><svg aria-hidden="true" class="flip" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></a>
+<header style="display: flex; flex-direction: column; gap: 4px"><p class="cap" style="margin: 0">{{t.printKicker}}</p><h1 class="serif foil" style="margin: 0; font-size: clamp(36px, 11vw, 52px); font-weight: 500; line-height: 1; letter-spacing: -0.02em">{{t.printTitle}}</h1></header>
+<div role="radiogroup" aria-label="{{t.content}}" style="display: flex; flex-direction: column; gap: 8px">
   <sc-for list="{{opts}}" as="o" hint-placeholder-count="2">
     <button role="radio" aria-checked="{{o.on}}" onClick="{{o.pick}}" style="{{o.style}}"><span style="{{o.dot}}"></span><span style="flex: 1; min-width: 0; text-align: start"><span style="display: block; font-size: 15px; font-weight: 600">{{o.title}}</span><span style="display: block; font-size: 13px; color: var(--soft)">{{o.sub}}</span></span></button>
   </sc-for>
 </div>
 <div style="display: flex; justify-content: center; padding: 6px 0">
-  <div aria-label="Aperçu de la page A4" role="img" style="width: min(100%, 300px); aspect-ratio: 210 / 297; background: #FFFDF8; color: #1C1A17; border-radius: 6px; box-shadow: var(--shadow); padding: 7% 8%; display: flex; flex-direction: column; gap: 6px; overflow: hidden">
+  <div aria-label="{{t.previewA4}}" role="img" style="width: min(100%, 300px); aspect-ratio: 210 / 297; background: #FFFDF8; color: #1C1A17; border-radius: 6px; box-shadow: var(--shadow); padding: 7% 8%; display: flex; flex-direction: column; gap: 6px; overflow: hidden">
     <div style="display: flex; justify-content: space-between; font: 600 9px Inter, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: #6B645A"><span>{{G.parasha}} · {{range}}</span><span>1 / {{pages}}</span></div>
     <p style="margin: 6px 0 2px; font: 600 8px Inter, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: #A24E14; text-align: right">{{firstAlya}}</p>
     <div aria-hidden="true" style="display: flex; flex-direction: column; gap: 8px; margin-top: 2px"><sc-for list="{{lines}}" as="w" hint-placeholder-count="14"><div style="{{w}}"></div></sc-for></div>
   </div>
 </div>
 <p style="margin: 0; text-align: center; font-size: 13px; line-height: 1.5; color: var(--soft)">{{summary}}</p>
-<p style="margin: -12px 0 0; text-align: center; font-size: 12px; line-height: 1.5; color: var(--soft)">Sans téléphone le Chabbat : la lecture reste possible le matin, avant le repas.</p>
+<p style="margin: -12px 0 0; text-align: center; font-size: 12px; line-height: 1.5; color: var(--soft)">{{t.printNote}}</p>
 <div style="display: flex; gap: 8px">
-  <button onClick="{{doPrint}}" style="flex: 1; min-width: 0; height: 56px; border-radius: 28px; border: none; background: var(--pill); color: var(--on-pill); display: flex; align-items: center; justify-content: center; gap: 8px; font: 600 16px Inter, sans-serif"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9V3h10v6"></path><rect x="4" y="9" width="16" height="8" rx="2"></rect><path d="M7 14h10v7H7z"></path></svg> Imprimer ou PDF</button>
+  <button onClick="{{doPrint}}" style="flex: 1; min-width: 0; height: 56px; border-radius: 28px; border: none; background: var(--pill); color: var(--on-pill); display: flex; align-items: center; justify-content: center; gap: 8px; font: 600 16px Inter, sans-serif"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9V3h10v6"></path><rect x="4" y="9" width="16" height="8" rx="2"></rect><path d="M7 14h10v7H7z"></path></svg> {{t.printBtn}}</button>
 </div>
 </main>
 </div>
@@ -38,14 +38,15 @@ class Component extends DCLogic {
   renderVals() {
     const mode = this.props.mode || 'clair'; const s = this.state || {}; const sel = s.sel ?? 0;
     const P0 = window.SM_PRINT_INFO ? SM_PRINT_INFO(false) : null, P1 = window.SM_PRINT_INFO ? SM_PRINT_INFO(true) : null;
-    const O = [P0 ? { title: 'Ce qu\'il me reste', sub: P0.range + ' · ' + P0.min + ' min · ~' + P0.pages + ' p.', range: P0.range, pages: P0.pages, first: P0.first } : { title: 'Ce qu\'il me reste', sub: 'Textes en cours de téléchargement', range: '', pages: 1, first: '' },
-      P1 ? { title: 'Toute la paracha', sub: '7 alyot · ' + P1.min + ' min · ~' + P1.pages + ' p.', range: P1.range, pages: P1.pages, first: P1.first } : { title: 'Toute la paracha', sub: '7 alyot', range: '', pages: 1, first: '' }];
+    const t = SM_TR(), F = SM_FMT;
+    const O = [P0 ? { title: t.printRestOpt, sub: F(t.printSub, { range: P0.range, min: P0.min, pages: P0.pages }), range: P0.range, pages: P0.pages, first: P0.first } : { title: t.printRestOpt, sub: t.printSubWait, range: '', pages: 1, first: '' },
+      P1 ? { title: t.printAllOpt, sub: F(t.printSubAll, { min: P1.min, pages: P1.pages }), range: P1.range, pages: P1.pages, first: P1.first } : { title: t.printAllOpt, sub: t.printSub7, range: '', pages: 1, first: '' }];
     const opts = O.map((o, i) => ({ ...o, on: i === sel, pick: () => this.setState({ sel: i }),
       style: 'display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 10px 16px; border-radius: 20px; font-family: inherit; color: var(--text); background: ' + (i === sel ? 'var(--glass)' : 'transparent') + '; border: ' + (i === sel ? '2px solid var(--accent-line)' : '1px solid var(--line)'),
       dot: 'flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; box-sizing: border-box; ' + (i === sel ? 'border: 6px solid var(--accent-line)' : 'border: 2px solid var(--line2)') }));
     const lines = [100, 70, 100, 64, 92, 100, 58, 100, 76, 96, 100, 50, 100, 82].map((w, i) => 'height: ' + (i % 3 === 2 ? 5 : 7) + 'px; border-radius: 3px; background: #1C1A17; opacity: ' + (i % 3 === 2 ? 0.25 : 0.55) + '; width: ' + w + '%; margin-left: auto');
-    return { doPrint: () => { if (!SM_PRINT(sel === 1)) alert('Textes pas encore disponibles.'); }, themeClass: 'th-' + mode, isParch: mode === 'parchemin', dir: 'ltr', rootStyle: rootVars(mode), opts, lines, firstAlya: O[sel].first, range: O[sel].range, pages: O[sel].pages,
-      summary: 'Chaque verset, puis son Targoum · A4 · environ ' + O[sel].pages + ' page' + (O[sel].pages > 1 ? 's' : '') };
+    return { doPrint: () => { if (!SM_PRINT(sel === 1)) alert(t.printNoText); }, themeClass: 'th-' + mode, isParch: mode === 'parchemin', rootStyle: rootVars(mode), opts, lines, firstAlya: O[sel].first, range: O[sel].range, pages: O[sel].pages,
+      summary: O[sel].pages > 1 ? F(t.printSummaryN, { n: O[sel].pages }) : t.printSummary1 };
   }
 }
 

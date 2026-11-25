@@ -9,14 +9,14 @@ SCREENS.bienvenue = {
 <div class="scroll" style="position: absolute; inset: 0; overflow-y: auto">
 <main style="position: relative; max-width: 560px; margin: 0 auto; padding: 22px 20px 40px; display: flex; flex-direction: column; gap: 24px">
 <div style="display: flex; align-items: center; justify-content: space-between">
-  <div aria-label="Étape {{stepNum}} sur 3" style="display: flex; gap: 6px"><sc-for list="{{dots}}" as="d" hint-placeholder-count="3"><span style="{{d}}"></span></sc-for></div>
-  <sc-if value="{{canBack}}" hint-placeholder-val="{{false}}"><button onClick="{{back}}" style="height: 44px; padding: 0 12px; border: none; background: none; color: var(--soft); font: 500 14px Inter, sans-serif">Retour</button></sc-if>
+  <div aria-label="{{stepLabel}}" style="display: flex; gap: 6px"><sc-for list="{{dots}}" as="d" hint-placeholder-count="3"><span style="{{d}}"></span></sc-for></div>
+  <sc-if value="{{canBack}}" hint-placeholder-val="{{false}}"><button onClick="{{back}}" style="height: 44px; padding: 0 12px; border: none; background: none; color: var(--soft); font: 500 14px Inter, sans-serif">{{t.back}}</button></sc-if>
 </div>
 
 <sc-if value="{{s0}}" hint-placeholder-val="{{true}}">
   <div class="rise" style="display: flex; flex-direction: column; gap: 22px">
     <div><p lang="he" dir="rtl" class="foil" style="margin: 0 0 6px; text-align: left; font-family: 'Frank Ruhl Libre', serif; font-size: 34px">שְׁנַיִם מִקְרָא</p>
-    <h1 class="serif" style="margin: 0; font-size: clamp(32px, 10vw, 44px); font-weight: 500; line-height: 1.05">Bienvenue.<br>Quelle langue ?</h1></div>
+    <h1 class="serif" style="margin: 0; font-size: clamp(32px, 10vw, 44px); font-weight: 500; line-height: 1.05">{{t.welcome}}<br>{{t.whichLang}}</h1></div>
     <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
       <sc-for list="{{langs}}" as="l" hint-placeholder-count="6"><button onClick="{{l.pick}}" aria-pressed="{{l.on}}" style="{{l.style}}"><span dir="{{l.dir}}" style="font-size: 17px; font-weight: 700">{{l.native}}</span><span style="font-size: 12px; color: var(--soft)">{{l.sub}}</span></button></sc-for>
     </div>
@@ -25,19 +25,19 @@ SCREENS.bienvenue = {
 
 <sc-if value="{{s1}}" hint-placeholder-val="{{false}}">
   <div class="rise" style="display: flex; flex-direction: column; gap: 22px">
-    <h1 class="serif" style="margin: 0; font-size: clamp(32px, 10vw, 44px); font-weight: 500; line-height: 1.05">Où vis-tu ?</h1>
-    <p style="margin: -10px 0 0; font-size: 15px; line-height: 1.5; color: var(--soft)">Pour la bonne paracha de la semaine et l'heure d'allumage des bougies.</p>
+    <h1 class="serif" style="margin: 0; font-size: clamp(32px, 10vw, 44px); font-weight: 500; line-height: 1.05">{{t.whereLive}}</h1>
+    <p style="margin: -10px 0 0; font-size: 15px; line-height: 1.5; color: var(--soft)">{{t.whereHelp}}</p>
     <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
       <sc-for list="{{places}}" as="p" hint-placeholder-count="2"><button onClick="{{p.pick}}" aria-pressed="{{p.on}}" style="{{p.style}}"><span style="font-size: 17px; font-weight: 700">{{p.name}}</span></button></sc-for>
     </div>
-    <label style="display: flex; flex-direction: column; gap: 8px"><span class="cap">Ville</span><select class="field" aria-label="Ville" ref="{{fillCities}}" onChange="{{pickCity}}"></select></label>
+    <label style="display: flex; flex-direction: column; gap: 8px"><span class="cap">{{t.city}}</span><select class="field" aria-label="{{t.city}}" ref="{{fillCities}}" onChange="{{pickCity}}"></select></label>
   </div>
 </sc-if>
 
 <sc-if value="{{s2}}" hint-placeholder-val="{{false}}">
   <div class="rise" style="display: flex; flex-direction: column; gap: 22px">
-    <h1 class="serif" style="margin: 0; font-size: clamp(32px, 10vw, 44px); font-weight: 500; line-height: 1.05">Ton rythme</h1>
-    <div role="radiogroup" aria-label="Rythme" style="display: flex; flex-direction: column; gap: 8px">
+    <h1 class="serif" style="margin: 0; font-size: clamp(32px, 10vw, 44px); font-weight: 500; line-height: 1.05">{{t.yourRhythm}}</h1>
+    <div role="radiogroup" aria-label="{{t.rhythm}}" style="display: flex; flex-direction: column; gap: 8px">
       <sc-for list="{{rhythms}}" as="r" hint-placeholder-count="4"><button role="radio" aria-checked="{{r.on}}" onClick="{{r.pick}}" style="{{r.style}}"><span style="{{r.dot}}"></span><span style="flex: 1; min-width: 0; text-align: start"><span style="display: block; font-size: 15px; font-weight: 600">{{r.title}}</span><span style="display: block; font-size: 13px; color: var(--soft)">{{r.sub}}</span></span></button></sc-for>
     </div>
     <label style="display: flex; flex-direction: column; gap: 8px"><span class="cap">{{t.remTime}}</span><input class="field" type="time" value="{{remAt}}" onChange="{{pickRemAt}}"></label>
@@ -45,9 +45,9 @@ SCREENS.bienvenue = {
 </sc-if>
 
 <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 6px">
-  <sc-if value="{{notLast}}" hint-placeholder-val="{{true}}"><button onClick="{{next}}" style="height: 56px; border-radius: 28px; border: none; background: var(--pill); color: var(--on-pill); font: 600 16px Inter, sans-serif">Continuer</button></sc-if>
-  <sc-if value="{{last}}" hint-placeholder-val="{{false}}"><a href="V2-Accueil.dc.html" style="height: 56px; border-radius: 28px; background: var(--pill); color: var(--on-pill); display: flex; align-items: center; justify-content: center; text-decoration: none; font: 600 16px Inter, sans-serif">C'est parti</a></sc-if>
-  <p style="margin: 0; text-align: center; font-size: 12px; color: var(--soft)">Modifiable à tout moment dans les Réglages.</p>
+  <sc-if value="{{notLast}}" hint-placeholder-val="{{true}}"><button onClick="{{next}}" style="height: 56px; border-radius: 28px; border: none; background: var(--pill); color: var(--on-pill); font: 600 16px Inter, sans-serif">{{t.continue}}</button></sc-if>
+  <sc-if value="{{last}}" hint-placeholder-val="{{false}}"><a href="V2-Accueil.dc.html" style="height: 56px; border-radius: 28px; background: var(--pill); color: var(--on-pill); display: flex; align-items: center; justify-content: center; text-decoration: none; font: 600 16px Inter, sans-serif">{{t.letsGo}}</a></sc-if>
+  <p style="margin: 0; text-align: center; font-size: 12px; color: var(--soft)">{{t.changeAnytime}}</p>
 </div>
 </main>
 </div>
@@ -63,12 +63,12 @@ class Component extends DCLogic {
     const card = (on) => 'min-height: 60px; border-radius: 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; font-family: inherit; color: var(--text); background: ' + (on ? 'var(--glass)' : 'transparent') + '; border: ' + (on ? '2px solid var(--accent-line)' : '1px solid var(--line2)');
     const t = SM_TR(); const R = [0, 1, 2, 3].map(i => ({ title: t['rh' + i], sub: t['rh' + i + 's'] }));
     return { remAt: s.remAt ?? (APP.get('remAt') || '07:30'), pickRemAt: (e) => { if (e.target.value) this.setState({ remAt: e.target.value }); },
-      themeClass: 'th-' + mode, isParch: mode === 'parchemin', dir: 'ltr', rootStyle: rootVars(mode), stepNum: step + 1,
+      themeClass: 'th-' + mode, isParch: mode === 'parchemin', rootStyle: rootVars(mode), stepNum: step + 1, stepLabel: SM_FMT(SM_TR().stepOf, { n: step + 1 }),
       dots: [0, 1, 2].map(i => 'height: 6px; border-radius: 3px; transition: width .3s; width: ' + (i === step ? 28 : 6) + 'px; background: ' + (i <= step ? 'var(--accent-line)' : 'var(--line2)')),
       s0: step === 0, s1: step === 1, s2: step === 2, notLast: step < 2, last: step === 2, canBack: step > 0,
       next: () => this.setState({ step: Math.min(2, step + 1) }), back: () => this.setState({ step: Math.max(0, step - 1) }),
       langs: LANGS.map(l => ({ ...l, on: l.id === lang, pick: () => this.setState({ lang: l.id }), style: card(l.id === lang) })),
-      places: ['Israël', 'Diaspora'].map((n, i) => ({ name: n, on: i === place, pick: () => this.setState({ place: i }), style: card(i === place) })),
+      places: [SM_TR().israel, SM_TR().diaspora].map((n, i) => ({ name: n, on: i === place, pick: () => this.setState({ place: i }), style: card(i === place) })),
       fillCities: (el) => { const L = SM_CITY_LIST(); el.innerHTML = L.map(c => '<option value="' + c.id + '">' + c.name + '</option>').join(''); const on = L.find(c => c.on); if (on) el.value = on.id; }, pickCity: (e) => this.setState({ city: e.target.value }),
       rhythms: R.map((r, i) => ({ ...r, on: i === rh, pick: () => this.setState({ rh: i }),
         style: 'display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 10px 16px; border-radius: 20px; font-family: inherit; color: var(--text); background: ' + (i === rh ? 'var(--glass)' : 'transparent') + '; border: ' + (i === rh ? '2px solid var(--accent-line)' : '1px solid var(--line)'),

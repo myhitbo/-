@@ -67,4 +67,4 @@ Avec le compte d'organisation :
 - Le choix de l'icône.
 - L'adresse de la page de don (à mettre dans `web/config.js`).
 - Le nom de l'organisme et une adresse e-mail de contact (politique de confidentialité, fiche Play, lettre à l'éditeur du Houmash).
-- La relecture du tounsi et de la darija par des locuteurs natifs.
+- La relecture du tounsi et de la darija par des locuteurs natifs : le fichier `docs/traductions-a-relire.csv` s'ouvre dans un tableur, avec une colonne « Correction » à remplir pour chaque langue. Une relecture de l'hébreu, de l'anglais et de l'espagnol est aussi souhaitable.
