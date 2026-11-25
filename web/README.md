@@ -2,6 +2,7 @@
 
 `index.html` charge, dans l'ordre :
 - `data/text.js` — textes des semaines. Remplacé au moment du build par `tools/fetch_sefaria.js` (textes de Sefaria). Fichier de secours : `null` → textes d'exemple.
+- `config.js` — réglages de l'éditeur de l'app (adresse de la page de don).
 - `i18n.js` — textes de l'interface, par langue (une clé absente retombe sur le français).
 - `sefaria.js` — récupération des textes sur Sefaria (sert au build et à la mise à jour en ligne).
 - `globals.js` — données partagées (semaine en cours, alya du jour, heure d'allumage, progression, impression).

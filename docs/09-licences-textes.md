@@ -22,7 +22,9 @@ Ceci n'est pas un avis juridique.
 | Targoum Onkelos | Sifsei Chachomim Chumash, Metsudah Publications, 2009 | CC BY-NC | Citer l'éditeur et la licence ; usage non commercial |
 | Targoum Yerouchalmi | Targum Jerusalem on Torah (sinon Targum Jonathan) | Domaine public | Aucune |
 
-**À faire dans l'app** : un écran « Sources » qui affiche ces trois lignes, avec un lien vers chaque licence et la mention « textes fournis par Sefaria ». Aujourd'hui l'app ne cite aucune source.
+**Dans l'app** : Réglages → « Sources et licences » affiche ces trois lignes, avec un lien vers chaque licence, la mention de Sefaria et la licence des polices. Les éditions de la Torah et de l'Onkelos sont demandées nommément à Sefaria ; l'écran affiche l'édition et la licence réellement reçues.
+
+**Bouton de don** : il apparaît dans les Réglages dès que l'adresse de la page de don est renseignée dans `web/config.js` (`donateUrl`). Il ouvre cette page dans le navigateur du téléphone. Pas de parrainage payant tant que l'éditeur n'a pas répondu.
 
 Point à surveiller : la Torah est sous CC BY-SA et l'Onkelos sous CC BY-NC, deux licences qui ne se mélangent pas dans une œuvre dérivée. L'app les affiche côte à côte sans les modifier, comme Sefaria. Pour écarter la question, Sefaria propose aussi une Torah du domaine public (« Tanach with Ta'amei Hamikra »).
 
@@ -32,7 +34,7 @@ Point à surveiller : la Torah est sous CC BY-SA et l'Onkelos sous CC BY-NC, deu
 
 **En parallèle** : écrire à Sefaria (hello@sefaria.org) pour demander qui détient les droits chez Metsudah, puisque c'est Sefaria qui a reçu la licence.
 
-**Avant l'envoi** : compléter les crochets, et ajouter l'écran « Sources » dans l'app pour que la phrase sur la mention soit exacte.
+**Avant l'envoi** : compléter les crochets.
 
 ### Lettre à envoyer (anglais)
 

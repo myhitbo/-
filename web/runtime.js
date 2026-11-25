@@ -67,7 +67,7 @@
     patchChildren(root(), out); refs.forEach(([fn, el]) => fn(el.__target || el)); }
   function rerenderWithProps() { if (cur) { cur.props = Object.assign({}, cur.props, { mode: APP.get('mode') }); schedule(); } }
 
-  const MAP = { Accueil: 'accueil', Lecteur: 'lecteur', Annee: 'annee', Reglages: 'reglages', Imprimer: 'imprimer', Bienvenue: 'bienvenue' };
+  const MAP = { Accueil: 'accueil', Lecteur: 'lecteur', Annee: 'annee', Reglages: 'reglages', Imprimer: 'imprimer', Sources: 'sources', Bienvenue: 'bienvenue' };
   function mount(name) {
     const S = window.SCREENS[name] || window.SCREENS.accueil;
     if (cur && cur.componentWillUnmount) cur.componentWillUnmount();
@@ -82,6 +82,8 @@
   document.addEventListener('click', (e) => {
     const a = e.target.closest && e.target.closest('a[href]'); if (!a) return;
     const href = a.getAttribute('href');
+    /* Lien vers un site : dans l'app Android, il s'ouvre dans le navigateur du téléphone */
+    if (/^https?:/.test(href)) { if (window.SMAndroid && SMAndroid.open) { e.preventDefault(); SMAndroid.open(href); } return; }
     if (href.startsWith('#mode=')) { e.preventDefault(); APP.set('mode', href.slice(6)); return; }
     const m = href.match(/V2-([A-Za-z]+)/);
     if (m && MAP[m[1]]) { e.preventDefault(); const target = MAP[m[1]]; const q = href.match(/alya=(\d)/); const tq = href.match(/to=(\d)/); const pq = href.match(/par=([^&]+)/); if (target === 'lecteur') { APP.set('alyaTo', tq ? Number(tq[1]) : null); APP.set('par', pq ? (/^\d{4}-/.test(pq[1]) ? pq[1] : Number(pq[1])) : 0); APP.set('alya', q ? Number(q[1]) : null); } if (cur && document.title === 'Bienvenue' && target === 'accueil') APP.set('onboarded', true); location.hash = '#/' + target; return; }

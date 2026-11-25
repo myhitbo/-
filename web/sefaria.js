@@ -21,6 +21,10 @@
   /* Versets connus sans Targoum Onkelos (Berakhot 8a : « même Atarot ve-Divon ») */
   const NO_TARGUM = { 'Numbers 32:3': 1 };
   const YER_TITLES = ['Targum Jerusalem, ', 'Targum Jonathan on '];
+  /* Éditions demandées à Sefaria (voir docs/09-licences-textes.md). Si l'une disparaît, on prend l'édition par défaut ;
+     dans tous les cas l'édition et la licence réellement reçues sont notées dans `src`, pour l'écran Sources. */
+  const MIKRA_V = 'Miqra according to the Masorah';
+  const ONKELOS_V = 'Sifsei Chachomim Chumash, Metsudah Publications, 2009';
 
   const sleep = (ms) => new Promise(r => setTimeout(r, ms));
   let last = 0;
@@ -50,21 +54,24 @@
     if (!onk) return true;
     return skel(he) === skel(onk);
   }
-  async function verses(ref) {
-    const d = await get('/texts/' + encodeURIComponent(ref.replace(/ /g, '_')), { context: 0, commentary: 0, pad: 0 });
+  async function verses(ref, vhe) {
+    const path = '/texts/' + encodeURIComponent(ref.replace(/ /g, '_')), base = { context: 0, commentary: 0, pad: 0 };
+    let d = await get(path, vhe ? Object.assign({ vhe }, base) : base);
+    if (vhe && !(d.he && d.he.length)) d = await get(path, base);
     const he = d.he || []; const sec = d.sections || [1, 1];
     const ch = +sec[0], v0 = sec.length > 1 ? +sec[1] : 1; const out = [];
     if (he.length && Array.isArray(he[0])) he.forEach((chap, ci) => { const st = ci === 0 ? v0 : 1; chap.forEach((t, vi) => out.push([ch + ci, st + vi, clean(t), brk(t)])); });
     else he.forEach((t, vi) => out.push([ch, v0 + vi, clean(t), brk(t)]));
+    out.meta = { title: String(d.heVersionTitle || '').trim(), license: d.heLicense || '' };
     return out;
   }
   async function yerushalmi(fullRef, log) {
     for (const t of YER_TITLES) {
       try { const d = await get('/texts/' + encodeURIComponent((t + fullRef).replace(/ /g, '_')), { context: 0, commentary: 0, pad: 0 });
         const he = Array.isArray(d.he) ? d.he.flat().join(' ') : d.he; const txt = clean(he);
-        if (txt) { log && log('    Yerouchalmi ' + fullRef + ' ← ' + t.trim()); return txt; } } catch (e) { log && log('    ' + t + fullRef + ' : ' + e.message); }
+        if (txt) { log && log('    Yerouchalmi ' + fullRef + ' ← ' + t.trim()); return { txt, meta: { title: String(d.heVersionTitle || '').trim(), license: d.heLicense || '' } }; } } catch (e) { log && log('    ' + t + fullRef + ' : ' + e.message); }
     }
-    return '';
+    return null;
   }
   function span(ref) {
     const m = ref.match(/^[A-Za-z ]+?\s+(\d+):(\d+)-(?:(\d+):)?(\d+)$/); if (!m) return ref;
@@ -84,21 +91,22 @@
     const book = ref.split(' ')[0];
     const arefs = ((item.extraDetails || {}).aliyot || []).slice(0, 7);
     if (arefs.length < 7) throw new Error('alyot manquantes pour ' + en);
-    const alyot = [];
+    const alyot = [], src = {};
     for (let i = 0; i < 7; i++) {
       const aref = arefs[i]; const bk = aref.split(' ')[0];
-      const mik = await verses(aref); const onk = {};
-      (await verses('Onkelos ' + aref)).forEach(([c, v, t]) => { onk[c + ':' + v] = t; });
+      const mik = await verses(aref, MIKRA_V); const onk = {};
+      const onkL = await verses('Onkelos ' + aref, ONKELOS_V); onkL.forEach(([c, v, t]) => { onk[c + ':' + v] = t; });
+      if (!src.mikra && mik.meta.title) src.mikra = mik.meta; if (!src.onk && onkL.meta.title) src.onk = onkL.meta;
       const vs = [];
       for (const [c, v, t, pb] of mik) {
         const r = c + ':' + v; const o = onk[r] || ''; const x = { ref: r, he: t, onk: o }; if (pb) x.pb = pb;
-        if (noTargum(bk + ' ' + r, t, o)) { x.nt = 1; x.yer = await yerushalmi(bk + ' ' + r, log); }
+        if (noTargum(bk + ' ' + r, t, o)) { x.nt = 1; const y = await yerushalmi(bk + ' ' + r, log); x.yer = y ? y.txt : ''; if (y && !src.yer) src.yer = y.meta; }
         vs.push(x);
       }
       alyot.push({ name: ALYA[i][0], heb: ALYA[i][1], day: DAYS[i], verses: span(aref), min: Math.max(3, Math.round(vs.length * 0.4)), ref: aref, v: vs });
       log && log('  ' + ALYA[i][0] + ': ' + aref + ' — ' + vs.length + ' versets, Onkelos ' + Object.keys(onk).length + ', sans Targoum ' + vs.filter(x => x.nt).length);
     }
-    return Object.assign(base, { parasha: fr, parashaEn: en, parashaHe: he, parashaRef: (BOOKS[book] || book) + ' ' + span(ref), parashaIndex: EN.indexOf(parts[0]), alyot });
+    return Object.assign(base, { parasha: fr, parashaEn: en, parashaHe: he, parashaRef: (BOOKS[book] || book) + ' ' + span(ref), parashaIndex: EN.indexOf(parts[0]), alyot, src });
   }
   /* Semaines à partir de `from` (Date), `count` semaines, dédoublonnées par Shabbat */
   async function weeks(from, count, diaspora, log) {

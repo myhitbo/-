@@ -78,6 +78,16 @@ SCREENS.reglages = {
     <sc-for list="{{ntOpts}}" as="o" hint-placeholder-count="3"><button role="radio" aria-checked="{{o.on}}" onClick="{{o.pick}}" style="{{o.style}}"><span style="{{o.dot}}"></span><span style="flex: 1; min-width: 0; text-align: start; font-size: 15px; font-weight: 600">{{o.title}}</span></button></sc-for>
   </div>
 </section>
+<sc-if value="{{hasDonate}}" hint-placeholder-val="{{false}}">
+<section aria-label="{{t.donate}}" class="glass" style="border-radius: 22px; padding: 16px 18px; display: flex; flex-direction: column; gap: 10px">
+  <h2 class="cap" style="margin: 0">{{t.donate}}</h2>
+  <p style="margin: 0; font-size: 14px; line-height: 1.5; color: var(--soft)">{{t.donateSub}}</p>
+  <a href="{{donateUrl}}" target="_blank" rel="noopener" style="height: 52px; border-radius: 26px; background: var(--pill); color: var(--on-pill); display: flex; align-items: center; justify-content: center; text-decoration: none; font: 600 15px Inter, sans-serif">{{t.donateBtn}}</a>
+</section>
+</sc-if>
+<section style="display: flex; flex-direction: column">
+  <a href="V2-Sources.dc.html" style="min-height: 56px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid var(--line); color: var(--text); text-decoration: none; font-size: 15px"><span>{{t.srcRow}}</span><span class="flip" style="display: inline-flex; color: var(--soft)"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg></span></a>
+</section>
 </main>
 </div>
 ${SM_NAV('reglages')}
@@ -105,7 +115,7 @@ class Component extends DCLogic {
       dayChips: [0, 1, 2, 3, 4, 5].map(d => ({ name: t.daysShort[d], sub: '', on: d === rhDay, pick: () => this.setState({ rhDay: d }), style: chip(d === rhDay) })),
       nChips: [2, 3].map(n => ({ name: t['rhN' + n], sub: t['rhN' + n + 's'], on: n === rhN, pick: () => this.setState({ rhN: n }), style: chip(n === rhN) }))
     };
-    const nt = NT[lang] || NT.fr; const ntm = s.nt ?? APP.get('nt'); return { ...reading, nt, fillCities: (el) => { const L = SM_CITY_LIST(); el.innerHTML = L.map(c => '<option value="' + c.id + '">' + c.name + '</option>').join(''); const on = L.find(c => c.on); if (on) el.value = on.id; }, pickCity: (e) => this.setState({ city: e.target.value }), ntOpts: ['trois', 'yer', 'deux'].map((k, i) => ({ title: nt.o[i], on: k === ntm, pick: () => this.setState({ nt: k }), style: RADIO(k === ntm), dot: DOT(k === ntm) })), themeClass: 'th-' + mode, isParch: mode === 'parchemin', dir: L.dir, rootStyle: rootVars(mode), t, hasDraft: !!t.draft, fs,
+    const nt = NT[lang] || NT.fr; const ntm = s.nt ?? APP.get('nt'); const donateUrl = (window.SM_CONFIG && SM_CONFIG.donateUrl) || ''; return { ...reading, donateUrl, hasDonate: /^https:\/\//.test(donateUrl), nt, fillCities: (el) => { const L = SM_CITY_LIST(); el.innerHTML = L.map(c => '<option value="' + c.id + '">' + c.name + '</option>').join(''); const on = L.find(c => c.on); if (on) el.value = on.id; }, pickCity: (e) => this.setState({ city: e.target.value }), ntOpts: ['trois', 'yer', 'deux'].map((k, i) => ({ title: nt.o[i], on: k === ntm, pick: () => this.setState({ nt: k }), style: RADIO(k === ntm), dot: DOT(k === ntm) })), themeClass: 'th-' + mode, isParch: mode === 'parchemin', dir: L.dir, rootStyle: rootVars(mode), t, hasDraft: !!t.draft, fs,
       smaller: () => this.setState({ fs: Math.max(20, fs - 2) }), bigger: () => this.setState({ fs: Math.min(40, fs + 2) }),
       modes: ['clair', 'sombre', 'texte', 'parchemin'].map(m => { const th = THEMES[m]; const on = m === mode; return { name: t[m], on, pick: () => this.setState({ mode: m }), style: 'height: 72px; min-width: 0; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 0 2px; font-family: inherit; background: ' + th['--bg'] + '; color: ' + th['--text'] + '; border: ' + (on ? '2px solid var(--accent-line)' : '1px solid ' + th['--line2']) }; }),
       langs: LANGS.map(l => ({ ...l, on: l.id === lang, pick: () => this.setState({ lang: l.id }), style: card(l.id === lang) })),

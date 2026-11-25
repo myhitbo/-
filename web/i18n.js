@@ -28,7 +28,16 @@
       /* Accueil */
       readOne: 'Lire {name}', readRange: 'Lire {a} – {b}', readAll: 'Lire la paracha', readRest: 'Lire la suite',
       stRead: 'Lue', stToday: 'Aujourd\'hui', stToRead: 'À lire', stLater: 'À venir',
-      late1: 'En retard : 1 alya à rattraper', lateN: 'En retard : {n} alyot à rattraper'
+      late1: 'En retard : 1 alya à rattraper', lateN: 'En retard : {n} alyot à rattraper',
+      /* Sources et licences */
+      srcTitle: 'Sources', srcKicker: 'Textes et licences', srcRow: 'Sources et licences', back: 'Retour',
+      srcTexts: 'Textes', srcMikra: 'Torah (texte hébreu)', srcOnk: 'Targoum Onkelos', srcYer: 'Targoum Yerouchalmi',
+      srcYerNote: 'pour les versets qu\'Onkelos ne traduit pas',
+      srcPD: 'Domaine public', srcNC: 'usage non commercial', srcLicense: 'Licence',
+      srcSefaria: 'Tous les textes sont fournis par Sefaria, bibliothèque libre de textes juifs :',
+      srcFonts: 'Polices', srcFontsLine: 'Inter, Newsreader, Frank Ruhl Libre, David Libre, Noto Serif Hebrew, Heebo et Noto Sans Arabic, sous licence',
+      /* Don */
+      donate: 'Soutenir l\'app', donateSub: 'L\'app est gratuite et sans publicité. Un don aide à la faire vivre.', donateBtn: 'Faire un don'
     },
     en: {}, es: {}, he: {}, tn: {}, ma: {}
   };
