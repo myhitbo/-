@@ -62,7 +62,7 @@ Point à surveiller : la Torah est sous CC BY-SA et l'Onkelos sous CC BY-NC, deu
 >
 > [Name]
 > Association Hachiveinou Letoratekha
-> [E-mail]
+> myhitbodedut26@gmail.com
 > [Link to the app or to a test version]
 
 ### Traduction (pour relecture)
@@ -91,7 +91,7 @@ Point à surveiller : la Torah est sous CC BY-SA et l'Onkelos sous CC BY-NC, deu
 >
 > [Nom]
 > Association Hachiveinou Letoratekha
-> [E-mail]
+> myhitbodedut26@gmail.com
 > [Lien vers l'application ou une version de test]
 
 ## Sources

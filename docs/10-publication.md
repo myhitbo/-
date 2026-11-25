@@ -51,7 +51,7 @@ Avec le compte d'organisation :
 ## Politique de confidentialité (texte proposé)
 > **Shnayim Mikra — confidentialité**
 >
-> L'application Shnayim Mikra est éditée par l'Association Hachiveinou Letoratekha. Contact : [adresse e-mail].
+> L'application Shnayim Mikra est éditée par l'Association Hachiveinou Letoratekha. Contact : myhitbodedut26@gmail.com.
 >
 > L'application fonctionne sans compte. Elle ne collecte, ne transmet et ne vend aucune donnée personnelle, et ne contient ni publicité ni outil de mesure d'audience.
 >
@@ -65,9 +65,9 @@ Avec le compte d'organisation :
 
 ## Ce qu'il reste à fournir
 - L'adresse de la page de don (à mettre dans `web/config.js`).
-- Une adresse e-mail de contact (politique de confidentialité, fiche Play, lettre à l'éditeur du Houmash).
 - La relecture du tounsi et de la darija par des locuteurs natifs : le fichier `docs/traductions-a-relire.csv` s'ouvre dans un tableur, avec une colonne « Correction » à remplir pour chaque langue. Une relecture de l'hébreu, de l'anglais et de l'espagnol est aussi souhaitable.
 
 ## Déjà fourni
+- L'adresse e-mail de contact : myhitbodedut26@gmail.com (politique de confidentialité, fiche Play, lettre à l'éditeur du Houmash).
 - L'organisme éditeur : Association Hachiveinou Letoratekha.
 - L'icône : dessin « bleu nuit ». Source : `android/icone/icone.svg` ; tous les formats sont refaits par `node tools/make_icons.js android/icone/icone.svg`.
