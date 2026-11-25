@@ -1,6 +1,7 @@
 name: Compilation Android
 
-# À chaque envoi : compile l'app (vérification). Sur la branche main : publie aussi l'APK de test dans les Releases.
+# À chaque envoi : compile l'app (vérification). Sur la branche main, ou quand la compilation est lancée à la main
+# (onglet Actions → Run workflow) : publie aussi l'APK de test dans les Releases.
 # Si la clé de signature est configurée (secrets SM_KEYSTORE_*), produit en plus le fichier de publication pour Google Play (AAB).
 on:
   push:
@@ -84,12 +85,23 @@ jobs:
           path: android/app/build/outputs/bundle/release/*.aab
 
       - name: Publier l'APK de test dans les Releases du dépôt
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
         env:
           GH_TOKEN: ${{ github.token }}
+          BRANCHE: ${{ github.ref_name }}
         run: |
           cp android/app/build/outputs/apk/debug/app-debug.apk shnayim-mikra-test.apk
+          cp docs/traductions-a-relire.csv traductions-a-relire.csv
           TAG="test-${{ github.run_number }}"
           PARASHA=$(node -e "global.window={};require('./web/data/text.js');const T=window.SM_TEXT;const t=new Date().toISOString().slice(0,10);const w=T&&T.diaspora?T.diaspora.weeks.find(x=>x.shabbatISO>=t&&!x.holiday):null;console.log(w?w.parasha:'textes d exemple')")
-          gh release create "$TAG" shnayim-mikra-test.apk --prerelease --title "APK de test n°${{ github.run_number }} — $PARASHA" \
-            --notes "Version de test. Paracha : $PARASHA (textes de Sefaria). Sur Android : télécharger shnayim-mikra-test.apk puis autoriser l'installation depuis cette source."
+          SUITE=""
+          if [ "$BRANCHE" != "main" ]; then SUITE=" (avant fusion)"; fi
+          {
+            echo "Version de test n°${{ github.run_number }}$SUITE. Paracha : $PARASHA (textes de Sefaria)."
+            echo
+            echo "**Installer sur Android** : télécharger \`shnayim-mikra-test.apk\`, puis autoriser l'installation depuis cette source. Si une ancienne version de test est déjà installée, la désinstaller d'abord."
+            echo
+            echo "**Relecture des traductions** : au premier écran, choisir la langue à relire (par exemple تونسي). Le fichier \`traductions-a-relire.csv\` s'ouvre dans un tableur : il liste tous les textes en français, tounsi et darija, avec une colonne pour les corrections."
+          } > notes.md
+          gh release create "$TAG" shnayim-mikra-test.apk traductions-a-relire.csv --prerelease --target "${{ github.sha }}" \
+            --title "APK de test n°${{ github.run_number }} — $PARASHA$SUITE" --notes-file notes.md
