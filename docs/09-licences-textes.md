@@ -42,25 +42,26 @@ Point à surveiller : la Torah est sous CC BY-SA et l'Onkelos sous CC BY-NC, deu
 >
 > Dear Sir or Madam,
 >
-> I am developing "Shnayim Mikra", a free app with no advertising that helps people complete Shnayim Mikra ve-Echad Targum every week. The weekly parashah is shown aliyah by aliyah: each verse twice, followed by Targum Onkelos.
+> I am writing on behalf of Association Hachiveinou Letoratekha, a non-profit association. We are developing "Shnayim Mikra", a free app with no advertising that helps people complete Shnayim Mikra ve-Echad Targum every week. The weekly parashah is shown aliyah by aliyah: each verse twice, followed by Targum Onkelos.
 >
 > The Targum shown in the app is the text of the Sifsei Chachomim Chumash (Metsudah Publications, 2009), as published on Sefaria under the Creative Commons Attribution-NonCommercial (CC BY-NC) license. The app retrieves it through Sefaria's public API, displays it unchanged, and credits the edition, the publisher and the license.
 >
-> The app is and will remain free to read. The text is never sold, never placed behind a paywall, and no advertising is shown. To cover running costs, I would like to:
+> The app is and will remain free to read. The text is never sold, never placed behind a paywall, and no advertising is shown. To cover running costs, we would like to:
 >
 > 1. accept voluntary donations from users;
 > 2. offer dedications — a short line such as "This week's learning is dedicated by … / in memory of …" — in return for a contribution;
 > 3. possibly later, offer a group plan to synagogues and schools for the group features, while the text itself stays free for everyone.
 >
-> I want to be sure that these uses are acceptable to you. Could you confirm in writing that I may keep using the Metsudah Onkelos text in the app under these conditions, or tell me which of them you would not allow, or on what terms?
+> We want to be sure that these uses are acceptable to you. Could you confirm in writing that we may keep using the Metsudah Onkelos text in the app under these conditions, or tell us which of them you would not allow, or on what terms?
 >
-> I would be glad to display the credit line of your choice, together with a link to buy the printed Chumash.
+> We would be glad to display the credit line of your choice, together with a link to buy the printed Chumash.
 >
 > If this request should go to someone else, I would be grateful if you could forward it or tell me whom to contact.
 >
 > Thank you very much,
 >
 > [Name]
+> Association Hachiveinou Letoratekha
 > [E-mail]
 > [Link to the app or to a test version]
 
@@ -70,25 +71,26 @@ Point à surveiller : la Torah est sous CC BY-SA et l'Onkelos sous CC BY-NC, deu
 >
 > Madame, Monsieur,
 >
-> Je développe « Shnayim Mikra », une application gratuite et sans publicité qui aide à faire Shnayim Mikra ve'Ehad Targoum chaque semaine. La paracha est présentée alya par alya : chaque verset deux fois, puis le Targoum Onkelos.
+> Je vous écris au nom de l'Association Hachiveinou Letoratekha, association à but non lucratif. Nous développons « Shnayim Mikra », une application gratuite et sans publicité qui aide à faire Shnayim Mikra ve'Ehad Targoum chaque semaine. La paracha est présentée alya par alya : chaque verset deux fois, puis le Targoum Onkelos.
 >
 > Le Targoum affiché est le texte du Houmash Sifsei Chachomim (Metsudah Publications, 2009), tel que publié sur Sefaria sous licence Creative Commons Attribution – Pas d'utilisation commerciale (CC BY-NC). L'application le récupère par l'API publique de Sefaria, l'affiche sans modification et cite l'édition, l'éditeur et la licence.
 >
-> L'application est et restera gratuite à la lecture. Le texte n'est jamais vendu, jamais placé derrière un accès payant, et aucune publicité n'est affichée. Pour couvrir les frais de fonctionnement, je souhaite :
+> L'application est et restera gratuite à la lecture. Le texte n'est jamais vendu, jamais placé derrière un accès payant, et aucune publicité n'est affichée. Pour couvrir les frais de fonctionnement, nous souhaitons :
 >
 > 1. accepter des dons libres des utilisateurs ;
 > 2. proposer des dédicaces — une courte ligne comme « L'étude de cette semaine est dédiée par… / à la mémoire de… » — en échange d'une contribution ;
 > 3. éventuellement plus tard, proposer une formule de groupe aux synagogues et aux écoles pour les fonctions de groupe, le texte restant gratuit pour tous.
 >
-> Je veux m'assurer que ces usages vous conviennent. Pouvez-vous me confirmer par écrit que je peux continuer à utiliser le texte de l'Onkelos Metsudah dans ces conditions, ou m'indiquer lesquelles vous n'accepteriez pas, ou à quelles conditions ?
+> Nous voulons nous assurer que ces usages vous conviennent. Pouvez-vous nous confirmer par écrit que nous pouvons continuer à utiliser le texte de l'Onkelos Metsudah dans ces conditions, ou nous indiquer lesquelles vous n'accepteriez pas, ou à quelles conditions ?
 >
-> J'afficherai volontiers la mention de votre choix, avec un lien pour acheter le Houmash imprimé.
+> Nous afficherons volontiers la mention de votre choix, avec un lien pour acheter le Houmash imprimé.
 >
 > Si cette demande doit être adressée à quelqu'un d'autre, je vous serais reconnaissant de la transmettre ou de m'indiquer la bonne personne.
 >
 > Avec mes remerciements,
 >
 > [Nom]
+> Association Hachiveinou Letoratekha
 > [E-mail]
 > [Lien vers l'application ou une version de test]
 

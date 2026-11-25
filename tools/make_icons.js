@@ -40,7 +40,13 @@ const FONTS = '<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@8
     await shot(Math.round(48 * DENS[d]), 'round', path.join(res, 'mipmap-' + d, 'ic_launcher_round.png'));
     await shot(Math.round(108 * DENS[d]), '', path.join(res, 'mipmap-' + d, 'ic_launcher_foreground.png'), true);
   }
-  const adaptive = '<?xml version="1.0" encoding="utf-8"?>\n<!-- Icône adaptative (Android 8 et plus) : image écrite par tools/make_icons.js -->\n<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">\n    <background android:drawable="@mipmap/ic_launcher_foreground" />\n    <foreground android:drawable="@mipmap/ic_launcher_foreground" />\n</adaptive-icon>\n';
+  /* Couleur de fond de l'icône adaptative : celle du bord du dessin */
+  const edge = await p.evaluate(async (url) => { const im = new Image(); im.src = url; await im.decode(); const c = document.createElement('canvas'); c.width = im.width; c.height = im.height; const x = c.getContext('2d'); x.drawImage(im, 0, 0);
+    const d = x.getImageData(2, 2, 1, 1).data; return '#' + [d[0], d[1], d[2]].map(v => v.toString(16).padStart(2, '0')).join('').toUpperCase(); },
+    'data:image/png;base64,' + fs.readFileSync(path.join(res, 'mipmap-mdpi', 'ic_launcher_foreground.png')).toString('base64'));
+  fs.mkdirSync(path.join(res, 'values'), { recursive: true });
+  fs.writeFileSync(path.join(res, 'values', 'ic_launcher_background.xml'), '<?xml version="1.0" encoding="utf-8"?>\n<!-- Écrit par tools/make_icons.js -->\n<resources>\n    <color name="ic_launcher_background">' + edge + '</color>\n</resources>\n');
+  const adaptive = '<?xml version="1.0" encoding="utf-8"?>\n<!-- Icône adaptative (Android 8 et plus) : écrite par tools/make_icons.js -->\n<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">\n    <background android:drawable="@color/ic_launcher_background" />\n    <foreground android:drawable="@mipmap/ic_launcher_foreground" />\n</adaptive-icon>\n';
   fs.mkdirSync(path.join(res, 'mipmap-anydpi-v26'), { recursive: true });
   fs.writeFileSync(path.join(res, 'mipmap-anydpi-v26', 'ic_launcher.xml'), adaptive);
   fs.writeFileSync(path.join(res, 'mipmap-anydpi-v26', 'ic_launcher_round.xml'), adaptive);
