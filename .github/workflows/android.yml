@@ -10,6 +10,11 @@ on:
 permissions:
   contents: write
 
+# Une seule compilation à la fois par branche : un nouvel envoi remplace celle qui est en cours.
+concurrency:
+  group: android-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -51,9 +56,16 @@ jobs:
           echo "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/cle.jks"
           echo "SM_KEYSTORE_FILE=$RUNNER_TEMP/cle.jks" >> "$GITHUB_ENV"
 
+      # Le serveur des outils de compilation refuse parfois les téléchargements (erreur 429) : on réessaie, ce qui est déjà téléchargé est gardé.
       - name: Compiler l'APK de test
         working-directory: android
-        run: gradle assembleDebug --no-daemon
+        run: |
+          for essai in 1 2 3; do
+            gradle assembleDebug --no-daemon && exit 0
+            echo "Échec de l'essai $essai : nouvelle tentative dans une minute"
+            sleep 60
+          done
+          exit 1
 
       - name: Compiler la version de publication (AAB signé)
         if: env.HAS_KEY == 'true'
