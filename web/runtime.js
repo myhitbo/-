@@ -66,7 +66,7 @@
     patchChildren(root(), out); refs.forEach(([fn, el]) => fn(el.__target || el)); }
   function rerenderWithProps() { if (cur) { cur.props = Object.assign({}, cur.props, { mode: APP.get('mode') }); schedule(); } }
 
-  const MAP = { Accueil: 'accueil', Lecteur: 'lecteur', Annee: 'annee', Groupes: 'groupes', Reglages: 'reglages', Imprimer: 'imprimer', Bienvenue: 'bienvenue' };
+  const MAP = { Accueil: 'accueil', Lecteur: 'lecteur', Annee: 'annee', Reglages: 'reglages', Imprimer: 'imprimer', Bienvenue: 'bienvenue' };
   function mount(name) {
     const S = window.SCREENS[name] || window.SCREENS.accueil;
     if (cur && cur.componentWillUnmount) cur.componentWillUnmount();

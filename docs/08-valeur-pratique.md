@@ -7,7 +7,7 @@
 - Réglage « Verset sans Targoum » : lire l'hébreu 3 fois / lire le Targoum Yerouchalmi / les deux (par défaut).
 - Le Targoum Yerouchalmi est pris sur Sefaria (« Targum Jerusalem », sinon « Targum Jonathan »).
 - Dans le lecteur : bloc « 3ᵉ lecture · pas de Targoum » et/ou bloc « Targoum Yerouchalmi ». Sur la feuille imprimée : ✱.
-- À faire valider par un rav : présentation et choix par défaut.
+- Présentation et choix par défaut validés par un rav.
 
 ### Échéances et rattrapage (Choul'han Aroukh O.H. 285:4)
 - Objectif affiché : finir avant Chabbat, avec l'heure d'allumage et un compte à rebours.
@@ -18,12 +18,17 @@
 
 ### Heure d'allumage réelle
 - Calcul local du coucher du soleil (sans réseau), pour 40 villes en Israël, en France, en Europe et dans les Amériques.
-- Coucher du soleil moins 40 min à Jérusalem, 30 à Haïfa, 20 dans les autres villes d'Israël et 18 en diaspora. Les minutes sont affichées : à faire valider.
+- Coucher du soleil moins 40 min à Jérusalem, 30 à Haïfa, 20 dans les autres villes d'Israël et 18 en diaspora. Les minutes sont affichées. Validé par un rav.
 
 ### Imprimer le reste pour Chabbat
 - Écran Imprimer : « Ce qu'il me reste » ou « Toute la paracha », avec le nombre de pages estimé.
 - Feuille A4 : chaque verset puis son Targoum, par alya.
 - Sur Android, la fenêtre d'impression propose aussi « Enregistrer en PDF ».
+
+### Écran Année : la vraie progression
+- Une paracha est « terminée » quand ses 7 alyot sont lues depuis le dernier Sim'hat Torah ; l'année hébraïque affichée est celle de ce cycle.
+- Les semaines passées non terminées sont marquées « à compléter », avec le nombre d'alyot lues.
+- L'accueil affiche le même total (« Cette année »).
 
 ### Israël / diaspora
 - Les textes sont construits pour les deux calendriers. Le lieu choisi à l'accueil ou dans les Réglages décide de la paracha.

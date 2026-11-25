@@ -66,7 +66,8 @@
   window.SM_ZMAN = { sunset, candle, hhmm, localISO, addDays };
 
   /* ---------- Sim'hat Torah : 22 Tichri en Israël (Chemini Atséret), 23 Tichri en diaspora ---------- */
-  let hebF; try { hebF = new Intl.DateTimeFormat('en-u-ca-hebrew', { day: 'numeric', month: 'long', timeZone: 'UTC' }); } catch (e) {}
+  let hebF, hebY; try { hebF = new Intl.DateTimeFormat('en-u-ca-hebrew', { day: 'numeric', month: 'long', timeZone: 'UTC' });
+    hebY = new Intl.DateTimeFormat('en-u-ca-hebrew', { year: 'numeric', timeZone: 'UTC' }); } catch (e) {}
   function simhatTorah(fromIso, dir, il) {
     if (!hebF) return null; const want = il ? 22 : 23;
     for (let k = 0; k < 400; k++) { const iso = addDays(fromIso, dir * k); const p = {}; hebF.formatToParts(new Date(iso + 'T12:00:00Z')).forEach(x => p[x.type] = x.value);
@@ -95,9 +96,18 @@
     return { c, t, W, ci, cur: W[ci] || null };
   }
 
+  /* Numéros (0 à 53) des parachiyot d'une semaine, ou d'une ligne de progression ; deux numéros pour une paracha double */
+  function idxOf(w) {
+    const S = window.SM_SEFARIA; if (!w || !S) return [];
+    if (Array.isArray(w.idx)) return w.idx;
+    const en = w.parashaEn || '';
+    if (en) { const one = S.EN.indexOf(en); const parts = one >= 0 ? [one] : en.split('-').map(x => S.EN.indexOf(x.trim())); if (parts.every(i => i >= 0)) return parts; }
+    return String(w.name || w.parasha || '').split(' – ').map(x => S.FR.indexOf(x.trim())).filter(i => i >= 0);
+  }
+
   /* ---------- Progression : alyot lues par semaine (clé = date du Shabbat) ---------- */
   function progAll() { try { return JSON.parse(localStorage.getItem('sm.prog') || '{}'); } catch (e) { return {}; } }
-  function progSet(w, n) { if (!w) return; const p = progAll(); const old = p[w.shabbatISO] || {}; p[w.shabbatISO] = { n: Math.max(0, Math.min(7, n)), name: w.parasha, he: w.parashaHe };
+  function progSet(w, n) { if (!w) return; const p = progAll(); const old = p[w.shabbatISO] || {}; p[w.shabbatISO] = { n: Math.max(0, Math.min(7, n)), name: w.parasha, he: w.parashaHe, idx: idxOf(w) };
     if (old.n === p[w.shabbatISO].n && old.name) return; try { localStorage.setItem('sm.prog', JSON.stringify(p)); } catch (e) {} }
   const progN = (w) => w ? ((progAll()[w.shabbatISO] || {}).n || 0) : 0;
   function touch(w) { if (w && !progAll()[w.shabbatISO]) progSet(w, 0); }
@@ -114,6 +124,17 @@
   window.SM_ALYOT = () => { const w = state().cur; return w && w.alyot ? w.alyot : null; };
   /* Fin d'une alya dans le lecteur */
   window.SM_MARK = function () { const w = weekFor(get('par')); const i = alyaIndex(); if (w) progSet(w, Math.max(progN(w), i + 1)); };
+
+  /* Année en cours (depuis le dernier Sim'hat Torah) : parachiyot vraiment terminées, commencées, et celle(s) de la semaine */
+  window.SM_YEAR = function () {
+    const s = state(), stPrev = simhatTorah(localISO(s.t, s.c.tz), -1, isIL());
+    let year = ''; try { if (hebY && stPrev) year = hebY.formatToParts(new Date(stPrev + 'T12:00:00Z')).find(x => x.type === 'year').value; } catch (e) {}
+    const p = progAll(), done = {}, part = {};
+    Object.keys(p).forEach(iso => { if (stPrev && iso <= stPrev) return;
+      idxOf(p[iso]).forEach(i => { if (p[iso].n >= 7) done[i] = 1; else if (p[iso].n > 0) part[i] = Math.max(part[i] || 0, p[iso].n); }); });
+    Object.keys(done).forEach(i => { delete part[i]; });
+    return { year, done, part, cur: s.cur ? idxOf(s.cur) : [], count: Object.keys(done).length };
+  };
 
   window.SM_G = function () {
     const s = state(), c = s.c, w = s.cur || FALLBACK, R = weekFor(get('par')) || w, al = R.alyot || null, i = alyaIndex();
@@ -153,6 +174,7 @@
     let streak = 0; const isos = Object.keys(p).sort().reverse();
     for (const iso of isos) { if (s.cur && iso === s.cur.shabbatISO && p[iso].n < 7) continue; if (p[iso].n >= 7) streak++; else break; }
     out.streak = streak;
+    out.yearDone = window.SM_YEAR().count;
     return out;
   };
 
