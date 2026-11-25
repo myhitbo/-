@@ -1,8 +1,9 @@
-name: APK de test
+name: Compilation Android
 
+# À chaque envoi : compile l'app (vérification). Sur la branche main : publie aussi l'APK de test dans les Releases.
+# Si la clé de signature est configurée (secrets SM_KEYSTORE_*), produit en plus le fichier de publication pour Google Play (AAB).
 on:
   push:
-    branches: [main]
     paths: ['web/**', 'android/**', 'tools/**', '.github/workflows/android.yml']
   workflow_dispatch:
 
@@ -12,6 +13,12 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      SM_VERSION_CODE: ${{ github.run_number }}
+      HAS_KEY: ${{ secrets.SM_KEYSTORE_BASE64 != '' }}
+      SM_KEYSTORE_PASSWORD: ${{ secrets.SM_KEYSTORE_PASSWORD }}
+      SM_KEY_ALIAS: ${{ secrets.SM_KEY_ALIAS }}
+      SM_KEY_PASSWORD: ${{ secrets.SM_KEY_PASSWORD }}
     steps:
       - uses: actions/checkout@v5
 
@@ -22,7 +29,7 @@ jobs:
       - name: Textes depuis Sefaria (Israël et diaspora)
         run: node tools/fetch_sefaria.js
 
-      - name: Copier l'application web dans l'APK
+      - name: Copier l'application web dans l'app Android
         run: |
           mkdir -p android/app/src/main/assets/www
           cp -r web/. android/app/src/main/assets/www/
@@ -34,18 +41,38 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: '8.9'
+          gradle-version: '8.14.3'
 
-      - name: Compiler l'APK
+      - name: Clé de signature (si elle est configurée)
+        if: env.HAS_KEY == 'true'
+        env:
+          KEYSTORE_BASE64: ${{ secrets.SM_KEYSTORE_BASE64 }}
+        run: |
+          echo "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/cle.jks"
+          echo "SM_KEYSTORE_FILE=$RUNNER_TEMP/cle.jks" >> "$GITHUB_ENV"
+
+      - name: Compiler l'APK de test
         working-directory: android
         run: gradle assembleDebug --no-daemon
+
+      - name: Compiler la version de publication (AAB signé)
+        if: env.HAS_KEY == 'true'
+        working-directory: android
+        run: gradle bundleRelease --no-daemon
 
       - uses: actions/upload-artifact@v4
         with:
           name: shnayim-mikra-test-apk
           path: android/app/build/outputs/apk/debug/*.apk
 
-      - name: Publier l'APK dans les Releases du dépôt
+      - uses: actions/upload-artifact@v4
+        if: env.HAS_KEY == 'true'
+        with:
+          name: shnayim-mikra-google-play-aab
+          path: android/app/build/outputs/bundle/release/*.aab
+
+      - name: Publier l'APK de test dans les Releases du dépôt
+        if: github.ref == 'refs/heads/main'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |

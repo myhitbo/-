@@ -33,6 +33,13 @@
 - Les fins de paragraphe viennent du texte de Sefaria (marques {פ} et {ס}) ; un paragraphe ne chevauche jamais deux alyot.
 - Une séance est comptée quand on arrive au bout du texte, à la main comme en défilement automatique. Dans une séance de plusieurs alyot lues à la suite, chaque alya est comptée dès qu'on entre dans la suivante.
 
+### Rappel de lecture (notification Android)
+- Réglage dans l'accueil de bienvenue et dans les Réglages : interrupteur et heure (07:30 par défaut).
+- Un rappel par jour où une séance est prévue et pas encore lue ; les séances en retard s'y ajoutent (« dont 2 alyot en retard »). En rythme libre : un rappel par jour tant que la paracha n'est pas finie.
+- Jamais pendant Shabbat ni les fêtes, de l'allumage des bougies à la sortie des étoiles, selon la ville ; second jour de fête en diaspora seulement.
+- L'app calcule les rappels des 21 prochains jours et les confie à Android ; la liste est refaite à chaque ouverture et à chaque alya lue.
+- Si Android bloque les notifications, les Réglages l'indiquent et proposent de les autoriser.
+
 ### Écran Année : la vraie progression
 - Une paracha est « terminée » quand ses 7 alyot sont lues depuis le dernier Sim'hat Torah ; l'année hébraïque affichée est celle de ce cycle.
 - Les semaines passées non terminées sont marquées « à compléter », avec le nombre d'alyot lues.
@@ -50,5 +57,5 @@
 ## Prochaines idées
 - Compter en minutes (vitesse de lecture mesurée) au lieu de versets.
 - Toucher un mot araméen pour voir son sens (dictionnaire Jastrow sur Sefaria).
-- Widget Android, et rappel au créneau choisi.
+- Widget Android.
 - Mode Rachi à la place du Targoum : les versets sans Rachi lus 3 fois (Michna Beroura 285:5).

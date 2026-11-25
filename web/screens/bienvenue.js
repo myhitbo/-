@@ -40,7 +40,7 @@ SCREENS.bienvenue = {
     <div role="radiogroup" aria-label="Rythme" style="display: flex; flex-direction: column; gap: 8px">
       <sc-for list="{{rhythms}}" as="r" hint-placeholder-count="4"><button role="radio" aria-checked="{{r.on}}" onClick="{{r.pick}}" style="{{r.style}}"><span style="{{r.dot}}"></span><span style="flex: 1; min-width: 0; text-align: start"><span style="display: block; font-size: 15px; font-weight: 600">{{r.title}}</span><span style="display: block; font-size: 13px; color: var(--soft)">{{r.sub}}</span></span></button></sc-for>
     </div>
-    <label style="display: flex; flex-direction: column; gap: 8px"><span class="cap">Rappel chaque jour à</span><input class="field" type="time" value="07:30"></label>
+    <label style="display: flex; flex-direction: column; gap: 8px"><span class="cap">{{t.remTime}}</span><input class="field" type="time" value="{{remAt}}" onChange="{{pickRemAt}}"></label>
   </div>
 </sc-if>
 
@@ -62,7 +62,8 @@ class Component extends DCLogic {
     const lang = s.lang ?? APP.get('lang'), place = s.place ?? APP.get('place'), rh = s.rh ?? (APP.get('rh') ?? 0);
     const card = (on) => 'min-height: 60px; border-radius: 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; font-family: inherit; color: var(--text); background: ' + (on ? 'var(--glass)' : 'transparent') + '; border: ' + (on ? '2px solid var(--accent-line)' : '1px solid var(--line2)');
     const t = SM_TR(); const R = [0, 1, 2, 3].map(i => ({ title: t['rh' + i], sub: t['rh' + i + 's'] }));
-    return { themeClass: 'th-' + mode, isParch: mode === 'parchemin', dir: 'ltr', rootStyle: rootVars(mode), stepNum: step + 1,
+    return { remAt: s.remAt ?? (APP.get('remAt') || '07:30'), pickRemAt: (e) => { if (e.target.value) this.setState({ remAt: e.target.value }); },
+      themeClass: 'th-' + mode, isParch: mode === 'parchemin', dir: 'ltr', rootStyle: rootVars(mode), stepNum: step + 1,
       dots: [0, 1, 2].map(i => 'height: 6px; border-radius: 3px; transition: width .3s; width: ' + (i === step ? 28 : 6) + 'px; background: ' + (i <= step ? 'var(--accent-line)' : 'var(--line2)')),
       s0: step === 0, s1: step === 1, s2: step === 2, notLast: step < 2, last: step === 2, canBack: step > 0,
       next: () => this.setState({ step: Math.min(2, step + 1) }), back: () => this.setState({ step: Math.max(0, step - 1) }),

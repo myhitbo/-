@@ -1,13 +1,19 @@
 /* Shnayim Mikra — mini runtime: templates {{ }}, sc-for, sc-if, DOM patching, router, settings */
 (function () {
-  const DEF = { mode: 'clair', lang: 'fr', font: 'frank', fs: 25, place: 0, city: null, nt: 'deux', rh: 0, rhDay: 4, rhN: 3, order: 0, onboarded: false };
+  const DEF = { mode: 'clair', lang: 'fr', font: 'frank', fs: 25, place: 0, city: null, nt: 'deux', rh: 0, rhDay: 4, rhN: 3, order: 0, rem: true, remAt: '07:30', onboarded: false };
   let data; try { data = Object.assign({}, DEF, JSON.parse(localStorage.getItem('sm.settings') || '{}')); } catch (e) { data = Object.assign({}, DEF); }
   if (data.font === 'rashi') data.font = 'frank'; /* police retirée (pas de Rachi dans cette version) */
   const APP = window.APP = {
     get: (k) => (k === 'done' && window.SM_DONE) ? SM_DONE.get() : data[k],
-    set: (k, v) => { if (k === 'done' && window.SM_DONE) { SM_DONE.set(v); return; } if (data[k] === v) return; data[k] = v; try { localStorage.setItem('sm.settings', JSON.stringify(data)); } catch (e) {} if (k === 'mode') rerenderWithProps(); if (k === 'place') { schedule(); if (window.SM_REFRESH) SM_REFRESH(); } if (k === 'city' || k === 'nt') schedule(); }
+    set: (k, v) => { if (k === 'done' && window.SM_DONE) { SM_DONE.set(v); return; } if (data[k] === v) return; data[k] = v; try { localStorage.setItem('sm.settings', JSON.stringify(data)); } catch (e) {} if (k === 'mode') rerenderWithProps(); if (k === 'place') { schedule(); if (window.SM_REFRESH) SM_REFRESH(); } if (k === 'city' || k === 'nt') schedule();
+      if (k === 'mode') syncTheme();
+      if (REMIND.indexOf(k) >= 0 && window.SM_SYNC_REMINDERS) SM_SYNC_REMINDERS(); }
   };
-  const SYNC = ['mode', 'lang', 'font', 'fs', 'place', 'city', 'nt', 'rh', 'rhDay', 'rhN', 'order', 'done'];
+  /* Réglages qui changent les rappels */
+  const REMIND = ['rem', 'remAt', 'rh', 'rhDay', 'rhN', 'city', 'place', 'lang', 'onboarded'];
+  /* Couleur des barres du téléphone, accordée à l'apparence choisie (app Android) */
+  function syncTheme() { try { const th = (window.SM_THEMES || {})[data.mode]; if (window.SMAndroid && SMAndroid.theme && th) SMAndroid.theme(th['--bg'], data.mode === 'sombre'); } catch (e) {} }
+  const SYNC = ['mode', 'lang', 'font', 'fs', 'place', 'city', 'nt', 'rh', 'rhDay', 'rhN', 'order', 'rem', 'remAt', 'done'];
 
   window.DCLogic = class {
     constructor(props) { this.props = props; this.state = undefined; }
@@ -86,10 +92,12 @@
     if (/^https?:/.test(href)) { if (window.SMAndroid && SMAndroid.open) { e.preventDefault(); SMAndroid.open(href); } return; }
     if (href.startsWith('#mode=')) { e.preventDefault(); APP.set('mode', href.slice(6)); return; }
     const m = href.match(/V2-([A-Za-z]+)/);
-    if (m && MAP[m[1]]) { e.preventDefault(); const target = MAP[m[1]]; const q = href.match(/alya=(\d)/); const tq = href.match(/to=(\d)/); const pq = href.match(/par=([^&]+)/); if (target === 'lecteur') { APP.set('alyaTo', tq ? Number(tq[1]) : null); APP.set('par', pq ? (/^\d{4}-/.test(pq[1]) ? pq[1] : Number(pq[1])) : 0); APP.set('alya', q ? Number(q[1]) : null); } if (cur && document.title === 'Bienvenue' && target === 'accueil') APP.set('onboarded', true); location.hash = '#/' + target; return; }
+    if (m && MAP[m[1]]) { e.preventDefault(); const target = MAP[m[1]]; const q = href.match(/alya=(\d)/); const tq = href.match(/to=(\d)/); const pq = href.match(/par=([^&]+)/); if (target === 'lecteur') { APP.set('alyaTo', tq ? Number(tq[1]) : null); APP.set('par', pq ? (/^\d{4}-/.test(pq[1]) ? pq[1] : Number(pq[1])) : 0); APP.set('alya', q ? Number(q[1]) : null); } if (cur && document.title === 'Bienvenue' && target === 'accueil') { APP.set('onboarded', true); if (APP.get('rem') !== false && window.SMAndroid && SMAndroid.askNotify) SMAndroid.askNotify(); } location.hash = '#/' + target; return; }
     if (href === '#' || href === '') e.preventDefault();
   });
   window.addEventListener('hashchange', route);
-  window.addEventListener('DOMContentLoaded', () => { route(); if (window.SM_REFRESH) setTimeout(() => SM_REFRESH(), 1500); });
+  window.addEventListener('DOMContentLoaded', () => { route(); syncTheme(); if (window.SM_SYNC_REMINDERS) SM_SYNC_REMINDERS(); if (window.SM_REFRESH) setTimeout(() => SM_REFRESH(), 1500); });
+  /* Android prévient quand l'autorisation des notifications change */
+  window.SM_NOTIFY_CHANGED = () => { if (window.SM_SYNC_REMINDERS) SM_SYNC_REMINDERS(); schedule(); };
   window.SM_RERENDER = schedule;
 })();

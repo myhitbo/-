@@ -1,18 +1,43 @@
 plugins { id 'com.android.application' }
 
+/* Numéro de version : fourni par la compilation automatique (SM_VERSION_CODE), 1 sinon.
+   Signature de publication : uniquement si la clé est fournie par l'environnement (secrets GitHub). */
+def versionNumber = (System.getenv('SM_VERSION_CODE') ?: '1') as Integer
+def keystorePath = System.getenv('SM_KEYSTORE_FILE')
+
 android {
     namespace 'org.shnayimmikra.app'
-    compileSdk 34
+    compileSdk 36
     defaultConfig {
         applicationId 'org.shnayimmikra.app'
         minSdk 24
-        targetSdk 34
-        versionCode 1
-        versionName '0.1-test'
+        targetSdk 36
+        versionCode versionNumber
+        versionName "1.0.${versionNumber}"
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
-    buildTypes { debug { applicationIdSuffix '.test' } }
+    signingConfigs {
+        release {
+            if (keystorePath) {
+                storeFile file(keystorePath)
+                storePassword System.getenv('SM_KEYSTORE_PASSWORD')
+                keyAlias System.getenv('SM_KEY_ALIAS')
+                keyPassword System.getenv('SM_KEY_PASSWORD')
+            }
+        }
+    }
+    buildTypes {
+        debug {
+            applicationIdSuffix '.test'; versionNameSuffix '-test'
+            /* Avec la clé fournie, la version de test garde la même signature d'une compilation à l'autre : elle se met à jour sans désinstaller */
+            if (keystorePath) signingConfig signingConfigs.release
+        }
+        release {
+            minifyEnabled false
+            if (keystorePath) signingConfig signingConfigs.release
+        }
+    }
 }

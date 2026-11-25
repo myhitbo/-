@@ -6,7 +6,11 @@ Application (et bot) pour encourager à faire **Shnayim Mikra ve'Ehad Targoum** 
 
 ## Statut
 
-Phase de cadrage et de conception. Pas encore de code.
+Application Android en version de test (lecteur seul), en préparation pour Google Play. Le bot, les comptes et les groupes viendront dans une version suivante.
+
+- `web/` — l'application (écrans, textes, polices) : voir [web/README.md](web/README.md)
+- `android/` — l'enveloppe Android (affichage, rappels, impression)
+- `tools/` — téléchargement des textes (Sefaria) et des polices
 
 ## Documents
 
@@ -21,5 +25,6 @@ Phase de cadrage et de conception. Pas encore de code.
 | 7 | [Mise en place de 21st.dev UI Build](docs/07-setup-21st-dev.md) | Guide |
 | 8 | [Valeur pratique](docs/08-valeur-pratique.md) | En cours |
 | 9 | [Licences des textes et demande à Metsudah](docs/09-licences-textes.md) | Décidé, lettre à envoyer |
+| 10 | [Publication sur Google Play](docs/10-publication.md) | Marche à suivre |
 
 Les maquettes visuelles (canevas de design) sont tenues à part, hors de ce dépôt.

@@ -29,6 +29,11 @@
       readOne: 'Lire {name}', readRange: 'Lire {a} – {b}', readAll: 'Lire la paracha', readRest: 'Lire la suite',
       stRead: 'Lue', stToday: 'Aujourd\'hui', stToRead: 'À lire', stLater: 'À venir',
       late1: 'En retard : 1 alya à rattraper', lateN: 'En retard : {n} alyot à rattraper',
+      /* Rappel */
+      remTime: 'Heure du rappel', remBlocked: 'Les notifications sont bloquées pour l\'app : le rappel ne peut pas s\'afficher.', remAllow: 'Autoriser',
+      remHelp: 'Une notification les jours de lecture, jamais pendant Shabbat ni les fêtes.',
+      remMin: 'Environ {min} min', remLate1: ' · dont 1 alya en retard', remLateN: ' · dont {n} alyot en retard',
+      remGeneric: 'C\'est l\'heure de ta lecture.', wholeParasha: 'toute la paracha',
       /* Sources et licences */
       srcTitle: 'Sources', srcKicker: 'Textes et licences', srcRow: 'Sources et licences', back: 'Retour',
       srcTexts: 'Textes', srcMikra: 'Torah (texte hébreu)', srcOnk: 'Targoum Onkelos', srcYer: 'Targoum Yerouchalmi',

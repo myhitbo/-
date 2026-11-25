@@ -108,7 +108,8 @@
   /* ---------- Progression : alyot lues par semaine (clé = date du Shabbat) ---------- */
   function progAll() { try { return JSON.parse(localStorage.getItem('sm.prog') || '{}'); } catch (e) { return {}; } }
   function progSet(w, n) { if (!w) return; const p = progAll(); const old = p[w.shabbatISO] || {}; p[w.shabbatISO] = { n: Math.max(0, Math.min(7, n)), name: w.parasha, he: w.parashaHe, idx: idxOf(w) };
-    if (old.n === p[w.shabbatISO].n && old.name) return; try { localStorage.setItem('sm.prog', JSON.stringify(p)); } catch (e) {} }
+    if (old.n === p[w.shabbatISO].n && old.name) return; try { localStorage.setItem('sm.prog', JSON.stringify(p)); } catch (e) {}
+    if (window.SM_SYNC_REMINDERS) SM_SYNC_REMINDERS(); }
   const progN = (w) => w ? ((progAll()[w.shabbatISO] || {}).n || 0) : 0;
   function touch(w) { if (w && !progAll()[w.shabbatISO]) progSet(w, 0); }
   window.SM_DONE = { get: () => progN(state().cur), set: (n) => progSet(state().cur, n) };
@@ -240,6 +241,59 @@
     });
     return out;
   };
+  /* ---------- Rappels : liste des prochaines notifications, confiée à Android ---------- */
+  /* Heure locale d'une ville (date ISO, heures, minutes) → instant en millisecondes */
+  function zoned(iso, hh, mm, tz) {
+    const [y, m, d] = iso.split('-').map(Number), want = Date.UTC(y, m - 1, d, hh, mm); let t = want;
+    for (let k = 0; k < 2; k++) { const p = {}; f(tz, { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(t).forEach(x => p[x.type] = x.value);
+      t += want - Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour % 24, +p.minute); }
+    return t;
+  }
+  /* Jours de fête où l'on n'écrit pas (Yom Tov) ; le second jour ne vaut qu'en diaspora */
+  const YT = { Tishri: [1, 2, 10, 15, 22], Nisan: [15, 21], Sivan: [6] }, YT2 = { Tishri: [16, 23], Nisan: [16, 22], Sivan: [7] };
+  function yomTov(iso, il) {
+    if (!hebF) return false; const p = {}; hebF.formatToParts(new Date(iso + 'T12:00:00Z')).forEach(x => p[x.type] = x.value);
+    return (YT[p.month] || []).indexOf(+p.day) >= 0 || (!il && (YT2[p.month] || []).indexOf(+p.day) >= 0);
+  }
+  const holy = (iso, il) => dow(iso) === 6 || yomTov(iso, il);
+  /* Vrai si l'instant t tombe pendant Shabbat ou une fête, de l'allumage des bougies à la sortie des étoiles */
+  function isRest(t, c) {
+    const D = localISO(t, c.tz), h0 = holy(D, c.il), h1 = holy(addDays(D, 1), c.il);
+    return (h0 && h1) || (h0 && t < sunset(D, c) + 42 * 60e3) || (h1 && t >= sunset(D, c) - c.off * 60e3);
+  }
+  window.SM_IS_REST = (t) => isRest(t === undefined ? now() : t, city());
+  /* Les rappels des 21 prochains jours : [{ at, title, text }].
+     Un rappel par jour où une séance est prévue et pas encore lue (les séances en retard s'y ajoutent) ;
+     en rythme libre, un rappel par jour tant que la paracha n'est pas finie. Rien pendant Shabbat et les fêtes.
+     La liste est recalculée à chaque ouverture de l'app et à chaque alya lue. */
+  window.SM_REMINDERS = function () {
+    if (get('rem') === false) return [];
+    const hm = String(get('remAt') || '07:30').split(':').map(Number); if (isNaN(hm[0])) return [];
+    const s = state(), c = s.c, T = window.SM_TR(), F = window.SM_FMT, today = localISO(s.t, c.tz), rh = get('rh') || 0, ss = sessions(), out = [];
+    for (let k = 0; k < 21; k++) {
+      const D = addDays(today, k), t = zoned(D, hm[0], hm[1] || 0, c.tz);
+      if (t <= s.t + 60e3 || isRest(t, c)) continue;
+      const w = s.W.find(x => shabbatEnd(x.shabbatISO, c) > t);   /* la semaine de lecture à cet instant */
+      if (!w) { out.push({ at: t, title: 'Shnayim Mikra', text: T.remGeneric }); continue; }
+      const n = progN(w); if (n >= 7) continue;
+      const d = Math.round((Date.parse(D + 'T12:00:00Z') - Date.parse(addDays(w.shabbatISO, -6) + 'T12:00:00Z')) / 864e5);
+      let to, late = 0;
+      if (rh === 3) to = Math.min(6, n);
+      else { const due = ss.filter(x => x.day <= d); if (!due.length) continue;
+        to = due.reduce((a, x) => Math.max(a, x.to), 0); if (n > to) continue;
+        late = Math.max(0, ss.filter(x => x.day < d).reduce((a, x) => Math.max(a, x.to + 1), 0) - n); }
+      const from = Math.min(6, n), name = from === to ? NAMES[from] : (from === 0 && to === 6) ? T.wholeParasha : NAMES[from] + ' – ' + NAMES[to];
+      const text = !w.alyot ? T.remGeneric : F(T.remMin, { min: rangeMin(w, from, to) }) + (late === 1 ? T.remLate1 : late > 1 ? F(T.remLateN, { n: late }) : '');
+      out.push({ at: t, title: w.parasha + ' — ' + name, text });
+    }
+    return out;
+  };
+  let remTimer = 0;
+  window.SM_SYNC_REMINDERS = function () {
+    clearTimeout(remTimer);
+    remTimer = setTimeout(function () { try { if (window.SMAndroid && SMAndroid.reminders) SMAndroid.reminders(JSON.stringify(window.SM_REMINDERS())); } catch (e) {} }, 400);
+  };
+
   /* Les 3 prochaines parachiyot */
   window.SM_NEXT = function () {
     const s = state(); const list = s.W.slice(s.ci + 1, s.ci + 4);
@@ -291,7 +345,7 @@
       const keep = (c ? c.weeks : []).filter(w => (progAll()[w.shabbatISO] || {}).n < 7 && !ws.some(x => x.shabbatISO === w.shabbatISO));
       const val = { at: now(), weeks: keep.concat(ws) };
       try { localStorage.setItem('sm.text.' + k, JSON.stringify(val)); } catch (e) { localStorage.setItem('sm.text.' + k, JSON.stringify({ at: now(), weeks: ws })); }
-      memo = null; if (window.SM_RERENDER) SM_RERENDER();
+      memo = null; if (window.SM_RERENDER) SM_RERENDER(); if (window.SM_SYNC_REMINDERS) SM_SYNC_REMINDERS();
     } catch (e) { /* hors ligne ou Sefaria indisponible : on garde le texte embarqué */ }
     finally { window.__smRefreshing = false; }
   };
