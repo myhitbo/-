@@ -30,6 +30,10 @@
 - Les semaines passées non terminées sont marquées « à compléter », avec le nombre d'alyot lues.
 - L'accueil affiche le même total (« Cette année »).
 
+### Hors ligne
+- Les polices sont embarquées dans l'app (plus aucun appel à Google Fonts) : l'hébreu s'affiche de la même façon sans réseau.
+- Le seul accès réseau restant est la mise à jour des textes sur Sefaria.
+
 ### Israël / diaspora
 - Les textes sont construits pour les deux calendriers. Le lieu choisi à l'accueil ou dans les Réglages décide de la paracha.
 - Les semaines de fête (pas de paracha ordinaire) sont sautées. Les parachot doubles viennent du calendrier de Sefaria.
@@ -39,5 +43,4 @@
 - Compter en minutes (vitesse de lecture mesurée) au lieu de versets.
 - Toucher un mot araméen pour voir son sens (dictionnaire Jastrow sur Sefaria).
 - Widget Android, et rappel au créneau choisi.
-- Polices embarquées, pour fonctionner hors ligne.
 - Mode Rachi à la place du Targoum : les versets sans Rachi lus 3 fois (Michna Beroura 285:5).

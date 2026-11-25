@@ -5,6 +5,7 @@
 - `sefaria.js` — récupération des textes sur Sefaria (sert au build et à la mise à jour en ligne).
 - `globals.js` — données partagées (semaine en cours, alya du jour, heure d'allumage, progression, impression).
 - `runtime.js` — moteur des écrans, navigation et réglages (enregistrés sur le téléphone).
+- `fonts/` — polices embarquées (`fonts.css`), pour fonctionner hors ligne. Liste et licences : `fonts/LICENCES.md`.
 - `screens/_shared.js` — thèmes de couleurs et langues, communs aux écrans.
 - `screens/<nom>.js` — un fichier par écran : le gabarit HTML (`tpl`) puis sa logique (`make`).
 
