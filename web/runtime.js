@@ -1,13 +1,13 @@
 /* Shnayim Mikra — mini runtime: templates {{ }}, sc-for, sc-if, DOM patching, router, settings */
 (function () {
-  const DEF = { mode: 'clair', lang: 'fr', font: 'frank', fs: 25, place: 0, city: null, nt: 'deux', onboarded: false };
+  const DEF = { mode: 'clair', lang: 'fr', font: 'frank', fs: 25, place: 0, city: null, nt: 'deux', rh: 0, rhDay: 4, rhN: 3, order: 0, onboarded: false };
   let data; try { data = Object.assign({}, DEF, JSON.parse(localStorage.getItem('sm.settings') || '{}')); } catch (e) { data = Object.assign({}, DEF); }
   if (data.font === 'rashi') data.font = 'frank'; /* police retirée (pas de Rachi dans cette version) */
   const APP = window.APP = {
     get: (k) => (k === 'done' && window.SM_DONE) ? SM_DONE.get() : data[k],
     set: (k, v) => { if (k === 'done' && window.SM_DONE) { SM_DONE.set(v); return; } if (data[k] === v) return; data[k] = v; try { localStorage.setItem('sm.settings', JSON.stringify(data)); } catch (e) {} if (k === 'mode') rerenderWithProps(); if (k === 'place') { schedule(); if (window.SM_REFRESH) SM_REFRESH(); } if (k === 'city' || k === 'nt') schedule(); }
   };
-  const SYNC = ['mode', 'lang', 'font', 'fs', 'place', 'city', 'nt', 'done'];
+  const SYNC = ['mode', 'lang', 'font', 'fs', 'place', 'city', 'nt', 'rh', 'rhDay', 'rhN', 'order', 'done'];
 
   window.DCLogic = class {
     constructor(props) { this.props = props; this.state = undefined; }
@@ -63,7 +63,7 @@
   const root = () => document.getElementById('app');
   let cur = null, tplEl = null, pending = false;
   function schedule() { if (pending) return; pending = true; requestAnimationFrame(() => { pending = false; draw(); }); }
-  function draw() { if (!cur) return; refs = []; const vals = Object.assign({}, cur.props, { G: window.SM_G ? SM_G() : {} }, cur.renderVals()); const out = []; tplEl.childNodes.forEach(c => render(c, vals, out));
+  function draw() { if (!cur) return; refs = []; const vals = Object.assign({}, cur.props, { G: window.SM_G ? SM_G() : {}, t: window.SM_TR ? SM_TR() : {} }, cur.renderVals()); const out = []; tplEl.childNodes.forEach(c => render(c, vals, out));
     patchChildren(root(), out); refs.forEach(([fn, el]) => fn(el.__target || el)); }
   function rerenderWithProps() { if (cur) { cur.props = Object.assign({}, cur.props, { mode: APP.get('mode') }); schedule(); } }
 
@@ -84,7 +84,7 @@
     const href = a.getAttribute('href');
     if (href.startsWith('#mode=')) { e.preventDefault(); APP.set('mode', href.slice(6)); return; }
     const m = href.match(/V2-([A-Za-z]+)/);
-    if (m && MAP[m[1]]) { e.preventDefault(); const target = MAP[m[1]]; const q = href.match(/alya=(\d)/); const pq = href.match(/par=([^&]+)/); if (target === 'lecteur') { APP.set('par', pq ? (/^\d{4}-/.test(pq[1]) ? pq[1] : Number(pq[1])) : 0); APP.set('alya', q ? Number(q[1]) : null); } if (cur && document.title === 'Bienvenue' && target === 'accueil') APP.set('onboarded', true); location.hash = '#/' + target; return; }
+    if (m && MAP[m[1]]) { e.preventDefault(); const target = MAP[m[1]]; const q = href.match(/alya=(\d)/); const tq = href.match(/to=(\d)/); const pq = href.match(/par=([^&]+)/); if (target === 'lecteur') { APP.set('alyaTo', tq ? Number(tq[1]) : null); APP.set('par', pq ? (/^\d{4}-/.test(pq[1]) ? pq[1] : Number(pq[1])) : 0); APP.set('alya', q ? Number(q[1]) : null); } if (cur && document.title === 'Bienvenue' && target === 'accueil') APP.set('onboarded', true); location.hash = '#/' + target; return; }
     if (href === '#' || href === '') e.preventDefault();
   });
   window.addEventListener('hashchange', route);

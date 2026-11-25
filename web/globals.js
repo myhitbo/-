@@ -123,7 +123,38 @@
   window.SM_WEEK = (par) => weekFor(par === undefined ? get('par') : par);
   window.SM_ALYOT = () => { const w = state().cur; return w && w.alyot ? w.alyot : null; };
   /* Fin d'une alya dans le lecteur */
-  window.SM_MARK = function () { const w = weekFor(get('par')); const i = alyaIndex(); if (w) progSet(w, Math.max(progN(w), i + 1)); };
+  /* Séance ouverte dans le lecteur : alyot from..to de la semaine choisie (une seule alya si `alyaTo` est absent) */
+  function portion() {
+    const W = weekFor(get('par')); if (!W || !W.alyot) return null;
+    const from = alyaIndex(); let to = get('alyaTo'); to = (to === undefined || to === null || to < from) ? from : Math.min(6, to);
+    return { W, from, to };
+  }
+  window.SM_PORTION = function () { const P = portion(); return P ? { from: P.from, to: P.to, order: get('order') || 0, names: NAMES } : null; };
+  /* Progression depuis le lecteur : `upTo` alyot lues (sans argument : toute la séance) */
+  window.SM_MARK = function (upTo) { const P = portion(); if (!P) return; progSet(P.W, Math.max(progN(P.W), upTo === undefined ? P.to + 1 : upTo)); };
+
+  /* ---------- Rythme : la semaine découpée en séances ----------
+     rh : 0 = une alya par jour · 1 = toute la paracha d'un coup (jour choisi) · 2 = 2 ou 3 séances · 3 = libre.
+     Une séance = alyot from..to, prévue un jour de la semaine (0 = dimanche … 6 = Shabbat). */
+  function sessions() {
+    const rh = get('rh') || 0;
+    if (rh === 1) { const d = get('rhDay'); return [{ from: 0, to: 6, day: (d === undefined || d === null) ? 4 : d }]; }
+    if (rh === 2) return get('rhN') === 2 ? [{ from: 0, to: 3, day: 1 }, { from: 4, to: 6, day: 4 }] : [{ from: 0, to: 2, day: 0 }, { from: 3, to: 4, day: 2 }, { from: 5, to: 6, day: 4 }];
+    return [0, 1, 2, 3, 4, 5, 6].map(i => ({ from: i, to: i, day: i }));
+  }
+  const sessionAt = (n) => { const from = Math.min(6, n); return sessions().find(x => from >= x.from && from <= x.to) || { from, to: 6, day: 6 }; };
+  const rangeMin = (w, from, to) => w && w.alyot ? w.alyot.slice(from, to + 1).reduce((a, x) => a + x.min, 0) : 0;
+  /* Jour dans la semaine de lecture : 0 = dimanche … 6 = Shabbat ; −1 le samedi soir, une fois le Shabbat précédent sorti */
+  function dayInWeek(s) {
+    const today = localISO(s.t, s.c.tz); if (!s.cur) return dow(today);
+    return Math.round((Date.parse(today + 'T12:00:00Z') - Date.parse(addDays(s.cur.shabbatISO, -6) + 'T12:00:00Z')) / 864e5);
+  }
+  /* Prochaine séance de la semaine en cours, et nombre d'alyot en retard sur le rythme choisi */
+  window.SM_PLAN = function () {
+    const s = state(), n = progN(s.cur), rh = get('rh') || 0, d = dayInWeek(s), cur = sessionAt(n);
+    const due = rh === 3 ? 0 : sessions().filter(x => x.day < d).reduce((a, x) => Math.max(a, x.to + 1), 0);
+    return { rh, from: Math.min(6, n), to: cur.to, day: cur.day, today: d, late: n >= 7 ? 0 : Math.max(0, due - n), done: n >= 7, min: rangeMin(s.cur, Math.min(6, n), cur.to), names: NAMES };
+  };
 
   /* Année en cours (depuis le dernier Sim'hat Torah) : parachiyot vraiment terminées, commencées, et celle(s) de la semaine */
   window.SM_YEAR = function () {
@@ -140,11 +171,11 @@
     const s = state(), c = s.c, w = s.cur || FALLBACK, R = weekFor(get('par')) || w, al = R.alyot || null, i = alyaIndex();
     if (s.cur) touch(s.cur);
     const nRead = progN(R);
-    const next = nRead < 7 && al ? NAMES[Math.min(6, nRead)] + ', ' + al[Math.min(6, nRead)].min + ' min' : null;
+    const T = window.SM_TR(), F = window.SM_FMT, nx = nRead < 7 && al ? sessionAt(nRead) : null, nf = Math.min(6, nRead);
     const d = new Date(s.t), todayIso = localISO(s.t, c.tz);
     const out = { parasha: w.parasha, parashaHe: w.parashaHe, parashaRef: w.parashaRef, readParasha: R.parasha, readIso: R.shabbatISO || '',
       date: cap(DAYS[dow(todayIso)]) + ' ' + d.getDate() + ' ' + MONTHS[d.getMonth()], alyaName: NAMES[i] || NAMES[0],
-      afterText: next ? 'Prochaine alya : ' + next + '.' : 'La paracha est terminée. Shabbat Shalom !', cityName: c.name, place: isIL() ? 'Israël' : 'Diaspora' };
+      afterText: !nx ? T.nextNone : nx.to > nf ? F(T.nextRange, { a: NAMES[nf], b: NAMES[nx.to], min: rangeMin(R, nf, nx.to) }) : F(T.nextOne, { name: NAMES[nf], min: rangeMin(R, nf, nf) }), cityName: c.name, place: isIL() ? 'Israël' : 'Diaspora' };
     /* Allumage et compte à rebours */
     if (s.cur) {
       const cl = candle(s.cur.shabbatISO, c), left = cl - s.t, n = progN(s.cur);
@@ -175,19 +206,37 @@
     for (const iso of isos) { if (s.cur && iso === s.cur.shabbatISO && p[iso].n < 7) continue; if (p[iso].n >= 7) streak++; else break; }
     out.streak = streak;
     out.yearDone = window.SM_YEAR().count;
+    const plan = window.SM_PLAN(); out.hasLate = !!s.cur && plan.late > 0; out.lateLine = plan.late === 1 ? T.late1 : F(T.lateN, { n: plan.late });
     return out;
   };
 
   /* ---------- Textes du lecteur ---------- */
   window.SM_BLOCKS = function () {
-    const W = weekFor(get('par')); if (!W || !W.alyot) return null; const a = W.alyot[alyaIndex()]; if (!a) return null;
-    const ntMode = get('nt') || 'deux'; const out = [];
-    a.v.forEach(v => {
-      out.push({ kind: 'mikra', n: 1, ref: v.ref, text: v.he }); out.push({ kind: 'mikra', n: 2, ref: v.ref, text: v.he });
-      if (!v.nt) { out.push({ kind: 'targum', n: 3, ref: v.ref, text: v.onk }); return; }
-      const yer = ntMode !== 'trois' && v.yer;
-      if (ntMode !== 'yer' || !yer) out.push({ kind: 'mikra', n: 3, ref: v.ref, text: v.he, label: '3ᵉ lecture · pas de Targoum' });
-      if (yer) out.push({ kind: 'targum', n: 4, ref: v.ref, text: v.yer, label: 'Targoum Yerouchalmi' });
+    const P = portion(); if (!P) return null;
+    const al = P.W.alyot.slice(P.from, P.to + 1); if (!al.length || !al[0]) return null;
+    const t = window.SM_TR(), ntMode = get('nt') || 'deux', order = get('order') || 0, out = [];
+    /* Versets de la séance, dans l'ordre : al = numéro de l'alya, vi = rang du verset dans la séance */
+    const V = []; al.forEach((a, k) => a.v.forEach(v => V.push({ v, al: P.from + k, vi: V.length + 1 })));
+    const add = (x, kind, n, text, label) => out.push({ kind, n, ref: x.v.ref, text, al: x.al, aln: NAMES[x.al], vi: x.vi, label: label || '' });
+    const mik = (x, n) => add(x, 'mikra', n, x.v.he);
+    const tg = (x) => {   /* le Targoum du verset, ou ce qui le remplace quand Onkelos ne le traduit pas */
+      if (!x.v.nt) { add(x, 'targum', 3, x.v.onk); return; }
+      const yer = ntMode !== 'trois' && x.v.yer;
+      if (ntMode !== 'yer' || !yer) add(x, 'mikra', 3, x.v.he, t.read3nt);
+      if (yer) add(x, 'targum', 4, x.v.yer, t.yer);
+    };
+    if (order === 0) { V.forEach(x => { mik(x, 1); mik(x, 2); tg(x); }); return out; }
+    /* Lectures groupées : chaque groupe est lu deux fois, puis vient son Targoum.
+       1 = par paragraphe (jamais à cheval sur deux alyot) · 2 = par alya · 3 = toute la séance */
+    let groups = [];
+    if (order === 3) groups = [V];
+    else if (order === 2) groups = al.map((a, k) => V.filter(x => x.al === P.from + k));
+    else { let cur = []; V.forEach((x, i) => { cur.push(x); if (x.v.pb || i === V.length - 1 || V[i + 1].al !== x.al) { groups.push(cur); cur = []; } }); }
+    groups.forEach(grp => { if (!grp.length) return;
+      const a = grp[0], b = grp[grp.length - 1];
+      const name = order === 1 ? (a.v.ref === b.v.ref ? a.v.ref : a.v.ref + ' – ' + b.v.ref) : a.al === b.al ? NAMES[a.al] : (a.al === 0 && b.al === 6) ? P.W.parasha : NAMES[a.al] + ' – ' + NAMES[b.al];
+      [[1, t.read1], [2, t.read2]].forEach(pass => { const i = out.length; grp.forEach(x => mik(x, pass[0])); out[i].head = name + ' · ' + pass[1]; });
+      const i = out.length; grp.forEach(tg); out[i].head = name + ' · ' + t.targum;
     });
     return out;
   };

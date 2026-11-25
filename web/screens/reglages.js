@@ -56,10 +56,20 @@ SCREENS.reglages = {
   <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 52px; border-top: 1px solid var(--line)"><span style="font-size: 15px">{{t.reminder}}</span><span style="display: flex; align-items: center; gap: 4px; color: var(--soft); font-size: 14px; text-align: end">07:30<span class="flip" style="display: inline-flex"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg></span></span></div>
 </section>
 
-<section style="display: flex; flex-direction: column">
-  <h2 class="cap" style="margin: 0 0 4px">{{t.reading}}</h2>
-  <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 52px; border-top: 1px solid var(--line)"><span style="font-size: 15px">{{t.rhythm}}</span><span style="display: flex; align-items: center; gap: 4px; color: var(--soft); font-size: 14px; text-align: end">{{t.rhythmVal}}<span class="flip" style="display: inline-flex"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg></span></span></div>
-  <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 52px; border-top: 1px solid var(--line)"><span style="font-size: 15px">{{t.order}}</span><span style="display: flex; align-items: center; gap: 4px; color: var(--soft); font-size: 14px; text-align: end">{{t.orderVal}}<span class="flip" style="display: inline-flex"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg></span></span></div>
+<section aria-label="{{t.rhythm}}" style="display: flex; flex-direction: column; gap: 10px">
+  <h2 class="cap" style="margin: 0">{{t.reading}} · {{t.rhythm}}</h2>
+  <div role="radiogroup" aria-label="{{t.rhythm}}" style="display: flex; flex-direction: column; gap: 8px">
+    <sc-for list="{{rhOpts}}" as="o" hint-placeholder-count="4"><button role="radio" aria-checked="{{o.on}}" onClick="{{o.pick}}" style="{{o.style}}"><span style="{{o.dot}}"></span><span style="flex: 1; min-width: 0; text-align: start"><span style="display: block; font-size: 15px; font-weight: 600">{{o.title}}</span><span style="display: block; font-size: 13px; line-height: 1.4; color: var(--soft)">{{o.sub}}</span></span></button></sc-for>
+  </div>
+  <sc-if value="{{rhIsDay}}" hint-placeholder-val="{{false}}"><div style="display: flex; flex-direction: column; gap: 8px"><p class="cap" style="margin: 0">{{t.rhDay}}</p><div style="display: flex; flex-wrap: wrap; gap: 6px"><sc-for list="{{dayChips}}" as="d" hint-placeholder-count="3"><button onClick="{{d.pick}}" aria-pressed="{{d.on}}" style="{{d.style}}"><span style="display: block; font-size: 14px; font-weight: 600">{{d.name}}</span><span style="display: block; font-size: 11px; color: var(--soft)">{{d.sub}}</span></button></sc-for></div></div></sc-if>
+  <sc-if value="{{rhIsN}}" hint-placeholder-val="{{false}}"><div style="display: flex; flex-direction: column; gap: 8px"><p class="cap" style="margin: 0">{{t.rhCount}}</p><div style="display: flex; flex-wrap: wrap; gap: 6px"><sc-for list="{{nChips}}" as="d" hint-placeholder-count="3"><button onClick="{{d.pick}}" aria-pressed="{{d.on}}" style="{{d.style}}"><span style="display: block; font-size: 14px; font-weight: 600">{{d.name}}</span><span style="display: block; font-size: 11px; color: var(--soft)">{{d.sub}}</span></button></sc-for></div></div></sc-if>
+</section>
+
+<section aria-label="{{t.order}}" style="display: flex; flex-direction: column; gap: 10px">
+  <h2 class="cap" style="margin: 0">{{t.order}}</h2>
+  <div role="radiogroup" aria-label="{{t.order}}" style="display: flex; flex-direction: column; gap: 8px">
+    <sc-for list="{{orOpts}}" as="o" hint-placeholder-count="4"><button role="radio" aria-checked="{{o.on}}" onClick="{{o.pick}}" style="{{o.style}}"><span style="{{o.dot}}"></span><span style="flex: 1; min-width: 0; text-align: start"><span style="display: block; font-size: 15px; font-weight: 600">{{o.title}}</span><span style="display: block; font-size: 13px; line-height: 1.4; color: var(--soft)">{{o.sub}}</span></span></button></sc-for>
+  </div>
 </section>
 <section aria-label="{{nt.title}}" style="display: flex; flex-direction: column; gap: 10px">
   <h2 class="cap" style="margin: 0">{{nt.title}}</h2>
@@ -83,9 +93,19 @@ const DOT = (on) => 'flex-shrink: 0; width: 20px; height: 20px; border-radius: 5
 class Component extends DCLogic {
   renderVals() {
     const s = this.state || {}; const mode = s.mode ?? (this.props.mode || 'clair'); const lang = s.lang ?? APP.get('lang'); const font = s.font ?? APP.get('font'); const fs = s.fs ?? APP.get('fs'); const place = s.place ?? APP.get('place');
-    const L = LANGS.find(l => l.id === lang); const F = FONTS.find(f => f.id === font) || FONTS[0]; const t = T[lang];
+    const L = LANGS.find(l => l.id === lang); const F = FONTS.find(f => f.id === font) || FONTS[0]; const t = Object.assign({}, SM_TR(lang), T[lang]);
     const card = (on) => 'min-height: 60px; min-width: 0; border-radius: 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; font-family: inherit; color: var(--text); background: ' + (on ? 'var(--glass)' : 'transparent') + '; border: ' + (on ? '2px solid var(--accent-line)' : '1px solid var(--line2)');
-    const nt = NT[lang] || NT.fr; const ntm = s.nt ?? APP.get('nt'); return { nt, fillCities: (el) => { const L = SM_CITY_LIST(); el.innerHTML = L.map(c => '<option value="' + c.id + '">' + c.name + '</option>').join(''); const on = L.find(c => c.on); if (on) el.value = on.id; }, pickCity: (e) => this.setState({ city: e.target.value }), ntOpts: ['trois', 'yer', 'deux'].map((k, i) => ({ title: nt.o[i], on: k === ntm, pick: () => this.setState({ nt: k }), style: RADIO(k === ntm), dot: DOT(k === ntm) })), themeClass: 'th-' + mode, isParch: mode === 'parchemin', dir: L.dir, rootStyle: rootVars(mode), t, hasDraft: !!t.draft, fs,
+    /* Rythme et ordre de lecture */
+    const rh = s.rh ?? (APP.get('rh') ?? 0), order = s.order ?? (APP.get('order') ?? 0), rhDay = s.rhDay ?? (APP.get('rhDay') ?? 4), rhN = s.rhN ?? (APP.get('rhN') ?? 3);
+    const chip = (on) => 'min-width: 52px; min-height: 48px; padding: 6px 12px; border-radius: 16px; font-family: inherit; color: var(--text); background: ' + (on ? 'var(--glass)' : 'transparent') + '; border: ' + (on ? '2px solid var(--accent-line)' : '1px solid var(--line2)');
+    const reading = {
+      rhOpts: [0, 1, 2, 3].map(i => ({ title: t['rh' + i], sub: t['rh' + i + 's'], on: i === rh, pick: () => this.setState({ rh: i }), style: RADIO(i === rh), dot: DOT(i === rh) })),
+      orOpts: [0, 1, 2, 3].map(i => ({ title: t['or' + i], sub: t['or' + i + 's'], on: i === order, pick: () => this.setState({ order: i }), style: RADIO(i === order), dot: DOT(i === order) })),
+      rhIsDay: rh === 1, rhIsN: rh === 2,
+      dayChips: [0, 1, 2, 3, 4, 5].map(d => ({ name: t.daysShort[d], sub: '', on: d === rhDay, pick: () => this.setState({ rhDay: d }), style: chip(d === rhDay) })),
+      nChips: [2, 3].map(n => ({ name: t['rhN' + n], sub: t['rhN' + n + 's'], on: n === rhN, pick: () => this.setState({ rhN: n }), style: chip(n === rhN) }))
+    };
+    const nt = NT[lang] || NT.fr; const ntm = s.nt ?? APP.get('nt'); return { ...reading, nt, fillCities: (el) => { const L = SM_CITY_LIST(); el.innerHTML = L.map(c => '<option value="' + c.id + '">' + c.name + '</option>').join(''); const on = L.find(c => c.on); if (on) el.value = on.id; }, pickCity: (e) => this.setState({ city: e.target.value }), ntOpts: ['trois', 'yer', 'deux'].map((k, i) => ({ title: nt.o[i], on: k === ntm, pick: () => this.setState({ nt: k }), style: RADIO(k === ntm), dot: DOT(k === ntm) })), themeClass: 'th-' + mode, isParch: mode === 'parchemin', dir: L.dir, rootStyle: rootVars(mode), t, hasDraft: !!t.draft, fs,
       smaller: () => this.setState({ fs: Math.max(20, fs - 2) }), bigger: () => this.setState({ fs: Math.min(40, fs + 2) }),
       modes: ['clair', 'sombre', 'texte', 'parchemin'].map(m => { const th = THEMES[m]; const on = m === mode; return { name: t[m], on, pick: () => this.setState({ mode: m }), style: 'height: 72px; min-width: 0; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 0 2px; font-family: inherit; background: ' + th['--bg'] + '; color: ' + th['--text'] + '; border: ' + (on ? '2px solid var(--accent-line)' : '1px solid ' + th['--line2']) }; }),
       langs: LANGS.map(l => ({ ...l, on: l.id === lang, pick: () => this.setState({ lang: l.id }), style: card(l.id === lang) })),

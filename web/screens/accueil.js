@@ -75,6 +75,7 @@ SCREENS.accueil = {
       <p class="count" style="margin: 0; font-size: 15px; font-weight: 700; color: var(--accent)">{{G.countdown}}</p>
     </div>
     <p style="margin: 0; font-size: 13px; line-height: 1.45; color: var(--soft)">{{G.candleLine}}</p>
+    <sc-if value="{{G.hasLate}}" hint-placeholder-val="{{false}}"><p style="margin: 0; font-size: 13px; font-weight: 600; color: var(--accent)">{{G.lateLine}}</p></sc-if>
     <sc-if value="{{G.friday}}" hint-placeholder-val="{{false}}">
       <a href="V2-Imprimer.dc.html" style="margin-top: 6px; min-height: 44px; display: flex; align-items: center; gap: 8px; color: var(--accent); font-size: 14px; font-weight: 600; text-decoration: none"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"></path><rect x="3" y="9" width="18" height="8" rx="2"></rect><path d="M7 14h10v7H7z"></path></svg><span>Pas fini ? Imprime le reste pour Chabbat matin</span></a>
     </sc-if>
@@ -82,7 +83,7 @@ SCREENS.accueil = {
 
   <sc-if value="{{notFinished}}" hint-placeholder-val="{{true}}">
     <div style="display: flex; gap: 10px">
-      <a href="{{readHref}}" style="flex: 1; min-width: 0; height: 56px; border-radius: 28px; background: var(--pill); color: var(--on-pill); display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; font-size: 16px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 0 18px"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z" fill="currentColor"></path></svg>Lire {{today.name}}</a>
+      <a href="{{readHref}}" style="flex: 1; min-width: 0; height: 56px; border-radius: 28px; background: var(--pill); color: var(--on-pill); display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; font-size: 16px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 0 18px"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z" fill="currentColor"></path></svg>{{readLabel}}</a>
       <button onClick="{{markRead}}" aria-label="Marquer {{today.name}} comme lue (lue dans mon Houmash)" class="glass" style="flex-shrink: 0; height: 56px; padding: 0 18px; border-radius: 28px; color: var(--text); display: flex; align-items: center; gap: 8px; font-family: Inter, sans-serif; font-size: 15px; font-weight: 600"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg><span>Lue</span></button>
     </div>
   </sc-if>
@@ -165,10 +166,14 @@ class Component extends DCLogic {
         (a.i === s.sel ? 'color: var(--text); font-weight: 800; font-size: 12px;' : a.i < s.done ? 'color: var(--accent); font-weight: 600;' : 'color: var(--soft); font-weight: 500;') }));
     const ticks = []; for (let k = 0; k <= 28; k++) { const y = k * (H / 28); ticks.push({ y: y.toFixed(1), x1: k % 4 === 2 ? 4 : 9 }); }
     const a = ALYOT[s.sel];
-    const status = s.sel < s.done ? 'Lue' : s.sel === s.done ? (s.sel === new Date().getDay() ? "Aujourd'hui" : 'À lire') : 'À venir';
-    const today = ALYOT[Math.min(s.done, 6)];
+    /* Prochaine séance selon le rythme choisi : une alya, plusieurs, ou toute la paracha */
+    const t = SM_TR(), F = SM_FMT, plan = window.SM_PLAN ? SM_PLAN() : { rh: 0, from: Math.min(s.done, 6), to: Math.min(s.done, 6), today: new Date().getDay() };
+    const from = Math.min(s.done, 6), to = Math.max(from, plan.to);
+    const status = s.sel < s.done ? t.stRead : (s.sel >= from && s.sel <= to) ? (plan.rh === 0 && s.sel === plan.today ? t.stToday : t.stToRead) : t.stLater;
+    const today = ALYOT[from];
+    const readLabel = from === to ? F(t.readOne, { name: ALYOT[from].name }) : (from === 0 && to === 6) ? t.readAll : (to === 6 && plan.rh === 1) ? t.readRest : F(t.readRange, { a: ALYOT[from].name, b: ALYOT[to].name });
     return { next: window.SM_NEXT ? SM_NEXT().map(w => ({ ...w, locked: !w.canRead })) : [], themeClass: 'th-' + s.mode, isParch: s.mode === 'parchemin', rootStyle: rootVars(s.mode), scale, ticks, waveStyle: 'transform: translateY(' + yOf(s.sel) + 'px)',
-      sel: { ...a, status }, today, minLeft: s.shown, markRead: this._x.mr, reset: this._x.rs, readHref: 'V2-Lecteur.dc.html?par=0&alya=' + Math.min(s.done, 6),
+      sel: { ...a, status }, today, minLeft: s.shown, markRead: this._x.mr, reset: this._x.rs, readLabel, readHref: 'V2-Lecteur.dc.html?par=0&alya=' + from + '&to=' + to,
       finished: s.done >= 7, notFinished: s.done < 7, showToast: s.toast, toastName: s.toastName || '', toastMin: s.toastMin || 0 };
   }
 }

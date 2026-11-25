@@ -59,9 +59,9 @@ const THEMES = SM_THEMES, rootVars = SM_ROOTVARS, LANGS = SM_LANGS;
 class Component extends DCLogic {
   renderVals() {
     const mode = this.props.mode || 'clair'; const s = this.state || {}; const step = s.step ?? (this.props.step ?? 0);
-    const lang = s.lang ?? APP.get('lang'), place = s.place ?? APP.get('place'), rh = s.rh ?? 0;
+    const lang = s.lang ?? APP.get('lang'), place = s.place ?? APP.get('place'), rh = s.rh ?? (APP.get('rh') ?? 0);
     const card = (on) => 'min-height: 60px; border-radius: 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; font-family: inherit; color: var(--text); background: ' + (on ? 'var(--glass)' : 'transparent') + '; border: ' + (on ? '2px solid var(--accent-line)' : '1px solid var(--line2)');
-    const R = [{ title: 'Une alya par jour', sub: '5 à 12 min · conseillé' }, { title: 'Toute la paracha d\'un coup', sub: 'Environ 1 h, le jour de ton choix' }, { title: '2 ou 3 séances', sub: 'Par exemple dimanche, mercredi, vendredi' }, { title: 'Libre', sub: 'Tu lis quand tu veux' }];
+    const t = SM_TR(); const R = [0, 1, 2, 3].map(i => ({ title: t['rh' + i], sub: t['rh' + i + 's'] }));
     return { themeClass: 'th-' + mode, isParch: mode === 'parchemin', dir: 'ltr', rootStyle: rootVars(mode), stepNum: step + 1,
       dots: [0, 1, 2].map(i => 'height: 6px; border-radius: 3px; transition: width .3s; width: ' + (i === step ? 28 : 6) + 'px; background: ' + (i <= step ? 'var(--accent-line)' : 'var(--line2)')),
       s0: step === 0, s1: step === 1, s2: step === 2, notLast: step < 2, last: step === 2, canBack: step > 0,

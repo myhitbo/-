@@ -41,6 +41,8 @@
     s = s.replace(/\s*\{[פס]\}\s*/g, ' ');
     return s.replace(/\s+/g, ' ').trim();
   }
+  /* Fin de paragraphe après ce verset : 'p' (petou'ha) ou 's' (setouma), d'après la marque {פ} / {ס} du texte */
+  function brk(s) { const m = String(s || '').match(/\{([פס])\}(?:\s|&nbsp;|<[^>]+>)*$/); return m ? (m[1] === 'פ' ? 'p' : 's') : ''; }
   function skel(s) { return clean(s).replace(/[֑-ׇ׳״]/g, '').replace(/[^א-ת ]/g, ' ').replace(/\s+/g, ' ').trim(); }
   /* Onkelos vide ou identique à l'hébreu (seulement des noms) → pas de vrai Targoum */
   function noTargum(fullRef, he, onk) {
@@ -52,8 +54,8 @@
     const d = await get('/texts/' + encodeURIComponent(ref.replace(/ /g, '_')), { context: 0, commentary: 0, pad: 0 });
     const he = d.he || []; const sec = d.sections || [1, 1];
     const ch = +sec[0], v0 = sec.length > 1 ? +sec[1] : 1; const out = [];
-    if (he.length && Array.isArray(he[0])) he.forEach((chap, ci) => { const st = ci === 0 ? v0 : 1; chap.forEach((t, vi) => out.push([ch + ci, st + vi, clean(t)])); });
-    else he.forEach((t, vi) => out.push([ch, v0 + vi, clean(t)]));
+    if (he.length && Array.isArray(he[0])) he.forEach((chap, ci) => { const st = ci === 0 ? v0 : 1; chap.forEach((t, vi) => out.push([ch + ci, st + vi, clean(t), brk(t)])); });
+    else he.forEach((t, vi) => out.push([ch, v0 + vi, clean(t), brk(t)]));
     return out;
   }
   async function yerushalmi(fullRef, log) {
@@ -88,8 +90,8 @@
       const mik = await verses(aref); const onk = {};
       (await verses('Onkelos ' + aref)).forEach(([c, v, t]) => { onk[c + ':' + v] = t; });
       const vs = [];
-      for (const [c, v, t] of mik) {
-        const r = c + ':' + v; const o = onk[r] || ''; const x = { ref: r, he: t, onk: o };
+      for (const [c, v, t, pb] of mik) {
+        const r = c + ':' + v; const o = onk[r] || ''; const x = { ref: r, he: t, onk: o }; if (pb) x.pb = pb;
         if (noTargum(bk + ' ' + r, t, o)) { x.nt = 1; x.yer = await yerushalmi(bk + ' ' + r, log); }
         vs.push(x);
       }

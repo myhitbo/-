@@ -10,6 +10,7 @@ SCREENS.lecteur = {
   <div style="max-width: 640px; margin: 0 auto; padding: 34vh 22px 72vh">
     <sc-for list="{{blocks}}" as="b" hint-placeholder-count="6">
       <div data-kind="{{b.kind}}" style="{{b.wrap}}">
+        <sc-if value="{{b.head}}" hint-placeholder-val="{{false}}"><p class="serif" style="margin: 22px 0 14px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 19px; font-weight: 500; color: var(--accent)">{{b.head}}</p></sc-if>
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px">
           <span class="cap">{{b.label}}</span>
           <span style="font-size: 12px; color: var(--soft)">{{b.ref}}</span>
@@ -23,7 +24,7 @@ SCREENS.lecteur = {
 <header style="{{chromeTop}}">
   <a href="V2-Accueil.dc.html" aria-label="Retour" class="glass" style="flex-shrink: 0; width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center; color: var(--text)"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg></a>
   <div style="flex: 1; min-width: 0; text-align: center">
-    <p class="cap" style="margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{G.alyaName}} · {{verse}}</p>
+    <p class="cap" style="margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{alyaName}} · {{verse}}</p>
     <p class="serif" style="margin: 1px 0 0; font-size: 18px; font-weight: 500">{{G.readParasha}}</p>
   </div>
   <button onClick="{{togglePanel}}" aria-label="Affichage du texte" class="glass" style="flex-shrink: 0; width: 44px; height: 44px; border-radius: 22px; color: var(--text); font-family: Newsreader, serif; font-size: 18px; font-weight: 500; padding: 0">Aa</button>
@@ -82,7 +83,7 @@ SCREENS.lecteur = {
 <sc-if value="{{finished}}" hint-placeholder-val="{{false}}">
   <div style="position: absolute; inset: 0; z-index: 9; background: var(--bg); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 32px; text-align: center">
     <svg aria-hidden="true" width="88" height="88" viewBox="0 0 30 30"><circle class="ring" cx="15" cy="15" r="12" fill="none" stroke="var(--accent-line)" stroke-width="1.6" transform="rotate(-90 15 15)"></circle><path class="tick" d="M9.5 15.5l4 4 7.5-8.5" fill="none" stroke="var(--accent-line)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-    <p class="serif rise" style="margin: 0; font-size: 34px; font-weight: 500; animation-delay: .6s">{{G.alyaName}} terminé</p>
+    <p class="serif rise" style="margin: 0; font-size: 34px; font-weight: 500; animation-delay: .6s">{{doneTitle}}</p>
     <p class="rise" style="margin: 0; font-size: 15px; line-height: 1.5; color: var(--soft); animation-delay: .75s">{{G.afterText}}</p>
     <a class="rise" href="V2-Accueil.dc.html" style="margin-top: 8px; width: 100%; max-width: 360px; height: 56px; border-radius: 28px; background: var(--pill); color: var(--on-pill); display: flex; align-items: center; justify-content: center; font-weight: 600; text-decoration: none; animation-delay: .9s">Retour à l'accueil</a>
     <button class="rise" onClick="{{again}}" style="height: 44px; border: none; background: none; color: var(--soft); font-family: Inter, sans-serif; font-size: 14px; animation-delay: 1s">Relire depuis le début</button>
@@ -96,6 +97,7 @@ const LINE = 0.34;
 const HFONTS = [["frank", "Frank Ruhl", "'Frank Ruhl Libre', serif"], ["david", "David", "'David Libre', serif"], ["noto", "Noto", "'Noto Serif Hebrew', serif"], ["heebo", "Heebo", "Heebo, sans-serif"]];
 const BLOCKS = window.SM_BLOCKS() || [{"kind": "mikra", "n": 1, "heb": "יח", "ref": "29:18", "text": "וַיֶּאֱהַב יַעֲקֹב אֶת־רָחֵל וַיֹּאמֶר אֶעֱבָדְךָ שֶׁבַע שָׁנִים בְּרָחֵל בִּתְּךָ הַקְּטַנָּה׃"}, {"kind": "mikra", "n": 2, "heb": "יח", "ref": "29:18", "text": "וַיֶּאֱהַב יַעֲקֹב אֶת־רָחֵל וַיֹּאמֶר אֶעֱבָדְךָ שֶׁבַע שָׁנִים בְּרָחֵל בִּתְּךָ הַקְּטַנָּה׃"}, {"kind": "targum", "n": 3, "heb": "יח", "ref": "29:18", "text": "וּרְחֵים יַעֲקֹב יָת רָחֵל וַאֲמַר אֶפְלְחִנָּךְ שְׁבַע שְׁנִין בְּרָחֵל בְּרַתָּךְ זְעֵירְתָּא׃"}, {"kind": "mikra", "n": 1, "heb": "יט", "ref": "29:19", "text": "וַיֹּאמֶר לָבָן טוֹב תִּתִּי אֹתָהּ לָךְ מִתִּתִּי אֹתָהּ לְאִישׁ אַחֵר שְׁבָה עִמָּדִי׃"}, {"kind": "mikra", "n": 2, "heb": "יט", "ref": "29:19", "text": "וַיֹּאמֶר לָבָן טוֹב תִּתִּי אֹתָהּ לָךְ מִתִּתִּי אֹתָהּ לְאִישׁ אַחֵר שְׁבָה עִמָּדִי׃"}, {"kind": "targum", "n": 3, "heb": "יט", "ref": "29:19", "text": "וַאֲמַר לָבָן טָב דְּאֶתֵּן יָתַהּ לָךְ מִדְּאֶתֵּן יָתַהּ לִגְבַר אָחֳרָן תִּיב עִמִּי׃"}, {"kind": "mikra", "n": 1, "heb": "כ", "ref": "29:20", "text": "וַיַּעֲבֹד יַעֲקֹב בְּרָחֵל שֶׁבַע שָׁנִים וַיִּהְיוּ בְעֵינָיו כְּיָמִים אֲחָדִים בְּאַהֲבָתוֹ אֹתָהּ׃"}, {"kind": "mikra", "n": 2, "heb": "כ", "ref": "29:20", "text": "וַיַּעֲבֹד יַעֲקֹב בְּרָחֵל שֶׁבַע שָׁנִים וַיִּהְיוּ בְעֵינָיו כְּיָמִים אֲחָדִים בְּאַהֲבָתוֹ אֹתָהּ׃"}, {"kind": "targum", "n": 3, "heb": "כ", "ref": "29:20", "text": "וּפְלַח יַעֲקֹב בְּרָחֵל שְׁבַע שְׁנִין וַהֲווֹ בְּעֵינוֹהִי כְּיוֹמִין קַלִּילִין בִּדְרָחֵים יָתַהּ׃"}, {"kind": "mikra", "n": 1, "heb": "כא", "ref": "29:21", "text": "וַיֹּאמֶר יַעֲקֹב אֶל־לָבָן הָבָה אֶת־אִשְׁתִּי כִּי מָלְאוּ יָמָי וְאָבוֹאָה אֵלֶיהָ׃"}, {"kind": "mikra", "n": 2, "heb": "כא", "ref": "29:21", "text": "וַיֹּאמֶר יַעֲקֹב אֶל־לָבָן הָבָה אֶת־אִשְׁתִּי כִּי מָלְאוּ יָמָי וְאָבוֹאָה אֵלֶיהָ׃"}, {"kind": "targum", "n": 3, "heb": "כא", "ref": "29:21", "text": "וַאֲמַר יַעֲקֹב לְלָבָן הַב יָת אִתְּתִי אֲרֵי שְׁלִימוּ יוֹמֵי וְאֵיעוֹל לְוָתַהּ׃"}, {"kind": "mikra", "n": 1, "heb": "כב", "ref": "29:22", "text": "וַיֶּאֱסֹף לָבָן אֶת־כָּל־אַנְשֵׁי הַמָּקוֹם וַיַּעַשׂ מִשְׁתֶּה׃"}, {"kind": "mikra", "n": 2, "heb": "כב", "ref": "29:22", "text": "וַיֶּאֱסֹף לָבָן אֶת־כָּל־אַנְשֵׁי הַמָּקוֹם וַיַּעַשׂ מִשְׁתֶּה׃"}, {"kind": "targum", "n": 3, "heb": "כב", "ref": "29:22", "text": "וּכְנַשׁ לָבָן יָת כָּל אֱנָשֵׁי אַתְרָא וַעֲבַד מִשְׁתְּיָא׃"}];
 const MODE = 'clair';
+const PORTION = window.SM_PORTION ? SM_PORTION() : null;   /* séance ouverte : alyot from..to, ordre de lecture */
 class Component extends DCLogic {
   componentDidMount() { this.timer = setInterval(() => this.tick(), 33); }
   componentWillUnmount() { clearInterval(this.timer); }
@@ -109,12 +111,19 @@ class Component extends DCLogic {
     const line = el.scrollTop + el.clientHeight * LINE;
     let cur = 0; blocks.forEach((b, i) => { if (b.offsetTop <= line) cur = i; });
     if (cur !== s.cur) this.setState({ cur });
+    /* Progression : la séance est comptée quand on arrive tout en bas ; dans une séance de plusieurs alyot
+       lues à la suite, chaque alya est comptée dès qu'on entre dans la suivante. */
+    const atEnd = el.scrollTop + el.clientHeight >= el.scrollHeight - 2;
+    if (PORTION && window.SM_MARK) {
+      if (atEnd) { if (!this.ended) { this.ended = true; SM_MARK(); } }
+      else if (PORTION.order !== 3 && BLOCKS[cur] && BLOCKS[cur].al > (this.marked ?? PORTION.from)) { this.marked = BLOCKS[cur].al; SM_MARK(this.marked); }
+    }
+    if (atEnd && !(this.state && this.state.finished)) { this.setState({ playing: false, finished: true }); return; }
     if (!s.playing || userScrolling) { this.pos = el.scrollTop; return; }
     const kind = blocks[cur] ? blocks[cur].getAttribute('data-kind') : 'mikra';
     const base = [0, 9, 14, 20, 28, 38][s.speed];
     this.pos = (this.pos ?? el.scrollTop) + base * (kind === 'targum' ? s.tf : 1) * dt;
     el.scrollTop = this.pos; this.lastSet = el.scrollTop;
-    if (el.scrollTop + el.clientHeight >= el.scrollHeight - 2) this.setState({ playing: false, finished: true }); if (window.SM_MARK) SM_MARK();
   }
   handlers() {
     if (this._h) return this._h;
@@ -155,22 +164,28 @@ class Component extends DCLogic {
       smaller: () => { const z = this.state || {}; this.setState({ fs: Math.max(20, (z.fs ?? APP.get('fs')) - 2) }); },
       bigger: () => { const z = this.state || {}; this.setState({ fs: Math.min(40, (z.fs ?? APP.get('fs')) + 2) }); },
       cycleTf: () => { const z = this.c2 || 0.8; const order = [1, 0.8, 0.6]; const cur = (this.state && this.state.tf) ?? 0.8; this.setState({ tf: order[(order.indexOf(cur) + 1) % 3] }); },
-      again: () => { if (this.el) { this.el.scrollTop = 0; this.pos = 0; } this.setState({ finished: false, playing: false }); }
+      again: () => { if (this.el) { this.el.scrollTop = 0; this.pos = 0; } this.ended = false; this.setState({ finished: false, playing: false }); }
     };
-    const x = this._x;
+    const x = this._x; const t = SM_TR(), F = SM_FMT;
     const blocks = BLOCKS.map((b, i) => {
       const isT = b.kind === 'targum'; const on = i === s.cur;
-      return { ...b, label: b.label ? b.label : isT ? 'Targoum' : (b.n === 1 ? '1ʳᵉ lecture' : '2ᵉ lecture'),
+      return { ...b, label: b.label ? b.label : isT ? t.targum : (b.n === 1 ? t.read1 : t.read2),
         wrap: 'padding: 14px 16px; margin: 0 -16px 8px; border-radius: 18px; transition: background-color .35s; background: ' + (on && !isText ? 'var(--hl)' : 'transparent') + (on && isText ? '; box-shadow: inset -3px 0 0 var(--accent-line)' : ''),
         textStyle: 'margin: 0; font-family: ' + fontCss + '; font-weight: ' + (mode === 'sombre' ? 500 : 400) + '; font-size: ' + (isT ? fs - 3 : fs) + 'px; line-height: ' + (isText ? 2.05 : 1.9) + '; color: ' + (isT ? 'var(--soft)' : 'var(--text)') + '; text-wrap: pretty' };
     });
     const fade = 'transition: opacity .35s ease, transform .35s ease; ' + (chrome ? 'opacity: 1;' : 'opacity: 0; pointer-events: none;');
     const tfLabel = s.tf === 1 ? '=' : s.tf === 0.8 ? '−20 %' : '−40 %';
     const remainingMin = Math.max(1, Math.round((BLOCKS.length - s.cur) / 3 * 0.4));
+    const B = BLOCKS[s.cur] || BLOCKS[0] || {};
+    const vTotal = BLOCKS.reduce((m, b) => Math.max(m, b.vi || 0), 0) || BLOCKS.filter(b => b.n === 1).length;
+    const vCur = B.vi || Math.max(1, BLOCKS.slice(0, s.cur + 1).filter(b => b.n === 1).length);
+    const G0 = window.SM_G ? SM_G() : {}; const N = PORTION ? PORTION.names : [];
+    const doneTitle = !PORTION ? F(t.doneOne, { name: G0.alyaName || '' }) : PORTION.from === PORTION.to ? F(t.doneOne, { name: N[PORTION.from] }) :
+      (PORTION.from === 0 && PORTION.to === 6) ? t.doneAll : F(t.doneRange, { a: N[PORTION.from], b: N[PORTION.to] });
     const hrefs = { clair: '#mode=clair', sombre: '#mode=sombre', texte: '#mode=texte', parchemin: '#mode=parchemin' };
     return { themeClass: 'th-' + mode, isParch: mode === 'parchemin', rootStyle: rootVars(mode), blocks, setEl: c.h.setEl, toggle: (e) => { if (e && e.stopPropagation) e.stopPropagation(); c.h.toggle(); }, slower: c.h.slower, faster: c.h.faster,
       speedLabel: c.speedLabel, playing: s.playing, paused: !s.playing, playLabel: c.playLabel, cycleTf: x.cycleTf, tfLabel,
-      verse: BLOCKS[s.cur] ? BLOCKS[s.cur].ref : '', posLabel: 'Verset ' + Math.max(1, BLOCKS.slice(0, s.cur + 1).filter(b => b.n === 1).length) + ' sur ' + BLOCKS.filter(b => b.n === 1).length, remaining: remainingMin + ' min restantes',
+      verse: B.ref || '', alyaName: B.aln || G0.alyaName || '', doneTitle, posLabel: F(t.verseOf, { n: vCur, total: vTotal }), remaining: F(t.minLeft, { n: remainingMin }),
       progress: 'height: 100%; border-radius: 2px; width: ' + Math.round((s.cur + 1) / BLOCKS.length * 100) + '%; background: var(--accent-line); transition: width .4s',
       chromeTop: 'position: absolute; top: 0; left: 0; right: 0; z-index: 4; padding: 12px 14px 28px; display: flex; align-items: center; gap: 10px; background: linear-gradient(var(--bg) 62%, transparent); ' + fade + (chrome ? '' : ' transform: translateY(-12px);'),
       chromeBottom: 'position: absolute; left: 50%; bottom: 0; transform: translateX(-50%)' + (chrome ? '' : ' translateY(16px)') + '; width: 100%; max-width: 560px; z-index: 4; padding: 26px 14px 16px; display: flex; flex-direction: column; gap: 8px; background: linear-gradient(transparent, var(--bg) 30%); ' + fade,

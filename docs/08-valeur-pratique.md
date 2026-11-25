@@ -25,6 +25,14 @@
 - Feuille A4 : chaque verset puis son Targoum, par alya.
 - Sur Android, la fenêtre d'impression propose aussi « Enregistrer en PDF ».
 
+### Rythmes et ordres de lecture
+- Quatre rythmes, au choix à l'accueil et dans les Réglages : une alya par jour ; toute la paracha d'un coup (jour au choix) ; 2 séances (lundi, jeudi) ou 3 (dimanche, mardi, jeudi) ; libre.
+- Le bouton principal ouvre la prochaine séance : « Lire Rishon », « Lire Rishon – Shlishi », « Lire la paracha » ou « Lire la suite ».
+- Retard : si des séances prévues avant aujourd'hui ne sont pas lues, l'accueil indique le nombre d'alyot à rattraper (jamais en rythme libre).
+- Quatre ordres : verset, verset, Targoum ; par paragraphe (petou'ha ou setouma) ; par alya ; toute la séance deux fois puis tout son Targoum. Dans les lectures groupées, un titre annonce chaque passage (« Rishon · 2ᵉ lecture »).
+- Les fins de paragraphe viennent du texte de Sefaria (marques {פ} et {ס}) ; un paragraphe ne chevauche jamais deux alyot.
+- Une séance est comptée quand on arrive au bout du texte, à la main comme en défilement automatique. Dans une séance de plusieurs alyot lues à la suite, chaque alya est comptée dès qu'on entre dans la suivante.
+
 ### Écran Année : la vraie progression
 - Une paracha est « terminée » quand ses 7 alyot sont lues depuis le dernier Sim'hat Torah ; l'année hébraïque affichée est celle de ce cycle.
 - Les semaines passées non terminées sont marquées « à compléter », avec le nombre d'alyot lues.
