@@ -32,6 +32,13 @@ test('les règles du contrôle : sources, noms, liens', () => {
   assert.deepEqual(nomsInterdits("Ovadia vivait au temps d'A'hav et d'Izével ; Eliyahou, Elicha, Éliézer, les rois de Yehouda.", 'fr'), []);
   assert.deepEqual(nomsInterdits('Obadiah lived in the days of Ahab.', 'en'), ['Obadiah', 'Ahab']);
   assert.deepEqual(nomsInterdits('Ovadia lived in the days of Achav; Eliyahu, the kings of Yehuda.', 'en'), []);
+  // Le 'het porte son apostrophe : « 'Hiram ». « Hiram » seul, ou « d'Hiram », est la forme des Bibles françaises ; en anglais, « Chiram ».
+  // Bavel dans les deux langues.
+  assert.deepEqual(nomsInterdits("Hiram vint de Tsor ; l'exil de Babylone.", 'fr'), ['Babylone', 'Hiram']);
+  assert.deepEqual(nomsInterdits("Les colonnes d'Hiram.", 'fr'), ['Hiram']);
+  assert.deepEqual(nomsInterdits("'Hiram vint de Tsor ; le travail de 'Hiram ; « 'Hiram » ; (’Hiram) ; « Vayaass 'Hirom » ; l'exil de Bavel.", 'fr'), []);
+  assert.deepEqual(nomsInterdits('Hiram came from Tzor; the exile of Babylon.', 'en'), ['Hiram', 'Babylon']);
+  assert.deepEqual(nomsInterdits('Chiram came from Tzor; the exile of Bavel.', 'en'), []);
   assert.equal(lien({ genre: 'classique', sefaria: 'Rashi on Obadiah 1:1' }), 'https://www.sefaria.org/Rashi_on_Obadiah_1:1?lang=he');
   // Un contexte fautif est refusé : trop court, sans source, nom interdit, source exclue.
   const fautif = { contextes: [{ id: 'x', occasions: ['VAYISHLACH'], passages: ['Obadiah 1:1-1:21'], phrases: [

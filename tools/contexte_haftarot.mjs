@@ -70,15 +70,24 @@ export const AUJOURDHUI = [];
 const INTERDITS = {
   fr: ['Abdias', 'Élie', 'Elie', 'Élisée', 'Elisée', 'Achab', 'Jézabel', 'Jéroboam', 'Roboam', 'Osée', 'Isaïe', 'Ésaïe', 'Esaïe', 'Jérémie',
     'Ézéchiel', 'Ezéchiel', 'Zacharie', 'Malachie', 'Michée', 'Aggée', 'Josué', 'Moïse', 'Salomon', 'Saül', 'Ésaü', 'Esaü', 'Jacob', 'Isaac',
-    'Jéhu', 'Sédécias', 'Ézéchias', 'Josias', 'Nabuchodonosor', 'Samuel', 'Genèse', 'Exode', 'Lévitique', 'Deutéronome', 'Rois', 'Juges',
-    'Chroniques', 'Ancien Testament', 'Bible hébraïque', 'Yahvé', 'Jéhovah'],
+    'Jéhu', 'Sédécias', 'Ézéchias', 'Josias', 'Nabuchodonosor', 'Babylone', 'Samuel', 'Genèse', 'Exode', 'Lévitique', 'Deutéronome', 'Rois',
+    'Juges', 'Chroniques', 'Ancien Testament', 'Bible hébraïque', 'Yahvé', 'Jéhovah'],
   en: ['Obadiah', 'Elijah', 'Elisha', 'Ahab', 'Jezebel', 'Jeroboam', 'Rehoboam', 'Hosea', 'Isaiah', 'Jeremiah', 'Ezekiel', 'Zechariah', 'Micah',
-    'Haggai', 'Joshua', 'Moses', 'Solomon', 'Saul', 'Esau', 'Jacob', 'Isaac', 'Jehu', 'Zedekiah', 'Hezekiah', 'Josiah', 'Nebuchadnezzar', 'Samuel',
-    'Genesis', 'Exodus', 'Leviticus', 'Deuteronomy', 'Kings', 'Judges', 'Chronicles', 'Old Testament', 'Hebrew Bible', 'Yahweh', 'Jehovah'],
+    'Haggai', 'Joshua', 'Moses', 'Solomon', 'Hiram', 'Saul', 'Esau', 'Jacob', 'Isaac', 'Jehu', 'Zedekiah', 'Hezekiah', 'Josiah', 'Nebuchadnezzar',
+    'Babylon', 'Samuel', 'Genesis', 'Exodus', 'Leviticus', 'Deuteronomy', 'Kings', 'Judges', 'Chronicles', 'Old Testament', 'Hebrew Bible',
+    'Yahweh', 'Jehovah'],
 };
-const motif = (nom) => new RegExp(`(^|[^\\p{L}])${nom.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?![\\p{L}])`, 'u');
+// Le 'het : le français du projet le marque d'une apostrophe en tête de mot ('Hazal, 'Hanouka, 'Hiram). Ces noms-ci ne sont
+// interdits que sans elle : « Hiram » et « d'Hiram » sont refusés, « 'Hiram » est la forme attendue. (En anglais : « Chiram ».)
+const SANS_HET = { fr: ['Hiram'], en: [] };
+const litteral = (nom) => nom.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const motif = (nom) => new RegExp(`(^|[^\\p{L}])${litteral(nom)}(?![\\p{L}])`, 'u');
+const motifSansHet = (nom) => new RegExp(`(?<![\\p{L}])(?<!(?:^|[^\\p{L}])['’])${litteral(nom)}(?![\\p{L}])`, 'u');
 /** Les noms interdits trouvés dans un texte français ou anglais. */
-export const nomsInterdits = (texte, langue) => INTERDITS[langue].filter((n) => motif(n).test(texte));
+export const nomsInterdits = (texte, langue) => [
+  ...INTERDITS[langue].filter((n) => motif(n).test(texte)),
+  ...SANS_HET[langue].filter((n) => motifSansHet(n).test(texte)),
+];
 
 const EXCLUS = /wikipedia\.org|wikimedia\.org|britannica|jewishencyclopedia|thetorah\.com|biblehub|biblegateway|daat\.ac\.il|academia\.edu|jstor\.org|\.edu\//i;
 
