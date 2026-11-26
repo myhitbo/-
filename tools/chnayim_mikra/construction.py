@@ -6,23 +6,36 @@ d'halachot pour shnem mikra »), le recueil de l'application Shnayim Mikra.
 Repris du projet My Hitbodedut (docs/09-cahier-de-reprise.md § 5 et 7), où il était un livre de
 la bibliothèque ; ici le livre est écrit seul, dans data/livre_chnayim_mikra.json.
 
-Chaque halakha repose sur des sources lues le 26/11/2026, citées mot pour mot en hébreu :
-  - Choul'han Aroukh O.H. 285 avec les gloses du Rema — « Maginei Eretz: Shulchan Aruch Orach
-    Chaim, Lemberg, 1893 » (API Sefaria), Public Domain ;
-  - Michna Beroura 285 — « On Your Way » (API Sefaria), Public Domain ;
-  - Kaf ha'Haïm O.H. 285 — « Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933 »
+Chaque halakha repose sur des sources lues le 26/11/2026, citées mot pour mot en hébreu. Le recueil
+a d'abord eu 31 halakhot ; à la demande du propriétaire (« Enrichi les halachot ils Yen a beaucoup
+plus que 31 », 26/11/2026), il a été enrichi de tout ce que ces sources disent d'autre sur le sujet :
+  - Choul'han Aroukh O.H. 285 (et 139, 146, 553) avec les gloses du Rema, Taz, Cha'arei Techouva —
+    « Maginei Eretz: Shulchan Aruch Orach Chaim, Lemberg, 1893 » (API Sefaria), Public Domain ;
+  - Maguen Avraham, Baèr Hétev (Torat Emet 357), Eliya Rabba (Sulzbach 1757), 'Hayé Adam
+    (Vilna 1844) — API Sefaria, Public Domain ;
+  - Michna Beroura 285 et 669:4 — « On Your Way » ; Béour Halakha 285 et 494 — « Biur Halacha »
     (API Sefaria), Public Domain ;
-  - Kitsour Choul'han Aroukh 72 — « Torat Emet 357 » (API Sefaria), Public Domain ;
+  - Kaf ha'Haïm O.H. 285 (et 25, 128, 496, 553) — « Kaf Hachayim, Orach Chayim vol. I-IV » et
+    « vol. V-VIII, Jerusalem 1910-1933 » (API Sefaria), Public Domain ;
+  - Kitsour Choul'han Aroukh 72, 125, 219 — « Torat Emet 357 » (API Sefaria), Public Domain ;
   - Ben Ich 'Haï — « Ben Ish Hai -- Wikisource » (API Sefaria), Public Domain, l'édition du
-    Ben Ich 'Haï de My Hitbodedut ;
+    Ben Ich 'Haï de My Hitbodedut ; le 'Hida, Moré beEtsba (Livourne 1842) et Tsiporen Chamir
+    (Presbourg 1859) ; Séfer 'Hassidim (Zhitomir 1857) — API Sefaria, Public Domain ;
+  - Choul'han Aroukh Y.D. 400:1, Chakh, Rabbi Akiva Eiger — « Ashlei Ravrevei: Shulchan Aruch
+    Yoreh Deah, Lemberg, 1888 » (API Sefaria), Public Domain ;
   - Rambam, Hilkhot Tefila 13:25 — « Torat Emet 370 » (API Sefaria), Public Domain ;
   - Choul'han Aroukh haRav O.H. 285 — « Kehot Publication Society » (API Sefaria), CC-BY-NC :
     citations courtes, sans la vocalisation, créditées dans le livre (application gratuite) ;
+  - Aroukh haChoul'han O.H. 285 et 139 — « Arukh HaShulchan, Orach Chayim -- Wikisource »
+    (API Sefaria), CC-BY-SA : texte de 1903-1907, dans le domaine public ; saisie et ponctuation
+    de Wikisource : citations courtes, créditées dans le livre ;
   - Kitsour Choul'han Aroukh Yalkout Yossef, siman 285 — l'édition de My Hitbodedut
-    (livre_yalkut_yosef_kitsour.json : Torat Emet, mahadoura 5767, CC BY-NC-SA 2.5, licence
-    reçue par le propriétaire le 19/10/2026 pour My Hitbodedut, crédit « הרב יצחק יוסף שליט״א » ;
-    à revérifier pour ce projet). Ce livre entier n'est pas dans ce dépôt : --verifie le lit dans
-    le fichier donné par --yalkut (voir plus bas), sinon ses citations sont notées « non relues ».
+    (livre_yalkut_yosef_kitsour.json : Torat Emet, mahadoura 5767, CC BY-NC-SA 2.5, crédit
+    « הרב יצחק יוסף שליט״א »). Licence reçue par le propriétaire le 19/10/2026 pour My Hitbodedut ;
+    le propriétaire confirme le 26/11/2026 qu'elle est déjà vérifiée (« licence du Kitsour Yalkout
+    Yossef. Déjà vérifié sur le projet my hitbodedut »). Ce livre entier n'est pas dans ce dépôt :
+    --verifie le lit dans le fichier donné par --yalkut (voir plus bas), sinon ses citations sont
+    notées « non relues ».
 
 Sources d'aujourd'hui (demande du propriétaire transmise le 26/11/2026) : réponses de
 Hidabroot (« שאל את הרב »), de Kav haHalakha haSefaradi (kavhalacha.co.il), du beit hora'a
@@ -54,7 +67,9 @@ import json
 import os
 import re
 import sys
+import time
 import unicodedata
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -84,23 +99,90 @@ EDITIONS = {
     "kyy": {"titre": "Kitsour Choul'han Aroukh Yalkout Yossef, Rav Yitzhak Yosef chlita",
             "edition": "Torat Emet, mahadoura 5767 — la copie de My Hitbodedut (livre_yalkut_yosef_kitsour.json, section « סימן רפה »)",
             "licence": "CC BY-NC-SA 2.5, licence publique de Torat Emet (toratemetfreeware.com/contents/copyrights2.html, lu le 26/11/2026) ; crédit « הרב יצחק יוסף שליט״א »"},
+    "bh": {"titre": "Béour Halakha (Michna Beroura)", "edition": "Biur Halacha", "licence": "Public Domain"},
+    "ma": {"titre": "Maguen Avraham", "edition": "Magen Avraham", "licence": "Public Domain"},
+    "taz": {"titre": "Taz (Tourei Zahav), Ora'h 'Haïm", "edition": "Maginei Eretz: Shulchan Aruch Orach Chaim, Lemberg, 1893", "licence": "Public Domain"},
+    "bht": {"titre": "Baèr Hétev, Ora'h 'Haïm", "edition": "Torat Emet 357", "licence": "Public Domain"},
+    "sht": {"titre": "Cha'arei Techouva, Ora'h 'Haïm", "edition": "Maginei Eretz: Shulchan Aruch Orach Chaim, Lemberg, 1893", "licence": "Public Domain"},
+    "er": {"titre": "Eliya Rabba, Ora'h 'Haïm", "edition": "Eliya Rabba, Sulzbach 1757", "licence": "Public Domain"},
+    "ha": {"titre": "'Hayé Adam, Hilkhot Chabbat", "edition": "Chayei Adam, Vilna, 1844", "licence": "Public Domain"},
+    "ahs": {"titre": "Aroukh haChoul'han, Ora'h 'Haïm", "edition": "Arukh HaShulchan, Orach Chayim -- Wikisource", "licence": "CC-BY-SA",
+            "note": "Texte de 1903-1907, dans le domaine public ; saisie et ponctuation de Wikisource sous CC-BY-SA : courtes citations, créditées en tête du livre."},
+    "sayd": {"titre": "Choul'han Aroukh, Yoré Déa", "edition": "Ashlei Ravrevei: Shulchan Aruch Yoreh Deah, Lemberg, 1888", "licence": "Public Domain"},
+    "shakh": {"titre": "Chakh (Siftei Cohen), Yoré Déa", "edition": "Ashlei Ravrevei: Shulchan Aruch Yoreh Deah, Lemberg, 1888", "licence": "Public Domain"},
+    "rae": {"titre": "Rabbi Akiva Eiger, gloses du Yoré Déa", "edition": "Ashlei Ravrevei: Shulchan Aruch Yoreh Deah, Lemberg, 1888", "licence": "Public Domain"},
+    "sch": {"titre": "Séfer 'Hassidim", "edition": "Sefer Chassidim, Zhitomir, 1857", "licence": "Public Domain"},
+    "mbe": {"titre": "Moré beEtsba, du 'Hida", "edition": "Moreh BeEtzba, Livorno, 1842", "licence": "Public Domain"},
+    "tsh": {"titre": "Tsiporen Chamir, du 'Hida", "edition": "Avodat HaKodesh, Pressburg, 1859", "licence": "Public Domain"},
     "hid": {"titre": "Hidabroot, « שאל את הרב »", "edition": "hidabroot.org", "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée"},
     "kav": {"titre": "Kav haHalakha haSefaradi (קו ההלכה הספרדי)", "edition": "kavhalacha.co.il", "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée"},
     "malka": {"titre": "Beit hora'a « Halakha lema'assé » du Rav Ofir Malka (הלכה למעשה)", "edition": "hl5047.co.il", "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée"},
     "kikar": {"titre": "Kikar haChabbat, « הלכה ב-60 שניות », Rav Binyamin 'Hota (כיכר השבת)", "edition": "kikar.co.il", "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée"},
 }
 
-SEFARIA = {
-    "ber": ("Kaf HaChayim on Shulchan Arukh, Orach Chayim 285:{}", "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933"),
-    "sa": ("Shulchan Arukh, Orach Chayim 285:{}", "Maginei Eretz: Shulchan Aruch Orach Chaim, Lemberg, 1893"),
-    "rema": ("Shulchan Arukh, Orach Chayim 285:{}", "Maginei Eretz: Shulchan Aruch Orach Chaim, Lemberg, 1893"),
-    "mb": ("Mishnah Berurah 285:{}", "On Your Way"),
-    "kh": ("Kaf HaChayim on Shulchan Arukh, Orach Chayim 285:{}", "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933"),
-    "ksa": ("Kitzur Shulchan Arukh 72:{}", "Torat Emet 357"),
-    "bih": ("Ben Ish Hai, Halachot {}", "Ben Ish Hai -- Wikisource"),
-    "rambam": ("Mishneh Torah, Prayer and the Priestly Blessing 13:{}", "Torat Emet 370"),
-    "sahr": ("Shulchan Arukh HaRav, Orach Chayim 285:{}", "Kehot Publication Society"),
+# Les livres classiques. {s} et {n} : siman et paragraphe en chiffres ; {S} et {N} : en lettres.
+# « siman » : celui que R(source, n) sous-entend ; R(source, (siman, n)) en nomme un autre ; sans « siman »,
+# le livre n'a qu'un niveau. « sefaria » : la référence lue à l'API Sefaria, dans l'édition « version »
+# (le Kitsour Yalkout Yossef n'y est pas : il se lit dans le fichier donné par --yalkut).
+MAGINEI = "Maginei Eretz: Shulchan Aruch Orach Chaim, Lemberg, 1893"
+ASHLEI = "Ashlei Ravrevei: Shulchan Aruch Yoreh Deah, Lemberg, 1888"
+KAF_1 = "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933"
+KAF_2 = "Kaf Hachayim, Orach Chayim vol. V-VIII, Jerusalem 1910-1933"
+BIH_VERSION = "Ben Ish Hai -- Wikisource"
+CLASSIQUES = {
+    "ber": {"siman": 285, "sefaria": "Kaf HaChayim on Shulchan Arukh, Orach Chayim {s}:{n}", "version": KAF_1},
+    "sa": {"siman": 285, "sefaria": "Shulchan Arukh, Orach Chayim {s}:{n}", "version": MAGINEI,
+           "fr": "Choul’han Aroukh O.H. {s}:{n}", "en": "Shulchan Aruch O.C. {s}:{n}", "he": "שולחן ערוך או״ח {S}, {N}"},
+    "rema": {"siman": 285, "sefaria": "Shulchan Arukh, Orach Chayim {s}:{n}", "version": MAGINEI,
+             "fr": "Rema O.H. {s}:{n}", "en": "Rema O.C. {s}:{n}", "he": "רמ״א או״ח {S}, {N}"},
+    "mb": {"siman": 285, "sefaria": "Mishnah Berurah {s}:{n}", "version": "On Your Way",
+           "fr": "Michna Beroura {s}:{n}", "en": "Mishnah Berurah {s}:{n}", "he": "משנה ברורה {S}, ס״ק {N}"},
+    "bh": {"siman": 285, "sefaria": "Biur Halacha {s}:{n}", "version": "Biur Halacha",
+           "fr": "Béour Halakha {s}:{n}", "en": "Beur Halacha {s}:{n}", "he": "ביאור הלכה {S}, סעיף {N}"},
+    "kh": {"siman": 285, "sefaria": "Kaf HaChayim on Shulchan Arukh, Orach Chayim {s}:{n}", "version": KAF_1, "versions": {496: KAF_2, 553: KAF_2},
+           "fr": "Kaf ha’Haïm {s}:{n}", "en": "Kaf HaChaim {s}:{n}", "he": "כף החיים {S}, אות {N}"},
+    "ksa": {"siman": 72, "sefaria": "Kitzur Shulchan Arukh {s}:{n}", "version": "Torat Emet 357",
+            "fr": "Kitsour Choul’han Aroukh {s}:{n}", "en": "Kitzur Shulchan Aruch {s}:{n}", "he": "קיצור שולחן ערוך {S}, {N}"},
+    "rambam": {"siman": 13, "sefaria": "Mishneh Torah, Prayer and the Priestly Blessing {s}:{n}", "version": "Torat Emet 370",
+               "fr": "Rambam, Hilkhot Tefila {s}:{n}", "en": "Rambam, Hilchot Tefillah {s}:{n}", "he": "רמב״ם, הלכות תפילה {S}, {N}"},
+    "sahr": {"siman": 285, "sefaria": "Shulchan Arukh HaRav, Orach Chayim {s}:{n}", "version": "Kehot Publication Society",
+             "fr": "Choul’han Aroukh haRav O.H. {s}:{n}", "en": "Shulchan Aruch HaRav O.C. {s}:{n}", "he": "שולחן ערוך הרב או״ח {S}, {N}"},
+    "kyy": {"siman": 285,
+            "fr": "Kitsour Yalkout Yossef {s}:{n}", "en": "Kitzur Yalkut Yosef {s}:{n}", "he": "ילקוט יוסף, קיצור שולחן ערוך {S}, {N}"},
+    "ma": {"siman": 285, "sefaria": "Magen Avraham {s}:{n}", "version": "Magen Avraham",
+           "fr": "Maguen Avraham {s}:{n}", "en": "Magen Avraham {s}:{n}", "he": "מגן אברהם {S}, ס״ק {N}"},
+    "taz": {"siman": 285, "sefaria": "Turei Zahav on Shulchan Arukh, Orach Chayim {s}:{n}", "version": MAGINEI,
+            "fr": "Taz O.H. {s}:{n}", "en": "Taz O.C. {s}:{n}", "he": "ט״ז או״ח {S}, ס״ק {N}"},
+    "bht": {"siman": 285, "sefaria": "Ba'er Hetev on Shulchan Arukh, Orach Chayim {s}:{n}", "version": "Torat Emet 357",
+            "fr": "Baèr Hétev O.H. {s}:{n}", "en": "Ba’er Hetev O.C. {s}:{n}", "he": "באר היטב או״ח {S}, ס״ק {N}"},
+    "sht": {"siman": 285, "sefaria": "Sha'arei Teshuvah on Shulchan Arukh, Orach Chayim {s}:{n}", "version": MAGINEI,
+            "fr": "Cha’arei Techouva O.H. {s}:{n}", "en": "Sha’arei Teshuvah O.C. {s}:{n}", "he": "שערי תשובה או״ח {S}, ס״ק {N}"},
+    "er": {"siman": 285, "sefaria": "Eliyah Rabbah on Shulchan Arukh, Orach Chayim {s}:{n}", "version": "Eliya Rabba, Sulzbach 1757",
+           "fr": "Eliya Rabba {s}:{n}", "en": "Eliyah Rabbah {s}:{n}", "he": "אליה רבה {S}, ס״ק {N}"},
+    "ha": {"siman": 7, "sefaria": "Chayyei Adam, Shabbat and Festivals {s}:{n}", "version": "Chayei Adam, Vilna, 1844",
+           "fr": "’Hayé Adam, Chabbat {s}:{n}", "en": "Chayei Adam, Shabbat {s}:{n}", "he": "חיי אדם, הלכות שבת, כלל {S}, {N}"},
+    "ahs": {"siman": 285, "sefaria": "Arukh HaShulchan, Orach Chaim {s}:{n}", "version": "Arukh HaShulchan, Orach Chayim -- Wikisource",
+            "fr": "Aroukh haChoul’han O.H. {s}:{n}", "en": "Aruch HaShulchan O.C. {s}:{n}", "he": "ערוך השולחן או״ח {S}, סעיף {N}"},
+    "sayd": {"siman": 400, "sefaria": "Shulchan Arukh, Yoreh De'ah {s}:{n}", "version": ASHLEI,
+             "fr": "Choul’han Aroukh Y.D. {s}:{n}", "en": "Shulchan Aruch Y.D. {s}:{n}", "he": "שולחן ערוך יו״ד {S}, {N}"},
+    "shakh": {"siman": 400, "sefaria": "Siftei Kohen on Shulchan Arukh, Yoreh De'ah {s}:{n}", "version": ASHLEI,
+              "fr": "Chakh Y.D. {s}:{n}", "en": "Shach Y.D. {s}:{n}", "he": "ש״ך יו״ד {S}, ס״ק {N}"},
+    "rae": {"siman": 400, "sefaria": "Rabbi Akiva Eiger on Shulchan Arukh, Yoreh De'ah {s}:{n}", "version": ASHLEI,
+            "fr": "Rabbi Akiva Eiger Y.D. {s}:{n}", "en": "Rabbi Akiva Eiger Y.D. {s}:{n}", "he": "רבי עקיבא איגר יו״ד {S}, {N}"},
+    "sch": {"sefaria": "Sefer Chasidim {n}", "version": "Sefer Chassidim, Zhitomir, 1857",
+            "fr": "Séfer ’Hassidim {n}", "en": "Sefer Chasidim {n}", "he": "ספר חסידים, סימן {N}"},
+    "mbe": {"sefaria": "Moreh BeEtzba {n}", "version": "Moreh BeEtzba, Livorno, 1842",
+            "fr": "Moré beEtsba (’Hida) §{n}", "en": "Moreh BeEtzba (Chida) §{n}", "he": "מורה באצבע לחיד״א, אות {N}"},
+    "tsh": {"sefaria": "Tziporen Shamir {n}", "version": "Avodat HaKodesh, Pressburg, 1859",
+            "fr": "Tsiporen Chamir (’Hida) §{n}", "en": "Tziporen Shamir (Chida) §{n}", "he": "צפורן שמיר לחיד״א, אות {N}"},
 }
+
+
+def lieu(r):
+    """(siman, paragraphe) d'une référence classique ; siman None pour un livre à un seul niveau."""
+    n = r["num"]
+    return n if isinstance(n, tuple) else (CLASSIQUES[r["src"]].get("siman"), n)
+
 
 # Les réponses d'aujourd'hui : auteur, titre, date, adresse.
 MODERNES = {
@@ -197,17 +279,8 @@ def ref_texte(r, langue):
                 "he": f"בית ההוראה ״הלכה למעשה״ של הרב אופיר מלכא, ״{m['titre']}״, {m['auteur_he']}, {m['date_he']}, hl5047.co.il/questions/{n}"}[langue]
     if s == "ber":
         return {"fr": "Berakhot 8a-b", "en": "Berakhot 8a-b", "he": "ברכות ח ע״א–ע״ב, בלשון כף החיים רפ״ה, אות א׳"}[langue]
-    he_n = lettres(n) if isinstance(n, int) else n
-    return {
-        "sa": {"fr": f"Choul’han Aroukh O.H. 285:{n}", "en": f"Shulchan Aruch O.C. 285:{n}", "he": f"שולחן ערוך או״ח רפ״ה, {he_n}"},
-        "rema": {"fr": f"Rema O.H. 285:{n}", "en": f"Rema O.C. 285:{n}", "he": f"רמ״א או״ח רפ״ה, {he_n}"},
-        "mb": {"fr": f"Michna Beroura 285:{n}", "en": f"Mishnah Berurah 285:{n}", "he": f"משנה ברורה רפ״ה, ס״ק {he_n}"},
-        "kh": {"fr": f"Kaf ha’Haïm 285:{n}", "en": f"Kaf HaChaim 285:{n}", "he": f"כף החיים רפ״ה, אות {he_n}"},
-        "ksa": {"fr": f"Kitsour Choul’han Aroukh 72:{n}", "en": f"Kitzur Shulchan Aruch 72:{n}", "he": f"קיצור שולחן ערוך ע״ב, {he_n}"},
-        "rambam": {"fr": f"Rambam, Hilkhot Tefila 13:{n}", "en": f"Rambam, Hilchot Tefillah 13:{n}", "he": f"רמב״ם, הלכות תפילה י״ג, {he_n}"},
-        "sahr": {"fr": f"Choul’han Aroukh haRav O.H. 285:{n}", "en": f"Shulchan Aruch HaRav O.C. 285:{n}", "he": f"שולחן ערוך הרב או״ח רפ״ה, {he_n}"},
-        "kyy": {"fr": f"Kitsour Yalkout Yossef 285:{n}", "en": f"Kitzur Yalkut Yosef 285:{n}", "he": f"ילקוט יוסף, קיצור שולחן ערוך רפ״ה, {he_n}"},
-    }[s][langue]
+    sm, para = lieu(r)
+    return CLASSIQUES[s][langue].format(s=sm, n=para, S=lettres(sm) if sm else "", N=lettres(para))
 
 
 def crochets(refs, langue):
@@ -215,7 +288,7 @@ def crochets(refs, langue):
     groupes = []
     for r in refs:
         s = r["src"]
-        cle = (s, r["num"][1]) if s == "bih" else s
+        cle = (s, r["num"][1]) if s == "bih" else (s, lieu(r)[0]) if s in CLASSIQUES else s
         for g in groupes:
             if g[0] == cle:
                 g[1].append(r)
@@ -240,7 +313,7 @@ def crochets(refs, langue):
             base = ref_texte(rs[0], langue).rsplit("§", 1)[0]
             et = {"fr": " et ", "en": " and "}[langue]
             sortie.append(base + et.join(f"§{x['num'][5]}" for x in rs))
-        elif s in ("kav", "kikar", "malka", "ber") or len(rs) == 1:
+        elif s in ("kav", "kikar", "malka", "ber") or len(rs) == 1 or lieu(rs[0])[0] is None:
             vus = []
             for x in rs:
                 t = ref_texte(x, langue)
@@ -249,7 +322,7 @@ def crochets(refs, langue):
             sortie.extend(vus)
         else:
             base = ref_texte(rs[0], langue).rsplit(":", 1)[0]
-            sortie.append(base + ":" + ", ".join(str(x["num"]) for x in rs))
+            sortie.append(base + ":" + ", ".join(str(lieu(x)[1]) for x in rs))
     sep = {"fr": " ; ", "en": "; "}[langue]
     return sep.join(sortie)
 
@@ -295,6 +368,44 @@ SECTIONS = [
         ],
             "Une femme est dispensée de lire chaque Chabbat Chnayim mikra véé'had targoum (Kitsour Yalkout Yossef). Le Rav Hillel Meirs (Hidabroot) répond de même que les femmes n'y sont pas obligées, en renvoyant au Mishné Halakhot (t. 6, siman 60) et au 'Hazon Ovadia (Chabbat, t. 1, p. 328) ; dans une autre réponse, il lui semble qu'une épouse ne peut pas acquitter son mari malade en lisant pour lui, puisqu'elle-même n'y est pas du tout obligée.",
             "A woman is exempt from reading Shnayim mikra ve-echad targum every week (Kitzur Yalkut Yosef). Rav Hillel Meirs (Hidabroot) likewise answers that women are not obligated, citing Mishneh Halachot (vol. 6, siman 60) and Chazon Ovadia (Shabbat, vol. 1, p. 328); in another answer he writes that it seems a wife cannot discharge her sick husband by reading for him, since she herself is not obligated at all."),
+        H("tous", [
+            R("ahs", 2, cite='''ולא נודע לנו טעמו של דבר, ובוודאי בשעה שתקן משה רבינו לקרות בתורה – תקן גם כן תקנה זו'''),
+            R("ahs", 2, cite='''והלבוש כתב: כדי שיהא בקי בתורה, עיין שם, ואין זה מספיק כמובן'''),
+            R("ahs", 2, cite='''ולכן ילמוד מקודם בחומש, ויעלה בקודש לשמוע מספר תורה'''),
+            R("ahs", 2, cite='''לכן צריך ללמוד שלוש פעמים, אפילו בפסוק שאין בו תרגום, כמו שיתבאר, כנגד אלו השלוש. אך במקום שיש תרגום – בחרו בתרגום הפעם השלישי, כדי שיבין מה שהוא לומד'''),
+            R("ahs", 2, cite='''ויש אומרים: כנגד שנים הקורין, ואחד המתרגם (ראב"ן)'''),
+            R("kh", 1, cite='''ואלה שמות ר"ת וחייב אדם להשלים הפרשה שניים מקרא ואחד תרגום'''),
+        ],
+            "Pourquoi cette lecture ? L'Aroukh haChoul'han écrit que la raison ne nous en est pas connue, et que Moché Rabbénou, en instituant la lecture de la Torah, a certainement institué aussi celle-ci. Il rapporte la raison du Levouch – être versé dans la Torah – et la juge insuffisante. Il propose : la Torah demande d'écouter et d'étudier ; on étudie donc d'abord dans le 'Houmach, puis l'on « monte en sainteté » en écoutant la lecture dans le séfer Torah. Et trois fois, même pour un verset sans targoum, parce que la Torah a été dite au Sinaï, répétée dans la Tente d'assignation et dite une troisième fois dans les plaines de Moav ; là où il y a un targoum, on l'a choisi pour la troisième fois, afin de comprendre ce qu'on étudie. Il cite un autre avis, au nom du Raavan : en regard des deux qui lisent et de celui qui traduit. Le Kaf ha'Haïm rapporte une allusion : les initiales de « Véélé chemot » forment, en hébreu, « on doit achever la paracha, deux fois le texte et une fois le targoum ».",
+            "Why this reading? The Aruch HaShulchan writes that its reason is not known to us, and that Moshe Rabbenu, when he instituted the reading of the Torah, surely instituted this as well. He quotes the Levush's reason – to be well versed in the Torah – and finds it insufficient. He suggests: the Torah calls for hearing and for studying; so one first studies in the Chumash, then “rises in holiness” by hearing the reading from the Torah scroll. And three times, even for a verse with no targum, because the Torah was said at Sinai, repeated in the Tent of Meeting and said a third time in the plains of Moav; where there is a targum, it was chosen for the third time, so that one understands what one studies. He cites another view, in the name of the Raavan: corresponding to the two who read and the one who translates. The Kaf HaChaim reports a hint: the initials of “Ve'eleh shemot” spell out, in Hebrew, “one must complete the parasha, twice the text and once the targum”."),
+        H("tous", [
+            R("kh", 4, cite='''שאתה קורא הפ' שנים מקרא ואחד תרגום ברהיטא כחותה על הגחלים לפרוק עול מעליך'''),
+            R("kh", 4, cite='''אבל צריך לקרות הפרשה בנחת ולהרגיש בדקדוקיה ולתרץ אותם ומה שלא תוכל לתרץ עיין במפרשים'''),
+            R("sch", 301, cite='''יהודי אחד לא היה קורא שנים מקרא ואחד תרגום שמאריכין לו ימיו ושנותיו כי אמר אני קץ בחיי למה אקרא אמר ליה החכם לא אמר זה רק כנגד האוהבי חיים'''),
+            R("sch", 301, cite='''שאין העבד עושה תנאי לרבו'''),
+            R("kh", 4, cite='''דיקרא האדם שמו"ת לשם מי שאמר למען תהיה תורת ה' בפיך'''),
+            R("kh", 4, cite='''ואל יסמוך על תנאי'''),
+            R("kh", 4, cite='''וע"כ קודם שיקרא הפ' שמו"ת י"ל לשם יחוד קבה"ו וכו' הריני בא לקרות הפ' של השבוע שמו"ת לתקן את שורשה במקום עליון'''),
+        ],
+            "On lit la paracha posément. Le Kaf ha'Haïm rapporte du Maguid Mécharim le reproche fait à Maran (Rabbi Yossef Karo) : la lire à la hâte, « comme on remue des braises », pour se décharger du joug ; il faut la lire avec calme, être attentif à ses difficultés, les résoudre, et chercher chez les commentateurs ce qu'on ne sait pas résoudre. Le Séfer 'Hassidim raconte qu'un homme ne lisait pas Chnayim mikra parce que, las de vivre, il ne voulait pas de la longue vie promise ; le sage lui répondit que cette promesse ne s'adresse qu'à ceux qui aiment la vie, et que les autres ne sont pas dispensés pour autant : le serviteur ne pose pas de condition à son maître. Le Kaf ha'Haïm en retient qu'on lit Chnayim mikra pour Celui qui a dit « afin que la Torah de Hachem soit dans ta bouche », sans faire de la récompense une condition ; il écrit qu'avant de lire, on dit « Léchem yi'houd… : je viens lire la paracha de la semaine, deux fois le texte et une fois le targoum, pour en réparer la racine en haut lieu ».",
+            "The parasha is read unhurriedly. The Kaf HaChaim reports from the Maggid Mesharim the reproach made to Maran (Rabbi Yosef Karo): reading it in haste, “like one raking coals”, to throw off the yoke; one must read it calmly, notice its difficulties, resolve them, and look in the commentators for what one cannot resolve. Sefer Chasidim tells of a man who did not read Shnayim mikra because, weary of life, he did not want the promised long life; the sage answered that this promise is addressed only to those who love life, and that the others are not thereby exempt: a servant sets no condition to his master. The Kaf HaChaim concludes that one reads Shnayim mikra for the sake of the One who said “so that the Torah of Hashem be in your mouth”, without making the reward a condition; he writes that before reading one says “Leshem yichud…: I come to read the parasha of the week, twice the text and once the targum, to repair its root on high”."),
+        H("sefarade", [
+            R("kyy", 1, cite='''וגם העוסק בלימוד תורה כל היום, ותורתו אומנותו, לא יבטל קריאת פרשיותיו עם הצבור. וחייב לקרוא הפרשה שנים מקרא ואחד תרגום'''),
+        ],
+            "Même celui qui étudie la Torah toute la journée, et dont la Torah est le métier, ne néglige pas la lecture de ses parachiot avec la communauté : il doit lire la paracha deux fois dans le texte et une fois dans le targoum (Kitsour Yalkout Yossef).",
+            "Even one who studies Torah all day, and whose Torah is his occupation, does not neglect reading his portions with the congregation: he must read the parasha twice in the text and once in the targum (Kitzur Yalkut Yosef)."),
+        H("sefarade", [
+            R("kh", 9, cite='''חולה וחש בעיניו פטורים וא"צ לשמוע מאחר'''),
+            R("kh", 9, cite='''ומ"מ נראה דיש להשלימה אחר שיתרפא כדי שלא תהא תורתו של שמו"ת עולה לרקיע חסירה בשנה ההיא'''),
+            R("kh", 10, cite='''סומא פטור מחיוב זה דדברים שבכתב א"א לאומרם ע"פ וא"צ לשמוע מאחר'''),
+            R("kh", 10, cite='''וזהו לפום דינא אמנם המחמיר לשמוע מאחרים תע"ב וכן נכון לעשות'''),
+            R("kh", 11, cite='''מי שאינו יודע לקרות פטור מחיוב זה וא"צ לשמוע מאחר'''),
+            R("kyy", 15, cite='''אף מי שחלה בעיניו ומצטער בקריאת שנים מקרא ואחד תרגום, חייב לקרוא את הפרשה שנים מקרא ואחד תרגום, או שישמע הפרשה מאחר ויכוין לצאת ידי חובה'''),
+            R("kyy", 16, cite='''יש אומרים שגם הסומא (עיור) חייב בשנים מקרא ואחד תרגום בכל שבת, כדין הפקח. ולכן צריך שישמע מאחר קריאת הפרשה שנים מקרא ואחד תרגום'''),
+            R("kyy", 16, cite='''וכן מי שנעשה אילם, ואינו יכול לדבר ולקרוא, ישמע הקריאה מאחר'''),
+        ],
+            "Le malade, l'aveugle, celui qui ne sait pas lire. Le Kaf ha'Haïm rapporte, au nom du Radbaz cité par le Ma'hazik Berakha : le malade et celui qui souffre des yeux sont dispensés et n'ont pas à écouter la lecture d'un autre – il lui semble pourtant qu'il y a lieu de la compléter après la guérison, pour que la Torah de son Chnayim mikra ne monte pas incomplète cette année-là ; l'aveugle est dispensé, car ce qui est écrit ne se dit pas par cœur, et il n'a pas à écouter un autre – c'est le strict droit, mais celui qui est strict et écoute la lecture d'autrui est digne de bénédiction, et c'est ce qu'il convient de faire ; celui qui ne sait pas lire est dispensé lui aussi. Le Kitsour Yalkout Yossef écrit autrement : même celui qui a mal aux yeux et souffre en lisant doit lire, ou écouter la paracha d'un autre en pensant à s'acquitter ; certains disent que l'aveugle est tenu lui aussi, chaque Chabbat, comme celui qui voit, et il lui faut donc écouter la lecture d'un autre, qui pense à l'acquitter ; de même celui qui est devenu muet et ne peut pas lire écoute la lecture d'un autre.",
+            "The sick, the blind, one who cannot read. The Kaf HaChaim reports, in the name of the Radbaz as cited by the Machazik Berachah: a sick person and one with eye pain are exempt and need not hear the reading from another – yet it seems to him that one should make it up after recovering, so that the Torah of one's Shnayim mikra does not ascend incomplete that year; a blind person is exempt, since what is written may not be said by heart, and need not hear it from another – that is the strict law, but one who is stringent and hears it from others is to be blessed, and this is the proper thing to do; one who does not know how to read is likewise exempt. The Kitzur Yalkut Yosef writes otherwise: even one whose eyes are ailing and who suffers when reading must read, or hear the parasha from another with the intention of fulfilling his obligation; some say that a blind person, too, is obligated every week like a sighted one, and must therefore hear the reading from another who intends to discharge him; likewise one who has become mute and cannot read listens to another's reading."),
     ]},
     {"titre": "זמן הקריאה", "titre_fr": "Quand lire", "titre_en": "When to read", "halakhot": [
         H("tous", [
@@ -365,6 +476,42 @@ SECTIONS = [
         ],
             "La nuit. Le Kitsour Yalkout Yossef permet à qui manque de temps de lire Chnayim mikra la nuit du Chabbat (le vendredi soir), ainsi qu'à celui qui étudie la Torah en écrivant des 'hidouchim et des décisions de halakha. Le Kaf ha'Haïm rapporte, d'après le Ma'hazik Berakha et les Cha'arei Techouva, qu'on ne lit pas Chnayim mikra à la fin de la nuit de jeudi à vendredi, avant qu'il fasse jour, parce que les disciples du Ari ont écrit qu'on ne lit pas le targoum la nuit. Le Rav Ochri Azoulay (Kav haHalakha haSefaradi) traite d'une autre règle, rapportée au nom du Ari : ne pas lire la Torah écrite la nuit. Il écrit qu'elle relève de la Kabbale, alors que selon le sens simple rien n'empêche d'étudier la Torah écrite la nuit ; il conclut qu'on peut lire Chnayim mikra la nuit en y joignant un peu de commentaire, comme Rachi, et qu'à celui qui, sinon, n'étudierait pas et qui ne sait pas étudier Rachi ou un autre commentateur, on indique qu'il peut lire même sans commentaire. Le Rav Menaché Moreno (beit hora'a « Halakha lema'assé » du Rav Ofir Malka) juge plus juste de lire le jour que la nuit, et le Rav Binyamin Chmouéli (Hidabroot) écrit qu'on ne lit pas depuis le début de la nuit jusqu'à 'hatsot (le milieu de la nuit).",
             "At night. The Kitzur Yalkut Yosef allows one who is short of time to read Shnayim mikra on Friday night, as well as one who studies Torah while writing chiddushim and halachic rulings. The Kaf HaChaim reports, following the Machazik Berachah and the Shaarei Teshuvah, that one does not read Shnayim mikra at the end of Thursday night, before daybreak, because the Ari’s disciples wrote that the targum is not read at night. Rav Oshri Azoulay (Kav HaHalacha HaSefaradi) deals with another rule, reported in the name of the Ari: not to read the Written Torah at night. He writes that it belongs to Kabbalah, whereas by the plain law nothing prevents studying the Written Torah at night; he concludes that one may read Shnayim mikra at night while adding a little commentary such as Rashi, and that one who would otherwise not study, and who does not know how to study Rashi or another commentator, is told that he may read even without commentary. Rav Menashe Moreno (the “Halacha LeMaaseh” beit hora’ah of Rav Ofir Malka) considers it more correct to read by day than by night, and Rav Binyamin Shmueli (Hidabroot) writes that one does not read from nightfall until chatzot (halachic midnight)."),
+        H("ashkenaze", [
+            R("mb", 10, cite='''דממנחה ולמעלה מתחילין הצבור לקרות פרשת שבוע הבא'''),
+            R("bh", 4, cite='''ומה שצוה רבי שיגמרו הפרשה קודם הסעודה הוא רק משום דחייש דלמא אגב רוב סעודת שבת משתמיט ולא יגמור'''),
+            R("bh", 4, cite='''המגן אברהם הביא דעות דמספר הכונות משמע דלכתחלה ישלים בע"ש ורק כשהיה אנוס ישלים בשבת ובב"י ומגיד מישרים משמע דלכתחלה יתחיל בע"ש וישלים בשבת'''),
+            R("ha", 9, cite='''ולכתחלה ישלים בע"ש ועכ"פ לא יאכל בשבת שחרית עד שישלים'''),
+            R("ahs", 9, cite='''ומתבאר מדבריו שאין הידור להשלים קודם קריאת התורה, רק קודם אכילה'''),
+            R("ahs", 10, cite='''ויש אומרים דמצוה מן המובחר לקרא כל יום מעט, ובערב שבת להשלימה, כמו שנדפס בספר חוק לישראל'''),
+        ],
+            "Jusqu'à Min'ha, parce qu'à partir de Min'ha la communauté commence à lire la paracha de la semaine suivante (Michna Beroura). Le Béour Halakha explique, d'après le Or Zaroua, que Rabbi n'a demandé d'achever la paracha avant le repas que par crainte qu'entraîné par le grand repas du Chabbat on ne s'y dérobe et ne l'achève pas ; il rapporte aussi les avis cités par le Maguen Avraham : d'après le Séfer haKavanot, on achève a priori la veille de Chabbat, et le Chabbat seulement si l'on a été empêché ; d'après le Beit Yossef et le Maguid Mécharim, on commence a priori la veille et l'on achève le Chabbat. Le 'Hayé Adam écrit : a priori on achève la veille de Chabbat, et en tout cas on ne mange pas le Chabbat matin avant d'avoir achevé. L'Aroukh haChoul'han déduit du Tour qu'il n'y a pas de mérite particulier à achever avant la lecture de la Torah, mais seulement avant le repas ; il rapporte aussi l'avis pour qui le mieux est de lire un peu chaque jour et d'achever la veille de Chabbat, comme c'est imprimé dans le 'Hok leIsraël.",
+            "Until Minchah, because from Minchah on the congregation begins to read the next week's parasha (Mishnah Berurah). The Beur Halacha explains, following the Or Zarua, that Rabbi asked that the parasha be finished before the meal only out of concern that, carried along by the large Shabbat meal, one might slip out of it and not finish; it also reports the views quoted by the Magen Avraham: according to Sefer HaKavanot one finishes on Friday in the first place, and on Shabbat only if prevented; according to the Beit Yosef and the Maggid Mesharim one begins on Friday in the first place and finishes on Shabbat. The Chayei Adam writes: in the first place one finishes on Friday, and in any case one does not eat on Shabbat morning before finishing. The Aruch HaShulchan infers from the Tur that there is no particular merit in finishing before the Torah reading, only before the meal; he also reports the view that it is best to read a little each day and finish on Friday, as printed in Chok LeYisrael."),
+        H("sefarade", [
+            R("kh", 26, cite='''ומשמע לפי סברה זאת דיש ג' חלוקות מצוה מן המובחר קודם אכילה ובדיעבד גם אחר אכילה מהני קודם מנחה אבל אחר מנחה לא מהני וכן דעת הש"ע שסתם כן כסברה א\''''),
+            R("kh", 26, cite='''ונראה ברור דגם לסברה ג' אינו מועיל אלא יום ש"ע אבל יום ש"ת שהתחילו פ' בראשית לא מהני לכ"ע'''),
+            R("kh", 26, cite='''ואנה"נ דביום ש"ת לא מהני אלא קודם קריאת פ' בראשית'''),
+            R("kh", 28, cite='''והיינו אם לא השלים ביום ג' דיעבד יש להשלימה כל השנה עד שמיני עצרת בא"י ולדידן בשמחת תורה מיקרי שפיר משלים עם הצבור ומכאן ואילך עבר זמנו'''),
+            R("kh", 29, cite='''וכל עוד שלא גמרו הצבור וזאת הברכה מיקרי זמנה'''),
+        ],
+            "Jusqu'à quand, précisément. Le Kaf ha'Haïm relève, au nom du Maté Yehouda, trois degrés selon le premier avis : le mieux, avant le repas ; a posteriori, après le repas, avant Min'ha ; après Min'ha, cela ne vaut plus – et tel est l'avis du Choul'han Aroukh, qui énonce cet avis en premier, sans le nommer. Même selon le troisième avis (jusqu'à Chemini Atseret), il lui paraît clair que seul le jour de Chemini Atseret vaut : le jour de Sim'hat Torah, une fois commencée la paracha Beréchit, cela ne vaut plus pour personne ; le Rema ne veut pas ajouter un jour mais donner la raison – la communauté achève alors –, et à Sim'hat Torah cela ne vaut qu'avant la lecture de Beréchit. Il rapporte de l'Échel Avraham : celui qui n'a pas achevé jusqu'au mardi peut encore, a posteriori, rattraper toute l'année, jusqu'à Chemini Atseret en terre d'Israël et, « pour nous », jusqu'à Sim'hat Torah ; passé ce moment, le temps est révolu. Et tant que la communauté n'a pas achevé Vezot haBerakha, c'est encore son temps.",
+            "Until when, exactly. The Kaf HaChaim notes, in the name of the Mateh Yehudah, three levels according to the first view: best, before the meal; after the fact, after the meal, before Minchah; after Minchah it no longer counts – and such is the view of the Shulchan Aruch, which states this view first, unattributed. Even according to the third view (until Shemini Atzeret), it seems clear to him that only the day of Shemini Atzeret counts: on Simchat Torah, once parashat Bereshit has been begun, it no longer counts according to anyone; the Rema does not mean to add a day but to give the reason – the congregation completes then –, and on Simchat Torah it counts only before the reading of Bereshit. He reports from the Eshel Avraham: one who did not finish by Tuesday may still, after the fact, make it up all year, until Shemini Atzeret in the Land of Israel and, “for us”, until Simchat Torah; after that the time has passed. And as long as the congregation has not completed Vezot HaBerachah, it is still its time."),
+        H("sefarade", [
+            R("mbe", 129, cite='''יום הששי בבקר יזהר לקרות פרשת השבוע שנים מקרא ואחד תרגום ואם אפשר בטלית ותפילין יקראנה'''),
+            R("kh", 24, cite='''ואם חל ר"ח ביום ו' לא יחזור ללבוש תפילין כמ"ש לעיל סי' כ"ה או' צ"ו אלא יקרא אותה מעוטף בטלית בלבד'''),
+            R("tsh", 58, cite='''אם נאנס יום הששי ולא קרא הפרשה שמו״ת יקראנה יום שבת שמו״ת ודלא כמי שכתב דבשבת לא יקרא תרגום'''),
+            R("kh", 25, cite='''זולת אם אירע לו אונס גדול מאד שאז היה קורא אותה אחר סיום תפלת שחרית קודם סעודת שחרית'''),
+        ],
+            "Le 'Hida (Moré beEtsba) : le vendredi matin, on veille à lire la paracha de la semaine deux fois dans le texte et une fois dans le targoum, si possible avec le talith et les tefilines. Quand Roch 'Hodech tombe un vendredi, on ne remet pas les tefilines pour cela : on la lit enveloppé du talith seulement (Kaf ha'Haïm). Celui qui a été empêché le vendredi la lit le Chabbat, texte et targoum, et non comme celui qui a écrit qu'on ne lit pas le targoum le Chabbat ('Hida, Tsiporen Chamir) ; le Kaf ha'Haïm rapporte que le Ari, s'il lui arrivait un très grand empêchement, la lisait après la prière du matin (du Chabbat), avant le repas du matin.",
+            "The Chida (Moreh BeEtzba): on Friday morning one takes care to read the weekly parasha twice in the text and once in the targum, if possible in tallit and tefillin. When Rosh Chodesh falls on a Friday, one does not put the tefillin back on for this: one reads it wrapped in the tallit only (Kaf HaChaim). One who was prevented on Friday reads it on Shabbat, text and targum, unlike the one who wrote that the targum is not read on Shabbat (Chida, Tziporen Shamir); the Kaf HaChaim reports that the Ari, if something very serious prevented him, read it after the morning prayer (of Shabbat), before the morning meal."),
+        H("tous", [
+            R("ma", 1, cite='''ויטבול אחר הקריא' [הכוונו'] עיין בשל"ה עניני טבילה ואין לי כאן עסק בנסתרות ויקוץ הצפרנים קודם הקריאה [של"ה]'''),
+            R("bht", 1, cite='''ויקוץ הצפרנים קודם שמו"ת. ועיקר המצוה לקרות אחר חצות ואחר שקרא ילך לבית המרחץ ויטבול'''),
+            R("er", (260, 4), cite='''ומי שקורא שנים מקרא ואחד תרגום בערב שבת יטבול קודם שיקרא (של"ה)'''),
+            R("ahs", 7, cite='''וזהו ממדת חסידות, ולהקוראים אותה כולה בערב שבת'''),
+            R("kh", 38, cite='''ובענין קציצת הצפרנים והטבילה וכוונתה כבר כתבנו לעיל סי' ר"ס קחנו משם'''),
+        ],
+            "Ongles et mikvé. Le Maguen Avraham rapporte qu'on s'immerge après la lecture, d'après le Séfer haKavanot – en ajoutant : « je n'ai pas affaire ici aux choses cachées » –, et qu'on se coupe les ongles avant la lecture, d'après le Chla. Le Baèr Hétev de même : les ongles avant Chnayim mikra ; l'essentiel de la mitsva est de lire après midi ; et après avoir lu, on va au bain et l'on s'immerge. L'Eliya Rabba rapporte au contraire, au nom du Chla, que celui qui lit Chnayim mikra la veille de Chabbat s'immerge avant de lire. L'Aroukh haChoul'han précise que c'est une conduite de piété, pour ceux qui lisent toute la paracha la veille de Chabbat. Le Kaf ha'Haïm renvoie, pour les ongles et l'immersion, à ce qu'il en a écrit au siman 260.",
+            "Nails and mikveh. The Magen Avraham reports that one immerses after the reading, according to Sefer HaKavanot – adding: “I have no business here with hidden matters” –, and that one cuts one's nails before the reading, according to the Shelah. The Ba'er Hetev likewise: nails before Shnayim mikra; the main mitzvah is to read after midday; and after reading one goes to the bathhouse and immerses. The Eliyah Rabbah reports on the contrary, in the name of the Shelah, that one who reads Shnayim mikra on Friday immerses before reading. The Aruch HaShulchan specifies that this is a pious practice, for those who read the whole parasha on Friday. The Kaf HaChaim refers, for nails and immersion, to what he wrote about them in siman 260."),
     ]},
     {"titre": "סדר הקריאה", "titre_fr": "L'ordre de la lecture", "titre_en": "The order of reading", "halakhot": [
         H("tous", [
@@ -423,6 +570,43 @@ SECTIONS = [
         ],
             "Selon le Talmud, il n'est pas interdit de parler au milieu de Chnayim mikra ; mais selon la Kabbale on ne s'interrompt pas du tout, et l'on lit tout d'une traite (Kitsour Yalkout Yossef ; Kaf ha'Haïm). Celui qui a soif d'eau peut s'interrompre pour boire, avec la bénédiction avant et Boré nefachot après (Kitsour Yalkout Yossef ; le Kaf ha'Haïm dit : « très soif »). Celui à qui l'on demande, au milieu de sa lecture du matin, de lire au public une halakha ou un enseignement sur la paracha peut s'interrompre pour en faire profiter le public (Kitsour Yalkout Yossef ; de même le Rav Yaron Achkenazi, Kav haHalakha haSefaradi) ; un érudit à qui l'on pose une question de halakha peut y répondre entre deux versets.",
             "By the Talmud it is not forbidden to talk in the middle of Shnayim mikra; but according to Kabbalah one does not interrupt at all, and reads everything at one sitting (Kitzur Yalkut Yosef; Kaf HaChaim). One who is thirsty for water may stop to drink, with the blessing before and Borei nefashot after (Kitzur Yalkut Yosef; the Kaf HaChaim says: “very thirsty”). One who is asked, in the middle of his morning reading, to read a halachah or a teaching on the parasha to the public may stop to benefit the public (Kitzur Yalkut Yosef; likewise Rav Yaron Ashkenazi, Kav HaHalacha HaSefaradi); a Torah scholar asked a question of halachah may answer it between two verses."),
+        H("tous", [
+            R("ahs", 7, cite='''ויש שקורין כל הסדרה, ואחר כך פעם שני, ואחר כך התרגום. וכן משמע קצת מלשון רש"י בברכות שם'''),
+            R("ahs", 7, cite='''ולכן נראה לעניות דעתי דאין קפידא, ויכול לעשות כמו שירצה, דלכולם יש פנים בהלכה. ואפשר שגם יכול לעשות פעמים כך ופעמים כך. ואי סלקא דעתך שיש קפידא לעשות דווקא כך או כך – לא הוה שתקי רבותינו הראשונים מלפרשה'''),
+            R("kh", 3, cite='''ולא היה עושה כמו שיש מתייהרים לקרוא כל הפרשה כולה מקרא פ"א ולשנותה מקרא פ"ב ואח"כ קורים כולה יחד תרגום פ"ג אלא כל פסוק ופסוק בפ"ע היה קורא שמו"ת'''),
+            R("mbe", 130, cite='''וכ״ש שלא ילמוד כל פרשת השבוע כולה שנים מקרא ואח״כ יקראנה כלה תרגום. לא אריך למעבד הכי'''),
+        ],
+            "Lire toute la paracha une fois, puis une seconde fois, puis tout le targoum ? L'Aroukh haChoul'han rapporte que certains font ainsi, y voit un certain appui dans les mots de Rachi, et conclut qu'à son humble avis rien n'est ici impératif : on peut faire comme on veut, chaque façon a un fondement dans la halakha, et peut-être même tantôt d'une façon, tantôt d'une autre – s'il fallait absolument faire d'une seule façon, les Richonim ne se seraient pas tus. À l'inverse, le Kaf ha'Haïm rapporte du Cha'ar haKavanot que le Ari ne faisait pas comme ceux qui se piquent de lire toute la paracha une fois, de la répéter, puis de lire tout le targoum d'un coup : il lisait chaque verset à part, deux fois puis son targoum. Et le 'Hida (Moré beEtsba) écrit qu'à plus forte raison on n'étudie pas toute la paracha deux fois pour lire ensuite tout le targoum : « il ne convient pas de faire ainsi ».",
+            "Reading the whole parasha once, then a second time, then the whole targum? The Aruch HaShulchan reports that some do so, sees some support for it in Rashi's wording, and concludes that in his humble opinion nothing here is imperative: one may do as one wishes, each way has a basis in halachah, and perhaps even sometimes one way and sometimes another – had one way been required, the Rishonim would not have kept silent. Conversely, the Kaf HaChaim reports from Sha'ar HaKavanot that the Ari did not do as those who presume to read the whole parasha once, repeat it, and then read the whole targum together: he read each verse by itself, twice and then its targum. And the Chida (Moreh BeEtzba) writes that all the more so one should not study the whole parasha twice and then read the whole targum: “it is not fitting to do so”."),
+        H("ashkenaze", [
+            R("ahs", 4, cite='''ו"פרשה" מקרי פתוחה או סתומה. וזה שמצויין בחומשים "שלישי", "רביעי", וכו' – זה אינו כלום'''),
+            R("ahs", 5, cite='''אך לפי זה יש להסתפק כשיש פרשה באמצע פסוק'''),
+            R("ahs", 5, cite='''נראה שיעשה כן. ואי משום "כל פסוקא דלא פסקיה משה לא פסקינן" – הא כאן פסקיה משה'''),
+        ],
+            "Pour qui lit section par section, l'Aroukh haChoul'han précise que la « paracha » est la section ouverte ou fermée ; les repères « troisième », « quatrième »… imprimés dans les 'Houmachim n'y comptent pour rien. Quand une section s'achève au milieu d'un verset – il cite « Ce fut après le fléau » (Pin'has), « Les fils de Yaakov étaient douze » (Vayichla'h) et « d'Eilat et d'Etsion Guéver » (Devarim) –, il lui semble qu'on s'y arrête tout de même : la règle « un verset que Moché n'a pas coupé, nous ne le coupons pas » ne s'y oppose pas, puisqu'ici Moché l'a coupé.",
+            "For one who reads section by section, the Aruch HaShulchan specifies that the “parasha” is the open or closed section; the marks “third”, “fourth”… printed in the Chumashim count for nothing here. When a section ends in the middle of a verse – he cites “It was after the plague” (Pinchas), “The sons of Yaakov were twelve” (Vayishlach) and “from Eilat and Etzion Gever” (Devarim) –, it seems to him that one stops there all the same: the rule “a verse that Moshe did not divide, we do not divide” is no objection, since here Moshe did divide it."),
+        H("tous", [
+            R("bh", (494, 1), cite='''ובפרשת יתרו ובפרשת ואתחנן קורין אף בצבור בטעם התחתון ויש נוהגין לקרות בצבור לעולם בטעם העליון דהיינו אף בפרשת יתרו ובפרשת ואתחנן רק היחיד הקורא לעצמו קורא בשני'''),
+            R("kh", 5, cite='''בקריאת עשרת הדברות צריך ליזהר לקרותם שמו"ת כפי הטעמים של סדר הפסוקים'''),
+            R("kh", 5, cite='''אמנם לא תרצח לא תנאף לא תגנוב לא תענה צריך ליזהר לקרותם שנים מקרא בבת אחת ואח"כ אחד תרגום בב"א לפי שכולם פסוק אחד'''),
+            R("kh", 5, cite='''ואין לקרות פסוק אחד פסקי פסקי שמו"ת אלא צריך לקרות כל הפסוק שלם תחלה שנים מקרא ואח"כ אחד תרגום'''),
+        ],
+            "Les Dix Paroles ont deux cantillations : l'une fait de chaque Parole un seul verset (ta'am 'elyon), l'autre suit le découpage ordinaire des versets (ta'am ta'hton). Le Béour Halakha résume les A'haronim : à Chavouot on lit en public selon la première ; aux parachiot Yitro et Vaet'hanan on lit, même en public, selon la seconde, et certains lisent toujours en public selon la première – seul le particulier qui lit pour lui-même lit alors selon la seconde. Le Kaf ha'Haïm écrit de même que, pour Chnayim mikra, on lit les Dix Paroles selon la cantillation de l'ordre des versets ; « Tu ne tueras pas, tu ne commettras pas d'adultère, tu ne voleras pas, tu ne témoigneras pas… » forment un seul verset : on les lit ensemble deux fois, puis leur targoum ensemble. Et l'on ne lit pas un verset par morceaux : on lit d'abord le verset entier deux fois, puis son targoum.",
+            "The Ten Commandments have two cantillations: one makes each commandment a single verse (ta'am elyon), the other follows the ordinary division into verses (ta'am tachton). The Beur Halacha sums up the Acharonim: on Shavuot the public reading follows the first; in parashiot Yitro and Va'etchanan one reads, even in public, according to the second, and some always read in public according to the first – only the individual reading for himself then reads according to the second. The Kaf HaChaim likewise writes that for Shnayim mikra one reads the Ten Commandments with the cantillation of the order of the verses; “You shall not murder, you shall not commit adultery, you shall not steal, you shall not bear [false] witness…” form a single verse: one reads them together twice, then their targum together. And a verse is not read piecemeal: one first reads the whole verse twice, then its targum."),
+        H("ashkenaze", [
+            R("bht", 1, cite='''ואיסור גדול להפסיק בקריאת שמו"ת בדיבור'''),
+            R("ma", 11, cite='''וטוב שלא יפסיק כלל בשיחה [כ"ה]'''),
+            R("ahs", 7, cite='''ויש מי שכתב שיש איסור להפסיק בדיבור בקריאת שנים מקרא ואחד תרגום (באר היטב סעיף קטן א). ותמיה לומר כן, דבלא ברכה מה שייך הפסק?'''),
+            R("ahs", 7, cite='''ועוד, דאותם שקורין פרשה בכל יום – הלא מפסיקין הרבה, ולכן אין לזה מקום מדינא'''),
+        ],
+            "S'interrompre : interdit, ou seulement à éviter ? Le Baèr Hétev écrit que c'est « un grand interdit » de s'interrompre par la parole pendant Chnayim mikra. Le Maguen Avraham, après avoir décrit la haftara et ce qu'on lit ensuite, écrit au nom de la Knesset haGuedola qu'il est bon de ne pas s'interrompre du tout par une conversation. L'Aroukh haChoul'han cite le Baèr Hétev et s'en étonne : là où il n'y a pas de bénédiction, que vient faire la notion d'interruption ? Et ceux qui lisent une section chaque jour s'interrompent bien davantage ; cela n'a donc pas de fondement selon la loi.",
+            "Interrupting: forbidden, or merely to be avoided? The Ba'er Hetev writes that it is “a great prohibition” to interrupt Shnayim mikra by speaking. The Magen Avraham, after describing the haftarah and what is read after it, writes in the name of the Knesset HaGedolah that it is good not to interrupt at all with conversation. The Aruch HaShulchan quotes the Ba'er Hetev and wonders at it: where there is no blessing, what place is there for the notion of an interruption? And those who read a section each day interrupt far more; so this has no basis in law."),
+        H("tous", [
+            R("sch", 745, cite='''כמו שאין אומרים כשאנו קורין בתורה על משה ועל אהרן זכרונם לטובה'''),
+            R("sch", 745, cite='''וכן כשאדם אומר שנים מקרא ואחד תרגום כשמזכיר הצדיקים שנזכר בפסוקים אין צריך לומר ז"ל'''),
+        ],
+            "Celui qui dit Chnayim mikra n'a pas à ajouter « de mémoire bénie » quand il nomme les justes mentionnés dans les versets, de même qu'on ne le dit pas de Moché et d'Aharon quand on lit la Torah (Séfer 'Hassidim).",
+            "One who says Shnayim mikra need not add “of blessed memory” when naming the righteous mentioned in the verses, just as it is not said of Moshe and Aharon when the Torah is read (Sefer Chasidim)."),
     ]},
     {"titre": "תרגום ופירוש רש״י", "titre_fr": "Targoum et Rachi", "titre_en": "Targum and Rashi", "halakhot": [
         H("tous", [
@@ -461,6 +645,27 @@ SECTIONS = [
         ],
             "Celui qui n'a qu'un 'Houmach sans targoum – en voyage, dit le Kitsour Choul'han Aroukh – lit le texte deux fois, puis le targoum quand il en trouve un (Michna Beroura ; Kitsour Choul'han Aroukh ; Choul'han Aroukh haRav ; le Kaf ha'Haïm le rapporte au nom du Séder haYom, cité par le Maguen Avraham). Le Kaf ha'Haïm propose, pour achever malgré tout la paracha avec la communauté, de lire alors le texte trois fois, comme un verset sans targoum, puis, une fois arrivé, de relire si possible Chnayim mikra véé'had targoum.",
             "One who has only a Chumash without targum – when travelling, says the Kitzur Shulchan Aruch – reads the text twice, and the targum when he finds one (Mishnah Berurah; Kitzur Shulchan Aruch; Shulchan Aruch HaRav; the Kaf HaChaim reports it in the name of the Seder HaYom, cited by the Magen Avraham). The Kaf HaChaim suggests that, in order to complete the parasha with the congregation all the same, he should then read the text three times, like a verse without targum, and once he arrives, read Shnayim mikra ve-echad targum again if possible."),
+        H("ashkenaze", [
+            R("bh", 2, cite='''היוצא מדברינו דאין לנו פוסק מפורש שיסבור דהתרגום חשוב טפי מפירש"י ומ"מ נראה לדינא לנהוג כהב"י דאף שפירש"י מפרש את הענין יותר מתרגום אבל מפני שיש כמה תיבות וגם כמה פסוקים שאין עליהם פירושו של רש"י וא"כ לא נשאר לו שם כ"א מקרא לבד והתרגום מפרש כל פסוק וכל תיבה'''),
+            R("ahs", 12, cite='''והגדולים הסכימו דדווקא תרגום אונקלוס, ואין יוצאין בדבר אחר, שהתרגום קדוש וניתן מסיני. וכן הוא על פי חכמת הקבלה, וכך נוהגים כל ישראל, וחלילה לשנות מזה'''),
+            R("ahs", 12, cite='''ואם אינו מצפה שיבא תרגום לידו – נראה לעניות דעתי שצריך לקרא המקרא שלוש פעמים, לפי הטעמים שנתבארו'''),
+        ],
+            "Le Béour Halakha conclut de son examen qu'aucun décisionnaire ne dit expressément que le targoum l'emporte sur Rachi ; il lui semble pourtant qu'en pratique on suit le Beit Yossef (lire le targoum et aussi Rachi) : Rachi explique davantage le sujet, mais il y a des mots, et même des versets, qu'il ne commente pas, pour lesquels il ne resterait que le texte seul, alors que le targoum explique chaque verset et chaque mot. L'Aroukh haChoul'han écrit que les grands décisionnaires se sont accordés : il faut précisément le targoum d'Onkelos, et l'on n'est quitte par rien d'autre, car le targoum est saint et a été donné au Sinaï ; ainsi le veut aussi la Kabbale, ainsi fait tout Israël, « et loin de nous d'y rien changer ». Celui qui n'espère pas avoir un targoum entre les mains doit, à son humble avis, lire le texte trois fois.",
+            "The Beur Halacha concludes from its analysis that no authority states explicitly that the targum outranks Rashi; yet it seems to it that in practice one follows the Beit Yosef (reading the targum and also Rashi): Rashi explains the subject more, but there are words, and even verses, on which he does not comment, where only the bare text would remain, whereas the targum explains every verse and every word. The Aruch HaShulchan writes that the great authorities have agreed: it must be Targum Onkelos specifically, and nothing else discharges the obligation, for the targum is holy and was given at Sinai; so too according to Kabbalah, so all Israel practise, “and far be it from us to change this”. One who does not expect a targum to come to hand must, in his humble opinion, read the text three times."),
+        H("sefarade", [
+            R("kh", 19, cite='''פי' שצריך לקרות שנים מקרא ואחד פירוש אבל בפירוש לחודיה לא סגי. ופסוקים שאין להם פירוש צריך לקרותם ג"פ מקרא כמו פסוקים שאין להם תרגום'''),
+            R("kh", 20, cite='''מיהו לפי חכמי המקו' משמע דוקא תרגום'''),
+            R("kh", 23, cite='''ונראה דאפי' אם לא הותר לקרות הפרשה שמו"ת בליל הששי יכול לקרות פרש"י בליל ו' כדי לצאת י"ח וירא שמים יצא ידי שתיהם תרגום ורש"י'''),
+        ],
+            "« S'il a étudié la paracha avec Rachi » : le Kaf ha'Haïm explique qu'il faut lire deux fois le texte et une fois le commentaire – le commentaire seul ne suffit pas – et que les versets sans commentaire se lisent trois fois, comme les versets sans targoum. Il rapporte que, d'après les kabbalistes, il faut précisément le targoum. Et il rapporte du Roua'h 'Haïm que, même si l'on ne permet pas de lire Chnayim mikra la nuit de jeudi à vendredi, on peut lire Rachi cette nuit-là pour s'acquitter ; celui qui craint le Ciel s'acquitte des deux, targoum et Rachi.",
+            "“If one studied the parasha with Rashi”: the Kaf HaChaim explains that one must read the text twice and the commentary once – the commentary alone is not enough – and that verses without commentary are read three times, like verses without targum. He reports that according to the kabbalists it must be the targum specifically. And he reports from the Ruach Chaim that even if reading Shnayim mikra on Thursday night is not permitted, one may read Rashi that night to fulfil the obligation; one who fears Heaven fulfils both, targum and Rashi."),
+        H("tous", [
+            R("taz", 1, cite='''דלא מבעיא ראובן ושמעון שהם שמות השבטים ויש בהם ודאי קדושה בטעם שמות אלו אלא אפי' עטרות ודיבון שהם שמות ערי א"י ואפש' שקראו אות' העכו"ם אפ"ה צריך לקרות' ג"פ'''),
+            R("kh", 17, cite='''ורבינו בחיי כתב לפי שיש באלו העיירות שמות של ע"ז ושלא תאמר כיון שהתרגום הוא פי' הכתב אין לנו לתרגם הכתוב הזה כי יש בו זכרון ע"ז וע"כ באו חכמים לומר שאף הפסוק הזה ראוי לתרגמו ושלא להקל בו'''),
+            R("ahs", 11, cite='''ולא מפני התרגום, שהרי גם בלשון התרגום השמות שוין ללשון המקרא, אלא משום דצריך שלושה פעמים'''),
+        ],
+            "Pourquoi le Talmud nomme-t-il justement « Atarot et Divon » ? Le Taz : non seulement « Réouven et Chimon », noms des tribus, qui portent certainement une sainteté, mais même « Atarot et Divon », noms de villes de la terre d'Israël que les nations ont peut-être ainsi appelées, se lisent trois fois. Rabbénou Be'hayé, cité par le Kaf ha'Haïm : ces villes portent des noms d'idolâtrie, et l'on aurait pu dire qu'il ne faut pas traduire ce verset qui en porte le souvenir ; les Sages enseignent que même ce verset mérite son targoum, sans allègement. L'Aroukh haChoul'han : pour des noms comme « Réouven et Chimon », ce n'est pas à cause du targoum – les noms y sont les mêmes que dans le texte – mais parce qu'il faut trois lectures.",
+            "Why does the Talmud name precisely “Atarot and Divon”? The Taz: not only “Reuven and Shimon”, names of the tribes, which certainly carry holiness, but even “Atarot and Divon”, names of towns of the Land of Israel that the nations may have given, are read three times. Rabbenu Bachya, quoted by the Kaf HaChaim: these towns bear names of idolatry, and one might have said that this verse, which recalls it, should not be translated; the Sages teach that even this verse deserves its targum, with no leniency. The Aruch HaShulchan: for names such as “Reuven and Shimon”, it is not because of the targum – the names are the same there as in the text – but because three readings are required."),
     ]},
     {"titre": "טעמים, ספר תורה וחומש", "titre_fr": "Te'amim, séfer Torah, 'Houmach", "titre_en": "Cantillation, Torah scroll, Chumash", "halakhot": [
         H("tous", [
@@ -489,6 +694,18 @@ SECTIONS = [
         ],
             "Celui qui connaît par cœur la vocalisation et les te'amim fait bien de lire le texte dans un séfer Torah (Michna Beroura ; Choul'han Aroukh haRav, qui précise : un séfer Torah cachère) ; pour le Kitsour Yalkout Yossef, c'est la meilleure façon d'accomplir la mitsva, le targoum se lisant alors dans un 'Houmach. Celui qui ne les connaît pas lit plutôt dans un 'Houmach vocalisé, avec les te'amim, que de lire de façon fautive dans le séfer Torah (Kitsour Yalkout Yossef ; Kaf ha'Haïm). Même celui qui s'y connaît et lit dans le séfer Torah ne récite pas la bénédiction de la Torah, qui n'a été instituée que pour la lecture en public (Kaf ha'Haïm) ; le Kitsour Yalkout Yossef écrit de même qu'il est évident qu'on ne récite pas de bénédiction sur cette lecture. À la question de lire Chnayim mikra sur un appareil électronique, le Rav Emmanuel Molkandov (beit hora'a « Halakha lema'assé » du Rav Ofir Malka) répond que la question a peu de conséquence pratique, mais que, si l'on y tient, cela compte comme étudier dans un livre.",
             "One who knows the vowels and te’amim by heart does well to read the text from a Torah scroll (Mishnah Berurah; Shulchan Aruch HaRav, which specifies: a kosher Torah scroll); for the Kitzur Yalkut Yosef, this is the best way to fulfil the mitzvah, the targum then being read from a Chumash. One who does not know them should rather read from a Chumash with vowels and te’amim than read wrongly from the Torah scroll (Kitzur Yalkut Yosef; Kaf HaChaim). Even one who knows them and reads from the Torah scroll does not recite the blessing over the Torah, which was instituted only for public reading (Kaf HaChaim); the Kitzur Yalkut Yosef likewise writes that it is obvious that no blessing is said over this reading. Asked about reading Shnayim mikra on an electronic device, Rav Emmanuel Molkandov (the “Halacha LeMaaseh” beit hora’ah of Rav Ofir Malka) answers that the question has little practical consequence, but that, if it matters to the asker, it counts as studying from a book."),
+        H("ashkenaze", [
+            R("taz", 2, cite='''ועוד אני אומר על ירא שמים שיראה לקרות בפני עצמו בס"ת הסדרה לכל הפחות פעם א' ואח"כ עם החזן פעם שנית דהקריא' בחומש לבד אין יוצא בה שפיר דבעי' דברים שבכת' והיינו ס"ת שלימה כדינה ויש לו להשלים זה עד ש"ת וכך נהגתי מעודי'''),
+        ],
+            "Le Taz ajoute, pour celui qui craint le Ciel : qu'il veille à lire lui-même la paracha dans un séfer Torah au moins une fois, puis une seconde fois avec l'officiant ; car la lecture dans un 'Houmach seul n'acquitte pas pleinement : il faut « ce qui est écrit », c'est-à-dire un séfer Torah entier et conforme. On peut compléter cela jusqu'à Sim'hat Torah – « et c'est ainsi que j'ai toujours fait ».",
+            "The Taz adds, for one who fears Heaven: let him see to reading the parasha by himself from a Torah scroll at least once, and then a second time with the reader; for reading from a Chumash alone does not properly fulfil it: it requires “what is written”, that is, a complete and valid Torah scroll. This may be made up until Simchat Torah – “and so I have always done”."),
+        H("sefarade", [
+            R("kh", 13, cite='''צריך ליזהר בקריאת המקרא בנגינת הטעמים בשלם שבפנים'''),
+            R("kh", 13, cite='''שיזהרו בקריאת שמו"ת לקרות המקרא כל שישנו בנותן טעם לשבח'''),
+            R("kyy", 17, cite='''ובפרט מי שהוא שליח צבור הקורא בתורה, ובקי בקריאת הפרשה בטעמיה, ורוצה לקרוא הפרשה מתוך הספר הנמצא בהיכל, כדי שיהיה רגיל בקריאת הפרשה, שיש להקל בזה. ונכון שלא לטלטל את הספר תורה לתיבה'''),
+        ],
+            "Autant le targoum se lit sans te'amim, autant il faut veiller à lire le texte avec la mélodie des te'amim, le mieux possible : le Kaf ha'Haïm rapporte, du Ma'hazik Berakha, que le pieux Rabbi Moché haCohen en avertissait beaucoup ses élèves. Le Kitsour Yalkout Yossef permet en particulier à l'officiant qui lit la Torah, s'il connaît la paracha avec ses te'amim et veut la lire dans le séfer qui se trouve dans le heikhal pour s'y exercer, de le faire ; il convient de ne pas déplacer le séfer Torah jusqu'à la téva.",
+            "Just as the targum is read without te'amim, so one must take care to read the text with the melody of the te'amim, as fully as possible: the Kaf HaChaim reports, from the Machazik Berachah, that the pious Rabbi Moshe HaKohen used to warn his students strongly about this. The Kitzur Yalkut Yosef allows in particular the reader who reads the Torah in public, if he knows the parasha with its te'amim and wishes to read it from the scroll kept in the heichal in order to practise, to do so; it is proper not to carry the Torah scroll to the tevah."),
     ]},
     {"titre": "קריאת הציבור", "titre_fr": "La lecture à la synagogue", "titre_en": "The public reading", "halakhot": [
         H("ashkenaze", [
@@ -519,6 +736,56 @@ SECTIONS = [
         ],
             "Le Kaf ha'Haïm cite le Kitsour Chla : ceux qui lisent Chnayim mikra pendant la lecture publique n'agissent pas bien, car il convient d'écouter l'officiant et de se taire ; et il cite le Yafé laLev : « c'est ainsi que nous tenons », contre le Beit Yossef et le Darkhei Moché. Le Kitsour Yalkout Yossef permet, si l'officiant s'attarde sur les te'amim au point qu'on ait le temps de lire Chnayim mikra pendant la lecture, de le faire et d'être quitte – sauf pour Zakhor et Para, qu'il faut écouter –, à condition de lire à voix basse et que dix autres écoutent, ou de s'être tourné de côté et d'avoir commencé à lire avant le début de la lecture ; il conclut cependant que celui qui est scrupuleux écoute, dans toutes les parachiot, la lecture de l'officiant.",
             "The Kaf HaChaim cites the Kitzur Shelah: those who read Shnayim mikra during the public reading do not act well, since it is fitting to listen to the reader and be silent; and he cites the Yafeh LaLev: “this is how we hold”, against the Beit Yosef and the Darkei Moshe. The Kitzur Yalkut Yosef allows it, if the reader lingers over the te’amim so that one has time to read Shnayim mikra during the reading, and one fulfils the obligation – except for Zachor and Parah, which must be heard – provided one reads in a whisper and ten others are listening, or one turned aside and began reading before the reading began; he concludes, however, that a careful person listens to the reader in all the parashiyot."),
+        H("tous", [
+            R("kh", 8, cite='''אם שמע שמו"ת מאחר אפי' בלא אונס יצא ובלבד שיכוין לשמוע מלה במלה'''),
+            R("kh", 8, cite='''אמנם כבר כתבנו במקום אחר דיותר טוב לאדם להוציא הוא עצמו ולא לסמוך לצאת ע"י אחרים'''),
+            R("sht", 6, cite='''אם שמע שמו"ת מאחר אפילו בלי אונס יצא ובלבד שיכוין לשמוע מלה במלה'''),
+            R("ahs", 3, cite='''וכן יש מי שאומר שאם שמע שנים מקרא ואחד תרגום – גם כן יצא, עם כיוון לשמוע (שערי תשובה בשם רדב"ז). ולעניות דעתי בעינן דווקא לימוד, ולא שמיעה'''),
+        ],
+            "Écouter la lecture d'un autre. Celui qui a entendu d'un autre Chnayim mikra véé'had targoum, même sans y être contraint, est quitte, pourvu qu'il se soit appliqué à écouter mot à mot : c'est l'avis du Radbaz, rapporté par le Ma'hazik Berakha, puis par les Cha'arei Techouva et le Kaf ha'Haïm. Le Kaf ha'Haïm ajoute qu'il vaut mieux s'acquitter soi-même que de compter sur d'autres. L'Aroukh haChoul'han rapporte cet avis et écrit qu'à son humble avis il faut précisément étudier, et non écouter.",
+            "Hearing another person read. One who heard Shnayim mikra ve-echad targum from someone else, even when not forced to, has fulfilled the obligation, provided he took care to listen word by word: this is the view of the Radbaz, reported by the Machazik Berachah and then by the Sha'arei Teshuvah and the Kaf HaChaim. The Kaf HaChaim adds that it is better to fulfil it oneself than to rely on others. The Aruch HaShulchan reports this view and writes that in his humble opinion what is required is study specifically, not hearing."),
+        H("ashkenaze", [
+            R("sa", 6, cite='''מלמדי תינוקות אין צריכים לחזור ולקרות הפרשה בשבת'''),
+            R("mb", 16, cite='''ודוקא בימיהם שהיו לומדים פירוש המקרא עם התינוקות ולכך יוצאין בזה גם ידי תרגום'''),
+            R("mb", 16, cite='''אבל אם לומד פירוש המלות לחוד לא יצא ידי תרגום אלא השני פעמים מקרא דבודאי קרא עם התינוקות שני פעמים ולכן צריך לומר תרגום בעצמו'''),
+            R("sahr", 7, cite='''לפיכך מלמדי תינוקות שגמרו הפרשה עם התינוקות פעם אחת אינם צריכין לחזור ולקרותה ב' פעמים אלא יקראו פעם אחת והתרגום'''),
+            R("sahr", 7, cite='''אבל אם למדו פירוש המקרא יצאו ידי תרגום גם כן'''),
+            R("ahs", 13, cite='''וכן כל מי שלמד הסדרה באמצע השבוע שני פעמים – אין צריך לחזור ולקרות הפרשה בשבת'''),
+        ],
+            "Les maîtres qui enseignent aux enfants n'ont pas à relire la paracha le Chabbat (Choul'han Aroukh). La Michna Beroura précise : cela valait de leur temps, où l'on étudiait avec les enfants l'explication du texte, ce qui acquittait aussi du targoum ; mais celui qui n'enseigne que le sens des mots n'est quitte que des deux lectures du texte – il a certainement lu deux fois avec les enfants – et doit dire lui-même le targoum. Le Choul'han Aroukh haRav : les maîtres qui ont achevé la paracha une fois avec les enfants n'ont pas à la relire deux fois, ils la lisent une fois, avec le targoum ; et s'ils ont étudié avec eux l'explication du texte, ils sont quittes aussi du targoum. L'Aroukh haChoul'han l'étend : quiconque a étudié la paracha deux fois dans la semaine n'a pas à la relire le Chabbat.",
+            "Teachers of children need not read the parasha again on Shabbat (Shulchan Aruch). The Mishnah Berurah specifies: that applied in their days, when the explanation of the text was studied with the children, which also discharged the targum; but one who teaches only the meaning of the words has fulfilled only the two readings of the text – he certainly read it twice with the children – and must say the targum himself. The Shulchan Aruch HaRav: teachers who completed the parasha once with the children need not read it twice again; they read it once, with the targum; and if they studied the explanation of the text with them, they have fulfilled the targum as well. The Aruch HaShulchan extends this: anyone who studied the parasha twice during the week need not read it again on Shabbat."),
+        H("sefarade", [
+            R("kh", 32, cite='''מפני שהם חוזרים הרבה פעמים עם התינוקות מיהא תרגום צריכים לקרות'''),
+            R("kh", 32, cite='''וע"כ יזהרו שלא להפסיק בעת קריאת הפרשה בשום שיחה ואפי' בד"ת'''),
+            R("kh", 32, cite='''וא"כ לפ"ז גם מלמדי תינוקות אע"ג דלומדים כמה פעמים עם התינוקות צריך לקרות חוץ מזה שמו"ת כדי שיהיו תיכף בלתי הפסק בינתיים וגם כדי שילמדו כל פסוק ופסוק בפ"ע שמו"ת'''),
+        ],
+            "Le Kaf ha'Haïm explique que les maîtres d'enfants sont dispensés parce qu'ils répètent bien des fois la paracha avec les enfants, mais qu'ils doivent tout de même lire le targoum. Il rapporte ensuite du Maté Yehouda, au nom des kabbalistes, que la lecture de Chnayim mikra prépare à recevoir le supplément d'âme du Chabbat, et qu'on veille donc à ne pas l'interrompre par une conversation, pas même par des paroles de Torah ; il en conclut que, d'après cela, les maîtres d'enfants eux aussi doivent lire, en plus, Chnayim mikra véé'had targoum, d'une traite, sans interruption, chaque verset à part.",
+            "The Kaf HaChaim explains that teachers of children are exempt because they review the parasha many times with the children, but that they must still read the targum. He then reports from the Mateh Yehudah, in the name of the kabbalists, that reading Shnayim mikra prepares one to receive the additional soul of Shabbat, and that one should therefore take care not to interrupt it with any conversation, not even words of Torah; he concludes that, accordingly, teachers of children too must read Shnayim mikra ve-echad targum in addition, at one stretch, without interruption, each verse by itself."),
+        H("ashkenaze", [
+            R("sa", (146, 2), cite='''ולקרות שנים מקרא ואחד תרגום בשעת קריאת התורה שרי'''),
+            R("sa", (146, 2), cite='''והנכון שבכל הפרשיות ראוי למדקדק בדבריו לכוין דעתו ולשמעם מפי הקורא'''),
+            R("mb", 15, cite='''דשם מסיק המחבר בס"ב דנכון להמדקדק בדבריו לכוין דעתו לשמעם מפי הקורא'''),
+            R("bh", 5, cite='''עיין בא"ר שכתב דהוא מצוה מן המובחר ופלא הוא'''),
+            R("bh", 5, cite='''אלא דיוכל לסמוך מי שרוצה להקל על המקילין ע"ש אבל חלילה דנימא דהוא מצוה מן המובחר'''),
+            R("bh", 5, cite='''[אם לא דנימא דכונת הא"ר הוא בין גברא לגברא]'''),
+            R("mb", 14, cite='''דרק בין גברא לגברא מותר'''),
+        ],
+            "Au siman 146, le Choul'han Aroukh, après avoir permis de lire Chnayim mikra pendant la lecture de la Torah, conclut que, dans toutes les parachiot, il convient à celui qui est scrupuleux d'appliquer son esprit à les écouter de la bouche du lecteur ; la Michna Beroura le rappelle ici. Le Béour Halakha s'étonne donc de l'Eliya Rabba, pour qui lire Chnayim mikra à ce moment serait la meilleure façon d'accomplir la mitsva : celui qui veut être indulgent peut s'appuyer sur ceux qui permettent, mais on ne saurait dire que c'est la meilleure façon – à moins que l'Eliya Rabba ne parle de l'intervalle entre deux appelés. La Michna Beroura rapporte en effet l'avis pour lequel ce n'est permis qu'entre deux appelés.",
+            "In siman 146 the Shulchan Aruch, after permitting Shnayim mikra during the Torah reading, concludes that in all parashiot it is proper for one who is meticulous to direct his mind to hearing them from the reader; the Mishnah Berurah recalls this here. The Beur Halacha therefore wonders at the Eliyah Rabbah, for whom reading Shnayim mikra at that time would be the best way to perform the mitzvah: one who wishes to be lenient may rely on those who permit, but it cannot be said to be the best way – unless the Eliyah Rabbah means the interval between two aliyot. The Mishnah Berurah indeed reports the view that it is permitted only between two aliyot."),
+        H("tous", [
+            R("bht", (128, 46), cite='''נשאלתי אם מותר לקרות הפרשה שנים מקרא ואחד תרגום בשעה שהכהנים מברכים לעם והשבתי דאינו מותר אפי' למ"ד דמותר לקרות הפרשה שמו"ת בשעה שהש"ץ קורא הפרשה בס"ת אפ"ה אסור בברכת כהנים'''),
+            R("kh", (128, 158), cite='''דאסור לקרות הפרשה שנים מקרא וא' תרגום בשעת ב"כ'''),
+        ],
+            "On ne lit pas Chnayim mikra pendant la bénédiction des Cohanim : même pour celui qui permet de la lire pendant que l'officiant lit la paracha dans le séfer Torah, c'est interdit à ce moment-là (Baèr Hétev, qui renvoie au Chiyouré Knesset haGuedola et au Pri 'Hadach ; Kaf ha'Haïm).",
+            "Shnayim mikra is not read during the Priestly Blessing: even for one who permits reading it while the reader reads the parasha from the Torah scroll, it is forbidden at that time (Ba'er Hetev, referring to the Shiyurei Knesset HaGedolah and the Pri Chadash; Kaf HaChaim)."),
+        H("ashkenaze", [
+            R("sa", (139, 1), cite='''ובמקום שהחזן קורא הוא צריך לסדר תחלה'''),
+            R("er", (139, 1), cite='''ועל כן ראוי שכל אחד יסדר אותה תחילה דשמא יקראו אותו לעלות למחר בשבת'''),
+            R("er", (139, 1), cite='''דבקריאת הפרשה שנים מקרא ואחד תרגום יוצא ידי חובת הסידור'''),
+            R("ahs", (139, 2), cite='''ועכשיו ששליח הציבור קורא – מחויב לחזור הפרשה שני פעמים מקודם, אפילו אם הוא בקי. וכשקרא בערב שבת שנים מקרא – יצא בזה'''),
+        ],
+            "Celui qui lit la Torah en public doit d'abord préparer sa lecture (Choul'han Aroukh, siman 139). L'Eliya Rabba rapporte du Ba'h qu'il convient que chacun la prépare aussi, car on pourrait l'appeler à monter le lendemain, Chabbat ; et il rapporte qu'en lisant la paracha Chnayim mikra véé'had targoum on s'acquitte de cette préparation. L'Aroukh haChoul'han : aujourd'hui que l'officiant lit, il doit revoir la paracha deux fois auparavant, même s'il la connaît ; et s'il a lu Chnayim mikra la veille de Chabbat, il est quitte par là.",
+            "One who reads the Torah in public must first prepare his reading (Shulchan Aruch, siman 139). The Eliyah Rabbah reports from the Bach that it is fitting for everyone to prepare it too, since he might be called up the next day, Shabbat; and he reports that by reading the parasha Shnayim mikra ve-echad targum one fulfils this preparation. The Aruch HaShulchan: nowadays, when the reader reads, he must review the parasha twice beforehand, even if he knows it well; and if he read Shnayim mikra on Friday, he has thereby fulfilled this."),
     ]},
     {"titre": "הפטרה וימים טובים", "titre_fr": "Haftara et fêtes", "titre_en": "Haftarah and festivals", "halakhot": [
         H("tous", [
@@ -565,6 +832,83 @@ SECTIONS = [
         ],
             "La paracha Vezot haBerakha se lit en Chnayim mikra le jour de Hochaana Rabba (Michna Beroura ; Kaf ha'Haïm ; Ben Ich 'Haï ; Kitsour Yalkout Yossef) ; le Choul'han Aroukh haRav dit : la veille de Sim'hat Torah, qui est son moment. Celui qui l'a lue le jour de Chemini Atseret n'a rien perdu (Michna Beroura ; Kaf ha'Haïm). Le Ben Ich 'Haï veut qu'on ne la lise pas le jour de Chemini Atseret, à cause du targoum, et, si l'on a oublié, qu'on la lise ce jour-là après Min'ha ; le Kitsour Yalkout Yossef dit de la lire alors à Chemini Atseret avant Cha'harit, ou avec l'officiant, et permet à qui manque de temps de la lire la nuit de Sim'hat Torah. Le Rav Menaché Moreno (beit hora'a « Halakha lema'assé » du Rav Ofir Malka) répond que la lecture de Vezot haBerakha faite dans le Tikoun peut compter pour l'une des deux lectures du texte, mais qu'il vaut mieux lire chaque verset en Chnayim mikra, et de jour plutôt que de nuit.",
             "The parasha Vezot HaBerachah is read as Shnayim mikra on the day of Hoshana Rabbah (Mishnah Berurah; Kaf HaChaim; Ben Ish Chai; Kitzur Yalkut Yosef); the Shulchan Aruch HaRav says: on the eve of Simchat Torah, which is its time. One who read it on the day of Shemini Atzeret has lost nothing (Mishnah Berurah; Kaf HaChaim). The Ben Ish Chai wants it not read on the day of Shemini Atzeret, because of the targum, and, if one forgot, read that day after Minchah; the Kitzur Yalkut Yosef says to read it then on Shemini Atzeret before Shacharit, or with the reader, and allows one who is short of time to read it on the night of Simchat Torah. Rav Menashe Moreno (the “Halacha LeMaaseh” beit hora’ah of Rav Ofir Malka) answers that reading Vezot HaBerachah in the Tikkun may count as one of the two readings of the text, but that it is better to read each verse as Shnayim mikra, and by day rather than by night."),
+        H("ashkenaze", [
+            R("ma", 11, cite='''פעם א' מקרא וא' תרגום ואח"כ מזמור מכתובים משיר של יום א' מקרא וא' תרגום או לעז אחר ואח"כ משנה א' [של"ה בשם מהרמ"ק]'''),
+            R("bht", 9, cite='''פעם א' מקרא וא' תרגום ועיין של"ה'''),
+            R("ksa", 11, cite='''וְיֵשׁ נוֹהֲגִין עוֹד לוֹמַר אַחַר כָּךְ שִׁיר הַשִּׁירִים'''),
+            R("ahs", 13, cite='''וכל מה שכתב המגן אברהם בסעיף י"א וי"ב – לא ידענו ממנהגים כאלו'''),
+        ],
+            "La haftara, et ce qu'on lit ensuite. Le Maguen Avraham rapporte, du Chla au nom de Rabbi Moché Cordovero : la haftara une fois dans le texte et une fois dans le targoum ; puis un psaume, celui du cantique du jour, une fois dans le texte et une fois dans le targoum ou une autre langue ; puis une michna. Le Baèr Hétev rapporte de même : une fois le texte et une fois le targoum. Le Kitsour Choul'han Aroukh note que certains ont encore l'usage de dire ensuite le Cantique des cantiques. L'Aroukh haChoul'han écrit de ce que rapporte là le Maguen Avraham : « nous ne connaissons pas de tels usages ».",
+            "The haftarah, and what is read after it. The Magen Avraham reports, from the Shelah in the name of Rabbi Moshe Cordovero: the haftarah once in the text and once in the targum; then a psalm, that of the song of the day, once in the text and once in the targum or another language; then a mishnah. The Ba'er Hetev likewise reports: once the text and once the targum. The Kitzur Shulchan Aruch notes that some also have the custom of saying the Song of Songs afterwards. The Aruch HaShulchan writes of what the Magen Avraham reports there: “we do not know of such customs”."),
+        H("sefarade", [
+            R("kh", 38, cite='''אמנם המט"י או' ח' כתב דנהגו לקרות הפטרה של כל שבוע פ"א מקרא לבד ודלא כמ"ש המ"א פ"א וא' תרגום דלא נהגו בתרגום ולכך נדפסו ההפטרות בחומשין מקרא לבד'''),
+            R("kh", 38, cite='''וע"כ אחר קריאת שמו"ת יאמר הפטרה של השבוע ואח"כ מזמור שיר ליום השבת וה' מלך גאות לבש וסדר חק לישראל המסודר ליום ו' משנה גמ' זוהר הלכות ואח"כ א"ר הונא בריה דרב יהודה א"ר אמי לעולם ישלים אדם פרשיותיו וכו\''''),
+            R("mbe", 131, cite='''פסוק אחרון מהפרשה אחר שקראו שמו״ת יחזור לקרותו'''),
+            R("mbe", 133, cite='''וילמוד מאמר קטן מזהר ונמצא שקרא מקרא תנ״ך משנה גמרא זהר'''),
+        ],
+            "Après la lecture. Le Kaf ha'Haïm rapporte du Maté Yehouda que l'usage est de lire la haftara de chaque semaine une seule fois, dans le texte seul, et non avec le targoum comme l'écrit le Maguen Avraham : on n'a pas pris l'usage du targoum, et c'est pourquoi les haftarot sont imprimées dans les 'Houmachim sans targoum. Il donne l'ordre à suivre : après Chnayim mikra, la haftara de la semaine, puis « Mizmor chir léyom haChabbat » et « Hachem malakh guéout lavech », l'étude du 'Hok leIsraël du vendredi (michna, guemara, Zohar, halakhot), puis l'enseignement de Rav Houna au nom de Rabbi Ami (« Qu'on achève toujours ses parachiot avec la communauté… ») et « Rabbi 'Hanania ben Akachia dit… ». Le 'Hida (Moré beEtsba) demande de relire le dernier verset après Chnayim mikra, de lire la haftara, puis « Hachem malakh », la michna « Bamé madlikin », l'enseignement de Rav Houna et un court passage du Zohar : on a ainsi lu Torah, Prophètes et Écrits, michna, guemara et Zohar.",
+            "After the reading. The Kaf HaChaim reports from the Mateh Yehudah that the custom is to read each week's haftarah once only, in the text alone, and not with the targum as the Magen Avraham writes: the targum did not become customary, which is why the haftarot are printed in the Chumashim without targum. He gives the order to follow: after Shnayim mikra, the haftarah of the week, then “Mizmor shir leyom haShabbat” and “Hashem malach ge'ut lavesh”, the Friday portion of Chok LeYisrael (mishnah, gemara, Zohar, halachot), then the teaching of Rav Huna in the name of Rabbi Ami (“One should always complete his portions with the congregation…”) and “Rabbi Chananya ben Akashya says…”. The Chida (Moreh BeEtzba) asks one to reread the last verse after Shnayim mikra, to read the haftarah, then “Hashem malach”, the mishnah “Bameh madlikin”, Rav Huna's teaching and a short passage of the Zohar: one has thus read Torah, Prophets and Writings, mishnah, gemara and Zohar."),
+        H("sefarade", [
+            R("kh", 37, cite='''כתב שם היפ"ל דיקרא ביום ו' אחר שמו"ת הפטרת השבוע חוץ מפ' אלא הדברים דיקרא הפטרת חזון'''),
+            R("kh", 37, cite='''אלא ההפטרה שקורא המפטיר למחר בס"ת וכתב שכן המנהג פשוט'''),
+        ],
+            "Pendant les trois Chabbatot « de malheur », les sept « de consolation » et les deux « de repentir » : le Kaf ha'Haïm rapporte que, pour le Yafé laLev, on lit le vendredi, après Chnayim mikra, la haftara de la paracha, sauf à la paracha Devarim, où l'on lit « 'Hazon » ; mais que le Péta'h haDevir établit que le particulier qui lit Chnayim mikra la veille de ces Chabbatot lit la haftara que le maftir lira le lendemain, et écrit que tel est l'usage répandu ; le Lev 'Haïm s'y accorde, au nom de plusieurs décisionnaires.",
+            "During the three Shabbatot “of calamity”, the seven “of consolation” and the two “of repentance”: the Kaf HaChaim reports that, according to the Yafeh LaLev, on Friday after Shnayim mikra one reads the haftarah of the parasha, except at parashat Devarim, when one reads “Chazon”; but that the Petach HaDevir establishes that an individual reading Shnayim mikra on the eve of those Shabbatot reads the haftarah which the maftir will read the next day, and writes that such is the widespread custom; the Lev Chaim concurs, in the name of several authorities."),
+        H("tous", [
+            R("rema", 7, cite='''ובשבת של חתונה יקרא ההפטר' של שבת ולא שוש אשיש'''),
+            R("mb", 20, cite='''וקמ"ל דבשעה שקורא לעצמו ההפטרה אין צריך לקרות אלו הפסוקים משום דהוא מצוי ושגור בפי הכל ובקי בהן בלא זו הקריאה'''),
+            R("ma", 12, cite='''לכן נראה לי דיחזור אותה אך אם יש הרבה חתנות זו אחר זו שוב א"צ'''),
+            R("sahr", 10, cite='''ואם אירע חתונה בשבת במקומות שנוהגים אז להפטיר בבית הכנסת שוש אשיש יש לו ג"כ לקרותה לעצמו ולא הפטרת השבוע כי שמא יקראוהו למחר'''),
+            R("ahs", 13, cite='''דבימיו היה המנהג לקרא לחתן "שוש אשיש", ובימינו לא ידענו ממנהג זה'''),
+            R("kh", 39, cite='''גם בשבת חתונה אין לקרות ביום ו' אחר השמו"ת רק הפטרת השבוע'''),
+        ],
+            "Le Chabbat d'un mariage. Le Rema : on lit pour soi la haftara du Chabbat, et non « Sos assis ». La Michna Beroura explique : là où l'on ajoute en public, à la haftara de la paracha, quelques versets de « Sos assis », celui qui lit la haftara pour lui-même n'a pas à les lire, car ils sont courants, familiers à tous, et on les connaît sans cette lecture. Le Maguen Avraham pense au contraire qu'on la relit, sauf si plusieurs mariages se suivent ; le Choul'han Aroukh haRav de même : là où l'on a l'usage de lire alors à la synagogue « Sos assis », on la lit aussi pour soi, et non la haftara de la semaine, car on pourrait être appelé le lendemain. L'Aroukh haChoul'han note que cet usage existait du temps du Rema et qu'on ne le connaît plus de son temps. Le Kaf ha'Haïm conclut, d'après la raison donnée par la Knesset haGuedola, que même le Chabbat d'un mariage on ne lit le vendredi, après Chnayim mikra, que la haftara de la semaine.",
+            "The Shabbat of a wedding. The Rema: one reads for oneself the haftarah of the Shabbat, not “Sos asis”. The Mishnah Berurah explains: where a few verses of “Sos asis” are added in public to the haftarah of the parasha, one who reads the haftarah for himself need not read them, since they are common, familiar to all, and known without this reading. The Magen Avraham holds on the contrary that one does review it, unless several weddings follow one another; the Shulchan Aruch HaRav likewise: where the custom is to read “Sos asis” in the synagogue then, one also reads it for oneself, not the haftarah of the week, since one might be called up the next day. The Aruch HaShulchan notes that this custom existed in the Rema's time and is no longer known in his. The Kaf HaChaim concludes, following the reason given by the Knesset HaGedolah, that even on the Shabbat of a wedding one reads on Friday, after Shnayim mikra, only the haftarah of the week."),
+        H("ashkenaze", [
+            R("ahs", 13, cite='''וכן מה שקורין בראש חודש, ורגלים, וימים נוראים – אין צריך היחיד לקרותם, שכבר קראו כל אחד בשבתו'''),
+            R("mb", 19, cite='''משא"כ בפרשיות של יו"ט ששם החזן הוא הקורא'''),
+        ],
+            "L'Aroukh haChoul'han : ce qu'on lit à Roch 'Hodech, aux fêtes de pèlerinage et aux jours redoutables, le particulier n'a pas à le lire, puisque chacun de ces passages a déjà été lu à son Chabbat. La Michna Beroura explique pourquoi on lit pourtant la haftara et non la lecture de Yom Tov : on peut être appelé à lire la haftara, alors que les lectures de Yom Tov, c'est l'officiant qui les lit.",
+            "The Aruch HaShulchan: what is read on Rosh Chodesh, the pilgrimage festivals and the Days of Awe need not be read by the individual, since each of these passages has already been read on its Shabbat. The Mishnah Berurah explains why the haftarah is nevertheless read but not the Yom Tov reading: one may be called up to read the haftarah, whereas the Yom Tov readings are read by the reader."),
+        H("ashkenaze", [
+            R("mb", (669, 4), cite='''כתבו הפוסקים שבליל שמחת תורה יקרא הפרשה שנים מקרא ואחד תרגום שעתה הוא זמנה'''),
+            R("ma", 10, cite='''וערב ש"ת יקרא וזאת הברכה [כונות]'''),
+            R("bht", 8, cite='''ובערב ש"ת יקרא וזאת הברכה'''),
+        ],
+            "Vezot haBerakha. La Michna Beroura écrit aussi, dans les lois de Sim'hat Torah, que selon les décisionnaires on lit la paracha deux fois dans le texte et une fois dans le targoum la nuit de Sim'hat Torah, « car c'est maintenant son moment » ; le Maguen Avraham et le Baèr Hétev disent, d'après le Séfer haKavanot : la veille de Sim'hat Torah.",
+            "Vezot HaBerachah. The Mishnah Berurah also writes, in the laws of Simchat Torah, that according to the authorities one reads the parasha twice in the text and once in the targum on the night of Simchat Torah, “for now is its time”; the Magen Avraham and the Ba'er Hetev say, following Sefer HaKavanot: on the eve of Simchat Torah."),
+    ]},
+    {"titre": "מקרים מיוחדים", "titre_fr": "Cas particuliers", "titre_en": "Special cases", "halakhot": [
+        H("tous", [
+            R("sayd", 1, cite='''ות"ת הוי דבר שבצינעא אבל לחזור הפרשה כיון שחייב אדם להשלים פרשיותיו עם הצבור הוי כקורא את שמע ומותר'''),
+            R("shakh", 4, cite='''כתוב בדרישה בשם מהרש"ל דה"ה לחזור שנים מקרא ואחד תרגום מותר'''),
+            R("ksa", (219, 1), cite='''אֲבָל לַחֲזוֹר אֶת הַפָּרָשָׁה שְׁנַיִם מִקְרָא וְאֶחָד תַּרְגוּם, מֻתָּר'''),
+            R("kyy", 18, cite='''אבל בתוך שבעה ימי האבלות, חייב לקרוא שנים מקרא ואחד תרגום'''),
+            R("kh", 27, cite='''דאבל יכול לחזור הפרשה בשבת שתוך ז' וכתב שם דהיינו דוקא כשלא יכלו ז' ימים קודם יום ג' אבל אם יכלו קודם יום ג' אז לדעת י"א קמא צריך להמתין עד יום ג\''''),
+            R("kh", 27, cite='''מיהו אין דבריו מוכרחים דכיון דעיקר המצוה לקרות בשבת אלא דבדיעבד יכול לקרות עד יום ג' שפ"ר מקרי חובת היום'''),
+            R("rae", 1, cite='''דאפשר אם חל יום ז' בשבת צריך להמתין עד אחר יציאה מבהכ"נ וישלים קודם אכילה'''),
+        ],
+            "L'endeuillé. Le Chabbat des sept jours de deuil, l'étude de la Torah compte parmi les choses privées (où le deuil s'applique) ; mais relire la paracha est permis : puisqu'on est tenu d'achever ses parachiot avec la communauté, c'est comme lire le Chema (Choul'han Aroukh, Yoré Déa). Le Chakh rapporte, de la Dericha au nom du Maharchal, qu'il en va de même pour Chnayim mikra véé'had targoum ; le Kitsour Choul'han Aroukh le dit expressément, et le Kitsour Yalkout Yossef écrit que l'endeuillé, pendant les sept jours, est tenu de lire Chnayim mikra. Le Kaf ha'Haïm rapporte un avis qui limite cette permission au cas où les sept jours ne s'achèvent pas avant le mardi – sinon, selon le premier « certains disent », il attendrait jusque-là –, puis le Tossefet Chabbat, pour qui cela ne s'impose pas : l'essentiel de la mitsva est de lire le Chabbat, c'est donc bien l'obligation du jour. Si le septième jour tombe un Chabbat, peut-être attend-il la sortie de la synagogue pour achever avant le repas (Échel Avraham, rapporté par Rabbi Akiva Eiger et par le Kaf ha'Haïm).",
+            "The mourner. On the Shabbat within the seven days of mourning, Torah study counts among the private matters (in which mourning applies); but reviewing the parasha is permitted: since one is obliged to complete one's portions with the congregation, it is like reading the Shema (Shulchan Aruch, Yoreh De'ah). The Shach reports, from the Derishah in the name of the Maharshal, that the same holds for Shnayim mikra ve-echad targum; the Kitzur Shulchan Aruch says so explicitly, and the Kitzur Yalkut Yosef writes that a mourner, during the seven days, is obliged to read Shnayim mikra. The Kaf HaChaim reports a view limiting this permission to the case where the seven days do not end before Tuesday – otherwise, according to the first “some say”, he would wait until then –, and then the Tosefet Shabbat, for whom this is not compelling: the main mitzvah is to read on Shabbat, so it is indeed the obligation of the day. If the seventh day falls on Shabbat, perhaps he waits until leaving the synagogue and completes it before the meal (Eshel Avraham, reported by Rabbi Akiva Eiger and by the Kaf HaChaim)."),
+        H("tous", [
+            R("rema", (553, 2), cite='''ונהגו שלא ללמוד בערב תשעה באב מחצות ואילך כי אם בדברים המותרים בתשעה באב ולכן אם חל בשבת אין אומרים פרקי אבות'''),
+            R("ksa", (125, 4), cite='''אֲבָל לִקְרוֹת הַסִּדְרָה שְׁנַיִם מִקְרָא וְאֶחָד תַּרְגּוּם, מֻתָּר וּמִכָּל שֶׁכֵּן קֹדֶם חֲצוֹת הַיּוֹם'''),
+            R("kh", (553, 19), cite='''אבל מותר לחזור שמו"ת ומכ"ש קודם חצות'''),
+            R("kh", (553, 19), cite='''דאם עבר ולא קראה עד אחר חצות נראה פשוט דיכול לקרותה אח"כ אפי' אם ט"ב בשבת עצמו'''),
+        ],
+            "Le 9 Av ou sa veille, un Chabbat. L'usage rapporté par le Rema est de n'étudier, la veille du 9 Av à partir de midi, que ce qui est permis le 9 Av ; c'est pourquoi, un Chabbat, on ne dit pas alors les Pirké Avot. Mais lire la paracha deux fois dans le texte et une fois dans le targoum est permis, à plus forte raison avant midi (Kitsour Choul'han Aroukh, pour le 9 Av qui tombe un Chabbat ; Kaf ha'Haïm, au nom du 'Hayé Adam). Le Kaf ha'Haïm ajoute, au nom du Zekhor leAvraham : celui qui ne l'a pas lue avant midi peut à l'évidence la lire ensuite, même si le 9 Av tombe le Chabbat même.",
+            "The 9th of Av or its eve, on a Shabbat. The custom reported by the Rema is to study, on the eve of the 9th of Av from midday on, only what is permitted on the 9th of Av; hence on a Shabbat Pirkei Avot is not said then. But reading the parasha twice in the text and once in the targum is permitted, all the more so before midday (Kitzur Shulchan Aruch, for a 9th of Av that falls on Shabbat; Kaf HaChaim, in the name of the Chayei Adam). The Kaf HaChaim adds, in the name of the Zechor LeAvraham: one who did not read it before midday may obviously read it afterwards, even if the 9th of Av falls on that very Shabbat."),
+        H("sefarade", [
+            R("kh", (496, 62), cite='''ויום ח' של פסח חל בשבת ובא"י קורין פ' אחרי אם יקרא פ' אחרי שמו"ת כבני א"י או יתנהג בקריאת הפ' כבני חו"ל'''),
+            R("kh", (496, 62), cite='''דטפי עדיף להשלים פרשיותיו עם הצבור שהוא עמהם ולענין זה לא יעשה כא"י'''),
+        ],
+            "Un habitant de la terre d'Israël de passage à l'étranger, quand le huitième jour de Pessa'h tombe un Chabbat : en terre d'Israël on lit ce jour-là la paracha de la semaine (dans le cas posé, A'haré Mot), à l'étranger la lecture de la fête. Lit-il cette paracha en Chnayim mikra comme les habitants d'Israël, ou suit-il les parachiot du lieu ? Le Kaf ha'Haïm rapporte la réponse du 'Hida (Mar'it ha'Ayin) : il vaut mieux achever ses parachiot avec la communauté où il se trouve ; sur ce point, il ne fait pas comme en terre d'Israël.",
+            "A resident of the Land of Israel staying abroad, when the eighth day of Pesach falls on a Shabbat: in the Land of Israel the weekly parasha is read that day (in the case posed, Acharei Mot), abroad the festival reading. Does he read that parasha as Shnayim mikra like the residents of Israel, or follow the parashiot of the place? The Kaf HaChaim reports the answer of the Chida (Mar'it HaAyin): it is better to complete one's portions with the congregation one is with; on this point he does not act as in the Land of Israel."),
+        H("sefarade", [
+            R("kh", (25, 27), cite='''בשעת קריאת שנים מקרא ואחד תרגום בפ' קדש והיה כי יביאך א"צ להיות עליו ולא הוי כעדות שקר כיון שאומר רק דרך קריאה'''),
+        ],
+            "Lire en Chnayim mikra les passages « Kadech » et « Vehaya ki yeviakha », qui parlent des tefilines, ne demande pas de les porter : ce n'est pas « un faux témoignage », puisqu'on ne les dit qu'en manière de lecture (Kaf ha'Haïm, au nom du Binyan Olam).",
+            "Reading as Shnayim mikra the passages “Kadesh” and “Vehayah ki yevi'acha”, which speak of tefillin, does not require wearing them: it is not “false testimony”, since one says them only by way of reading (Kaf HaChaim, in the name of the Binyan Olam)."),
     ]},
 ]
 
@@ -572,8 +916,10 @@ INTRO = {
     "t": ("<b>מבוא</b> הלכות שנים מקרא ואחד תרגום, מלוקטות מן הפוסקים: כל הלכה עם מקורה ובלשונו. "
           "<small>[ספרדים – עדות המזרח]</small> – לבני עדות המזרח; <small>[אשכנזים – נוסח אשכנז ונוסח ספרד]</small> – לנוסח אשכנז ולנוסח ספרד; "
           "הלכה בלי ציון – לכל העדות. אין כאן הכרעה: כל שאלה למעשה תישאל לרב."
-          "<br><small>מקורות: שולחן ערוך עם הגהות הרמ״א (מגיני ארץ, למברג תרנ״ג), משנה ברורה, קיצור שולחן ערוך (תורת אמת), "
+          "<br><small>מקורות: שולחן ערוך עם הגהות הרמ״א, ט״ז ושערי תשובה (מגיני ארץ, למברג תרנ״ג), מגן אברהם, משנה ברורה וביאור הלכה, "
+          "באר היטב וקיצור שולחן ערוך (תורת אמת), חיי אדם, אליה רבה, ספר חסידים, מורה באצבע וצפורן שמיר לחיד״א, ש״ך ורבי עקיבא איגר ליורה דעה, "
           "כף החיים (ירושלים תר״ע–תרצ״ג), בן איש חי (ויקיטקסט), רמב״ם (תורת אמת) – נחלת הכלל, דרך ספריא; "
+          "ערוך השולחן – ויקיטקסט, CC BY-SA, דרך ספריא; "
           "שולחן ערוך הרב – הוצאת קה״ת (Kehot Publication Society), CC BY-NC, דרך ספריא; "
           # La mention que demande Torat Emet pour ses livres sous CC BY-NC-SA 2.5 (toratemetfreeware.com/contents/copyrights2.html).
           "ילקוט יוסף – קיצור שולחן ערוך, מהדורת התשס״ז, מתוך מאגר תורת אמת: כל הזכויות שמורות לרב יצחק יוסף שליט״א, בכפוף לתנאי רשיון CC BY-NC-SA 2.5 – אסור בשימוש מסחרי (creativecommons.org/licenses/by-nc-sa/2.5/deed.he); "
@@ -581,28 +927,34 @@ INTRO = {
     "fr": ("<b>Introduction</b> Les lois de Chnayim mikra véé'had targoum – lire chaque semaine la paracha deux fois dans le texte hébreu et une fois dans la traduction araméenne d'Onkelos –, réunies d'après les décisionnaires : chaque halakha cite sa source en hébreu. "
            "<small>[Séfarades – rite Edot hamizra'h]</small> : pour qui suit les décisionnaires séfarades ; <small>[Ashkénazes – rites Ashkenaz et Sfard]</small> : pour les rites Ashkenaz et Sfard ; sans indication : pour tous. "
            "Ce recueil ne tranche rien : pour une question pratique, on interroge un rav."
-           "<br><small>Sources : Choul'han Aroukh avec les gloses du Rema (Maginei Eretz, Lemberg 1893), Michna Beroura, Kitsour Choul'han Aroukh (Torat Emet), Kaf ha'Haïm (Jérusalem 1910-1933), Ben Ich 'Haï (Wikisource), Rambam (Torat Emet) : domaine public, via Sefaria. "
+           "<br><small>Sources : Choul'han Aroukh avec les gloses du Rema, Taz et Cha'arei Techouva (Maginei Eretz, Lemberg 1893), Maguen Avraham, Michna Beroura et Béour Halakha, Baèr Hétev et Kitsour Choul'han Aroukh (Torat Emet), 'Hayé Adam, Eliya Rabba, Séfer 'Hassidim, Moré beEtsba et Tsiporen Chamir du 'Hida, Chakh et Rabbi Akiva Eiger sur Yoré Déa, Kaf ha'Haïm (Jérusalem 1910-1933), Ben Ich 'Haï (Wikisource), Rambam (Torat Emet) : domaine public, via Sefaria. "
+           "Aroukh haChoul'han : Wikisource, CC BY-SA, via Sefaria. "
            "Choul'han Aroukh haRav : Kehot Publication Society, CC BY-NC, via Sefaria. "
            "Kitsour Choul'han Aroukh Yalkout Yossef, édition 5767, base Torat Emet : tous droits réservés au Rav Yitzhak Yosef, sous la licence CC BY-NC-SA 2.5, usage commercial interdit (creativecommons.org/licenses/by-nc-sa/2.5/deed.fr). "
            "Réponses de Hidabroot, de Kav haHalakha haSefaradi, du beit hora'a « Halakha lema'assé » du Rav Ofir Malka et du Rav Binyamin 'Hota (Kikar haChabbat) : résumées et référencées, non reproduites. "
-           "Français et anglais rédigés par ordinateur d'après les sources, puis relus contre elles par une seconde relecture automatique (26/11/2026) ; non relus par un rav : l'hébreu fait foi.</small>"),
+           "Français et anglais rédigés par ordinateur d'après les sources ; chaque citation hébraïque a été relue à sa source. Une seconde relecture automatique du français et de l'anglais contre les sources est faite pour les 31 premières halakhot et en cours pour celles ajoutées le 26/11/2026. Non relus par un rav : l'hébreu fait foi.</small>"),
     "en": ("<b>Introduction</b> The laws of Shnayim mikra ve-echad targum – reading the weekly parasha twice in the Hebrew text and once in Onkelos’ Aramaic translation –, gathered from the halachic authorities: each law quotes its source in Hebrew. "
            "<small>[Sephardim – Edot HaMizrach rite]</small>: for those who follow the Sephardi authorities; <small>[Ashkenazim – Ashkenaz and Sfard rites]</small>: for the Ashkenaz and Sfard rites; unmarked: for everyone. "
            "This collection decides nothing: for a practical question, ask a rabbi."
-           "<br><small>Sources: Shulchan Aruch with the Rema’s glosses (Maginei Eretz, Lemberg 1893), Mishnah Berurah, Kitzur Shulchan Aruch (Torat Emet), Kaf HaChaim (Jerusalem 1910-1933), Ben Ish Chai (Wikisource), Rambam (Torat Emet): public domain, via Sefaria. "
+           "<br><small>Sources: Shulchan Aruch with the Rema’s glosses, Taz and Sha’arei Teshuvah (Maginei Eretz, Lemberg 1893), Magen Avraham, Mishnah Berurah and Beur Halacha, Ba’er Hetev and Kitzur Shulchan Aruch (Torat Emet), Chayei Adam, Eliyah Rabbah, Sefer Chasidim, the Chida’s Moreh BeEtzba and Tziporen Shamir, Shach and Rabbi Akiva Eiger on Yoreh De’ah, Kaf HaChaim (Jerusalem 1910-1933), Ben Ish Chai (Wikisource), Rambam (Torat Emet): public domain, via Sefaria. "
+           "Aruch HaShulchan: Wikisource, CC BY-SA, via Sefaria. "
            "Shulchan Aruch HaRav: Kehot Publication Society, CC BY-NC, via Sefaria. "
            "Kitzur Shulchan Aruch Yalkut Yosef, 5767 edition, Torat Emet database: all rights reserved to Rav Yitzchak Yosef, under the CC BY-NC-SA 2.5 licence, no commercial use (creativecommons.org/licenses/by-nc-sa/2.5/). "
            "Answers from Hidabroot, Kav HaHalacha HaSefaradi, Rav Ofir Malka’s “Halacha LeMaaseh” beit hora’ah and Rav Binyamin Chota (Kikar HaShabbat): summarised with references, not reproduced. "
-           "French and English written by computer from the sources, then checked against them by a second automatic review (26 Nov 2026); not reviewed by a rabbi: the Hebrew prevails.</small>"),
+           "French and English written by computer from the sources; every Hebrew quotation has been re-read at its source. A second automatic review of the French and English against the sources is done for the first 31 laws and under way for those added on 26 Nov 2026. Not reviewed by a rabbi: the Hebrew prevails.</small>"),
 }
 
 TITRE = {"he": "הלכות שנים מקרא ואחד תרגום", "fr": "Chnayim mikra : les halakhot", "en": "Shnayim mikra: the laws"}
 
 SOURCES_META = [
     "Choul'han Aroukh O.H. 285 et Rema — Maginei Eretz, Lemberg 1893 (via API Sefaria), Public Domain",
-    "Michna Beroura 285 — On Your Way (via API Sefaria), Public Domain",
-    "Kaf ha'Haïm O.H. 285 — Jérusalem 1910-1933 (via API Sefaria), Public Domain",
-    "Kitsour Choul'han Aroukh 72 — Torat Emet 357 (via API Sefaria), Public Domain",
+    "Michna Beroura 285 et 669:4 — On Your Way (via API Sefaria), Public Domain ; Béour Halakha 285 et 494 — Biur Halacha (via API Sefaria), Public Domain",
+    "Maguen Avraham 285 ; Taz et Cha'arei Techouva 285 — Maginei Eretz, Lemberg 1893 ; Baèr Hétev 285 et 128 — Torat Emet 357 ; Eliya Rabba 139 et 260 — Sulzbach 1757 ; 'Hayé Adam, Chabbat 7:9 — Vilna 1844 (via API Sefaria), Public Domain",
+    "Choul'han Aroukh O.H. 139, 146 et 553 — Maginei Eretz, Lemberg 1893 ; Choul'han Aroukh Y.D. 400:1, Chakh et Rabbi Akiva Eiger — Ashlei Ravrevei, Lemberg 1888 (via API Sefaria), Public Domain",
+    "Séfer 'Hassidim 301 et 745 — Zhitomir 1857 ; Moré beEtsba (Livourne 1842) et Tsiporen Chamir (Presbourg 1859) du 'Hida (via API Sefaria), Public Domain",
+    "Aroukh haChoul'han O.H. 285 et 139 — Wikisource (via API Sefaria), CC-BY-SA : texte de 1903-1907 dans le domaine public, saisie et ponctuation de Wikisource ; courtes citations, créditées en tête du livre",
+    "Kaf ha'Haïm O.H. 285, 25, 128, 496 et 553 — Jérusalem 1910-1933 (via API Sefaria), Public Domain",
+    "Kitsour Choul'han Aroukh 72, 125 et 219 — Torat Emet 357 (via API Sefaria), Public Domain",
     "Ben Ich 'Haï — Wikisource (via API Sefaria), Public Domain",
     "Rambam, Hilkhot Tefila 13:25 — Torat Emet 370 (via API Sefaria), Public Domain",
     "Choul'han Aroukh haRav O.H. 285 — Kehot Publication Society (via API Sefaria), CC-BY-NC : courtes citations sans vocalisation, créditées en tête du livre",
@@ -658,7 +1010,7 @@ def livre():
         "id": "chnayim_mikra",
         "groupe": "halakha",
         "titre": TITRE,
-        "source": "Choul'han Aroukh et Rema, Michna Beroura, Kitsour Choul'han Aroukh, Choul'han Aroukh haRav (Kehot, CC-BY-NC), Kaf ha'Haïm, Ben Ich 'Haï, Rambam ; Kitsour Yalkout Yossef (Torat Emet, CC BY-NC-SA 2.5) ; réponses de Hidabroot, Kav haHalakha haSefaradi, Halakha lema'assé et du Rav Binyamin 'Hota (Kikar haChabbat), résumées — tools/chnayim_mikra/sources.json",
+        "source": "Choul'han Aroukh et Rema avec leurs commentaires (Maguen Avraham, Taz, Baèr Hétev, Cha'arei Techouva, Eliya Rabba), Michna Beroura et Béour Halakha, 'Hayé Adam, Kitsour Choul'han Aroukh, Choul'han Aroukh haRav (Kehot, CC-BY-NC), Aroukh haChoul'han (Wikisource, CC-BY-SA), Kaf ha'Haïm, Ben Ich 'Haï, 'Hida, Séfer 'Hassidim, Rambam ; Kitsour Yalkout Yossef (Torat Emet, CC BY-NC-SA 2.5) ; réponses de Hidabroot, Kav haHalakha haSefaradi, Halakha lema'assé et du Rav Binyamin 'Hota (Kikar haChabbat), résumées — tools/chnayim_mikra/sources.json",
         "traduction": f"FR et EN rédigées par Claude ({DATE}) d'après les sources citées, chaque halakha avec sa référence ; relecture humaine souhaitable.",
         "rites": RITES,
         # Les sources et licences du livre.
@@ -670,15 +1022,21 @@ def livre():
 
 # --- La table de vérification -----------------------------------------------------------------
 
+def sur_sefaria(src):
+    return src == "bih" or "sefaria" in CLASSIQUES.get(src, {})
+
+
 def sefaria(r):
     s, n = r["src"], r["num"]
     if s == "bih":
         annee, par_sefaria = n[0], n[1]
         ref = f"Ben Ish Hai, Halachot {BIH_ANNEE[annee][0]}, {par_sefaria} {n[5]}"
-        version = SEFARIA["bih"][1]
+        version = BIH_VERSION
     else:
-        gabarit, version = SEFARIA[s]
-        ref = gabarit.format(n)
+        c = CLASSIQUES[s]
+        sm, para = lieu(r)
+        ref = c["sefaria"].format(s=sm, n=para)
+        version = c.get("versions", {}).get(sm, c["version"])
     api = ("https://www.sefaria.org/api/v3/texts/" + urllib.parse.quote(ref)
            + "?version=" + urllib.parse.quote("hebrew|" + version) + "&return_format=text_only")
     page = "https://www.sefaria.org/" + urllib.parse.quote(ref.replace(" ", "_").replace(",_", ",_")) + "?lang=he"
@@ -711,9 +1069,9 @@ def table():
             for r in h["refs"]:
                 e = {"source": r["src"], "reference": ref_texte(r, "fr"), "reference_he": ref_texte(r, "he"),
                      "edition": EDITIONS[r["src"]]["edition"], "licence": EDITIONS[r["src"]]["licence"]}
-                if r["src"] in SEFARIA:
+                if sur_sefaria(r["src"]):
                     ref, version, api, page = sefaria(r)
-                    e.update({"sefaria_ref": ref, "sefaria_version": version, "lu_via": api, "page": page})
+                    e.update({"edition": version, "sefaria_ref": ref, "sefaria_version": version, "lu_via": api, "page": page})
                 elif r["src"] == "kyy":
                     e.update({"lu_via": "livre_yalkut_yosef_kitsour.json (archive de My Hitbodedut), section « סימן רפה - לקרוא הפרשה ב' מקרא וא' תרגום », se'if " + lettres(r["num"], geresh=False)})
                 else:
@@ -758,10 +1116,20 @@ def plat(t):
     return re.sub(r"\s+", " ", t).strip()
 
 
-def lire_url(url):
+def lire_url(url, essais=4):
+    """Lit une page ; en cas de refus passager (429, 5xx, coupure), attend et recommence."""
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (verification chnayim_mikra)"})
-    with urllib.request.urlopen(req, timeout=60) as f:
-        return f.read().decode("utf-8", errors="replace")
+    for essai in range(essais):
+        try:
+            with urllib.request.urlopen(req, timeout=60) as f:
+                return f.read().decode("utf-8", errors="replace")
+        except urllib.error.HTTPError as e:
+            if e.code not in (429, 500, 502, 503, 504) or essai == essais - 1:
+                raise
+        except (urllib.error.URLError, TimeoutError):
+            if essai == essais - 1:
+                raise
+        time.sleep(3 * (essai + 1))
 
 
 def texte_sefaria(api):

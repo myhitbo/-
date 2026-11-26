@@ -8,5 +8,1342 @@
   "outil": "tools/contexte_haftarot.mjs (--sources relit chaque citation sur Sefaria)",
   "etat": "en cours"
  },
- "contextes": []
+ "contextes": [
+  {
+   "id": "vayichlah",
+   "occasions": [
+    "VAYISHLACH"
+   ],
+   "passages": [
+    "Obadiah 1:1-1:21"
+   ],
+   "phrases": [
+    {
+     "fr": "La haftara est le livre d'Ovadia tout entier : une vision sur Edom, qui sera couvert de honte pour la violence faite à son frère Yaakov.",
+     "en": "The haftara is the whole book of Ovadia: a vision about Edom, who will be covered with shame for the violence done to his brother Yaakov.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Aboudarham, Ordre des parachiot et des haftarot",
+        "en": "Abudarham, Order of the Parashiyot and Haftarot"
+       },
+       "sefaria": "Abudarham, Hebrew Calendar, Order of Parashiot and Haftarot 9",
+       "citation": "וישלח יעקב, חזון עובדיה עד סוף ספרו",
+       "version": "Abudarham. Lisbon, 1489.",
+       "licence": "Public Domain"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Ovadia 1:1",
+        "en": "Ovadia 1:1"
+       },
+       "sefaria": "Obadiah 1:1",
+       "citation": "חֲז֖וֹן עֹֽבַדְיָ֑ה [...] לֶאֱד֗וֹם",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Ovadia 1:10",
+        "en": "Ovadia 1:10"
+       },
+       "sefaria": "Obadiah 1:10",
+       "citation": "מֵחֲמַ֛ס אָחִ֥יךָ יַעֲקֹ֖ב תְּכַסְּךָ֣ בוּשָׁ֑ה",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      }
+     ]
+    },
+    {
+     "fr": "Quand des étrangers sont entrés à Jérusalem, Edom s'est tenu à l'écart ; à la fin, des sauveurs monteront sur le mont Tsion juger la montagne d'Essav, et la royauté sera à Hachem.",
+     "en": "When strangers entered Jerusalem, Edom stood aside; in the end, saviors will go up on Mount Tzion to judge the mountain of Esav, and the kingship will be Hashem's.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Ovadia 1:11",
+        "en": "Ovadia 1:11"
+       },
+       "sefaria": "Obadiah 1:11",
+       "citation": "בְּיוֹם֙ עֲמׇֽדְךָ֣ מִנֶּ֔גֶד [...] וְנׇכְרִ֞ים בָּ֣אוּ שְׁעָרָ֗ו וְעַל־יְרוּשָׁלַ֙͏ִם֙ יַדּ֣וּ גוֹרָ֔ל",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Ovadia 1:21",
+        "en": "Ovadia 1:21"
+       },
+       "sefaria": "Obadiah 1:21",
+       "citation": "וְעָל֤וּ מֽוֹשִׁעִים֙ בְּהַ֣ר צִיּ֔וֹן לִשְׁפֹּ֖ט אֶת־הַ֣ר עֵשָׂ֑ו",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Rachi sur Ovadia 1:21",
+        "en": "Rashi on Ovadia 1:21"
+       },
+       "sefaria": "Rashi on Obadiah 1:21",
+       "citation": "וְהָיְתָה לַה׳ הַמְּלוּכָה",
+       "version": "Sefaria Vocalized Edition",
+       "licence": "CC0"
+      }
+     ]
+    },
+    {
+     "fr": "Pour 'Hazal, Ovadia était un converti édomite : lui qui a vécu entre deux méchants, A'hav et Izével, sans apprendre de leurs actes, prophétise sur Essav, qui a vécu entre deux justes, Yits'hak et Rivka, sans apprendre des leurs.",
+     "en": "Chazal teach that Ovadia was an Edomite convert: he who lived between two wicked people, Achav and Izevel, without learning from their deeds, prophesies about Esav, who lived between two righteous people, Yitzchak and Rivka, without learning from theirs.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Sanhédrin 39b",
+        "en": "Sanhedrin 39b"
+       },
+       "sefaria": "Sanhedrin 39b:15",
+       "citation": "יָבֹא עוֹבַדְיָהוּ הַדָּר בֵּין שְׁנֵי רְשָׁעִים וְלֹא לָמַד מִמַּעֲשֵׂיהֶם, וְיִנָּבֵא עַל עֵשָׂו הָרָשָׁע שֶׁדָּר בֵּין שְׁנֵי צַדִּיקִים וְלֹא לָמַד מִמַּעֲשֵׂיהֶם [...] עוֹבַדְיָה גֵּר אֲדוֹמִי הָיָה",
+       "version": "William Davidson Edition - Vocalized Aramaic",
+       "licence": "CC-BY-NC"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Rachi sur Ovadia 1:1",
+        "en": "Rashi on Ovadia 1:1"
+       },
+       "sefaria": "Rashi on Obadiah 1:1",
+       "citation": "שֶׁדָּר בֵּין שְׁנֵי רְשָׁעִים, אַחְאָב וְאִיזֶבֶל [...] שֶׁדָּר בֵּין שְׁנֵי צַדִּיקִים, יִצְחָק וְרִבְקָה",
+       "version": "Sefaria Vocalized Edition",
+       "licence": "CC0"
+      }
+     ]
+    },
+    {
+     "fr": "Selon 'Hazal, c'est l'Ovadia qui dirigeait la maison d'A'hav et craignait beaucoup Hachem : il a mérité la prophétie pour avoir caché cent prophètes dans la grotte, quand Izével les faisait périr.",
+     "en": "According to Chazal, he is the Ovadia who was in charge of Achav's house and feared Hashem greatly: he merited prophecy for hiding a hundred prophets in the cave, when Izevel was killing them.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Radak sur Ovadia 1:1",
+        "en": "Radak on Ovadia 1:1"
+       },
+       "sefaria": "Radak on Obadiah 1:1",
+       "citation": "ודעת רבותינו ז\"ל שזהו עובדיה שהיה עם אחאב",
+       "version": "Radak on Nach",
+       "licence": "unknown"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Sanhédrin 39b",
+        "en": "Sanhedrin 39b"
+       },
+       "sefaria": "Sanhedrin 39b:10",
+       "citation": "וַיִּקְרָא אַחְאָב אֶל עֹבַדְיָהוּ אֲשֶׁר עַל הַבָּיִת וְעֹבַדְיָהוּ הָיָה יָרֵא [אֶת] ה׳ מְאֹד",
+       "version": "William Davidson Edition - Vocalized Aramaic",
+       "licence": "CC-BY-NC"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Sanhédrin 39b",
+        "en": "Sanhedrin 39b"
+       },
+       "sefaria": "Sanhedrin 39b:13",
+       "citation": "מִפְּנֵי מָה זָכָה עוֹבַדְיָהוּ לִנְבִיאוּת? מִפְּנֵי שֶׁהֶחְבִּיא מֵאָה נְבִיאִים בַּמְּעָרָה [...] בְּהַכְרִית אִיזֶבֶל אֵת נְבִיאֵי ה׳",
+       "version": "William Davidson Edition - Vocalized Aramaic",
+       "licence": "CC-BY-NC"
+      }
+     ]
+    },
+    {
+     "fr": "A'hav a régné vingt-deux ans sur Israël, à Chomron ; quant à la guerre contre Edom dont parle cette vision, le Séder Olam la situe aux jours d'Amatsia.",
+     "en": "Achav reigned twenty-two years over Israel in Shomron; as for the war against Edom of which this vision speaks, Seder Olam places it in the days of Amatzya.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Séder Olam Rabba 17",
+        "en": "Seder Olam Rabbah 17"
+       },
+       "sefaria": "Seder Olam Rabbah 17:1",
+       "citation": "אחאב בן עמרי על ישראל [בשמרון] עשרים ושתים שנה",
+       "version": "Seder Olam, Warsaw 1904",
+       "licence": "Public Domain"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Séder Olam Rabba 20",
+        "en": "Seder Olam Rabbah 20"
+       },
+       "sefaria": "Seder Olam Rabbah 20:1",
+       "citation": "חזון עבדיה וגו' (עבדיה א א), אימתי היתה מלחמה זו, בימי אמציה [...] ומשנפלו אדומיים בימי אמציהו, לא העמידו מלך במקומן",
+       "version": "Seder Olam, Warsaw 1904",
+       "licence": "Public Domain"
+      }
+     ]
+    },
+    {
+     "fr": "Dans la paracha, Yaakov envoie des messagers à son frère Essav, « au champ d'Edom », et la haftara prophétise sur Edom : on lit dans les Prophètes un passage proche de ce qu'on a lu dans la Torah.",
+     "en": "In the parasha, Yaakov sends messengers to his brother Esav, \"to the field of Edom\", and the haftara prophesies about Edom: we read from the Prophets a passage similar to what was read in the Torah.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Berèchit 32:4",
+        "en": "Bereshit 32:4"
+       },
+       "sefaria": "Genesis 32:4",
+       "citation": "וַיִּשְׁלַ֨ח יַעֲקֹ֤ב מַלְאָכִים֙ לְפָנָ֔יו אֶל־עֵשָׂ֖ו אָחִ֑יו אַ֥רְצָה שֵׂעִ֖יר שְׂדֵ֥ה אֱדֽוֹם",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Rambam, Hilkhot Tefila 13:3",
+        "en": "Rambam, Hilchot Tefillah 13:3"
+       },
+       "sefaria": "Mishneh Torah, Prayer and the Priestly Blessing 13:3",
+       "citation": "וּמַפְטִירִין בְּכָל שַׁבָּת וְשַׁבָּת בַּנָּבִיא מֵעֵין שֶׁקָּרָא בַּתּוֹרָה",
+       "version": "Torat Emet 370",
+       "licence": "Public Domain"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hanouka-1",
+   "occasions": [
+    "Chanukah Day 1 (on Shabbat)",
+    "Chanukah Day 2 (on Shabbat)",
+    "Chanukah Day 3 (on Shabbat)",
+    "Chanukah Day 4 (on Shabbat)",
+    "Chanukah Day 5 (on Shabbat)",
+    "Chanukah Day 7 (on Shabbat)",
+    "Shabbat Rosh Chodesh Chanukah"
+   ],
+   "passages": [
+    "Zechariah 2:14-4:7"
+   ],
+   "phrases": [
+    {
+     "fr": "La haftara s'ouvre par « Chante et réjouis-toi, fille de Tsion » : Hachem annonce qu'Il vient résider au milieu d'elle et qu'Il choisira encore Jérusalem.",
+     "en": "The haftara opens with \"Sing and rejoice, daughter of Tzion\": Hashem announces that He is coming to dwell in her midst and will again choose Jerusalem.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Zekharia 2:14-16",
+        "en": "Zecharya 2:14-16"
+       },
+       "sefaria": "Zechariah 2:14-16",
+       "citation": "רׇנִּ֥י וְשִׂמְחִ֖י בַּת־צִיּ֑וֹן כִּ֧י הִנְנִי־בָ֛א וְשָׁכַנְתִּ֥י בְתוֹכֵ֖ךְ [...] וּבָחַ֥ר ע֖וֹד בִּירוּשָׁלָֽ͏ִם",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      }
+     ]
+    },
+    {
+     "fr": "Zekharia voit ensuite Yehochoua le Cohen gadol, et le Satan debout à sa droite pour l'accuser ; Hachem réprimande le Satan, et l'on retire à Yehochoua ses vêtements souillés.",
+     "en": "Zecharya then sees Yehoshua the Kohen Gadol, with the Satan standing at his right to accuse him; Hashem rebukes the Satan, and Yehoshua's filthy garments are removed.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Zekharia 3:1-4",
+        "en": "Zecharya 3:1-4"
+       },
+       "sefaria": "Zechariah 3:1-4",
+       "citation": "וַיַּרְאֵ֗נִי אֶת־יְהוֹשֻׁ֙עַ֙ הַכֹּהֵ֣ן הַגָּד֔וֹל [...] וְהַשָּׂטָ֛ן עֹמֵ֥ד עַל־יְמִינ֖וֹ לְשִׂטְנֽוֹ [...] הָסִ֛ירוּ הַבְּגָדִ֥ים הַצֹּאִ֖ים מֵעָלָ֑יו",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Rachi sur Zekharia 3:2",
+        "en": "Rashi on Zecharya 3:2"
+       },
+       "sefaria": "Rashi on Zechariah 3:2",
+       "citation": "יִגְעַר הַקָּדוֹשׁ בָּרוּךְ הוּא בְּךָ אַתָּה הַשָּׂטָן",
+       "version": "Sefaria Vocalized Edition",
+       "licence": "CC0"
+      }
+     ]
+    },
+    {
+     "fr": "Selon 'Hazal, Yehochoua avait été jeté au feu, où ses vêtements furent roussis : c'est le « tison sauvé du feu » ; ses vêtements souillés désignent ses fils, mariés à des femmes qui ne convenaient pas à la kehouna, sans qu'il proteste.",
+     "en": "According to Chazal, Yehoshua had been thrown into the fire, where his garments were singed: he is the \"brand saved from the fire\"; his filthy garments stand for his sons, who had married women unfit for the kehuna, and he did not protest.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Sanhédrin 93a",
+        "en": "Sanhedrin 93a"
+       },
+       "sefaria": "Sanhedrin 93a:16",
+       "citation": "שְׁדִינְהוּ. אִינְהוּ אִיקְּלוֹ, יְהוֹשֻׁעַ כֹּהֵן גָּדוֹל אִיחֲרֻךְ אִיחֲרוֹכֵי מָאנֵיהּ",
+       "version": "William Davidson Edition - Vocalized Aramaic",
+       "licence": "CC-BY-NC"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Rachi sur Zekharia 3:2",
+        "en": "Rashi on Zecharya 3:2"
+       },
+       "sefaria": "Rashi on Zechariah 3:2",
+       "citation": "הֲלֹא זֶה אוּד מֻצָּל מֵאֵשׁ. מְפֹרָשׁ בְּאַגָּדַת חֵלֶק (סנהדרין צג.) שֶׁהֻשְׁלַךְ עִם אַחְאָב בֶּן קוֹלָיָה וַחֲבֵרוֹ לָאוּר",
+       "version": "Sefaria Vocalized Edition",
+       "licence": "CC0"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Sanhédrin 93a",
+        "en": "Sanhedrin 93a"
+       },
+       "sefaria": "Sanhedrin 93a:18",
+       "citation": "שֶׁהָיוּ בָּנָיו נוֹשְׂאִין נָשִׁים שֶׁאֵינָן הֲגוּנוֹת לִכְהוּנָּה וְלֹא מִיחָה בָּהֶן",
+       "version": "William Davidson Edition - Vocalized Aramaic",
+       "licence": "CC-BY-NC"
+      }
+     ]
+    },
+    {
+     "fr": "Il voit alors une menora d'or, ses sept lampes et deux oliviers : signe pour Zeroubavel que le Temple se bâtira « ni par la puissance ni par la force, mais par Mon esprit », comme cette huile se fait d'elle-même, explique Rachi.",
+     "en": "He then sees a golden menora, its seven lamps and two olive trees: a sign for Zerubavel that the Temple will be built \"not by might and not by power, but by My spirit\", just as this oil is made by itself, Rashi explains.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Zekharia 4:2-3",
+        "en": "Zecharya 4:2-3"
+       },
+       "sefaria": "Zechariah 4:2-3",
+       "citation": "מְנוֹרַת֩ זָהָ֨ב כֻּלָּ֜הּ וְגֻלָּ֣הּ עַל־רֹאשָׁ֗הּ וְשִׁבְעָ֤ה נֵרֹתֶ֙יהָ֙ עָלֶ֔יהָ [...] וּשְׁנַ֥יִם זֵיתִ֖ים עָלֶ֑יהָ",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Zekharia 4:6",
+        "en": "Zecharya 4:6"
+       },
+       "sefaria": "Zechariah 4:6",
+       "citation": "אֶל־זְרֻבָּבֶ֖ל לֵאמֹ֑ר לֹ֤א בְחַ֙יִל֙ וְלֹ֣א בְכֹ֔חַ כִּ֣י אִם־בְּרוּחִ֔י",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Rachi sur Zekharia 4:6",
+        "en": "Rashi on Zecharya 4:6"
+       },
+       "sefaria": "Rashi on Zechariah 4:6",
+       "citation": "זֶה סִימָן לְךָ לְהַבְטִיחַ אֶת זְרֻבָּבֶל, כְּשֵׁם שֶׁהַזֵּיתִים וְהַשֶּׁמֶן הַזֶּה נִגְמָר מֵאֵלָיו לְכָל דְּבָרָיו, כָּךְ לֹא בְחַיִל וְלֹא בְכֹחַ שֶׁבָּכֶם תַּעֲשׂוּ אֶת בִּנְיַן בֵּיתִי",
+       "version": "Sefaria Vocalized Edition",
+       "licence": "CC0"
+      }
+     ]
+    },
+    {
+     "fr": "Zekharia a prophétisé la deuxième année de Daryavech ; selon le Séder Olam, c'est cette année-là que le Temple a été bâti, et sa construction a duré quatre ans.",
+     "en": "Zecharya prophesied in the second year of Daryavesh; according to Seder Olam, that was the year the Temple was built, and its building took four years.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Zekharia 1:1",
+        "en": "Zecharya 1:1"
+       },
+       "sefaria": "Zechariah 1:1",
+       "citation": "בַּחֹ֙דֶשׁ֙ הַשְּׁמִינִ֔י בִּשְׁנַ֥ת שְׁתַּ֖יִם לְדָרְיָ֑וֶשׁ",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Séder Olam Rabba 20",
+        "en": "Seder Olam Rabbah 20"
+       },
+       "sefaria": "Seder Olam Rabbah 20:1",
+       "citation": "וחגי זכריה ומלאכי כולם נתנבאו בשנת שתים לדריוש",
+       "version": "Seder Olam, Warsaw 1904",
+       "licence": "Public Domain"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Séder Olam Rabba 29",
+        "en": "Seder Olam Rabbah 29"
+       },
+       "sefaria": "Seder Olam Rabbah 29:1",
+       "citation": "ובשנת ב' לדריוש נבנה הבית [...] כל ארבע שנים היה הבית נבנה",
+       "version": "Seder Olam, Warsaw 1904",
+       "licence": "Public Domain"
+      }
+     ]
+    },
+    {
+     "fr": "La Guemara fixe cette haftara, « les lampes de Zekharia », pour le Chabbat de 'Hanouka, le premier s'il y en a deux, à cause de la menora d'or (Rachi) ; on la lit même si ce Chabbat est Roch 'Hodech (Choul'han Aroukh).",
+     "en": "The Gemara sets this haftara, \"the lamps of Zecharya\", for the Shabbat of Chanukah, the first if there are two, because of the golden menora (Rashi); it is read even when that Shabbat is Rosh Chodesh (Shulchan Aruch).",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Meguila 31a",
+        "en": "Megillah 31a"
+       },
+       "sefaria": "Megillah 31a:17",
+       "citation": "בַּחֲנוּכָּה — בַּנְּשִׂיאִים, וּמַפְטִירִין בְּנֵרוֹת דִּזְכַרְיָה. וְאִי מִיקַּלְעִי שְׁתֵּי שַׁבָּתוֹת — קַמַּיְיתָא בְּנֵרוֹת דִּזְכַרְיָה",
+       "version": "William Davidson Edition - Vocalized Aramaic",
+       "licence": "CC-BY-NC"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Rachi sur Meguila 31a",
+        "en": "Rashi on Megillah 31a"
+       },
+       "sefaria": "Rashi on Megillah 31a:17:1",
+       "citation": "נרות דזכריה - רני ושמחי על שם ראיתי והנה מנורת זהב כולה",
+       "version": "Vilna Edition",
+       "licence": "Public Domain"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Choul'han Aroukh, Ora'h 'Haïm 684:3",
+        "en": "Shulchan Aruch, Orach Chaim 684:3"
+       },
+       "sefaria": "Shulchan Arukh, Orach Chayim 684:3",
+       "citation": "אם חל ר\"ח טבת בשבת [...] ומפטיר רני ושמחי",
+       "version": "Maginei Eretz: Shulchan Aruch Orach Chaim, Lemberg, 1893",
+       "licence": "Public Domain"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hanouka-2",
+   "occasions": [
+    "Chanukah Day 8 (on Shabbat)"
+   ],
+   "passages": [
+    "I Kings 7:40-7:50"
+   ],
+   "phrases": [
+    {
+     "fr": "Hiram achève tout le travail qu'il a fait pour le roi Chlomo dans la Maison de Hachem : les deux colonnes, les dix bassins sur leurs socles et la « mer » posée sur douze bœufs, en cuivre poli.",
+     "en": "Chiram completes all the work he did for King Shlomo in the House of Hashem: the two pillars, the ten basins on their stands and the \"sea\" set on twelve oxen, of polished copper.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Melakhim I 7:40",
+        "en": "Melachim I 7:40"
+       },
+       "sefaria": "I Kings 7:40",
+       "citation": "וַיְכַ֣ל חִירָ֗ם לַֽעֲשׂוֹת֙ אֶת־כׇּל־הַמְּלָאכָ֔ה אֲשֶׁ֥ר עָשָׂ֛ה לַמֶּ֥לֶךְ שְׁלֹמֹ֖ה",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Melakhim I 7:41-45",
+        "en": "Melachim I 7:41-45"
+       },
+       "sefaria": "I Kings 7:41-45",
+       "citation": "עַמֻּדִ֣ים שְׁנַ֔יִם [...] וְאֶת־הַמְּכֹנ֖וֹת עָ֑שֶׂר וְאֶת־הַכִּיֹּרֹ֥ת עֲשָׂרָ֖ה עַל־הַמְּכֹנֽוֹת [...] וְאֶת־הַיָּ֖ם הָאֶחָ֑ד וְאֶת־הַבָּקָ֥ר שְׁנֵים־עָשָׂ֖ר תַּ֥חַת הַיָּֽם [...] נְחֹ֖שֶׁת מְמֹרָֽט",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      }
+     ]
+    },
+    {
+     "fr": "Chlomo fait ensuite les objets d'or : l'autel d'or, la table du lé'hem hapanim et les menorot d'or pur, cinq à droite et cinq à gauche devant le Dvir.",
+     "en": "Shlomo then makes the vessels of gold: the golden altar, the table of the lechem hapanim and the menorot of pure gold, five on the right and five on the left before the Dvir.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Melakhim I 7:48-49",
+        "en": "Melachim I 7:48-49"
+       },
+       "sefaria": "I Kings 7:48-49",
+       "citation": "אֵ֚ת מִזְבַּ֣ח הַזָּהָ֔ב וְאֶת־הַשֻּׁלְחָ֗ן אֲשֶׁ֥ר עָלָ֛יו לֶ֥חֶם הַפָּנִ֖ים זָהָֽב [...] וְאֶת־הַ֠מְּנֹר֠וֹת חָמֵ֨שׁ מִיָּמִ֜ין וְחָמֵ֧שׁ מִשְּׂמֹ֛אול לִפְנֵ֥י הַדְּבִ֖יר זָהָ֣ב סָג֑וּר",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      }
+     ]
+    },
+    {
+     "fr": "Hiram, que Chlomo a fait venir de Tsor, était fils d'une veuve, de la tribu de Naftali, et son père, un homme de Tsor, travaillait le cuivre : 'Hazal en apprennent qu'on ne change pas le métier de ses pères.",
+     "en": "Chiram, whom Shlomo brought from Tzor, was the son of a widow, of the tribe of Naftali, and his father, a man of Tzor, was a coppersmith: Chazal learn from this that one does not change the craft of his fathers.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Melakhim I 7:13-14",
+        "en": "Melachim I 7:13-14"
+       },
+       "sefaria": "I Kings 7:13-14",
+       "citation": "וַיִּקַּ֥ח אֶת־חִירָ֖ם מִצֹּֽר [...] בֶּן־אִשָּׁה֩ אַלְמָנָ֨ה ה֜וּא מִמַּטֵּ֣ה נַפְתָּלִ֗י וְאָבִ֣יו אִישׁ־צֹרִי֮ חֹרֵ֣שׁ נְחֹ֒שֶׁת֒",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Arakhin 16b",
+        "en": "Arachin 16b"
+       },
+       "sefaria": "Arakhin 16b:19",
+       "citation": "מִנַּיִן שֶׁלֹּא יְשַׁנֶּה אָדָם מֵאוּמָּנוּתוֹ וּמֵאוּמָּנוּת אֲבוֹתָיו",
+       "version": "William Davidson Edition - Vocalized Aramaic",
+       "licence": "CC-BY-NC"
+      }
+     ]
+    },
+    {
+     "fr": "'Hazal enseignent que Chlomo a fait dix menorot : celle de Moché restait au milieu, cinq à sa droite et cinq à sa gauche.",
+     "en": "Chazal teach that Shlomo made ten menorot: the one of Moshe stood in the middle, five to its right and five to its left.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Mena'hot 98b",
+        "en": "Menachot 98b"
+       },
+       "sefaria": "Menachot 98b:7-9",
+       "citation": "עֶשֶׂר מְנוֹרוֹת עָשָׂה שְׁלֹמֹה [...] שֶׁל מֹשֶׁה בָּאֶמְצַע, חֲמִשָּׁה מִימִינָהּ, וַחֲמִשָּׁה מִשְּׂמֹאלָהּ",
+       "version": "William Davidson Edition - Vocalized Aramaic",
+       "licence": "unknown"
+      }
+     ]
+    },
+    {
+     "fr": "Chlomo a commencé le Temple la quatrième année de son règne, quatre cent quatre-vingts ans après la sortie d'Égypte (c'est aussi le compte du Séder Olam), et l'a achevé la onzième année, au bout de sept ans.",
+     "en": "Shlomo began the Temple in the fourth year of his reign, four hundred and eighty years after the children of Israel left Egypt (this is also the reckoning of Seder Olam), and completed it in the eleventh year, after seven years.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Melakhim I 6:1",
+        "en": "Melachim I 6:1"
+       },
+       "sefaria": "I Kings 6:1",
+       "citation": "בִשְׁמוֹנִ֣ים שָׁנָ֣ה וְאַרְבַּ֣ע מֵא֣וֹת שָׁנָ֡ה לְצֵ֣את בְּנֵֽי־יִשְׂרָאֵ֣ל מֵאֶֽרֶץ־מִצְרַ֩יִם֩ בַּשָּׁנָ֨ה הָרְבִיעִ֜ית",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Séder Olam Rabba 15",
+        "en": "Seder Olam Rabbah 15"
+       },
+       "sefaria": "Seder Olam Rabbah 15:1",
+       "citation": "הרי ארבע מאות ושמונים שנה. בחצי היובל נבנה הבית, בשנה הרביעית בשבוע, וכן לשלמה",
+       "version": "Seder Olam, Warsaw 1904",
+       "licence": "Public Domain"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Melakhim I 6:38",
+        "en": "Melachim I 6:38"
+       },
+       "sefaria": "I Kings 6:38",
+       "citation": "וּבַשָּׁנָה֩ הָאַחַ֨ת עֶשְׂרֵ֜ה [...] כָּלָ֣ה הַבַּ֔יִת [...] וַיִּבְנֵ֖הוּ שֶׁ֥בַע שָׁנִֽים",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      }
+     ]
+    },
+    {
+     "fr": "Quand 'Hanouka compte deux Chabbatot, la Guemara fixe cette haftara, « les lampes de Chlomo », pour le second ; Rachi explique : à cause des menorot dont parle ce passage.",
+     "en": "When Chanukah has two Shabbatot, the Gemara sets this haftara, \"the lamps of Shlomo\", for the second; Rashi explains: because of the menorot mentioned in this passage.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Meguila 31a",
+        "en": "Megillah 31a"
+       },
+       "sefaria": "Megillah 31a:17",
+       "citation": "וְאִי מִיקַּלְעִי שְׁתֵּי שַׁבָּתוֹת — קַמַּיְיתָא בְּנֵרוֹת דִּזְכַרְיָה, בָּתְרָיְיתָא בְּנֵרוֹת שְׁלֹמֹה",
+       "version": "William Davidson Edition - Vocalized Aramaic",
+       "licence": "CC-BY-NC"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Rachi sur Meguila 31a",
+        "en": "Rashi on Megillah 31a"
+       },
+       "sefaria": "Rashi on Megillah 31a:17:2",
+       "citation": "נרות דשלמה - ויעש חירום [וגו'] ואת המנורות חמש מימין",
+       "version": "Vilna Edition",
+       "licence": "Public Domain"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vayigach",
+   "occasions": [
+    "VAYIGASH"
+   ],
+   "passages": [
+    "Ezekiel 37:15-37:28"
+   ],
+   "phrases": [
+    {
+     "fr": "Hachem dit à Ye'hezkel d'écrire sur un bois « pour Yehouda », sur un autre « pour Yossef, bois d'Efraïm », puis de les rapprocher pour qu'ils ne fassent plus qu'un dans sa main.",
+     "en": "Hashem tells Yechezkel to write on one stick \"for Yehuda\", on another \"for Yosef, the stick of Efraim\", then to bring them together so that they become one in his hand.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Ye'hezkel 37:16-17",
+        "en": "Yechezkel 37:16-17"
+       },
+       "sefaria": "Ezekiel 37:16-17",
+       "citation": "וּכְתֹ֤ב עָלָיו֙ לִֽיהוּדָ֔ה [...] וּכְת֣וֹב עָלָ֗יו לְיוֹסֵף֙ עֵ֣ץ אֶפְרַ֔יִם [...] וְקָרַ֨ב אֹתָ֜ם אֶחָ֧ד אֶל־אֶחָ֛ד לְךָ֖ לְעֵ֣ץ אֶחָ֑ד וְהָי֥וּ לַאֲחָדִ֖ים בְּיָדֶֽךָ",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      }
+     ]
+    },
+    {
+     "fr": "Rachi explique : le premier bois est Yehouda avec la tribu de Binyamin, qui s'était jointe à lui ; le second, les neuf autres tribus, qui avaient suivi Yerov'am, de la tribu d'Efraïm.",
+     "en": "Rashi explains: the first stick is Yehuda with the tribe of Binyamin, which had joined it; the second is the nine other tribes, who had followed Yerovam, of the tribe of Efraim.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Rachi sur Ye'hezkel 37:16",
+        "en": "Rashi on Yechezkel 37:16"
+       },
+       "sefaria": "Rashi on Ezekiel 37:16",
+       "citation": "עֵץ זֶה לִיהוּדָה וְלִשֵׁבֶט בִּנְיָמִין שֶׁנִּלְוָה עָלָיו [...] וּשְׁאָר תִּשְׁעָה שְׁבָטִים שֶׁהָיוּ אַחֲרֵי יָרָבְעָם, שֶׁהָיָה מִשֵּׁבֶט אֶפְרַיִם",
+       "version": "Sefaria Vocalized Edition",
+       "licence": "CC0"
+      }
+     ]
+    },
+    {
+     "fr": "C'est le signe que Hachem prendra les enfants d'Israël d'entre les nations, les ramènera sur leur terre et en fera une seule nation, qui ne sera plus jamais partagée en deux royaumes.",
+     "en": "It is the sign that Hashem will take the children of Israel from among the nations, bring them back to their land and make them one nation, never again to be divided into two kingdoms.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Ye'hezkel 37:21-22",
+        "en": "Yechezkel 37:21-22"
+       },
+       "sefaria": "Ezekiel 37:21-22",
+       "citation": "הִנֵּ֨ה אֲנִ֤י לֹקֵ֙חַ֙ אֶת־בְּנֵ֣י יִשְׂרָאֵ֔ל מִבֵּ֥ין הַגּוֹיִ֖ם [...] וְהֵבֵאתִ֥י אוֹתָ֖ם אֶל־אַדְמָתָֽם [...] וְעָשִׂ֣יתִי אֹ֠תָ֠ם לְג֨וֹי אֶחָ֤ד בָּאָ֙רֶץ֙ [...] וְלֹ֨א יֵחָ֥צוּ ע֛וֹד לִשְׁתֵּ֥י מַמְלָכ֖וֹת עֽוֹד",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      }
+     ]
+    },
+    {
+     "fr": "« Mon serviteur David sera roi sur eux » : c'est le roi Machia'h, descendant de David (Radak, Metsoudat David) ; Hachem conclura avec eux une alliance de paix et placera Son sanctuaire au milieu d'eux pour toujours.",
+     "en": "\"My servant David shall be king over them\": this is the King Mashiach, a descendant of David (Radak, Metzudat David); Hashem will make a covenant of peace with them and set His sanctuary in their midst forever.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Ye'hezkel 37:24-26",
+        "en": "Yechezkel 37:24-26"
+       },
+       "sefaria": "Ezekiel 37:24-26",
+       "citation": "וְעַבְדִּ֤י דָוִד֙ מֶ֣לֶךְ עֲלֵיהֶ֔ם [...] וְכָרַתִּ֤י לָהֶם֙ בְּרִ֣ית שָׁל֔וֹם [...] וְנָתַתִּ֧י אֶת־מִקְדָּשִׁ֛י בְּתוֹכָ֖ם לְעוֹלָֽם",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Radak sur Ye'hezkel 37:24",
+        "en": "Radak on Yechezkel 37:24"
+       },
+       "sefaria": "Radak on Ezekiel 37:24",
+       "citation": "המלך המשיח יקרא שמו דוד לפי שיהיה מזרע דוד",
+       "version": "Radak on Nach",
+       "licence": "unknown"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Metsoudat David sur Ye'hezkel 37:24",
+        "en": "Metzudat David on Yechezkel 37:24"
+       },
+       "sefaria": "Metzudat David on Ezekiel 37:24",
+       "citation": "מלך המשיח הבא מזרע דוד יהיה מלך עליהם",
+       "version": "On Your Way",
+       "licence": "Public Domain"
+      }
+     ]
+    },
+    {
+     "fr": "Ye'hezkel, un cohen exilé avec le roi Yehoyakhin, a prophétisé au pays des Kasdim, près du fleuve Kevar ; le Séder Olam le compte parmi les prophètes proches de la destruction du Temple.",
+     "en": "Yechezkel, a kohen exiled with King Yehoyachin, prophesied in the land of the Kasdim, by the river Kevar; Seder Olam counts him among the prophets close to the destruction of the Temple.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Ye'hezkel 1:3",
+        "en": "Yechezkel 1:3"
+       },
+       "sefaria": "Ezekiel 1:3",
+       "citation": "אֶל־יְחֶזְקֵ֨אל בֶּן־בּוּזִ֧י הַכֹּהֵ֛ן בְּאֶ֥רֶץ כַּשְׂדִּ֖ים עַל־נְהַר־כְּבָ֑ר",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Rachi sur Ye'hezkel 1:3",
+        "en": "Rashi on Yechezkel 1:3"
+       },
+       "sefaria": "Rashi on Ezekiel 1:3",
+       "citation": "וִיחֶזְקֵאל גָּלָה עִם הֶחָרָשׁ וְהַמַּסְגֵּר, שֶׁגָּלוּ עִם יְהוֹיָכִין",
+       "version": "Sefaria Vocalized Edition",
+       "licence": "CC0"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Séder Olam Rabba 20",
+        "en": "Seder Olam Rabbah 20"
+       },
+       "sefaria": "Seder Olam Rabbah 20:1",
+       "citation": "אל יחזקאל בן בוזי וגו' (יחזקאל א ג), כולם נתנבאו סמוך לחרבן",
+       "version": "Seder Olam, Warsaw 1904",
+       "licence": "Public Domain"
+      }
+     ]
+    },
+    {
+     "fr": "La paracha s'ouvre quand Yehouda s'approche de Yossef, et la haftara annonce la réunion de Yehouda et de Yossef : on lit dans les Prophètes un passage proche de ce qu'on a lu dans la Torah.",
+     "en": "The parasha opens as Yehuda approaches Yosef, and the haftara foretells the reunion of Yehuda and Yosef: we read from the Prophets a passage similar to what was read in the Torah.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Berèchit 44:18",
+        "en": "Bereshit 44:18"
+       },
+       "sefaria": "Genesis 44:18",
+       "citation": "וַיִּגַּ֨שׁ אֵלָ֜יו יְהוּדָ֗ה",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Aboudarham, Ordre des parachiot et des haftarot",
+        "en": "Abudarham, Order of the Parashiyot and Haftarot"
+       },
+       "sefaria": "Abudarham, Hebrew Calendar, Order of Parashiot and Haftarot 12",
+       "citation": "ויגש אליו, ואתה בן אדם קח לך עץ אחד",
+       "version": "Abudarham. Lisbon, 1489.",
+       "licence": "Public Domain"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Rambam, Hilkhot Tefila 13:3",
+        "en": "Rambam, Hilchot Tefillah 13:3"
+       },
+       "sefaria": "Mishneh Torah, Prayer and the Priestly Blessing 13:3",
+       "citation": "וּמַפְטִירִין בְּכָל שַׁבָּת וְשַׁבָּת בַּנָּבִיא מֵעֵין שֶׁקָּרָא בַּתּוֹרָה",
+       "version": "Torat Emet 370",
+       "licence": "Public Domain"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vayehi",
+   "occasions": [
+    "VAYECHI"
+   ],
+   "passages": [
+    "I Kings 2:1-2:12"
+   ],
+   "phrases": [
+    {
+     "fr": "Les jours de David approchent de la mort : il ordonne à son fils Chlomo d'être fort et de garder ce qui est écrit dans la Torah de Moché, pour que le trône d'Israël reste à ses descendants.",
+     "en": "David's days draw near to die: he charges his son Shlomo to be strong and to keep what is written in the Torah of Moshe, so that the throne of Israel will remain with his descendants.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Melakhim I 2:1-4",
+        "en": "Melachim I 2:1-4"
+       },
+       "sefaria": "I Kings 2:1-4",
+       "citation": "וַיִּקְרְב֥וּ יְמֵֽי־דָוִ֖ד לָמ֑וּת וַיְצַ֛ו אֶת־שְׁלֹמֹ֥ה בְנ֖וֹ [...] וְחָזַקְתָּ֖ וְהָיִ֥יתָֽ לְאִֽישׁ [...] כַּכָּת֖וּב בְּתוֹרַ֣ת מֹשֶׁ֑ה [...] לֹֽא־יִכָּרֵ֤ת לְךָ֙ אִ֔ישׁ מֵעַ֖ל כִּסֵּ֥א יִשְׂרָאֵֽל",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      }
+     ]
+    },
+    {
+     "fr": "Il lui confie trois affaires : Yoav ben Tserouya, qui a tué Avner et Amassa, deux chefs d'armée en paix avec lui ; les fils de Barzilaï le Guil'adi, à traiter avec bonté ; et Chim'i ben Guéra, qui l'a maudit durement.",
+     "en": "He entrusts him with three matters: Yoav ben Tzeruya, who killed Avner and Amasa, two army commanders who were at peace with him; the sons of Barzilai HaGiladi, to be treated with kindness; and Shimi ben Gera, who cursed him grievously.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Melakhim I 2:5-8",
+        "en": "Melachim I 2:5-8"
+       },
+       "sefaria": "I Kings 2:5-8",
+       "citation": "יוֹאָ֣ב בֶּן־צְרוּיָ֗ה [...] לִשְׁנֵֽי־שָׂרֵ֣י צִבְא֣וֹת יִ֠שְׂרָאֵ֠ל לְאַבְנֵ֨ר בֶּן־נֵ֜ר וְלַעֲמָשָׂ֤א בֶן־יֶ֙תֶר֙ וַיַּ֣הַרְגֵ֔ם [...] וְלִבְנֵ֨י בַרְזִלַּ֤י הַגִּלְעָדִי֙ תַּֽעֲשֶׂה־חֶ֔סֶד [...] שִֽׁמְעִ֨י בֶן־גֵּרָ֥א [...] קִֽלְלַ֙נִי֙ קְלָלָ֣ה נִמְרֶ֔צֶת",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Rachi sur Melakhim I 2:5",
+        "en": "Rashi on Melachim I 2:5"
+       },
+       "sefaria": "Rashi on I Kings 2:5",
+       "citation": "שֶׁהָיָה לָהֶם שָׁלוֹם עִמּוֹ, וְלֹא הָיוּ נִשְׁמָרִים מִמֶּנּוּ",
+       "version": "The Metsudah Tanach series, Lakewood, N.J ",
+       "licence": "CC-BY"
+      }
+     ]
+    },
+    {
+     "fr": "'Hazal enseignent que Chim'i ben Guéra enseignait la Torah à Chlomo : tant que Chim'i a vécu, Chlomo n'a pas épousé la fille de Pharaon.",
+     "en": "Chazal teach that Shimi ben Gera taught Torah to Shlomo: as long as Shimi was alive, Shlomo did not marry Pharaoh's daughter.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Berakhot 8a",
+        "en": "Berachot 8a"
+       },
+       "sefaria": "Berakhot 8a:22",
+       "citation": "בִּמְקוֹם רַבּוֹ, שֶׁכָּל זְמַן שֶׁשִּׁמְעִי בֶּן גֵּרָא קַיָּים, לֹא נָשָׂא שְׁלֹמֹה אֶת בַּת פַּרְעֹה",
+       "version": "William Davidson Edition - Vocalized Aramaic",
+       "licence": "CC-BY-NC"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Metsoudat David sur Melakhim I 2:8",
+        "en": "Metzudat David on Melachim I 2:8"
+       },
+       "sefaria": "Metzudat David on I Kings 2:8",
+       "citation": "ורבותינו ז״ל אמרו שהיה מלמדו תורה",
+       "version": "On Your Way",
+       "licence": "Public Domain"
+      }
+     ]
+    },
+    {
+     "fr": "David repose avec ses pères et il est enterré dans la Ville de David, après quarante ans de règne, sept à 'Hévron et trente-trois à Jérusalem ; Chlomo s'assied sur son trône et sa royauté s'affermit.",
+     "en": "David lies with his fathers and is buried in the City of David, after reigning forty years, seven in Chevron and thirty-three in Jerusalem; Shlomo sits on his throne and his kingship is firmly established.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Melakhim I 2:10-12",
+        "en": "Melachim I 2:10-12"
+       },
+       "sefaria": "I Kings 2:10-12",
+       "citation": "וַיִּשְׁכַּ֥ב דָּוִ֖ד עִם־אֲבֹתָ֑יו וַיִּקָּבֵ֖ר בְּעִ֥יר דָּוִֽד [...] אַרְבָּעִ֖ים שָׁנָ֑ה בְּחֶבְר֤וֹן מָלַךְ֙ שֶׁ֣בַע שָׁנִ֔ים וּבִירוּשָׁלַ֣͏ִם מָלַ֔ךְ שְׁלֹשִׁ֥ים וְשָׁלֹ֖שׁ שָׁנִֽים [...] וּשְׁלֹמֹ֕ה יָשַׁ֕ב עַל־כִּסֵּ֖א דָּוִ֣ד אָבִ֑יו וַתִּכֹּ֥ן מַלְכֻת֖וֹ מְאֹֽד",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      }
+     ]
+    },
+    {
+     "fr": "'Hazal enseignent que David est mort un Chabbat, à soixante-dix ans ; selon le Séder Olam, Chlomo avait douze ans quand il est devenu roi.",
+     "en": "Chazal teach that David died on a Shabbat, at the age of seventy; according to Seder Olam, Shlomo was twelve years old when he became king.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Chabbat 30a",
+        "en": "Shabbat 30a"
+       },
+       "sefaria": "Shabbat 30a:9",
+       "citation": "אָמַר לוֹ: בְּשַׁבָּת תָּמוּת",
+       "version": "William Davidson Edition - Vocalized Aramaic",
+       "licence": "CC-BY-NC"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Berèchit Rabba 96:4",
+        "en": "Bereshit Rabbah 96:4"
+       },
+       "sefaria": "Bereishit Rabbah 96:4",
+       "citation": "וְדָוִד לֹא חָיָה אֶלָּא שִׁבְעִים שָׁנָה",
+       "version": "Midrash Rabbah -- TE",
+       "licence": "CC-BY-NC"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Séder Olam Rabba 14",
+        "en": "Seder Olam Rabbah 14"
+       },
+       "sefaria": "Seder Olam Rabbah 14:1",
+       "citation": "שבן שנים עשרה שנה היה שלמה במלכו",
+       "version": "Seder Olam, Warsaw 1904",
+       "licence": "Public Domain"
+      }
+     ]
+    },
+    {
+     "fr": "La paracha dit « les jours d'Israël approchèrent de la mort », la haftara « les jours de David approchèrent de la mort » : le Midrach rapproche ces deux versets, et l'on lit dans les Prophètes un passage proche de ce qu'on a lu dans la Torah.",
+     "en": "The parasha says \"the days of Israel drew near to die\", the haftara \"the days of David drew near to die\": the Midrash links these two verses, and we read from the Prophets a passage similar to what was read in the Torah.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Berèchit 47:29",
+        "en": "Bereshit 47:29"
+       },
+       "sefaria": "Genesis 47:29",
+       "citation": "וַיִּקְרְב֣וּ יְמֵֽי־יִשְׂרָאֵל֮ לָמוּת֒",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Berèchit Rabba 96:4",
+        "en": "Bereshit Rabbah 96:4"
+       },
+       "sefaria": "Bereishit Rabbah 96:4",
+       "citation": "וְכָל מִי שֶׁנֶּאֱמַר בּוֹ קְרִיבָה לָמוּת לֹא הִגִּיעַ לִימֵי אֲבוֹתָיו. דָּוִד כְּתִיב בּוֹ קְרִיבָה [...] וְיַעֲקֹב כְּתִיב בּוֹ קְרִיבָה",
+       "version": "Midrash Rabbah -- TE",
+       "licence": "CC-BY-NC"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Rambam, Hilkhot Tefila 13:3",
+        "en": "Rambam, Hilchot Tefillah 13:3"
+       },
+       "sefaria": "Mishneh Torah, Prayer and the Priestly Blessing 13:3",
+       "citation": "וּמַפְטִירִין בְּכָל שַׁבָּת וְשַׁבָּת בַּנָּבִיא מֵעֵין שֶׁקָּרָא בַּתּוֹרָה",
+       "version": "Torat Emet 370",
+       "licence": "Public Domain"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chemot-edot",
+   "occasions": [
+    "SHEMOS"
+   ],
+   "passages": [
+    "Jeremiah 1:1-2:3"
+   ],
+   "phrases": [
+    {
+     "fr": "La haftara est le début du livre de Yirmeyahou, fils de 'Hilkiyahou, un cohen d'Anatot, au pays de Binyamin ; 'Hazal le comptent, avec son père, parmi huit prophètes cohanim qui descendent de Ra'hav.",
+     "en": "The haftara is the beginning of the book of Yirmiyahu, son of Chilkiyahu, a kohen from Anatot in the land of Binyamin; Chazal count him, with his father, among eight prophets who were kohanim and descended from Rachav.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Yirmeyahou 1:1",
+        "en": "Yirmiyahu 1:1"
+       },
+       "sefaria": "Jeremiah 1:1",
+       "citation": "דִּבְרֵ֥י יִרְמְיָ֖הוּ בֶּן־חִלְקִיָּ֑הוּ מִן־הַכֹּֽהֲנִים֙ אֲשֶׁ֣ר בַּעֲנָת֔וֹת בְּאֶ֖רֶץ בִּנְיָמִֽן",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Meguila 14b",
+        "en": "Megillah 14b"
+       },
+       "sefaria": "Megillah 14b:12",
+       "citation": "שְׁמוֹנָה נְבִיאִים וְהֵם כֹּהֲנִים יָצְאוּ מֵרָחָב [...] יִרְמְיָה, חִלְקִיָּה",
+       "version": "William Davidson Edition - Vocalized Aramaic",
+       "licence": "CC-BY-NC"
+      }
+     ]
+    },
+    {
+     "fr": "Hachem lui dit qu'Il l'a consacré prophète avant sa naissance ; Yirmeyahou répond qu'il ne sait pas parler, car il est jeune, et Hachem met Ses paroles dans sa bouche.",
+     "en": "Hashem tells him that He consecrated him as a prophet before his birth; Yirmiyahu answers that he does not know how to speak, for he is young, and Hashem puts His words in his mouth.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Yirmeyahou 1:5-9",
+        "en": "Yirmiyahu 1:5-9"
+       },
+       "sefaria": "Jeremiah 1:5-9",
+       "citation": "וּבְטֶ֛רֶם תֵּצֵ֥א מֵרֶ֖חֶם הִקְדַּשְׁתִּ֑יךָ נָבִ֥יא לַגּוֹיִ֖ם נְתַתִּֽיךָ [...] הִנֵּ֥ה לֹֽא־יָדַ֖עְתִּי דַּבֵּ֑ר כִּי־נַ֖עַר אָנֹֽכִי [...] הִנֵּ֛ה נָתַ֥תִּי דְבָרַ֖י בְּפִֽיךָ",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      }
+     ]
+    },
+    {
+     "fr": "Il voit un bâton d'amandier, l'arbre qui fleurit avant tous les autres : Hachem se hâte d'accomplir Sa parole ; puis une marmite bouillante tournée vers le nord, car le malheur viendra du nord, de Babylone.",
+     "en": "He sees a rod of an almond tree, the tree that blossoms before all others: Hashem hastens to carry out His word; then a boiling pot facing north, for the evil will come from the north, from Bavel.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Yirmeyahou 1:11-14",
+        "en": "Yirmiyahu 1:11-14"
+       },
+       "sefaria": "Jeremiah 1:11-14",
+       "citation": "מַקֵּ֥ל שָׁקֵ֖ד אֲנִ֥י רֹאֶֽה [...] סִ֤יר נָפ֙וּחַ֙ אֲנִ֣י רֹאֶ֔ה וּפָנָ֖יו מִפְּנֵ֥י צָפֽוֹנָה [...] מִצָּפוֹן֙ תִּפָּתַ֣ח הָרָעָ֔ה",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Rachi sur Yirmeyahou 1:12",
+        "en": "Rashi on Yirmiyahu 1:12"
+       },
+       "sefaria": "Rashi on Jeremiah 1:12",
+       "citation": "הַשָּׁקֵד הַזֶּה הוּא מְמַהֵר לְהוֹצִיא פֶרַח קֹדֶם לְכָל הָאִילָנוֹת, אַף אֲנִי מְמַהֵר לַעֲשׂוֹת דְּבָרִי",
+       "version": "Sefaria Vocalized Edition",
+       "licence": "CC0"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Rachi sur Yirmeyahou 1:14",
+        "en": "Rashi on Yirmiyahu 1:14"
+       },
+       "sefaria": "Rashi on Jeremiah 1:14",
+       "citation": "בָּבֶל לִצְפוֹנָהּ שֶׁל אֶרֶץ יִשְׂרָאֵל הִיא",
+       "version": "Sefaria Vocalized Edition",
+       "licence": "CC0"
+      }
+     ]
+    },
+    {
+     "fr": "La haftara se termine par une parole de tendresse : Hachem se souvient de la bonté de la jeunesse d'Israël, qui L'a suivi dans le désert, sur une terre sans semence.",
+     "en": "The haftara ends with words of affection: Hashem remembers the kindness of Israel's youth, when it followed Him in the wilderness, in a land not sown.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Yirmeyahou 2:2",
+        "en": "Yirmiyahu 2:2"
+       },
+       "sefaria": "Jeremiah 2:2",
+       "citation": "זָכַ֤רְתִּי לָךְ֙ חֶ֣סֶד נְעוּרַ֔יִךְ אַהֲבַ֖ת כְּלוּלֹתָ֑יִךְ לֶכְתֵּ֤ךְ אַֽחֲרַי֙ בַּמִּדְבָּ֔ר בְּאֶ֖רֶץ לֹ֥א זְרוּעָֽה",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      }
+     ]
+    },
+    {
+     "fr": "Sa prophétie va de la treizième année du roi Yochiyahou à l'exil de Jérusalem, la onzième année de Tsidkiyahou : quarante ans, compte Rachi, comme Moché ; le Séder Olam le range parmi les prophètes proches de la destruction du Temple.",
+     "en": "His prophecy runs from the thirteenth year of King Yoshiyahu to the exile of Jerusalem, in the eleventh year of Tzidkiyahu: forty years, Rashi reckons, like Moshe; Seder Olam places him among the prophets close to the destruction of the Temple.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Yirmeyahou 1:2-3",
+        "en": "Yirmiyahu 1:2-3"
+       },
+       "sefaria": "Jeremiah 1:2-3",
+       "citation": "בִּימֵ֛י יֹאשִׁיָּ֥הוּ בֶן־אָמ֖וֹן מֶ֣לֶךְ יְהוּדָ֑ה בִּשְׁלֹשׁ־עֶשְׂרֵ֥ה שָׁנָ֖ה לְמׇלְכֽוֹ [...] עַד־תֹּם֙ עַשְׁתֵּ֣י עֶשְׂרֵ֣ה שָׁנָ֔ה לְצִדְקִיָּ֥הוּ [...] עַד־גְּל֥וֹת יְרוּשָׁלַ֖͏ִם בַּחֹ֥דֶשׁ הַחֲמִישִֽׁי",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Rachi sur Yirmeyahou 1:5",
+        "en": "Rashi on Yirmiyahu 1:5"
+       },
+       "sefaria": "Rashi on Jeremiah 1:5",
+       "citation": "זֶה נִתְנַבֵּא אַרְבָּעִים שָׁנָה וְזֶה נִתְנַבֵּא אַרְבָּעִים שָׁנָה",
+       "version": "Sefaria Vocalized Edition",
+       "licence": "CC0"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Séder Olam Rabba 20",
+        "en": "Seder Olam Rabbah 20"
+       },
+       "sefaria": "Seder Olam Rabbah 20:1",
+       "citation": "דברי ירמיהו בן חלקיהו [...] כולם נתנבאו סמוך לחרבן",
+       "version": "Seder Olam, Warsaw 1904",
+       "licence": "Public Domain"
+      }
+     ]
+    },
+    {
+     "fr": "Dans la paracha Chemot, Hachem envoie Moché, qui répond : « je ne suis pas un homme de paroles » ; dans cette haftara, que l'Aboudarham donne pour Chemot, Yirmeyahou répond qu'il ne sait pas parler, et le Radak rapproche ces deux refus.",
+     "en": "In parashat Shemot, Hashem sends Moshe, who answers: \"I am not a man of words\"; in this haftara, which Abudarham gives for Shemot, Yirmiyahu answers that he does not know how to speak, and Radak compares these two refusals.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Chemot 4:10",
+        "en": "Shemot 4:10"
+       },
+       "sefaria": "Exodus 4:10",
+       "citation": "לֹא֩ אִ֨ישׁ דְּבָרִ֜ים אָנֹ֗כִי",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Aboudarham, Ordre des parachiot et des haftarot",
+        "en": "Abudarham, Order of the Parashiyot and Haftarot"
+       },
+       "sefaria": "Abudarham, Hebrew Calendar, Order of Parashiot and Haftarot 14",
+       "citation": "ואלה שמות, דברי ירמיהו עד רעה תבא אליהם",
+       "version": "Abudarham. Lisbon, 1489.",
+       "licence": "Public Domain"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Radak sur Yirmeyahou 1:5",
+        "en": "Radak on Yirmiyahu 1:5"
+       },
+       "sefaria": "Radak on Jeremiah 1:5",
+       "citation": "והלא משה רבינו ע\"ה היה מסרב ג\"כ בשליחות האל",
+       "version": "Radak on Nach",
+       "licence": "unknown"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chemot-ashkenaz",
+   "occasions": [
+    "SHEMOS"
+   ],
+   "passages": [
+    "Isaiah 27:6-28:13"
+   ],
+   "phrases": [
+    {
+     "fr": "La haftara s'ouvre par « Ceux qui viennent, Yaakov les enracinera, Israël bourgeonnera et fleurira » ; Rachi explique : ceux qui sont venus en Égypte, que Yaakov y a enracinés, y ont bourgeonné et fleuri.",
+     "en": "The haftara opens with \"Those who come, Yaakov will make take root; Israel will bud and blossom\"; Rashi explains: those who came to Egypt, whom Yaakov rooted there, budded and blossomed there.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Yecha'yahou 27:6",
+        "en": "Yeshayahu 27:6"
+       },
+       "sefaria": "Isaiah 27:6",
+       "citation": "הַבָּאִים֙ יַשְׁרֵ֣שׁ יַֽעֲקֹ֔ב יָצִ֥יץ וּפָרַ֖ח יִשְׂרָאֵ֑ל",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Rachi sur Yecha'yahou 27:6",
+        "en": "Rashi on Yeshayahu 27:6"
+       },
+       "sefaria": "Rashi on Isaiah 27:6",
+       "citation": "הַבָּאִים לְמִצְרַיִם אֲשֶׁר הִשְׁרִישׁ יַעֲקֹב, צָצוּ וּפָרְחוּ שָׁם",
+       "version": "Sefaria Vocalized Edition",
+       "licence": "CC0"
+      }
+     ]
+    },
+    {
+     "fr": "Le prophète annonce un jour où un grand chofar sonnera : ceux qui étaient perdus au pays d'Achour et repoussés au pays d'Égypte viendront se prosterner devant Hachem sur la montagne sainte, à Jérusalem.",
+     "en": "The prophet foretells a day when a great shofar will be sounded: those who were lost in the land of Ashur and cast away in the land of Egypt will come and bow down to Hashem on the holy mountain, in Jerusalem.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Yecha'yahou 27:13",
+        "en": "Yeshayahu 27:13"
+       },
+       "sefaria": "Isaiah 27:13",
+       "citation": "יִתָּקַע֮ בְּשׁוֹפָ֣ר גָּדוֹל֒ וּבָ֗אוּ הָאֹֽבְדִים֙ בְּאֶ֣רֶץ אַשּׁ֔וּר וְהַנִּדָּחִ֖ים בְּאֶ֣רֶץ מִצְרָ֑יִם [...] בְּהַ֥ר הַקֹּ֖דֶשׁ בִּירוּשָׁלָֽ͏ִם",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      }
+     ]
+    },
+    {
+     "fr": "Il reproche ensuite leur orgueil aux « ivrognes d'Efraïm » : les dix tribus, explique Rachi, s'enivraient de bon vin, et toute parole de prophétie leur semblait une langue qu'on ne comprend pas.",
+     "en": "He then rebukes the \"drunkards of Efraim\" for their pride: the ten tribes, Rashi explains, became drunk on fine wine, and every word of prophecy seemed to them like a language one cannot understand.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Yecha'yahou 28:1",
+        "en": "Yeshayahu 28:1"
+       },
+       "sefaria": "Isaiah 28:1",
+       "citation": "ה֗וֹי עֲטֶ֤רֶת גֵּאוּת֙ שִׁכֹּרֵ֣י אֶפְרַ֔יִם",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Rachi sur Yecha'yahou 28:1",
+        "en": "Rashi on Yeshayahu 28:1"
+       },
+       "sefaria": "Rashi on Isaiah 28:1",
+       "citation": "שֶׁהָיוּ מִשְׁתַּכְּרִין בְּיַיִן טוֹב [...] קִפְּחוּ עֲשֶׂרֶת הַשְּׁבָטִים",
+       "version": "Sefaria Vocalized Edition",
+       "licence": "CC0"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Rachi sur Yecha'yahou 28:11",
+        "en": "Rashi on Yeshayahu 28:11"
+       },
+       "sefaria": "Rashi on Isaiah 28:11",
+       "citation": "כָּל הַמְדַבֵּר אֲלֵיהֶם דְּבַר נְבוּאָה וְתוֹכָחָה, דּוֹמֶה לָהֶם לְלָשׁוֹן נִלְעָג, שֶׁאֵין יְכוֹלִין לְהָבִין בּוֹ",
+       "version": "Sefaria Vocalized Edition",
+       "licence": "CC0"
+      }
+     ]
+    },
+    {
+     "fr": "On termine par deux versets pris plus loin dans le livre : Yaakov n'aura plus honte, quand il verra ses enfants sanctifier le Nom de Hachem.",
+     "en": "We end with two verses taken from further on in the book: Yaakov will no longer be ashamed, when he sees his children sanctify the Name of Hashem.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Yecha'yahou 29:22-23",
+        "en": "Yeshayahu 29:22-23"
+       },
+       "sefaria": "Isaiah 29:22-23",
+       "citation": "לֹֽא־עַתָּ֤ה יֵבוֹשׁ֙ יַעֲקֹ֔ב [...] כִּ֣י בִ֠רְאֹת֠וֹ יְלָדָ֞יו מַעֲשֵׂ֥ה יָדַ֛י בְּקִרְבּ֖וֹ יַקְדִּ֣ישֽׁוּ שְׁמִ֑י",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      }
+     ]
+    },
+    {
+     "fr": "Yecha'yahou, fils d'Amots, a prophétisé aux jours d'Ouziyahou, de Yotam, d'A'haz et de 'Hizkiyahou, rois de Yehouda ; pour 'Hazal, Amots était le frère du roi Amatsia, et pour le Séder Olam, Hochéa, Amos et Mikha sont de la même époque.",
+     "en": "Yeshayahu, son of Amotz, prophesied in the days of Uziyahu, Yotam, Achaz and Chizkiyahu, kings of Yehuda; Chazal teach that Amotz was the brother of King Amatzya, and Seder Olam that Hoshea, Amos and Micha belong to the same period.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Yecha'yahou 1:1",
+        "en": "Yeshayahu 1:1"
+       },
+       "sefaria": "Isaiah 1:1",
+       "citation": "חֲזוֹן֙ יְשַֽׁעְיָ֣הוּ בֶן־אָמ֔וֹץ [...] בִּימֵ֨י עֻזִּיָּ֧הוּ יוֹתָ֛ם אָחָ֥ז יְחִזְקִיָּ֖הוּ מַלְכֵ֥י יְהוּדָֽה",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Rachi sur Yecha'yahou 1:1",
+        "en": "Rashi on Yeshayahu 1:1"
+       },
+       "sefaria": "Rashi on Isaiah 1:1",
+       "citation": "אָמַר רַבִּי לֵוִי (מגילה י:): דָּבָר זֶה מָסֹרֶת בְּיָדֵינוּ מֵאֲבוֹתֵינוּ: אָמוֹץ וַאֲמַצְיָה מֶלֶךְ יְהוּדָה אַחִים הָיוּ",
+       "version": "Sefaria Vocalized Edition",
+       "licence": "CC0"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Séder Olam Rabba 20",
+        "en": "Seder Olam Rabbah 20"
+       },
+       "sefaria": "Seder Olam Rabbah 20:1",
+       "citation": "חזון ישעיהו בן אמוץ [...] אל הושע [...] דברי עמוס [...] אל מיכה המרשתי [...] מלמד שכולן נתנבאו בפרק אחד",
+       "version": "Seder Olam, Warsaw 1904",
+       "licence": "Public Domain"
+      }
+     ]
+    },
+    {
+     "fr": "La paracha Chemot s'ouvre elle aussi par les enfants d'Israël « venus en Égypte » et raconte comment ils s'y sont multipliés : on lit dans les Prophètes un passage proche de ce qu'on a lu dans la Torah.",
+     "en": "Parashat Shemot likewise opens with the children of Israel \"who came to Egypt\" and tells how they multiplied there: we read from the Prophets a passage similar to what was read in the Torah.",
+     "sources": [
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Chemot 1:1",
+        "en": "Shemot 1:1"
+       },
+       "sefaria": "Exodus 1:1",
+       "citation": "וְאֵ֗לֶּה שְׁמוֹת֙ בְּנֵ֣י יִשְׂרָאֵ֔ל הַבָּאִ֖ים מִצְרָ֑יְמָה",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Chemot 1:7",
+        "en": "Shemot 1:7"
+       },
+       "sefaria": "Exodus 1:7",
+       "citation": "וּבְנֵ֣י יִשְׂרָאֵ֗ל פָּר֧וּ וַֽיִּשְׁרְצ֛וּ וַיִּרְבּ֥וּ וַיַּֽעַצְמ֖וּ בִּמְאֹ֣ד מְאֹ֑ד",
+       "version": "Miqra according to the Masorah",
+       "licence": "CC-BY-SA"
+      },
+      {
+       "genre": "classique",
+       "ref": {
+        "fr": "Rambam, Hilkhot Tefila 13:3",
+        "en": "Rambam, Hilchot Tefillah 13:3"
+       },
+       "sefaria": "Mishneh Torah, Prayer and the Priestly Blessing 13:3",
+       "citation": "וּמַפְטִירִין בְּכָל שַׁבָּת וְשַׁבָּת בַּנָּבִיא מֵעֵין שֶׁקָּרָא בַּתּוֹרָה",
+       "version": "Torat Emet 370",
+       "licence": "Public Domain"
+      }
+     ]
+    }
+   ]
+  }
+ ]
 }

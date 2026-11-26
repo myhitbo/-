@@ -12,7 +12,8 @@ import vm from 'node:vm';
 const require = createRequire(import.meta.url);
 const { fichiers, script } = require('../tools/construit_donnees.js');
 const web = (nom) => readFileSync(new URL(`../web/${nom}`, import.meta.url), 'utf8');
-const DONNEES = Object.values(fichiers()).map(([nom, contenu]) => script(nom, contenu)).join('');
+// Tout ce que la page charge d'avance ; le contexte des haftarot (contexte.js) se charge après coup, à la demande.
+const DONNEES = Object.entries(fichiers()).filter(([fichier]) => fichier !== 'contexte.js').map(([, [nom, contenu]]) => script(nom, contenu)).join('');
 
 /** Une application neuve : [reglages] (place : 0 Israël, 1 diaspora), à la date [iso] à midi, heure de Paris. */
 function application(reglages = {}, iso = '2026-11-26') {

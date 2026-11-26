@@ -20,16 +20,16 @@ function lettres(n) {
   return ((n >= 10 ? d[Math.floor(n / 10)] : '') + (n % 10 ? u[n % 10] : '')).trim();
 }
 
-test('le livre a ses trois titres et ses huit chapitres, et l\'application le charge tel quel', () => {
+test('le livre a ses trois titres et ses neuf chapitres, et l\'application le charge tel quel', () => {
   assert.deepEqual(livre.titre, { he: 'הלכות שנים מקרא ואחד תרגום', fr: 'Chnayim mikra\u00a0: les halakhot', en: 'Shnayim mikra: the laws' });
-  assert.equal(livre.sections.length, 8);
+  assert.equal(livre.sections.length, 9); // l'introduction et huit chapitres de halakhot
   for (const s of livre.sections) assert.ok(s.titre && s.titre_fr && s.titre_en, s.titre);
   const { fichiers } = require('../tools/construit_donnees.js');
   assert.deepEqual(fichiers()['halakhot.js'], ['halakhot', livre]);
 });
 
 test('chaque halakha a son hébreu, son français, son anglais, ses références et son rite', () => {
-  assert.equal(halakhot.length, 31);
+  assert.equal(halakhot.length, 65);
   assert.deepEqual(halakhot.map((h) => h.id), halakhot.map((_, i) => `chm-${String(i + 1).padStart(2, '0')}`));
   halakhot.forEach((h, i) => {
     for (const champ of ['t', 'fr', 'en']) assert.ok(h[champ]?.trim(), `${h.id} ${champ}`);
@@ -41,9 +41,9 @@ test('chaque halakha a son hébreu, son français, son anglais, ses références
     for (const t of [h.t, h.fr, h.en]) assert.ok(!/<(?!\/?(b|small)>|br>)/.test(t), h.id);
   });
   assert.deepEqual(new Set(halakhot.map((h) => h.rite)), new Set(['tous', 'sefarade', 'ashkenaze']));
-  // Le tableau du cahier de reprise : 13 pour tous, 10 séfarades, 8 ashkénazes.
+  // Les 31 du cahier de reprise (13 pour tous, 10 séfarades, 8 ashkénazes) et les 34 ajoutées le 26/11/2026 (12, 11, 11).
   const compte = (r) => halakhot.filter((h) => h.rite === r).length;
-  assert.deepEqual([compte('tous'), compte('sefarade'), compte('ashkenaze')], [13, 10, 8]);
+  assert.deepEqual([compte('tous'), compte('sefarade'), compte('ashkenaze')], [25, 21, 19]);
 });
 
 test('le rite se lit en tête de la halakha, dans les trois langues', () => {
