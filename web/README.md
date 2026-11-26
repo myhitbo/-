@@ -5,7 +5,7 @@
 - `vendor/kosher-zmanim-0.9.0.min.js` — le calendrier juif (LGPL-3.0, fichier non modifié ; `vendor/LICENCES.txt`).
 - `lecture.js` — le moteur des lectures : la paracha de la semaine, ses montées, son maftir et sa haftara selon le lieu et le rite.
 - `donnees.js` — le chargeur des données embarquées (`SM_DATA`, `SM_DONNEES`).
-- `data/lecture.js` — les lectures. Le texte (`data/texte/<Livre>.js`), le Targoum (`data/targoum/<Livre>.js`) et les halakhot (`data/halakhot.js`) sont chargés à la demande.
+- `data/lecture.js` — les lectures. Le texte (`data/texte/<Livre>.js`), le Targoum (`data/targoum/<Livre>.js`), les halakhot (`data/halakhot.js`) et le contexte des haftarot (`data/contexte.js`) sont chargés à la demande.
 - `sefaria.js` — seulement le Targoum Yerouchalmi des versets sans Targoum, en ligne.
 - `globals.js` — données partagées (semaines, haftara, échéances, progression, impression).
 - `runtime.js` — moteur des écrans, navigation et réglages (enregistrés sur le téléphone).

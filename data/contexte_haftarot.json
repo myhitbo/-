@@ -1,0 +1,12 @@
+{
+ "_meta": {
+  "date": "26/11/2026",
+  "cahier": "docs/09-cahier-de-reprise.md § 6",
+  "regle": "4 à 6 phrases par haftara, en français et en anglais ; chaque phrase porte au moins une source : une référence, un lien et, pour une source classique, une courte citation exacte en hébreu.",
+  "sources": "'Harédi uniquement : 'Hazal (Talmud, Midrach, Séder Olam), commentateurs classiques (Rachi, Radak, Ibn Ezra, Ralbag, Abarbanel, Metsoudot, Malbim) ; pour le choix de la haftara, Guemara Meguila 29b-31b, Aboudarham, Levouch, Michna Beroura ; auteurs 'harédim d'aujourd'hui reformulés, jamais recopiés.",
+  "exclus": "Travaux universitaires et critique biblique, Wikipédia et encyclopédies générales, sources chrétiennes, Daat Mikra. Un point sans source acceptée est laissé de côté.",
+  "outil": "tools/contexte_haftarot.mjs (--sources relit chaque citation sur Sefaria)",
+  "etat": "en cours"
+ },
+ "contextes": []
+}

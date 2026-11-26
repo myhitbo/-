@@ -153,6 +153,27 @@ test('versets sans Targoum : « Atarot ve-Divon » et les versets de noms seuls'
   assert.equal(chemot.alyot[0].v.find((x) => x.ref === '1:2').yer, '');
 });
 
+test('le contexte de la haftara : trouvé par son origine et son premier passage, dans la langue de l\'interface', () => {
+  const essai = { contextes: [{ id: 'essai', occasions: ['VAYISHLACH'], passages: ['Obadiah 1:1-1:21'], phrases: [
+    { fr: 'Phrase une.', en: 'Sentence one.', sources: [{ genre: 'classique', ref: { fr: 'Rachi sur Ovadia 1:1', en: 'Rashi on Ovadia 1:1' }, sefaria: 'Rashi on Obadiah 1:1', citation: 'עֹבַדְיָה' }] },
+    { fr: 'Phrase deux.', en: 'Sentence two.', sources: [{ genre: 'aujourdhui', ref: { fr: 'Auteur, Titre', en: 'Author, Title' }, auteur: 'A', titre: 'T', url: 'https://exemple.org/x' }] },
+  ] }] };
+  const { w, etat } = application();
+  assert.equal(w.SM_G().haftara.hasContexte, false); // pas encore chargé : l'encadré ne s'affiche pas
+  w.SM_DATA('contexte', essai);
+  const h = w.SM_G().haftara;
+  assert.equal(h.hasContexte, true);
+  assert.deepEqual(Array.from(h.contexte, (c) => c.text), ['Phrase une.', 'Phrase deux.']);
+  assert.deepEqual({ ...h.contexte[0].sources[0] }, { ref: 'Rachi sur Ovadia 1:1', citation: 'עֹבַדְיָה', hasCitation: true, lien: 'https://www.sefaria.org/Rashi_on_Obadiah_1:1?lang=he' });
+  assert.deepEqual({ ...h.contexte[1].sources[0] }, { ref: 'Auteur, Titre', citation: '', hasCitation: false, lien: 'https://exemple.org/x' });
+  etat.lang = 'en';
+  assert.deepEqual(Array.from(w.SM_G().haftara.contexte, (c) => c.text), ['Sentence one.', 'Sentence two.']);
+  // Une autre semaine, une autre haftara : pas de contexte pour elle.
+  const autre = application({}, '2026-12-15');
+  autre.w.SM_DATA('contexte', essai);
+  assert.equal(autre.w.SM_G().haftara.hasContexte, false);
+});
+
 test('l\'impression : ce qu\'il reste, puis la haftara', () => {
   const { w } = application();
   const tout = w.SM_PRINT_INFO(true);

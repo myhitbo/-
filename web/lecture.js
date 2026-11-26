@@ -213,13 +213,14 @@
     return a;
   }
 
-  /** Une lecture prête à afficher : montées libellées, haftara. */
-  function lecture(donnees, cle, titre, alyot, haftara, raisons = []) {
+  /** Une lecture prête à afficher : montées libellées, haftara ([haftaraDe] : la paracha ou la lecture qui la donne). */
+  function lecture(donnees, cle, titre, alyot, haftara, raisons = [], haftaraDe = null) {
     const trois = alyot.length === 3;
     return {
       cle,
       titre,
       raisons,
+      haftaraDe,
       montees: alyot.map(([c, livre, debut, fin]) => ({
         cle: c,
         libelle: donnees.montees[trois && c === '3' ? '3_israel' : c],
@@ -233,7 +234,7 @@
     const e = entree(donnees, cle, nusah);
     let alyot = e.alyot;
     if (extra.maftir) alyot = [...alyot, ['M', ...extra.maftir]];
-    return lecture(donnees, cle, e.titre, alyot, e.haftara);
+    return lecture(donnees, cle, e.titre, alyot, e.haftara, [], e.haftara && e.haftara.length ? cle : null);
   }
 
   function semaine(donnees, p) {
@@ -248,10 +249,11 @@
     const { cles, m, d } = speciales(jc, p, muk);
     const appliquees = [...cles];
     let haftaraSpeciale = null;
+    let haftaraDe = p; // d'où vient la haftara : la paracha, ou la lecture spéciale qui la remplace
     const applique = (cle) => {
       const s = entree(donnees, cle, nusah);
       if (s.haftara && haftaraSpeciale === null) haftaraSpeciale = cle;
-      if (s.haftara && haftaraSpeciale === cle) haftara = s.haftara;
+      if (s.haftara && haftaraSpeciale === cle) { haftara = s.haftara; haftaraDe = cle; }
       if (s.alyot) alyot = fusionne(alyot, s.alyot);
     };
     cles.forEach(applique);
@@ -279,7 +281,7 @@
       if (demain === 30 || demain === 1) haftara = [...haftara, ...entree(donnees, 'Ajout Machar Chodesh', nusah).haftara];
     }
     const raisons = appliquees.map((c) => donnees.lectures[c].titre).filter(Boolean);
-    return lecture(donnees, `parasha:${p}${appliquees.length ? `+${appliquees.join('+')}` : ''}`, e.titre, alyot, haftara, raisons);
+    return lecture(donnees, `parasha:${p}${appliquees.length ? `+${appliquees.join('+')}` : ''}`, e.titre, alyot, haftara, raisons, haftaraDe);
   }
 
   /**

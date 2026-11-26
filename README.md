@@ -12,7 +12,7 @@ Version de test : une application web (`web/`) embarquée dans un APK Android. D
 
 ```sh
 npm install                      # dépendances de test (hebcal)
-npm test                         # 36 tests, sans réseau
+npm test                         # 40 tests, sans réseau
 node tools/construit_donnees.js  # écrit web/data/ ; puis ouvrir web/index.html
 ```
 
@@ -40,12 +40,15 @@ Les maquettes visuelles (canevas de design) sont tenues à part, hors de ce dép
 Reprises de la section 8 du [cahier de reprise](docs/09-cahier-de-reprise.md).
 
 - [x] Dépôt et plateformes : ce dépôt, application web et APK Android. Rien sur iPhone pour l'instant.
-- [ ] Faire vérifier les 31 halakhot par un relecteur indépendant, citation par citation. Fait : le script a relu les 135 références à leur source.
-- [ ] Chercher les réponses du Rav Binyamin 'Hota et les ajouter au recueil.
-- [ ] Revérifier la licence du Kitsour Yalkout Yossef pour ce projet.
-- [ ] Rédiger le contexte des haftarot (cahier, section 6), puis le faire vérifier.
-- [ ] Trancher les usages séfarades laissés de côté faute de source dans le Kitsour Yalkout Yossef.
-- [ ] Confirmer Mikha 7:18-20 après « שובה » au 9 Av à Min'ha chez les Edot.
-- [ ] Dire si les communautés nord-africaines de France ont un usage propre pour 'Hol hamoed en diaspora.
-- [ ] Dire si l'on veut les variantes 'Habad, la lecture du soir de Sim'hat Torah, les Meguilot.
+- [x] Relecture indépendante des 31 halakhot, citation par citation : faite par quatre relecteurs automatiques ; 15 halakhot corrigées. Reste à faire confirmer huit points par un rav ([liste](docs/10-lectures-haftara-halakhot.md#à-faire-confirmer-par-un-rav-ou-par-le-propriétaire)).
+- [x] Réponses du Rav Binyamin 'Hota : deux réponses écrites ajoutées (halakhot 5 et 6) ; les autres sont en vidéo seulement.
+- [x] Licence du Kitsour Yalkout Yossef : vérifiée (CC BY-NC-SA 2.5, sans autorisation à demander). Deux décisions reviennent au propriétaire : rester non commercial, et le partage à l'identique du recueil.
+- [ ] Rédiger le contexte des haftarot (cahier, section 6), puis le faire vérifier : socle fait, rédaction en cours.
+- [ ] Trancher, avec un rav, les usages séfarades laissés de côté faute de source dans le Kitsour Yalkout Yossef. Ils changent la haftara affichée ici :
+  - « השמים כסאי » et « מחר חדש » au Chabbat 'Hanouka Roch 'Hodech ;
+  - Chekalim à Roch 'Hodech Adar ;
+  - ha'Hodech la veille d'un Roch 'Hodech dimanche.
+- [ ] Dire si l'on veut les variantes 'Habad et les Meguilot.
 - [ ] Proposer Vézot haBérakha en Chnayim mikra à Hochaana Rabba (halakha 31) : aucune semaine ne la montre aujourd'hui.
+
+Trois questions du cahier ne concernent que la lecture du jour, restée dans My Hitbodedut : Mikha 7:18-20 au 9 Av à Min'ha, l'usage nord-africain de 'Hol hamoed en diaspora, la lecture du soir de Sim'hat Torah.

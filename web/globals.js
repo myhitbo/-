@@ -128,7 +128,7 @@
     return { shabbatISO: p.date, shabbat: t.getUTCDate() + ' ' + MONTHS[t.getUTCMonth()], key: p.paracha, cle: l.cle,
       parasha: nom(l.titre), parashaHe: l.titre.he, parashaEn: l.titre.en, parashaIndex: index,
       parashaRef: L.reference(d, sept[0][1], sept[0][2], sept[6][3], nom).replace('–', ' – '), alyot,
-      haftara: { parts, extra, ref: parts.map(x => x.ref).join(' ; '), extraRef: extra.map(x => x.label + ' : ' + x.ref).join(' ; '), reasons: l.raisons.map(nom), rite: RITES[o.nusah],
+      haftara: { parts, extra, origine: l.haftaraDe, premier: parts.length ? parts[0].livre + ' ' + parts[0].debut + '-' + parts[0].fin : '', ref: parts.map(x => x.ref).join(' ; '), extraRef: extra.map(x => x.label + ' : ' + x.ref).join(' ; '), reasons: l.raisons.map(nom), rite: RITES[o.nusah],
         min: Math.max(2, Math.round(count * 0.15)), count } };
   }
 
@@ -147,6 +147,16 @@
     }
     memo = { stamp, list }; return list;
   }
+  /* Le contexte d'une haftara (data/contexte_haftarot.json) : celui qui nomme son origine et son premier passage.
+     Phrases en français (aussi pour le tunisien et le marocain) ou en anglais ; chaque source avec son lien. */
+  function contexte(h) {
+    const C = lue('contexte'); if (!C || !h || !h.premier) return null;
+    const c = C.contextes.find(x => x.occasions.indexOf(h.origine) >= 0 && x.passages.indexOf(h.premier) >= 0); if (!c) return null;
+    const en = NOMS[get('lang')] === 'en' || get('lang') === 'he', lg = en ? 'en' : 'fr';
+    return c.phrases.map(ph => ({ text: ph[lg], sources: ph.sources.map(s => ({ ref: s.ref[lg], citation: s.citation || '', hasCitation: !!s.citation,
+      lien: s.genre === 'classique' ? 'https://www.sefaria.org/' + encodeURI(s.sefaria.replace(/ /g, '_')) + '?lang=he' : s.url })) }));
+  }
+
   /* Ce qu'il faut charger pour lire une semaine : le texte et le Targoum de son livre, et les livres de la haftara */
   function needs(w, haftara) {
     const n = {}; w.alyot.forEach(a => { n['texte/' + fichier(a.livre)] = 1; n['targoum/' + fichier(a.livre)] = 1; });
@@ -200,6 +210,7 @@
     out.hasHaftara = !!hf;
     out.haftara = hf ? { ref: hf.ref, rite: hf.rite, min: hf.min, done: progH(s.cur), todo: !progH(s.cur), href: 'V2-Lecteur.dc.html?par=0&alya=7',
       reason: hf.reasons.join(' · '), hasReason: hf.reasons.length > 0, extra: hf.extraRef, hasExtra: hf.extra.length > 0 } : null;
+    if (hf) { const cx = contexte(hf); out.haftara.contexte = cx || []; out.haftara.hasContexte = !!cx; }
     /* Allumage et compte à rebours */
     if (s.cur) {
       const cl = candle(s.cur.shabbatISO, c), left = cl - s.t, n = progN(s.cur);
@@ -330,7 +341,12 @@
   }
   window.SM_REFRESH = async function () {
     const w = state().cur; if (!w || window.__smRefreshing) return; window.__smRefreshing = true;
-    try { await ensure(w, true); if (await yerushalmi(w)) { if (window.SM_RERENDER) SM_RERENDER(); } }
+    try {
+      await ensure(w, true);
+      /* Le contexte des haftarot, s'il est dans cette copie de l'application : chargé une fois, puis affiché */
+      if (!lue('contexte')) { try { await SM_DONNEES.charge('contexte'); if (window.SM_RERENDER) SM_RERENDER(); } catch (e) { /* pas encore rédigé */ } }
+      if (await yerushalmi(w)) { if (window.SM_RERENDER) SM_RERENDER(); }
+    }
     catch (e) { /* données absentes : l'accueil le dit */ }
     finally { window.__smRefreshing = false; }
   };
