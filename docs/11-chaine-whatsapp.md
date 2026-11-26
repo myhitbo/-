@@ -72,7 +72,7 @@ Après la publication sur Google Play : mettre l'adresse de l'app dans `chaine/c
 ## Chaque jour (une minute par chaîne)
 1. Ouvrir la page de publication. La première fois, toucher dans « Mes chaînes » celles dont on ne s'occupe pas, pour les masquer ; ce choix reste sur le téléphone.
 2. Pour chaque chaîne : toucher **Copier**, puis **Ouvrir la chaîne**, coller, envoyer.
-3. Revenir sur la page et toucher **Marquer comme publié**. Le compteur en haut indique ce qui reste (« 2 messages publiés sur 5 », puis « Tout est publié pour aujourd'hui ✓ »).
+3. Revenir sur la page et toucher **C'est publié**. Le compteur en haut indique ce qui reste (« 2 messages publiés sur 5 », puis « Tout est publié pour aujourd'hui ✓ »).
 
 À savoir :
 - Le jeudi, chaque chaîne a deux messages : un pour le matin, un pour le soir.

@@ -118,7 +118,7 @@
         '<div class="msg" dir="' + (RTL[c.lang] ? 'rtl' : 'ltr') + '" lang="' + (c.lang === 'tn' ? 'ajt' : esc(c.lang)) + '">' + preview(m.text) + '</div>' +
         '<button class="copy" type="button" data-ch="' + esc(c.id) + '" data-iso="' + iso + '" data-i="' + i + '">Copier</button>' +
         '<div class="acts">' + (c.url ? '<a class="btn" href="' + esc(c.url) + '" target="_blank" rel="noopener">Ouvrir la chaîne</a>' : '') +
-        (track ? '<button class="btn" type="button" data-done="' + esc(key) + '" aria-pressed="' + done + '">' + (done ? 'Publié ✓' : 'Marquer comme publié') + '</button>' : '') + '</div></div>';
+        (track ? '<button class="btn" type="button" data-done="' + esc(key) + '" aria-pressed="' + done + '">' + (done ? 'Publié ✓' : 'C\'est publié') + '</button>' : '') + '</div></div>';
     }).join('');
     return '<section class="block"' + (MANY ? ' aria-label="' + esc(c.name) + '"' : '') + '>' + head + body + '</section>';
   }
@@ -174,7 +174,7 @@
     else if (b.dataset.done) {
       /* coche sur place, sans redessiner : les jours ouverts restent ouverts */
       var on = !fait[b.dataset.done]; if (on) fait[b.dataset.done] = 1; else delete fait[b.dataset.done]; store.set('chaines.publie', JSON.stringify(fait));
-      b.setAttribute('aria-pressed', on); b.textContent = on ? 'Publié ✓' : 'Marquer comme publié'; b.closest('.card').classList.toggle('pub', on); progress();
+      b.setAttribute('aria-pressed', on); b.textContent = on ? 'Publié ✓' : 'C\'est publié'; b.closest('.card').classList.toggle('pub', on); progress();
     }
     else if (b.dataset.iso) { c = byId(b.dataset.ch); d = c && c.days[b.dataset.iso]; if (d && d.msgs) copy(d.msgs[+b.dataset.i].text, b); }
   });
