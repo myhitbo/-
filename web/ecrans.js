@@ -18,13 +18,13 @@ function riche(el, html) {
 
 /* ---------- Halakhot de Chnayim mikra ---------- */
 const T = {
-  fr: { back: 'Retour', cap: 'Halakhot', title: 'Les lois de Chnayim mikra', draft: 'Premier jet : citations relues à leur source par un script, pas encore vérifié par un relecteur indépendant.',
+  fr: { back: 'Retour', cap: 'Halakhot', title: 'Les lois de Chnayim mikra', draft: 'Chaque citation a été relue à sa source, et le texte relu contre les sources par une seconde relecture automatique (26/11/2026). Il n’a pas été relu par un rav.',
     rav: 'Ce recueil ne tranche rien : chaque question pratique se pose à un rav.', filter: 'Rite', mine: 'Mon rite', all: 'Tous les rites', n: 'halakhot', src: 'Sources en hébreu', hide: 'Masquer les sources', wait: 'Chargement…',
     rites: { edot: 'Edot hamizra’h', sefard: 'Sfard', ashkenaz: 'Ashkenaz' } },
-  en: { back: 'Back', cap: 'Halacha', title: 'The laws of Shnayim mikra', draft: 'First draft: quotations re-read at their source by a script, not yet checked by an independent reviewer.',
+  en: { back: 'Back', cap: 'Halacha', title: 'The laws of Shnayim mikra', draft: 'Every quotation was re-read at its source, and the text checked against the sources by a second automatic review (26 Nov 2026). It has not been reviewed by a rabbi.',
     rav: 'This collection decides nothing: for a practical question, ask a rabbi.', filter: 'Rite', mine: 'My rite', all: 'All rites', n: 'laws', src: 'Hebrew sources', hide: 'Hide sources', wait: 'Loading…',
     rites: { edot: 'Edot HaMizrach', sefard: 'Sfard', ashkenaz: 'Ashkenaz' } },
-  he: { back: 'חזרה', cap: 'הלכה', title: 'הלכות שנים מקרא ואחד תרגום', draft: 'טיוטה ראשונה: הציטוטים נבדקו מול מקורם בתוכנה, וטרם נבדקו בידי מגיה עצמאי.',
+  he: { back: 'חזרה', cap: 'הלכה', title: 'הלכות שנים מקרא ואחד תרגום', draft: 'כל ציטוט נבדק מול מקורו, והנוסח נבדק מול המקורות בבדיקה ממוחשבת שנייה (ט״ז בכסלו תשפ״ז). לא עבר הגהת רב.',
     rav: 'אין כאן הכרעה: כל שאלה למעשה תישאל לרב.', filter: 'נוסח', mine: 'הנוסח שלי', all: 'כל העדות', n: 'הלכות', src: 'המקורות', hide: 'הסתר מקורות', wait: 'טוען…',
     rites: { edot: 'עדות המזרח', sefard: 'ספרד', ashkenaz: 'אשכנז' } }
 };

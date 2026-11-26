@@ -48,7 +48,7 @@ test('chaque halakha a son hébreu, son français, son anglais, ses références
 
 test('le rite se lit en tête de la halakha, dans les trois langues', () => {
   const etiquettes = {
-    sefarade: ['[ספרדים – עדות המזרח]', '[Séfarades – rite Edot]', '[Sephardim – Edot rite]'],
+    sefarade: ['[ספרדים – עדות המזרח]', '[Séfarades – rite Edot hamizra’h]', '[Sephardim – Edot HaMizrach rite]'],
     ashkenaze: ['[אשכנזים – נוסח אשכנז ונוסח ספרד]', '[Ashkénazes – rites Ashkenaz et Sfard]', '[Ashkenazim – Ashkenaz and Sfard rites]'],
   };
   for (const h of halakhot) {
@@ -68,11 +68,13 @@ test('la table de vérification suit le livre, citation par citation', () => {
     for (const r of l.references) {
       assert.ok(h.refs.includes(r.reference), `${h.id} ${r.reference}`);
       if (r.citation) assert.ok(h.t.includes(r.citation), `${h.id} ${r.citation.slice(0, 30)}`);
-      if (['hid', 'kav', 'malka'].includes(r.source)) {
+      if (['hid', 'kav', 'malka', 'kikar'].includes(r.source)) {
         // Réponses d'aujourd'hui, protégées : résumées et référencées, une courte phrase citée au plus.
         assert.match(r.url, /^https:\/\//);
         assert.equal(r.nature, 'paraphrase avec référence (œuvre protégée)');
         if (r.citation) assert.ok(r.citation.split(' ').length <= 16, `${h.id} : citation trop longue`);
+        // La table ne recopie pas la réponse : seulement les repères du passage résumé.
+        if (r.passage_resume) assert.ok(r.passage_resume.replaceAll('[...]', ' ').trim().split(/\s+/).length <= 25, `${h.id} : passage trop long`);
       } else assert.ok(r.citation && r.lu_via, `${h.id} ${r.reference}`);
     }
   });
