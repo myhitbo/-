@@ -117,6 +117,11 @@
     "edition": "Ashlei Ravrevei: Shulchan Aruch Yoreh Deah, Lemberg, 1888",
     "licence": "Public Domain"
    },
+   "tazyd": {
+    "titre": "Taz (Tourei Zahav), Yoré Déa",
+    "edition": "Ashlei Ravrevei: Shulchan Aruch Yoreh Deah, Lemberg, 1888",
+    "licence": "Public Domain"
+   },
    "shakh": {
     "titre": "Chakh (Siftei Cohen), Yoré Déa",
     "edition": "Ashlei Ravrevei: Shulchan Aruch Yoreh Deah, Lemberg, 1888",
@@ -340,7 +345,7 @@
      "sefaria_version": "Arukh HaShulchan, Orach Chayim -- Wikisource",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Arukh%20HaShulchan%2C%20Orach%20Chaim%20285%3A2?version=hebrew%7CArukh%20HaShulchan%2C%20Orach%20Chayim%20--%20Wikisource&return_format=text_only",
      "page": "https://www.sefaria.org/Arukh_HaShulchan%2C_Orach_Chaim_285%3A2?lang=he",
-     "citation": "לכן צריך ללמוד שלוש פעמים, אפילו בפסוק שאין בו תרגום, כמו שיתבאר, כנגד אלו השלוש. אך במקום שיש תרגום – בחרו בתרגום הפעם השלישי, כדי שיבין מה שהוא לומד"
+     "citation": "ואיתא בסוטה (לז ב): \"כללות ופרטות נאמרו בסיני, ונשנו באהל מועד, ונשתלשו בערבות מואב\", עיין שם. לכן צריך ללמוד שלוש פעמים, אפילו בפסוק שאין בו תרגום, כמו שיתבאר, כנגד אלו השלוש. אך במקום שיש תרגום – בחרו בתרגום הפעם השלישי, כדי שיבין מה שהוא לומד"
     },
     {
      "source": "ahs",
@@ -364,7 +369,7 @@
      "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A1?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A1?lang=he",
-     "citation": "ואלה שמות ר\"ת וחייב אדם להשלים הפרשה שניים מקרא ואחד תרגום"
+     "citation": "ואלה שמות ר\"ת וחייב אדם להשלים הפרשה שניים מקרא ואחד תרגום. מש\"ז או' א'"
     }
    ]
   },
@@ -427,6 +432,18 @@
      "citation": "שאין העבד עושה תנאי לרבו"
     },
     {
+     "source": "sch",
+     "reference": "Séfer ’Hassidim 301",
+     "reference_he": "ספר חסידים, סימן ש״א",
+     "edition": "Sefer Chassidim, Zhitomir, 1857",
+     "licence": "Public Domain",
+     "sefaria_ref": "Sefer Chasidim 301",
+     "sefaria_version": "Sefer Chassidim, Zhitomir, 1857",
+     "lu_via": "https://www.sefaria.org/api/v3/texts/Sefer%20Chasidim%20301?version=hebrew%7CSefer%20Chassidim%2C%20Zhitomir%2C%201857&return_format=text_only",
+     "page": "https://www.sefaria.org/Sefer_Chasidim_301?lang=he",
+     "citation": "לכך יקרא אדם שנים מקרא ואחד תרגום לשם מי שאמר למען תהיה תורת ה' בפיך"
+    },
+    {
      "source": "kh",
      "reference": "Kaf ha’Haïm 285:4",
      "reference_he": "כף החיים רפ״ה, אות ד׳",
@@ -448,7 +465,7 @@
      "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A4?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A4?lang=he",
-     "citation": "ואל יסמוך על תנאי"
+     "citation": "ומ\"מ הקב\"ה יאריך ימיו ושנותיו ואל יסמוך על תנאי"
     },
     {
      "source": "kh",
@@ -460,7 +477,7 @@
      "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A4?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A4?lang=he",
-     "citation": "וע\"כ קודם שיקרא הפ' שמו\"ת י\"ל לשם יחוד קבה\"ו וכו' הריני בא לקרות הפ' של השבוע שמו\"ת לתקן את שורשה במקום עליון"
+     "citation": "וע\"כ קודם שיקרא הפ' שמו\"ת י\"ל לשם יחוד קבה\"ו וכו' הריני בא לקרות הפ' של השבוע שמו\"ת לתקן את שורשה במקום עליון. ויהי נועם וכו'"
     }
    ]
   },
@@ -606,16 +623,7 @@
      "edition": "Torat Emet, mahadoura 5767 — la copie de My Hitbodedut (livre_yalkut_yosef_kitsour.json, section « סימן רפה »)",
      "licence": "CC BY-NC-SA 2.5, licence publique de Torat Emet (toratemetfreeware.com/contents/copyrights2.html, lu le 26/11/2026) ; crédit « הרב יצחק יוסף שליט״א »",
      "lu_via": "livre_yalkut_yosef_kitsour.json (archive de My Hitbodedut), section « סימן רפה - לקרוא הפרשה ב' מקרא וא' תרגום », se'if טז",
-     "citation": "יש אומרים שגם הסומא (עיור) חייב בשנים מקרא ואחד תרגום בכל שבת, כדין הפקח. ולכן צריך שישמע מאחר קריאת הפרשה שנים מקרא ואחד תרגום"
-    },
-    {
-     "source": "kyy",
-     "reference": "Kitsour Yalkout Yossef 285:16",
-     "reference_he": "ילקוט יוסף, קיצור שולחן ערוך רפ״ה, ט״ז",
-     "edition": "Torat Emet, mahadoura 5767 — la copie de My Hitbodedut (livre_yalkut_yosef_kitsour.json, section « סימן רפה »)",
-     "licence": "CC BY-NC-SA 2.5, licence publique de Torat Emet (toratemetfreeware.com/contents/copyrights2.html, lu le 26/11/2026) ; crédit « הרב יצחק יוסף שליט״א »",
-     "lu_via": "livre_yalkut_yosef_kitsour.json (archive de My Hitbodedut), section « סימן רפה - לקרוא הפרשה ב' מקרא וא' תרגום », se'if טז",
-     "citation": "וכן מי שנעשה אילם, ואינו יכול לדבר ולקרוא, ישמע הקריאה מאחר"
+     "citation": "יש אומרים שגם הסומא (עיור) חייב בשנים מקרא ואחד תרגום בכל שבת, כדין הפקח. ולכן צריך שישמע מאחר קריאת הפרשה שנים מקרא ואחד תרגום, ויכוין להוציאו ידי חובה, וגם הוא יתכוין לצאת ידי חובת הקריאה. וכן מי שנעשה אילם, ואינו יכול לדבר ולקרוא, ישמע הקריאה מאחר"
     }
    ]
   },
@@ -809,6 +817,18 @@
      "lu_via": "https://www.sefaria.org/api/v3/texts/Mishnah%20Berurah%20285%3A8?version=hebrew%7COn%20Your%20Way&return_format=text_only",
      "page": "https://www.sefaria.org/Mishnah_Berurah_285%3A8?lang=he",
      "citation": "כמה אחרונים כתבו דמן המובחר הוא לקרותה בע\"ש ועיין בשע\"ת ובספר מטה יהודה כתב דאם הוא קורא מתחלת השבוע והלאה הוא ג\"כ בכלל מצוה מן המובחר"
+    },
+    {
+     "source": "sht",
+     "reference": "Cha’arei Techouva O.H. 285:1",
+     "reference_he": "שערי תשובה או״ח רפ״ה, ס״ק א׳",
+     "edition": "Maginei Eretz: Shulchan Aruch Orach Chaim, Lemberg, 1893",
+     "licence": "Public Domain",
+     "sefaria_ref": "Sha'arei Teshuvah on Shulchan Arukh, Orach Chayim 285:1",
+     "sefaria_version": "Maginei Eretz: Shulchan Aruch Orach Chaim, Lemberg, 1893",
+     "lu_via": "https://www.sefaria.org/api/v3/texts/Sha%27arei%20Teshuvah%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A1?version=hebrew%7CMaginei%20Eretz%3A%20Shulchan%20Aruch%20Orach%20Chaim%2C%20Lemberg%2C%201893&return_format=text_only",
+     "page": "https://www.sefaria.org/Sha%27arei_Teshuvah_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A1?lang=he",
+     "citation": "עיין בה\"ט שכתב שמצוה לקרות אחר חצות וכתב בק\"א למח\"ב שיש שכתבו כן בשם גורי האר\"י זצ\"ל ואין האמת כן כי בסדר הכוונות שסידר מהר\"ש וויטל מכת\"י מר אביו מהרח\"ו כתב שרבינו האר\"י זצ\"ל יום הששי תיכף ומיד אחר תפלת שחרית היה הולך למקום שיש ס\"ת וקר' שמו\"ת"
     }
    ]
   },
@@ -1241,7 +1261,7 @@
      "sefaria_version": "Biur Halacha",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Biur%20Halacha%20285%3A4?version=hebrew%7CBiur%20Halacha&return_format=text_only",
      "page": "https://www.sefaria.org/Biur_Halacha_285%3A4?lang=he",
-     "citation": "ומה שצוה רבי שיגמרו הפרשה קודם הסעודה הוא רק משום דחייש דלמא אגב רוב סעודת שבת משתמיט ולא יגמור"
+     "citation": "המגן אברהם הביא דעות דמספר הכונות משמע דלכתחלה ישלים בע\"ש ורק כשהיה אנוס ישלים בשבת ובב\"י ומגיד מישרים משמע דלכתחלה יתחיל בע\"ש וישלים בשבת"
     },
     {
      "source": "bh",
@@ -1253,7 +1273,7 @@
      "sefaria_version": "Biur Halacha",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Biur%20Halacha%20285%3A4?version=hebrew%7CBiur%20Halacha&return_format=text_only",
      "page": "https://www.sefaria.org/Biur_Halacha_285%3A4?lang=he",
-     "citation": "המגן אברהם הביא דעות דמספר הכונות משמע דלכתחלה ישלים בע\"ש ורק כשהיה אנוס ישלים בשבת ובב\"י ומגיד מישרים משמע דלכתחלה יתחיל בע\"ש וישלים בשבת"
+     "citation": "ומה שצוה רבי שיגמרו הפרשה קודם הסעודה הוא רק משום דחייש דלמא אגב רוב סעודת שבת משתמיט ולא יגמור"
     },
     {
      "source": "ha",
@@ -1278,6 +1298,30 @@
      "lu_via": "https://www.sefaria.org/api/v3/texts/Arukh%20HaShulchan%2C%20Orach%20Chaim%20285%3A9?version=hebrew%7CArukh%20HaShulchan%2C%20Orach%20Chayim%20--%20Wikisource&return_format=text_only",
      "page": "https://www.sefaria.org/Arukh_HaShulchan%2C_Orach_Chaim_285%3A9?lang=he",
      "citation": "ומתבאר מדבריו שאין הידור להשלים קודם קריאת התורה, רק קודם אכילה"
+    },
+    {
+     "source": "ahs",
+     "reference": "Aroukh haChoul’han O.H. 285:9",
+     "reference_he": "ערוך השולחן או״ח רפ״ה, סעיף ט׳",
+     "edition": "Arukh HaShulchan, Orach Chayim -- Wikisource",
+     "licence": "CC-BY-SA",
+     "sefaria_ref": "Arukh HaShulchan, Orach Chaim 285:9",
+     "sefaria_version": "Arukh HaShulchan, Orach Chayim -- Wikisource",
+     "lu_via": "https://www.sefaria.org/api/v3/texts/Arukh%20HaShulchan%2C%20Orach%20Chaim%20285%3A9?version=hebrew%7CArukh%20HaShulchan%2C%20Orach%20Chayim%20--%20Wikisource&return_format=text_only",
+     "page": "https://www.sefaria.org/Arukh_HaShulchan%2C_Orach_Chaim_285%3A9?lang=he",
+     "citation": "וגם מבואר מדבריו דכשמשלים בערב שבת – אין זה מצוה מן המובחר. וכן כתב המרדכי פרק קמא דברכות, דדווקא בשבת בבוקר קודם אכילה"
+    },
+    {
+     "source": "ahs",
+     "reference": "Aroukh haChoul’han O.H. 285:10",
+     "reference_he": "ערוך השולחן או״ח רפ״ה, סעיף י׳",
+     "edition": "Arukh HaShulchan, Orach Chayim -- Wikisource",
+     "licence": "CC-BY-SA",
+     "sefaria_ref": "Arukh HaShulchan, Orach Chaim 285:10",
+     "sefaria_version": "Arukh HaShulchan, Orach Chayim -- Wikisource",
+     "lu_via": "https://www.sefaria.org/api/v3/texts/Arukh%20HaShulchan%2C%20Orach%20Chaim%20285%3A10?version=hebrew%7CArukh%20HaShulchan%2C%20Orach%20Chayim%20--%20Wikisource&return_format=text_only",
+     "page": "https://www.sefaria.org/Arukh_HaShulchan%2C_Orach_Chaim_285%3A10?lang=he",
+     "citation": "אבל יש שכתבו דעיקר ההידור הוא בערב שבת; יש אומרים קודם חצות, ויש אומרים אחר חצות"
     },
     {
      "source": "ahs",
@@ -1335,7 +1379,7 @@
      "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A26?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A26?lang=he",
-     "citation": "ואנה\"נ דביום ש\"ת לא מהני אלא קודם קריאת פ' בראשית"
+     "citation": "ומ\"ש מור\"ם ז\"ל בהגה דהיינו בש\"ת וכו' לא בא להוסיף יום ש\"ת מלבד ש\"ע אלא בא להודיענו הטעם והוא שאז משלימין הצבור ור\"ל יקרא עם הצבור ואנה\"נ דביום ש\"ת לא מהני אלא קודם קריאת פ' בראשית. מט\"י או' ד'"
     },
     {
      "source": "kh",
@@ -1347,7 +1391,7 @@
      "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A28?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A28?lang=he",
-     "citation": "והיינו אם לא השלים ביום ג' דיעבד יש להשלימה כל השנה עד שמיני עצרת בא\"י ולדידן בשמחת תורה מיקרי שפיר משלים עם הצבור ומכאן ואילך עבר זמנו"
+     "citation": "והיינו אם לא השלים ביום ג' דיעבד יש להשלימה כל השנה עד שמיני עצרת בא\"י ולדידן בשמחת תורה מיקרי שפיר משלים עם הצבור ומכאן ואילך עבר זמנו. א\"א או' ז'"
     },
     {
      "source": "kh",
@@ -1359,7 +1403,7 @@
      "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A29?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A29?lang=he",
-     "citation": "וכל עוד שלא גמרו הצבור וזאת הברכה מיקרי זמנה"
+     "citation": "וכל עוד שלא גמרו הצבור וזאת הברכה מיקרי זמנה כמ\"ש לעיל או' כ\"ו"
     }
    ]
   },
@@ -1453,7 +1497,19 @@
      "sefaria_version": "Torat Emet 357",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Ba%27er%20Hetev%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A1?version=hebrew%7CTorat%20Emet%20357&return_format=text_only",
      "page": "https://www.sefaria.org/Ba%27er_Hetev_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A1?lang=he",
-     "citation": "ויקוץ הצפרנים קודם שמו\"ת. ועיקר המצוה לקרות אחר חצות ואחר שקרא ילך לבית המרחץ ויטבול"
+     "citation": "ויקוץ הצפרנים קודם שמו\"ת. ועיקר המצוה לקרות אחר חצות ואחר שקרא ילך לבית המרחץ ויטבול. הכוונות"
+    },
+    {
+     "source": "sht",
+     "reference": "Cha’arei Techouva O.H. 285:1",
+     "reference_he": "שערי תשובה או״ח רפ״ה, ס״ק א׳",
+     "edition": "Maginei Eretz: Shulchan Aruch Orach Chaim, Lemberg, 1893",
+     "licence": "Public Domain",
+     "sefaria_ref": "Sha'arei Teshuvah on Shulchan Arukh, Orach Chayim 285:1",
+     "sefaria_version": "Maginei Eretz: Shulchan Aruch Orach Chaim, Lemberg, 1893",
+     "lu_via": "https://www.sefaria.org/api/v3/texts/Sha%27arei%20Teshuvah%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A1?version=hebrew%7CMaginei%20Eretz%3A%20Shulchan%20Aruch%20Orach%20Chaim%2C%20Lemberg%2C%201893&return_format=text_only",
+     "page": "https://www.sefaria.org/Sha%27arei_Teshuvah_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A1?lang=he",
+     "citation": "עיין בה\"ט שכתב שמצוה לקרות אחר חצות וכתב בק\"א למח\"ב שיש שכתבו כן בשם גורי האר\"י זצ\"ל ואין האמת כן כי בסדר הכוונות שסידר מהר\"ש וויטל מכת\"י מר אביו מהרח\"ו כתב שרבינו האר\"י זצ\"ל יום הששי תיכף ומיד אחר תפלת שחרית היה הולך למקום שיש ס\"ת וקר' שמו\"ת"
     },
     {
      "source": "er",
@@ -2165,7 +2221,7 @@
      "sefaria_version": "Moreh BeEtzba, Livorno, 1842",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Moreh%20BeEtzba%20130?version=hebrew%7CMoreh%20BeEtzba%2C%20Livorno%2C%201842&return_format=text_only",
      "page": "https://www.sefaria.org/Moreh_BeEtzba_130?lang=he",
-     "citation": "וכ״ש שלא ילמוד כל פרשת השבוע כולה שנים מקרא ואח״כ יקראנה כלה תרגום. לא אריך למעבד הכי"
+     "citation": "יקרא כל פסוק שנים מקרא ואחד תרגום ולא כמי שנהג ללמוד כל פרשה מפרשיות קטנות כלה שנים מקרא ואח״כ קוראה תרגום. וכ״ש שלא ילמוד כל פרשת השבוע כולה שנים מקרא ואח״כ יקראנה כלה תרגום. לא אריך למעבד הכי"
     },
     {
      "source": "hid",
@@ -2264,7 +2320,7 @@
      "sefaria_version": "Arukh HaShulchan, Orach Chayim -- Wikisource",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Arukh%20HaShulchan%2C%20Orach%20Chaim%20285%3A5?version=hebrew%7CArukh%20HaShulchan%2C%20Orach%20Chayim%20--%20Wikisource&return_format=text_only",
      "page": "https://www.sefaria.org/Arukh_HaShulchan%2C_Orach_Chaim_285%3A5?lang=he",
-     "citation": "נראה שיעשה כן. ואי משום \"כל פסוקא דלא פסקיה משה לא פסקינן\" – הא כאן פסקיה משה"
+     "citation": "ומכל מקום נראה שיעשה כן. ואי משום \"כל פסוקא דלא פסקיה משה לא פסקינן\" – הא כאן פסקיה משה. וכן בעשרת הדברות ב\"לא תרצח\" וגו', שיש פרשה"
     }
    ]
   },
@@ -2288,7 +2344,19 @@
      "sefaria_version": "Biur Halacha",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Biur%20Halacha%20494%3A1?version=hebrew%7CBiur%20Halacha&return_format=text_only",
      "page": "https://www.sefaria.org/Biur_Halacha_494%3A1?lang=he",
-     "citation": "ובפרשת יתרו ובפרשת ואתחנן קורין אף בצבור בטעם התחתון ויש נוהגין לקרות בצבור לעולם בטעם העליון דהיינו אף בפרשת יתרו ובפרשת ואתחנן רק היחיד הקורא לעצמו קורא בשני"
+     "citation": "שלענין הקריאה אין מלא תרצח עד לא תחמוד אלא פסוק אחד בלבד דהיינו שאסור להפסיק קריאתו לגמרי בתוך אמצע פסוק זה אפילו כשקורא ביחיד"
+    },
+    {
+     "source": "bh",
+     "reference": "Béour Halakha 494:1",
+     "reference_he": "ביאור הלכה תצ״ד, סעיף א׳",
+     "edition": "Biur Halacha",
+     "licence": "Public Domain",
+     "sefaria_ref": "Biur Halacha 494:1",
+     "sefaria_version": "Biur Halacha",
+     "lu_via": "https://www.sefaria.org/api/v3/texts/Biur%20Halacha%20494%3A1?version=hebrew%7CBiur%20Halacha&return_format=text_only",
+     "page": "https://www.sefaria.org/Biur_Halacha_494%3A1?lang=he",
+     "citation": "וע\"כ בשבועות נוהגין לקרות בצבור בהראשון דהיינו בטעם העליון לעשות מכל דיבור פסוק אחד לפי שבו ביום נתנו עשרת הדברות. ובפרשת יתרו ובפרשת ואתחנן קורין אף בצבור בטעם התחתון ויש נוהגין לקרות בצבור לעולם בטעם העליון דהיינו אף בפרשת יתרו ובפרשת ואתחנן רק היחיד הקורא לעצמו קורא בשני"
     },
     {
      "source": "kh",
@@ -2300,7 +2368,7 @@
      "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A5?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A5?lang=he",
-     "citation": "בקריאת עשרת הדברות צריך ליזהר לקרותם שמו\"ת כפי הטעמים של סדר הפסוקים"
+     "citation": "בקריאת עשרת הדברות צריך ליזהר לקרותם שמו\"ת כפי הטעמים של סדר הפסוקים כפי מ\"ש הרב משאת בנימין סי' ו'"
     },
     {
      "source": "kh",
@@ -2324,7 +2392,19 @@
      "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A5?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A5?lang=he",
-     "citation": "ואין לקרות פסוק אחד פסקי פסקי שמו\"ת אלא צריך לקרות כל הפסוק שלם תחלה שנים מקרא ואח\"כ אחד תרגום"
+     "citation": "ואין לקרות פסוק אחד פסקי פסקי שמו\"ת אלא צריך לקרות כל הפסוק שלם תחלה שנים מקרא ואח\"כ אחד תרגום. ב\"ד סי' קי\"א"
+    },
+    {
+     "source": "ahs",
+     "reference": "Aroukh haChoul’han O.H. 285:5",
+     "reference_he": "ערוך השולחן או״ח רפ״ה, סעיף ה׳",
+     "edition": "Arukh HaShulchan, Orach Chayim -- Wikisource",
+     "licence": "CC-BY-SA",
+     "sefaria_ref": "Arukh HaShulchan, Orach Chaim 285:5",
+     "sefaria_version": "Arukh HaShulchan, Orach Chayim -- Wikisource",
+     "lu_via": "https://www.sefaria.org/api/v3/texts/Arukh%20HaShulchan%2C%20Orach%20Chaim%20285%3A5?version=hebrew%7CArukh%20HaShulchan%2C%20Orach%20Chayim%20--%20Wikisource&return_format=text_only",
+     "page": "https://www.sefaria.org/Arukh_HaShulchan%2C_Orach_Chaim_285%3A5?lang=he",
+     "citation": "ומכל מקום נראה שיעשה כן. ואי משום \"כל פסוקא דלא פסקיה משה לא פסקינן\" – הא כאן פסקיה משה. וכן בעשרת הדברות ב\"לא תרצח\" וגו', שיש פרשה"
     }
    ]
   },
@@ -2383,7 +2463,7 @@
      "sefaria_version": "Arukh HaShulchan, Orach Chayim -- Wikisource",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Arukh%20HaShulchan%2C%20Orach%20Chaim%20285%3A7?version=hebrew%7CArukh%20HaShulchan%2C%20Orach%20Chayim%20--%20Wikisource&return_format=text_only",
      "page": "https://www.sefaria.org/Arukh_HaShulchan%2C_Orach_Chaim_285%3A7?lang=he",
-     "citation": "ועוד, דאותם שקורין פרשה בכל יום – הלא מפסיקין הרבה, ולכן אין לזה מקום מדינא"
+     "citation": "ואי משום שאין להפסיק בלימוד התורה למילי דעלמא - דאם כן אין זה שייך לקריאת שנים מקרא ואחד תרגום, ומסתמא מפסיק לדבר שצריך. ועוד, דאותם שקורין פרשה בכל יום – הלא מפסיקין הרבה, ולכן אין לזה מקום מדינא"
     }
    ]
   },
@@ -2407,7 +2487,7 @@
      "sefaria_version": "Sefer Chassidim, Zhitomir, 1857",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Sefer%20Chasidim%20745?version=hebrew%7CSefer%20Chassidim%2C%20Zhitomir%2C%201857&return_format=text_only",
      "page": "https://www.sefaria.org/Sefer_Chasidim_745?lang=he",
-     "citation": "כמו שאין אומרים כשאנו קורין בתורה על משה ועל אהרן זכרונם לטובה"
+     "citation": "כשמזכירים תלמידי חכמים אין צריך לומר זכרונם לברכה כמו שאין אומרים כשאנו קורין בתורה על משה ועל אהרן זכרונם לטובה"
     },
     {
      "source": "sch",
@@ -2902,7 +2982,7 @@
      "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A19?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A19?lang=he",
-     "citation": "פי' שצריך לקרות שנים מקרא ואחד פירוש אבל בפירוש לחודיה לא סגי. ופסוקים שאין להם פירוש צריך לקרותם ג\"פ מקרא כמו פסוקים שאין להם תרגום"
+     "citation": "פי' שצריך לקרות שנים מקרא ואחד פירוש אבל בפירוש לחודיה לא סגי. ופסוקים שאין להם פירוש צריך לקרותם ג\"פ מקרא כמו פסוקים שאין להם תרגום. הר\"ם מינץ סי' פ\"ז. כנה\"ג בהגה\"ט"
     },
     {
      "source": "kh",
@@ -2914,7 +2994,7 @@
      "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A20?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A20?lang=he",
-     "citation": "מיהו לפי חכמי המקו' משמע דוקא תרגום"
+     "citation": "מיהו לפי חכמי המקו' משמע דוקא תרגום לסוד הכמוס כדי להכניס קליפת נוגה למקום הקדושה ביום השבת והבין. עו\"ת או' ב'"
     },
     {
      "source": "kh",
@@ -2926,7 +3006,7 @@
      "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A23?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A23?lang=he",
-     "citation": "ונראה דאפי' אם לא הותר לקרות הפרשה שמו\"ת בליל הששי יכול לקרות פרש\"י בליל ו' כדי לצאת י\"ח וירא שמים יצא ידי שתיהם תרגום ורש\"י"
+     "citation": "ונראה דאפי' אם לא הותר לקרות הפרשה שמו\"ת בליל הששי יכול לקרות פרש\"י בליל ו' כדי לצאת י\"ח וירא שמים יצא ידי שתיהם תרגום ורש\"י. רו\"ח או' ג'"
     }
    ]
   },
@@ -2950,7 +3030,7 @@
      "sefaria_version": "Maginei Eretz: Shulchan Aruch Orach Chaim, Lemberg, 1893",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Turei%20Zahav%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A1?version=hebrew%7CMaginei%20Eretz%3A%20Shulchan%20Aruch%20Orach%20Chaim%2C%20Lemberg%2C%201893&return_format=text_only",
      "page": "https://www.sefaria.org/Turei_Zahav_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A1?lang=he",
-     "citation": "דלא מבעיא ראובן ושמעון שהם שמות השבטים ויש בהם ודאי קדושה בטעם שמות אלו אלא אפי' עטרות ודיבון שהם שמות ערי א\"י ואפש' שקראו אות' העכו\"ם אפ\"ה צריך לקרות' ג\"פ"
+     "citation": "וצריך לתרץ לפירש\"י למה לא נקט בגמ' באמת ראובן ושמעון ונראה דיש רבותא בזה דלא מבעיא ראובן ושמעון שהם שמות השבטים ויש בהם ודאי קדושה בטעם שמות אלו אלא אפי' עטרות ודיבון שהם שמות ערי א\"י ואפש' שקראו אות' העכו\"ם אפ\"ה צריך לקרות' ג\"פ"
     },
     {
      "source": "kh",
@@ -2962,7 +3042,7 @@
      "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A17?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A17?lang=he",
-     "citation": "ורבינו בחיי כתב לפי שיש באלו העיירות שמות של ע\"ז ושלא תאמר כיון שהתרגום הוא פי' הכתב אין לנו לתרגם הכתוב הזה כי יש בו זכרון ע\"ז וע\"כ באו חכמים לומר שאף הפסוק הזה ראוי לתרגמו ושלא להקל בו"
+     "citation": "ורבינו בחיי כתב לפי שיש באלו העיירות שמות של ע\"ז ושלא תאמר כיון שהתרגום הוא פי' הכתב אין לנו לתרגם הכתוב הזה כי יש בו זכרון ע\"ז וע\"כ באו חכמים לומר שאף הפסוק הזה ראוי לתרגמו ושלא להקל בו. שכנה\"ג בהגה\"ט או' ד'"
     },
     {
      "source": "ahs",
@@ -2974,7 +3054,7 @@
      "sefaria_version": "Arukh HaShulchan, Orach Chayim -- Wikisource",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Arukh%20HaShulchan%2C%20Orach%20Chaim%20285%3A11?version=hebrew%7CArukh%20HaShulchan%2C%20Orach%20Chayim%20--%20Wikisource&return_format=text_only",
      "page": "https://www.sefaria.org/Arukh_HaShulchan%2C_Orach_Chaim_285%3A11?lang=he",
-     "citation": "ולא מפני התרגום, שהרי גם בלשון התרגום השמות שוין ללשון המקרא, אלא משום דצריך שלושה פעמים"
+     "citation": "אפילו פסוקי שמות כ\"ראובן ושמעון\" – צריך תרגום. ולא מפני התרגום, שהרי גם בלשון התרגום השמות שוין ללשון המקרא, אלא משום דצריך שלושה פעמים"
     }
    ]
   },
@@ -3269,6 +3349,18 @@
      "lu_via": "https://www.sefaria.org/api/v3/texts/Turei%20Zahav%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A2?version=hebrew%7CMaginei%20Eretz%3A%20Shulchan%20Aruch%20Orach%20Chaim%2C%20Lemberg%2C%201893&return_format=text_only",
      "page": "https://www.sefaria.org/Turei_Zahav_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A2?lang=he",
      "citation": "ועוד אני אומר על ירא שמים שיראה לקרות בפני עצמו בס\"ת הסדרה לכל הפחות פעם א' ואח\"כ עם החזן פעם שנית דהקריא' בחומש לבד אין יוצא בה שפיר דבעי' דברים שבכת' והיינו ס\"ת שלימה כדינה ויש לו להשלים זה עד ש\"ת וכך נהגתי מעודי"
+    },
+    {
+     "source": "er",
+     "reference": "Eliya Rabba 285:2",
+     "reference_he": "אליה רבה רפ״ה, ס״ק ב׳",
+     "edition": "Eliya Rabba, Sulzbach 1757",
+     "licence": "Public Domain",
+     "sefaria_ref": "Eliyah Rabbah on Shulchan Arukh, Orach Chayim 285:2",
+     "sefaria_version": "Eliya Rabba, Sulzbach 1757",
+     "lu_via": "https://www.sefaria.org/api/v3/texts/Eliyah%20Rabbah%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A2?version=hebrew%7CEliya%20Rabba%2C%20Sulzbach%201757&return_format=text_only",
+     "page": "https://www.sefaria.org/Eliyah_Rabbah_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A2?lang=he",
+     "citation": "וט\"ז כתב שירא שמים יקרא לפחות פעם אחת בספר תורה, אבל בפרישה כתב דוקא להוציא אחרים בעינן ספר תורה"
     }
    ]
   },
@@ -3290,19 +3382,7 @@
      "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A13?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A13?lang=he",
-     "citation": "צריך ליזהר בקריאת המקרא בנגינת הטעמים בשלם שבפנים"
-    },
-    {
-     "source": "kh",
-     "reference": "Kaf ha’Haïm 285:13",
-     "reference_he": "כף החיים רפ״ה, אות י״ג",
-     "edition": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
-     "licence": "Public Domain",
-     "sefaria_ref": "Kaf HaChayim on Shulchan Arukh, Orach Chayim 285:13",
-     "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
-     "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A13?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
-     "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A13?lang=he",
-     "citation": "שיזהרו בקריאת שמו\"ת לקרות המקרא כל שישנו בנותן טעם לשבח"
+     "citation": "כל קבל דנא צריך ליזהר בקריאת המקרא בנגינת הטעמים בשלם שבפנים וכך שמענו שהיה מזהיר מאד הרב החסיד הקדוש מהר\"ר משה הכהן ז\"ל מעיר פי\"ס לתלמידיו שיזהרו בקריאת שמו\"ת לקרות המקרא כל שישנו בנותן טעם לשבח. מחב\"ר או' ח'"
     },
     {
      "source": "kyy",
@@ -3590,19 +3670,7 @@
      "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A8?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A8?lang=he",
-     "citation": "אם שמע שמו\"ת מאחר אפי' בלא אונס יצא ובלבד שיכוין לשמוע מלה במלה"
-    },
-    {
-     "source": "kh",
-     "reference": "Kaf ha’Haïm 285:8",
-     "reference_he": "כף החיים רפ״ה, אות ח׳",
-     "edition": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
-     "licence": "Public Domain",
-     "sefaria_ref": "Kaf HaChayim on Shulchan Arukh, Orach Chayim 285:8",
-     "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
-     "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A8?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
-     "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A8?lang=he",
-     "citation": "אמנם כבר כתבנו במקום אחר דיותר טוב לאדם להוציא הוא עצמו ולא לסמוך לצאת ע\"י אחרים"
+     "citation": "אם שמע שמו\"ת מאחר אפי' בלא אונס יצא ובלבד שיכוין לשמוע מלה במלה. הרדב\"ז שם סי' תכ\"ה. מחב\"ר או' ג'. אמנם כבר כתבנו במקום אחר דיותר טוב לאדם להוציא הוא עצמו ולא לסמוך לצאת ע\"י אחרים"
     },
     {
      "source": "sht",
@@ -3614,7 +3682,7 @@
      "sefaria_version": "Maginei Eretz: Shulchan Aruch Orach Chaim, Lemberg, 1893",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Sha%27arei%20Teshuvah%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A6?version=hebrew%7CMaginei%20Eretz%3A%20Shulchan%20Aruch%20Orach%20Chaim%2C%20Lemberg%2C%201893&return_format=text_only",
      "page": "https://www.sefaria.org/Sha%27arei_Teshuvah_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A6?lang=he",
-     "citation": "אם שמע שמו\"ת מאחר אפילו בלי אונס יצא ובלבד שיכוין לשמוע מלה במלה"
+     "citation": "ובמח\"ב כתב בשם הרדב\"ז בתשובה ד\"פ אם שמע שמו\"ת מאחר אפילו בלי אונס יצא ובלבד שיכוין לשמוע מלה במלה"
     },
     {
      "source": "ahs",
@@ -3686,7 +3754,7 @@
      "sefaria_version": "On Your Way",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Mishnah%20Berurah%20285%3A16?version=hebrew%7COn%20Your%20Way&return_format=text_only",
      "page": "https://www.sefaria.org/Mishnah_Berurah_285%3A16?lang=he",
-     "citation": "אבל אם לומד פירוש המלות לחוד לא יצא ידי תרגום אלא השני פעמים מקרא דבודאי קרא עם התינוקות שני פעמים ולכן צריך לומר תרגום בעצמו"
+     "citation": "אבל אם לומד פירוש המלות לחוד לא יצא ידי תרגום אלא השני פעמים מקרא דבודאי קרא עם התינוקות שני פעמים ולכן צריך לומר תרגום בעצמו [מחה\"ש וכן מצדד הפמ\"ג]"
     },
     {
      "source": "sahr",
@@ -3710,7 +3778,19 @@
      "sefaria_version": "Kehot Publication Society",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Shulchan%20Arukh%20HaRav%2C%20Orach%20Chayim%20285%3A7?version=hebrew%7CKehot%20Publication%20Society&return_format=text_only",
      "page": "https://www.sefaria.org/Shulchan_Arukh_HaRav%2C_Orach_Chayim_285%3A7?lang=he",
-     "citation": "אבל אם למדו פירוש המקרא יצאו ידי תרגום גם כן"
+     "citation": "אבל אם למדו פירוש המקרא יצאו ידי תרגום גם כן ועל דרך שנתבאר למעלה ואינם צריכים אלא לחזור ולקרות המקרא פעם אחת אם לא קראו עם התינוקות ב' פעמים"
+    },
+    {
+     "source": "ahs",
+     "reference": "Aroukh haChoul’han O.H. 285:13",
+     "reference_he": "ערוך השולחן או״ח רפ״ה, סעיף י״ג",
+     "edition": "Arukh HaShulchan, Orach Chayim -- Wikisource",
+     "licence": "CC-BY-SA",
+     "sefaria_ref": "Arukh HaShulchan, Orach Chaim 285:13",
+     "sefaria_version": "Arukh HaShulchan, Orach Chayim -- Wikisource",
+     "lu_via": "https://www.sefaria.org/api/v3/texts/Arukh%20HaShulchan%2C%20Orach%20Chaim%20285%3A13?version=hebrew%7CArukh%20HaShulchan%2C%20Orach%20Chayim%20--%20Wikisource&return_format=text_only",
+     "page": "https://www.sefaria.org/Arukh_HaShulchan%2C_Orach_Chaim_285%3A13?lang=he",
+     "citation": "ומלמדי תינוקות שקראו הסדרה בכל השבוע עם התינוקות כמה פעמים – יוצאים בזה ידי קריאה. ואם קראו עמהם התרגום או פירוש רש\"י – יוצאים בזה ידי חובת תרגום גם כן"
     },
     {
      "source": "ahs",
@@ -3744,7 +3824,19 @@
      "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A32?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A32?lang=he",
-     "citation": "מפני שהם חוזרים הרבה פעמים עם התינוקות מיהא תרגום צריכים לקרות"
+     "citation": "מפני שהם חוזרים הרבה פעמים עם התינוקות מיהא תרגום צריכים לקרות. וכ\"כ הל\"ח. עו\"ת או' ג' וכ\"כ הלב\"ש ומחה\"ש סק\"ט להגיה בדברי המ\"יא ומ\"מ די שיקרא עוד פ\"א תרגום"
+    },
+    {
+     "source": "kh",
+     "reference": "Kaf ha’Haïm 285:32",
+     "reference_he": "כף החיים רפ״ה, אות ל״ב",
+     "edition": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
+     "licence": "Public Domain",
+     "sefaria_ref": "Kaf HaChayim on Shulchan Arukh, Orach Chayim 285:32",
+     "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
+     "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A32?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
+     "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A32?lang=he",
+     "citation": "מיהו עיין מט\"י או' ט' מ\"ש בשם המקו' כי ע\"י קריאת שמו\"ת יזכה האדם להכנת תוספת נשמה יתירה"
     },
     {
      "source": "kh",
@@ -3768,7 +3860,7 @@
      "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A32?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A32?lang=he",
-     "citation": "וא\"כ לפ\"ז גם מלמדי תינוקות אע\"ג דלומדים כמה פעמים עם התינוקות צריך לקרות חוץ מזה שמו\"ת כדי שיהיו תיכף בלתי הפסק בינתיים וגם כדי שילמדו כל פסוק ופסוק בפ\"ע שמו\"ת"
+     "citation": "וא\"כ לפ\"ז גם מלמדי תינוקות אע\"ג דלומדים כמה פעמים עם התינוקות צריך לקרות חוץ מזה שמו\"ת כדי שיהיו תיכף בלתי הפסק בינתיים וגם כדי שילמדו כל פסוק ופסוק בפ\"ע שמו\"ת כדי לצאת ד\"ה"
     }
    ]
   },
@@ -3791,19 +3883,7 @@
      "sefaria_version": "Maginei Eretz: Shulchan Aruch Orach Chaim, Lemberg, 1893",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Shulchan%20Arukh%2C%20Orach%20Chayim%20146%3A2?version=hebrew%7CMaginei%20Eretz%3A%20Shulchan%20Aruch%20Orach%20Chaim%2C%20Lemberg%2C%201893&return_format=text_only",
      "page": "https://www.sefaria.org/Shulchan_Arukh%2C_Orach_Chayim_146%3A2?lang=he",
-     "citation": "ולקרות שנים מקרא ואחד תרגום בשעת קריאת התורה שרי"
-    },
-    {
-     "source": "sa",
-     "reference": "Choul’han Aroukh O.H. 146:2",
-     "reference_he": "שולחן ערוך או״ח קמ״ו, ב׳",
-     "edition": "Maginei Eretz: Shulchan Aruch Orach Chaim, Lemberg, 1893",
-     "licence": "Public Domain",
-     "sefaria_ref": "Shulchan Arukh, Orach Chayim 146:2",
-     "sefaria_version": "Maginei Eretz: Shulchan Aruch Orach Chaim, Lemberg, 1893",
-     "lu_via": "https://www.sefaria.org/api/v3/texts/Shulchan%20Arukh%2C%20Orach%20Chayim%20146%3A2?version=hebrew%7CMaginei%20Eretz%3A%20Shulchan%20Aruch%20Orach%20Chaim%2C%20Lemberg%2C%201893&return_format=text_only",
-     "page": "https://www.sefaria.org/Shulchan_Arukh%2C_Orach_Chayim_146%3A2?lang=he",
-     "citation": "והנכון שבכל הפרשיות ראוי למדקדק בדבריו לכוין דעתו ולשמעם מפי הקורא"
+     "citation": "ולקרות שנים מקרא ואחד תרגום בשעת קריאת התורה שרי וכל זה אינו ענין לפרש' זכור ופרשת פרה שהם בעשר' מדאוריית' שצריך לכוין ולשמעם מפי הקורא והנכון שבכל הפרשיות ראוי למדקדק בדבריו לכוין דעתו ולשמעם מפי הקורא"
     },
     {
      "source": "mb",
@@ -3887,7 +3967,7 @@
      "sefaria_version": "Torat Emet 357",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Ba%27er%20Hetev%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20128%3A46?version=hebrew%7CTorat%20Emet%20357&return_format=text_only",
      "page": "https://www.sefaria.org/Ba%27er_Hetev_on_Shulchan_Arukh%2C_Orach_Chayim_128%3A46?lang=he",
-     "citation": "נשאלתי אם מותר לקרות הפרשה שנים מקרא ואחד תרגום בשעה שהכהנים מברכים לעם והשבתי דאינו מותר אפי' למ\"ד דמותר לקרות הפרשה שמו\"ת בשעה שהש\"ץ קורא הפרשה בס\"ת אפ\"ה אסור בברכת כהנים"
+     "citation": "נשאלתי אם מותר לקרות הפרשה שנים מקרא ואחד תרגום בשעה שהכהנים מברכים לעם והשבתי דאינו מותר אפי' למ\"ד דמותר לקרות הפרשה שמו\"ת בשעה שהש\"ץ קורא הפרשה בס\"ת אפ\"ה אסור בברכת כהנים. שכנה\"ג ופר\"ח"
     },
     {
      "source": "kh",
@@ -3913,9 +3993,9 @@
    ],
    "references": [
     {
-     "source": "sa",
-     "reference": "Choul’han Aroukh O.H. 139:1",
-     "reference_he": "שולחן ערוך או״ח קל״ט, א׳",
+     "source": "rema",
+     "reference": "Rema O.H. 139:1",
+     "reference_he": "רמ״א או״ח קל״ט, א׳",
      "edition": "Maginei Eretz: Shulchan Aruch Orach Chaim, Lemberg, 1893",
      "licence": "Public Domain",
      "sefaria_ref": "Shulchan Arukh, Orach Chayim 139:1",
@@ -3934,19 +4014,7 @@
      "sefaria_version": "Eliya Rabba, Sulzbach 1757",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Eliyah%20Rabbah%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20139%3A1?version=hebrew%7CEliya%20Rabba%2C%20Sulzbach%201757&return_format=text_only",
      "page": "https://www.sefaria.org/Eliyah_Rabbah_on_Shulchan_Arukh%2C_Orach_Chayim_139%3A1?lang=he",
-     "citation": "ועל כן ראוי שכל אחד יסדר אותה תחילה דשמא יקראו אותו לעלות למחר בשבת"
-    },
-    {
-     "source": "er",
-     "reference": "Eliya Rabba 139:1",
-     "reference_he": "אליה רבה קל״ט, ס״ק א׳",
-     "edition": "Eliya Rabba, Sulzbach 1757",
-     "licence": "Public Domain",
-     "sefaria_ref": "Eliyah Rabbah on Shulchan Arukh, Orach Chayim 139:1",
-     "sefaria_version": "Eliya Rabba, Sulzbach 1757",
-     "lu_via": "https://www.sefaria.org/api/v3/texts/Eliyah%20Rabbah%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20139%3A1?version=hebrew%7CEliya%20Rabba%2C%20Sulzbach%201757&return_format=text_only",
-     "page": "https://www.sefaria.org/Eliyah_Rabbah_on_Shulchan_Arukh%2C_Orach_Chayim_139%3A1?lang=he",
-     "citation": "דבקריאת הפרשה שנים מקרא ואחד תרגום יוצא ידי חובת הסידור"
+     "citation": "משמע דהחזן צריך לסדר תחילה ולא העולה וכן משמע בבית יוסף, וקשיא על לבוש דמצריך גם עולה, מיהו גם הב\"ח כתב דמצוה מן המובחר שגם העולה יסדר פעמיים ושלוש, ועל כן ראוי שכל אחד יסדר אותה תחילה דשמא יקראו אותו לעלות למחר בשבת, עד כאן. וש\"ך כתב דבקריאת הפרשה שנים מקרא ואחד תרגום יוצא ידי חובת הסידור"
     },
     {
      "source": "ahs",
@@ -3958,7 +4026,7 @@
      "sefaria_version": "Arukh HaShulchan, Orach Chayim -- Wikisource",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Arukh%20HaShulchan%2C%20Orach%20Chaim%20139%3A2?version=hebrew%7CArukh%20HaShulchan%2C%20Orach%20Chayim%20--%20Wikisource&return_format=text_only",
      "page": "https://www.sefaria.org/Arukh_HaShulchan%2C_Orach_Chaim_139%3A2?lang=he",
-     "citation": "ועכשיו ששליח הציבור קורא – מחויב לחזור הפרשה שני פעמים מקודם, אפילו אם הוא בקי. וכשקרא בערב שבת שנים מקרא – יצא בזה"
+     "citation": "ועכשיו ששליח הציבור קורא – מחויב לחזור הפרשה שני פעמים מקודם, אפילו אם הוא בקי. וכשקרא בערב שבת שנים מקרא – יצא בזה. ויש מי שכתב שמצוה שגם העולה יסדר (באר היטב בשם כנסת הגדולה). ואין טעם לזה, שהרי אומר בלחש אחר שליח הציבור. וגם אין המנהג כן"
     }
    ]
   },
@@ -4447,7 +4515,7 @@
      "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A38?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A38?lang=he",
-     "citation": "וע\"כ אחר קריאת שמו\"ת יאמר הפטרה של השבוע ואח\"כ מזמור שיר ליום השבת וה' מלך גאות לבש וסדר חק לישראל המסודר ליום ו' משנה גמ' זוהר הלכות ואח\"כ א\"ר הונא בריה דרב יהודה א\"ר אמי לעולם ישלים אדם פרשיותיו וכו'"
+     "citation": "וע\"כ אחר קריאת שמו\"ת יאמר הפטרה של השבוע ואח\"כ מזמור שיר ליום השבת וה' מלך גאות לבש וסדר חק לישראל המסודר ליום ו' משנה גמ' זוהר הלכות ואח\"כ א\"ר הונא בריה דרב יהודה א\"ר אמי לעולם ישלים אדם פרשיותיו וכו' רבי חנניא בן עקשיא אומר רצה הקב\"ה לזכות את ישראל וכו' ונמצא קרא תנ\"ך משנה גמ קבלה"
     },
     {
      "source": "mbe",
@@ -4459,7 +4527,7 @@
      "sefaria_version": "Moreh BeEtzba, Livorno, 1842",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Moreh%20BeEtzba%20131?version=hebrew%7CMoreh%20BeEtzba%2C%20Livorno%2C%201842&return_format=text_only",
      "page": "https://www.sefaria.org/Moreh_BeEtzba_131?lang=he",
-     "citation": "פסוק אחרון מהפרשה אחר שקראו שמו״ת יחזור לקרותו"
+     "citation": "פסוק אחרון מהפרשה אחר שקראו שמו״ת יחזור לקרותו ב׳ מקרא לבד ויקרא ההפטרה"
     },
     {
      "source": "mbe",
@@ -4471,7 +4539,7 @@
      "sefaria_version": "Moreh BeEtzba, Livorno, 1842",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Moreh%20BeEtzba%20133?version=hebrew%7CMoreh%20BeEtzba%2C%20Livorno%2C%201842&return_format=text_only",
      "page": "https://www.sefaria.org/Moreh_BeEtzba_133?lang=he",
-     "citation": "וילמוד מאמר קטן מזהר ונמצא שקרא מקרא תנ״ך משנה גמרא זהר"
+     "citation": "אח״כ יאמר ה׳ מלך גאות לבש ומשנת במה מדליקין ויאמר א״ר הונא בריה דרב יהודה א״ר אמי לעולם ישלים אדם פרשיותיו עם הציבור שמו״ת ואפילו עטרות ודיבון שכל המשלים פרשיותיו עם הצבור שמו״ת מאריכין לו ימיו ושנותיו וילמוד מאמר קטן מזהר ונמצא שקרא מקרא תנ״ך משנה גמרא זהר"
     }
    ]
   },
@@ -4493,19 +4561,7 @@
      "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A37?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A37?lang=he",
-     "citation": "כתב שם היפ\"ל דיקרא ביום ו' אחר שמו\"ת הפטרת השבוע חוץ מפ' אלא הדברים דיקרא הפטרת חזון"
-    },
-    {
-     "source": "kh",
-     "reference": "Kaf ha’Haïm 285:37",
-     "reference_he": "כף החיים רפ״ה, אות ל״ז",
-     "edition": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
-     "licence": "Public Domain",
-     "sefaria_ref": "Kaf HaChayim on Shulchan Arukh, Orach Chayim 285:37",
-     "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
-     "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A37?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
-     "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A37?lang=he",
-     "citation": "אלא ההפטרה שקורא המפטיר למחר בס\"ת וכתב שכן המנהג פשוט"
+     "citation": "ובענין תלתא דפורענותא וז' דנחמתא כתב שם היפ\"ל דיקרא ביום ו' אחר שמו\"ת הפטרת השבוע חוץ מפ' אלא הדברים דיקרא הפטרת חזון אבל הפתה\"ד שם הוכיח לומר שיחיד הקורא שמו\"ת בע\"ש בג' דפורענותא וז' דנחמתא ותרי דתיובתא אין לו לשנות ולקרות ההפטרה מס' האיטלייא אלא ההפטרה שקורא המפטיר למחר בס\"ת וכתב שכן המנהג פשוט וגם שכן הסכים הרב לב חיים ח\"ב סי' קס\"ו בשם כמה פו'"
     }
    ]
   },
@@ -4541,7 +4597,7 @@
      "sefaria_version": "On Your Way",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Mishnah%20Berurah%20285%3A20?version=hebrew%7COn%20Your%20Way&return_format=text_only",
      "page": "https://www.sefaria.org/Mishnah_Berurah_285%3A20?lang=he",
-     "citation": "וקמ\"ל דבשעה שקורא לעצמו ההפטרה אין צריך לקרות אלו הפסוקים משום דהוא מצוי ושגור בפי הכל ובקי בהן בלא זו הקריאה"
+     "citation": "ר\"ל שיש מנהג באיזה מקומות שקורין בצבור לבד הפטרת הסדרה עוד איזה פסוקים מהפטרת שוש אשיש [משום דכתיב בה כחתן יכהן פאר וגומר] וקמ\"ל דבשעה שקורא לעצמו ההפטרה אין צריך לקרות אלו הפסוקים משום דהוא מצוי ושגור בפי הכל ובקי בהן בלא זו הקריאה"
     },
     {
      "source": "ma",
@@ -4565,7 +4621,7 @@
      "sefaria_version": "Kehot Publication Society",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Shulchan%20Arukh%20HaRav%2C%20Orach%20Chayim%20285%3A10?version=hebrew%7CKehot%20Publication%20Society&return_format=text_only",
      "page": "https://www.sefaria.org/Shulchan_Arukh_HaRav%2C_Orach_Chayim_285%3A10?lang=he",
-     "citation": "ואם אירע חתונה בשבת במקומות שנוהגים אז להפטיר בבית הכנסת שוש אשיש יש לו ג\"כ לקרותה לעצמו ולא הפטרת השבוע כי שמא יקראוהו למחר"
+     "citation": "ואם אירע חתונה בשבת במקומות שנוהגים אז להפטיר בבית הכנסת שוש אשיש יש לו ג\"כ לקרותה לעצמו ולא הפטרת השבוע כי שמא יקראוהו למחר אבל אם אירעו הרבה חתונות בשבתות זו אחר זו די במה שקרא שוש אשיש בראשונה ויש לו לקרות בשאר השבתות הפטרת השבוע"
     },
     {
      "source": "ahs",
@@ -4589,7 +4645,7 @@
      "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A39?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A39?lang=he",
-     "citation": "גם בשבת חתונה אין לקרות ביום ו' אחר השמו\"ת רק הפטרת השבוע"
+     "citation": "המ\"א ס\"ק י\"ב כתב דיחזור אותה אך אם יש הרבה תחינות זו אחר זו שוב א\"צ וזהו לפי הטעם שכתבנו שחזרת ההפטרה כדי לידע מה מפטירין למחר אבל לפי הטעם שכתבנו לעיל או' ל\"ו בשם הכנה\"ג גם בשבת חתונה אין לקרות ביום ו' אחר השמו\"ת רק הפטרת השבוע"
     }
    ]
   },
@@ -4624,7 +4680,7 @@
      "sefaria_version": "On Your Way",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Mishnah%20Berurah%20285%3A19?version=hebrew%7COn%20Your%20Way&return_format=text_only",
      "page": "https://www.sefaria.org/Mishnah_Berurah_285%3A19?lang=he",
-     "citation": "משא\"כ בפרשיות של יו\"ט ששם החזן הוא הקורא"
+     "citation": "טעם המנהג שמא יקראוהו למחר למפטיר ויהא בקי ורגיל בה משא\"כ בפרשיות של יו\"ט ששם החזן הוא הקורא [מ\"א]"
     }
    ]
   },
@@ -4671,7 +4727,7 @@
      "sefaria_version": "Torat Emet 357",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Ba%27er%20Hetev%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A8?version=hebrew%7CTorat%20Emet%20357&return_format=text_only",
      "page": "https://www.sefaria.org/Ba%27er_Hetev_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A8?lang=he",
-     "citation": "ובערב ש\"ת יקרא וזאת הברכה"
+     "citation": "ובערב ש\"ת יקרא וזאת הברכה. הכוונות"
     }
    ]
   },
@@ -4760,6 +4816,18 @@
      "citation": "ות\"ת הוי דבר שבצינעא אבל לחזור הפרשה כיון שחייב אדם להשלים פרשיותיו עם הצבור הוי כקורא את שמע ומותר"
     },
     {
+     "source": "tazyd",
+     "reference": "Taz Y.D. 400:1",
+     "reference_he": "ט״ז יו״ד ת׳, ס״ק א׳",
+     "edition": "Ashlei Ravrevei: Shulchan Aruch Yoreh Deah, Lemberg, 1888",
+     "licence": "Public Domain",
+     "sefaria_ref": "Turei Zahav on Shulchan Arukh, Yoreh De'ah 400:1",
+     "sefaria_version": "Ashlei Ravrevei: Shulchan Aruch Yoreh Deah, Lemberg, 1888",
+     "lu_via": "https://www.sefaria.org/api/v3/texts/Turei%20Zahav%20on%20Shulchan%20Arukh%2C%20Yoreh%20De%27ah%20400%3A1?version=hebrew%7CAshlei%20Ravrevei%3A%20Shulchan%20Aruch%20Yoreh%20Deah%2C%20Lemberg%2C%201888&return_format=text_only",
+     "page": "https://www.sefaria.org/Turei_Zahav_on_Shulchan_Arukh%2C_Yoreh_De%27ah_400%3A1?lang=he",
+     "citation": "ובאגודה כתב ונראה לאיסור וכ' רש\"ל להכריע דבחול אסור ובשבת שרי שהוא זמנו והוא מחובת היום"
+    },
+    {
      "source": "shakh",
      "reference": "Chakh Y.D. 400:4",
      "reference_he": "ש״ך יו״ד ת׳, ס״ק ד׳",
@@ -4802,7 +4870,7 @@
      "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A27?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A27?lang=he",
-     "citation": "דאבל יכול לחזור הפרשה בשבת שתוך ז' וכתב שם דהיינו דוקא כשלא יכלו ז' ימים קודם יום ג' אבל אם יכלו קודם יום ג' אז לדעת י\"א קמא צריך להמתין עד יום ג'"
+     "citation": "וראיתי בס' בה\"י ביו\"ד סי' ת אתא דאיתא שם דאבל יכול לחזור הפרשה בשבת שתוך ז' וכתב שם דהיינו דוקא כשלא יכלו ז' ימים קודם יום ג' אבל אם יכלו קודם יום ג' אז לדעת י\"א קמא צריך להמתין עד יום ג'"
     },
     {
      "source": "kh",
@@ -4814,7 +4882,19 @@
      "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A27?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A27?lang=he",
-     "citation": "מיהו אין דבריו מוכרחים דכיון דעיקר המצוה לקרות בשבת אלא דבדיעבד יכול לקרות עד יום ג' שפ\"ר מקרי חובת היום"
+     "citation": "מיהו אין דבריו מוכרחים דכיון דעיקר המצוה לקרות בשבת אלא דבדיעבד יכול לקרות עד יום ג' שפ\"ר מקרי חובת היום. תו\"ש או' ה'"
+    },
+    {
+     "source": "kh",
+     "reference": "Kaf ha’Haïm 285:27",
+     "reference_he": "כף החיים רפ״ה, אות כ״ז",
+     "edition": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
+     "licence": "Public Domain",
+     "sefaria_ref": "Kaf HaChayim on Shulchan Arukh, Orach Chayim 285:27",
+     "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
+     "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A27?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
+     "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A27?lang=he",
+     "citation": "והביאו א\"א או' ו'. וכתב ואפשר אם חל ז' שלו בשבת דמקצת היום ככולו ימתין אחר יציאת מבהכ\"נ וישלים קודם אכילה"
     },
     {
      "source": "rae",
@@ -4887,19 +4967,19 @@
      "sefaria_version": "Kaf Hachayim, Orach Chayim vol. V-VIII, Jerusalem 1910-1933",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20553%3A19?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20V-VIII%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_553%3A19?lang=he",
-     "citation": "אבל מותר לחזור שמו\"ת ומכ\"ש קודם חצות"
+     "citation": "אבל מותר לחזור שמו\"ת ומכ\"ש קודם חצות. ח\"א כלל קל\"ו או' ד' וכ\"כ הזכ\"ל או' ט' דאם עבר ולא קראה עד אחר חצות נראה פשוט דיכול לקרותה אח\"כ אפי' אם ט\"ב בשבת עצמו יעו\"ש. והיינו אף לדעת המחמירים אבל לדעת המתירין כבר כתבנו באו' הקודם"
     },
     {
-     "source": "kh",
-     "reference": "Kaf ha’Haïm 553:19",
-     "reference_he": "כף החיים תקנ״ג, אות י״ט",
-     "edition": "Kaf Hachayim, Orach Chayim vol. V-VIII, Jerusalem 1910-1933",
+     "source": "mb",
+     "reference": "Michna Beroura 553:10",
+     "reference_he": "משנה ברורה תקנ״ג, ס״ק י׳",
+     "edition": "On Your Way",
      "licence": "Public Domain",
-     "sefaria_ref": "Kaf HaChayim on Shulchan Arukh, Orach Chayim 553:19",
-     "sefaria_version": "Kaf Hachayim, Orach Chayim vol. V-VIII, Jerusalem 1910-1933",
-     "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20553%3A19?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20V-VIII%2C%20Jerusalem%201910-1933&return_format=text_only",
-     "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_553%3A19?lang=he",
-     "citation": "דאם עבר ולא קראה עד אחר חצות נראה פשוט דיכול לקרותה אח\"כ אפי' אם ט\"ב בשבת עצמו"
+     "sefaria_ref": "Mishnah Berurah 553:10",
+     "sefaria_version": "On Your Way",
+     "lu_via": "https://www.sefaria.org/api/v3/texts/Mishnah%20Berurah%20553%3A10?version=hebrew%7COn%20Your%20Way&return_format=text_only",
+     "page": "https://www.sefaria.org/Mishnah_Berurah_553%3A10?lang=he",
+     "citation": "והט\"ז מפקפק מאד על מניעת הלימוד בשבת ומסיים דהלומד בשבת אחר חצות לא הפסיד שכרו והיינו אפילו כשחל ט\"ב בשבת וכ\"ש כשחל עט\"ב בשבת. ונראה דיש לסמוך ע\"ז אחרי דאפילו כשחל בחול כמה אחרונים מקילין"
     },
     {
      "source": "hid",
@@ -4934,19 +5014,7 @@
      "sefaria_version": "Kaf Hachayim, Orach Chayim vol. V-VIII, Jerusalem 1910-1933",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20496%3A62?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20V-VIII%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_496%3A62?lang=he",
-     "citation": "ויום ח' של פסח חל בשבת ובא\"י קורין פ' אחרי אם יקרא פ' אחרי שמו\"ת כבני א\"י או יתנהג בקריאת הפ' כבני חו\"ל"
-    },
-    {
-     "source": "kh",
-     "reference": "Kaf ha’Haïm 496:62",
-     "reference_he": "כף החיים תצ״ו, אות ס״ב",
-     "edition": "Kaf Hachayim, Orach Chayim vol. V-VIII, Jerusalem 1910-1933",
-     "licence": "Public Domain",
-     "sefaria_ref": "Kaf HaChayim on Shulchan Arukh, Orach Chayim 496:62",
-     "sefaria_version": "Kaf Hachayim, Orach Chayim vol. V-VIII, Jerusalem 1910-1933",
-     "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20496%3A62?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20V-VIII%2C%20Jerusalem%201910-1933&return_format=text_only",
-     "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_496%3A62?lang=he",
-     "citation": "דטפי עדיף להשלים פרשיותיו עם הצבור שהוא עמהם ולענין זה לא יעשה כא\"י"
+     "citation": "בן א\"י שבא לחו\"ל ואשתו ובניו בא\"י והוא נוהג ביו\"ט כמנהג א\"י שהוא כאורח בחו\"ל ויום ח' של פסח חל בשבת ובא\"י קורין פ' אחרי אם יקרא פ' אחרי שמו\"ת כבני א\"י או יתנהג בקריאת הפ' כבני חו\"ל השיב הרב חיד\"א ז\"ל בס' מראית העין בליקוטים סי' ך' או' ד' דטפי עדיף להשלים פרשיותיו עם הצבור שהוא עמהם ולענין זה לא יעשה כא\"י"
     }
    ]
   },
@@ -4968,7 +5036,7 @@
      "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%2025%3A27?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_25%3A27?lang=he",
-     "citation": "בשעת קריאת שנים מקרא ואחד תרגום בפ' קדש והיה כי יביאך א\"צ להיות עליו ולא הוי כעדות שקר כיון שאומר רק דרך קריאה"
+     "citation": "בשעת קריאת שנים מקרא ואחד תרגום בפ' קדש והיה כי יביאך א\"צ להיות עליו ולא הוי כעדות שקר כיון שאומר רק דרך קריאה. תשו' בנין עולם סי' ל' והביאו פתחי עולם אות יו\"ד"
     }
    ]
   },
