@@ -55,7 +55,7 @@
 - Français, hébreu, anglais, espagnol (Amérique latine), tounsi, darija : tous les écrans, la feuille imprimée et les rappels.
 - Hébreu, tounsi et darija s'affichent de droite à gauche. Les dates suivent la langue ; les noms des parachiyot, des alyot et des villes aussi.
 - **Le tounsi est écrit en lettres hébraïques** (judéo-arabe tunisien), y compris les jours et les mois. Conventions : ג׳ pour le j, כ׳ pour le kh, ע׳ pour le gh, ת׳ ד׳ צ׳ ט׳ pour les lettres emphatiques ou interdentales ; les mots hébreux gardent leur orthographe (שבת, פרשה, עליה, תרגום). Outil : `tools/judeo_arabe.js`.
-- La darija est pour l'instant en lettres arabes ; les noms des parachiyot et des alyot y sont en lettres hébraïques.
+- **La darija reste en lettres arabes, sauf les termes religieux**, écrits en lettres hébraïques (שבת, פרשה, עליה, תרגום, חומש, שמחת תורה…), comme les noms des parachiyot et des alyot. Un préfixe arabe reste attaché au mot par un trait : الـפרשה, لـשבת.
 - Tounsi et darija sont des brouillons à faire relire (`docs/traductions-a-relire.csv`).
 - Les textes sont dans `web/i18n.js` (français) et `web/i18n/<langue>.js`.
 
