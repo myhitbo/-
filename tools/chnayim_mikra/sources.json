@@ -161,14 +161,29 @@
     "titre": "Kikar haChabbat, « הלכה ב-60 שניות », Rav Binyamin 'Hota (כיכר השבת)",
     "edition": "kikar.co.il",
     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée"
+   },
+   "ryd": {
+    "titre": "Rav David Yossef, Richon leTsion, auteur de « Halakha Beroura » : cours hebdomadaire (השיעור השבועי)",
+    "edition": "traduction anglaise publiée sur halachayomit.co.il/he/pdf/",
+    "licence": "Tous droits réservés : résumé et référence",
+    "note": "Le siman 285 de « Halakha Beroura » (volume 17, simanim 275-286, Makhon Ye'havé Daat) ne se lit pas en ligne : rien n'en est cité. Ces cours sont lus dans leur traduction anglaise : les repères de la table sont en anglais ; --verifie les relit avec pdftotext."
+   },
+   "hy": {
+    "titre": "Halacha Yomit (הלכה יומית), d'après les décisions du Rav Ovadia Yossef",
+    "edition": "halachayomit.co.il",
+    "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+    "note": "Ajouté le 26/11/2026, faute de pouvoir lire « Halakha Beroura ». Les articles sont rediffusés chaque année : la date est celle du dernier envoi. Les questions-réponses sous un article sont des réponses de la rédaction du site, chacune datée."
    }
   },
   "non_retenus": [
-   "Garçons (mineurs) : aucune source lue ne traite de leur obligation ou de leur éducation à Chnayim mikra.",
-   "Parachiot jumelées : aucune source lue n'en parle pour Chnayim mikra (le Choul'han Aroukh 284:7 ne traite que de la haftara publique).",
-   "Chabbat qui tombe un Yom Tov : quelle paracha lire cette semaine-là n'est dit explicitement par aucune source lue ; seule la règle « pas de Chnayim mikra pour la lecture de Yom Tov » (285:7) est retenue.",
-   "Rav Binyamin 'Hota : deux réponses de « הלכה ב-60 שניות » (Kikar haChabbat) dont la page donne le texte sont reprises (halakhot 5 et 6). Les autres sont en vidéo ou en enregistrement seulement (Kikar haChabbat 2022-2023 et 13/02/2026, chaîne du kollel 'Hazon Ovadia, Kol haLachon) : rien n'en est tiré, faute de texte à relire. Ses livres « כי בו שבת » ne sont pas en ligne.",
-   "Rav Ofir Malka lui-même : aucune réponse écrite de sa main trouvée ; les deux réponses retenues sont celles des rabbanim de son beit hora'a (hl5047.co.il)."
+   "« Halakha Beroura » du Rav David Yossef (demande du propriétaire, 26/11/2026) : le siman 285 est paru au volume 17 (simanim 275-286, Makhon Ye'havé Daat ; trois libraires concordent), mais son texte ne se lit pas en ligne (Otzar HaHochma sur abonnement ; rien sur le site de l'éditeur ni sur HebrewBooks). Rien n'en est cité. Sont repris à la place : ses cours hebdomadaires (traduction anglaise publiée par Halacha Yomit), dont le n° 323 où il dit lui-même ce qu'il a écrit dans le livre sur la fin du temps de lecture ; et les articles de Halacha Yomit, d'après les décisions du Rav Ovadia Yossef. Le « Kitsour Choul'han Aroukh Halakha Beroura » (deux volumes, simanim 1-239) ne contient pas le siman 285.",
+   "Halacha Yomit n'est pas une source nommée par le propriétaire : ajoutée le 26/11/2026 pour approcher Halakha Beroura ; à retirer s'il ne la veut pas (références « hy »).",
+   "Trois pages sans rav nommé, écartées : Hidabroot 174052 (voyageur d'Israël en diaspora quand les parachiot sont décalées), et deux pages de Kav haHalakha haSefaradi (« השבת בשבעה », l'endeuillé ; « האומר שמע שמע », le verset Chema lu deux fois). Le voyageur est traité d'après le Kaf ha'Haïm 496:62, l'endeuillé d'après le Choul'han Aroukh Y.D. 400.",
+   "Sujets cherchés sans réponse écrite et signée dans les sources désignées : l'onen ; celui qui devient bar mitsva en cours d'année ; l'enregistrement audio ; lire pendant la répétition de l'officiant. Pour les enfants, seules deux mentions ont été trouvées (Rav Azoulay ; un garçon de treize ans sur Hidabroot).",
+   "Rav Binyamin 'Hota : deux réponses de « הלכה ב-60 שניות » (Kikar haChabbat) dont la page donne le texte sont reprises (chapitre « Quand lire »). Les autres sont en vidéo ou en enregistrement seulement (Kikar haChabbat 2022-2023 et 13/02/2026, chaîne du kollel 'Hazon Ovadia, Kol haLachon, hm-news) : rien n'en est tiré, faute de texte à relire. Ses livres « כי בו שבת » ne sont pas en ligne.",
+   "Rav Ofir Malka lui-même : aucune réponse écrite de sa main trouvée ; les quatre réponses retenues sont celles des rabbanim de son beit hora'a (hl5047.co.il), seules des 538 questions du site à parler de Chnayim mikra.",
+   "Michna Beroura 146 : la seule édition de Sefaria (« eu5 text ») n'a pas de licence indiquée ; elle n'est pas citée. Ce qu'elle dit de Chnayim mikra pendant la lecture publique est rapporté par la Michna Beroura 285:14-15 et le Béour Halakha 285:5. Le Cha'ar haTsiyoun 285 n'est pas sur Sefaria : il n'est cité que par le renvoi d'une réponse de Hidabroot.",
+   "Kaf ha'Haïm 285 : quatre paragraphes non repris (2, 21, 30, 34), qui redisent ce que d'autres sources citées disent déjà."
   ]
  },
  "halakhot": [
@@ -253,6 +268,19 @@
      "date": "01/10/2018",
      "nature": "paraphrase avec référence (œuvre protégée)",
      "passage_resume": "נראה שאשתו לא יכולה להוציא אותו [...] שהיא לא חייבת בזה כלל"
+    },
+    {
+     "source": "hy",
+     "reference": "Halacha Yomit n° 1660",
+     "reference_he": "הלכה יומית על פי פסקי מרן הרב עובדיה יוסף, ״פרטי דינים בהלכות שניים מקרא ואחד תרגום״, כ״ה תשרי התשפ״ז, halachayomit.co.il (HalachaID=1660)",
+     "edition": "halachayomit.co.il",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://halachayomit.co.il/he/Default.aspx?HalachaID=1660",
+     "auteur": "Halacha Yomit",
+     "titre": "פרטי דינים בהלכות שניים מקרא ואחד תרגום",
+     "date": "06/10/2026",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "והנשים פטורות הן ממצות תלמוד תורה [...] תבא עליה הברכה, ויש לה שכר על כך"
     }
    ]
   },
@@ -452,6 +480,45 @@
      "licence": "CC BY-NC-SA 2.5, licence publique de Torat Emet (toratemetfreeware.com/contents/copyrights2.html, lu le 26/11/2026) ; crédit « הרב יצחק יוסף שליט״א »",
      "lu_via": "livre_yalkut_yosef_kitsour.json (archive de My Hitbodedut), section « סימן רפה - לקרוא הפרשה ב' מקרא וא' תרגום », se'if א",
      "citation": "וגם העוסק בלימוד תורה כל היום, ותורתו אומנותו, לא יבטל קריאת פרשיותיו עם הצבור. וחייב לקרוא הפרשה שנים מקרא ואחד תרגום"
+    },
+    {
+     "source": "hy",
+     "reference": "Halacha Yomit n° 1659",
+     "reference_he": "הלכה יומית על פי פסקי מרן הרב עובדיה יוסף, ״שניים מקרא ואחד תרגום״, כ״ד תשרי התשפ״ז, halachayomit.co.il (HalachaID=1659)",
+     "edition": "halachayomit.co.il",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://halachayomit.co.il/he/Default.aspx?HalachaID=1659",
+     "auteur": "Halacha Yomit",
+     "titre": "שניים מקרא ואחד תרגום",
+     "date": "05/10/2026",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "כי באמת מן הדין חייב אדם לקרוא שניים מקרא ואחד תרגום [...] אל יפשע מלהשלים פרשיותיו עם הציבור"
+    },
+    {
+     "source": "kav",
+     "reference": "Kav haHalakha haSefaradi (Rav O. Azoulay, 09/10/2026)",
+     "reference_he": "קו ההלכה הספרדי, ״האם חייבים לקרוא שנים מקרא ואחד תרגום - הרב אושרי אזולאי״, הרב אושרי אזולאי, כ״ח תשרי התשפ״ז (kavhalacha.co.il)",
+     "edition": "kavhalacha.co.il",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://kavhalacha.co.il/%D7%90%D7%A7%D7%98%D7%95%D7%90%D7%9C%D7%99%D7%94-%D7%91%D7%94%D7%9C%D7%9B%D7%94/%D7%94%D7%9C%D7%9B%D7%95%D7%AA-%D7%9E%D7%A2%D7%A0%D7%99%D7%99%D7%A0%D7%95%D7%AA/%D7%94%D7%90%D7%9D-%D7%97%D7%99%D7%99%D7%91%D7%99%D7%9D-%D7%9C%D7%A7%D7%A8%D7%95%D7%90-%D7%A9%D7%A0%D7%99%D7%9D-%D7%9E%D7%A7%D7%A8%D7%90-%D7%95%D7%90%D7%97%D7%93-%D7%AA%D7%A8%D7%92%D7%95%D7%9D-%D7%94%D7%A8%D7%91-%D7%90%D7%95%D7%A9%D7%A8%D7%99-%D7%90%D7%96%D7%95%D7%9C%D7%90%D7%99",
+     "auteur": "Rav Ochri Azoulay",
+     "titre": "האם חייבים לקרוא שנים מקרא ואחד תרגום - הרב אושרי אזולאי",
+     "date": "09/10/2026",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "וגם מי שתורתו אומנתו חייב בקריאת הפרשה"
+    },
+    {
+     "source": "ryd",
+     "reference": "Rav David Yossef, cours n° 351",
+     "reference_he": "הראשון לציון הרב דוד יוסף, ״השיעור השבועי״, גיליון 351 (מוצאי שבת במדבר התשפ״ו), בתרגום לאנגלית: halachayomit.co.il/he/pdf/6376.pdf",
+     "edition": "traduction anglaise publiée sur halachayomit.co.il/he/pdf/",
+     "licence": "Tous droits réservés : résumé et référence",
+     "url": "https://halachayomit.co.il/he/pdf/6376.pdf",
+     "auteur": "Rav David Yossef",
+     "titre": "The Time for Reading Shenayim Mikra Ve’Echad Targum This Shavuot",
+     "date": "motsaé Chabbat Bamidbar 5786",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "is not just a preferred practice but an absolute obligation"
     }
    ]
   },
@@ -554,6 +621,53 @@
   },
   {
    "id": "chm-07",
+   "section": 1,
+   "rite": "tous",
+   "rites_app": [
+    "edot",
+    "sefard",
+    "ashkenaz"
+   ],
+   "references": [
+    {
+     "source": "kav",
+     "reference": "Kav haHalakha haSefaradi (Rav O. Azoulay, 09/10/2026)",
+     "reference_he": "קו ההלכה הספרדי, ״האם חייבים לקרוא שנים מקרא ואחד תרגום - הרב אושרי אזולאי״, הרב אושרי אזולאי, כ״ח תשרי התשפ״ז (kavhalacha.co.il)",
+     "edition": "kavhalacha.co.il",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://kavhalacha.co.il/%D7%90%D7%A7%D7%98%D7%95%D7%90%D7%9C%D7%99%D7%94-%D7%91%D7%94%D7%9C%D7%9B%D7%94/%D7%94%D7%9C%D7%9B%D7%95%D7%AA-%D7%9E%D7%A2%D7%A0%D7%99%D7%99%D7%A0%D7%95%D7%AA/%D7%94%D7%90%D7%9D-%D7%97%D7%99%D7%99%D7%91%D7%99%D7%9D-%D7%9C%D7%A7%D7%A8%D7%95%D7%90-%D7%A9%D7%A0%D7%99%D7%9D-%D7%9E%D7%A7%D7%A8%D7%90-%D7%95%D7%90%D7%97%D7%93-%D7%AA%D7%A8%D7%92%D7%95%D7%9D-%D7%94%D7%A8%D7%91-%D7%90%D7%95%D7%A9%D7%A8%D7%99-%D7%90%D7%96%D7%95%D7%9C%D7%90%D7%99",
+     "auteur": "Rav Ochri Azoulay",
+     "titre": "האם חייבים לקרוא שנים מקרא ואחד תרגום - הרב אושרי אזולאי",
+     "date": "09/10/2026",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "citation": "ומחנכים גם את הקטנים לקרוא הפרשה כאמור"
+    },
+    {
+     "source": "kyy",
+     "reference": "Kitsour Yalkout Yossef 285:14",
+     "reference_he": "ילקוט יוסף, קיצור שולחן ערוך רפ״ה, י״ד",
+     "edition": "Torat Emet, mahadoura 5767 — la copie de My Hitbodedut (livre_yalkut_yosef_kitsour.json, section « סימן רפה »)",
+     "licence": "CC BY-NC-SA 2.5, licence publique de Torat Emet (toratemetfreeware.com/contents/copyrights2.html, lu le 26/11/2026) ; crédit « הרב יצחק יוסף שליט״א »",
+     "lu_via": "livre_yalkut_yosef_kitsour.json (archive de My Hitbodedut), section « סימן רפה - לקרוא הפרשה ב' מקרא וא' תרגום », se'if יד",
+     "citation": "וחובה קדושה על ההורים והמלמדים ללמד את בני ישראל בטעמי המקרא, כדי שיקראו שנים מקרא ואחד תרגום בניגון כדת וכדין"
+    },
+    {
+     "source": "hid",
+     "reference": "Hidabroot, question 331141",
+     "reference_he": "הידברות, ״אם אני לא יכול לקרוא שניים מקרא ואחד תרגום האם יש משהו קצר יותר שאפשר לקרוא במקום?״, הרב בנימין שמואלי, ו׳ אייר התשפ״ד, hidabroot.org/question/331141",
+     "edition": "hidabroot.org",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://www.hidabroot.org/question/331141",
+     "auteur": "Binyamin Chmouéli",
+     "titre": "אם אני לא יכול לקרוא שניים מקרא ואחד תרגום האם יש משהו קצר יותר שאפשר לקרוא במקום?",
+     "date": "14/05/2024",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "תקרא כל יום קצת וכך עד שבת תסיים את הפרשה"
+    }
+   ]
+  },
+  {
+   "id": "chm-08",
    "section": 2,
    "rite": "tous",
    "rites_app": [
@@ -664,7 +778,7 @@
    ]
   },
   {
-   "id": "chm-08",
+   "id": "chm-09",
    "section": 2,
    "rite": "ashkenaze",
    "rites_app": [
@@ -699,7 +813,7 @@
    ]
   },
   {
-   "id": "chm-09",
+   "id": "chm-10",
    "section": 2,
    "rite": "sefarade",
    "rites_app": [
@@ -792,7 +906,7 @@
    ]
   },
   {
-   "id": "chm-10",
+   "id": "chm-11",
    "section": 2,
    "rite": "tous",
    "rites_app": [
@@ -890,7 +1004,7 @@
    ]
   },
   {
-   "id": "chm-11",
+   "id": "chm-12",
    "section": 2,
    "rite": "ashkenaze",
    "rites_app": [
@@ -949,7 +1063,7 @@
    ]
   },
   {
-   "id": "chm-12",
+   "id": "chm-13",
    "section": 2,
    "rite": "sefarade",
    "rites_app": [
@@ -1004,7 +1118,7 @@
    ]
   },
   {
-   "id": "chm-13",
+   "id": "chm-14",
    "section": 2,
    "rite": "sefarade",
    "rites_app": [
@@ -1080,11 +1194,24 @@
      "date": "11/04/2022",
      "nature": "paraphrase avec référence (œuvre protégée)",
      "citation": "אין קוראים מתחילת הלילה עד חצות"
+    },
+    {
+     "source": "hy",
+     "reference": "Halacha Yomit n° 1660 (questions-réponses)",
+     "reference_he": "הלכה יומית על פי פסקי מרן הרב עובדיה יוסף, ״פרטי דינים בהלכות שניים מקרא ואחד תרגום״, שאלות ותשובות, כ״ה תשרי התשפ״ז, halachayomit.co.il (HalachaID=1660)",
+     "edition": "halachayomit.co.il",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://halachayomit.co.il/he/Default.aspx?HalachaID=1660",
+     "auteur": "Halacha Yomit, réponses de la rédaction",
+     "titre": "פרטי דינים בהלכות שניים מקרא ואחד תרגום",
+     "date": "06/10/2026",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "בליל שבת, מותר לקרוא מקרא בלילה [...] נכון שלא לקרוא מקרא, עד חצות הלילה"
     }
    ]
   },
   {
-   "id": "chm-14",
+   "id": "chm-15",
    "section": 2,
    "rite": "ashkenaze",
    "rites_app": [
@@ -1167,7 +1294,7 @@
    ]
   },
   {
-   "id": "chm-15",
+   "id": "chm-16",
    "section": 2,
    "rite": "sefarade",
    "rites_app": [
@@ -1237,7 +1364,7 @@
    ]
   },
   {
-   "id": "chm-16",
+   "id": "chm-17",
    "section": 2,
    "rite": "sefarade",
    "rites_app": [
@@ -1295,7 +1422,7 @@
    ]
   },
   {
-   "id": "chm-17",
+   "id": "chm-18",
    "section": 2,
    "rite": "tous",
    "rites_app": [
@@ -1363,11 +1490,198 @@
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A38?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A38?lang=he",
      "citation": "ובענין קציצת הצפרנים והטבילה וכוונתה כבר כתבנו לעיל סי' ר\"ס קחנו משם"
+    },
+    {
+     "source": "hid",
+     "reference": "Hidabroot, question 298335",
+     "reference_he": "הידברות, ״האם מי שקרא שמו\"ת יכול לטבול לכבוד שבת לפני חצות היום?״, הרב הלל מאירס, ב׳ כסלו התשפ״ב, hidabroot.org/question/298335",
+     "edition": "hidabroot.org",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://www.hidabroot.org/question/298335",
+     "auteur": "Hillel Meirs",
+     "titre": "האם מי שקרא שמו\"ת יכול לטבול לכבוד שבת לפני חצות היום?",
+     "date": "06/11/2021",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "אלא אם יטבול שעה קודם חצות היום ואילך [...] או אחר שיקרא הפרשה שניים מקרא ואחד תרגום ואחר תפילת שחרית"
+    },
+    {
+     "source": "malka",
+     "reference": "Halakha lema’assé, question 520 (Rav E. Molkandov)",
+     "reference_he": "בית ההוראה ״הלכה למעשה״ של הרב אופיר מלכא, ״טבילה בערב שבת אם קרא שמו\"ת בימי השבוע״, הרב עמנואל מולקנדוב, 10.10.2026, hl5047.co.il/questions/520",
+     "edition": "hl5047.co.il",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://hl5047.co.il/questions/520",
+     "auteur": "Rav Emmanuel Molkandov",
+     "titre": "טבילה בערב שבת אם קרא שמו\"ת בימי השבוע",
+     "date": "10/10/2026",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "העיקר לפי דעת האר\"י הוא לטבול לאחר שסיים את קריאת שמו\"ת [...] ובפרט אם משאיר כמה פסוקים ליום שישי, דעדיף טפי"
     }
    ]
   },
   {
-   "id": "chm-18",
+   "id": "chm-19",
+   "section": 2,
+   "rite": "tous",
+   "rites_app": [
+    "edot",
+    "sefard",
+    "ashkenaz"
+   ],
+   "references": [
+    {
+     "source": "sahr",
+     "reference": "Choul’han Aroukh haRav O.H. 285:5",
+     "reference_he": "שולחן ערוך הרב או״ח רפ״ה, ה׳",
+     "edition": "Kehot Publication Society",
+     "licence": "CC-BY-NC",
+     "sefaria_ref": "Shulchan Arukh HaRav, Orach Chayim 285:5",
+     "sefaria_version": "Kehot Publication Society",
+     "lu_via": "https://www.sefaria.org/api/v3/texts/Shulchan%20Arukh%20HaRav%2C%20Orach%20Chayim%20285%3A5?version=hebrew%7CKehot%20Publication%20Society&return_format=text_only",
+     "page": "https://www.sefaria.org/Shulchan_Arukh_HaRav%2C_Orach_Chayim_285%3A5?lang=he",
+     "citation": "שלא יקרא בשבוע זה פרשת שבוע אחר"
+    },
+    {
+     "source": "ahs",
+     "reference": "Aroukh haChoul’han O.H. 285:1",
+     "reference_he": "ערוך השולחן או״ח רפ״ה, סעיף א׳",
+     "edition": "Arukh HaShulchan, Orach Chayim -- Wikisource",
+     "licence": "CC-BY-SA",
+     "sefaria_ref": "Arukh HaShulchan, Orach Chaim 285:1",
+     "sefaria_version": "Arukh HaShulchan, Orach Chayim -- Wikisource",
+     "lu_via": "https://www.sefaria.org/api/v3/texts/Arukh%20HaShulchan%2C%20Orach%20Chaim%20285%3A1?version=hebrew%7CArukh%20HaShulchan%2C%20Orach%20Chayim%20--%20Wikisource&return_format=text_only",
+     "page": "https://www.sefaria.org/Arukh_HaShulchan%2C_Orach_Chaim_285%3A1?lang=he",
+     "citation": "אבל אין לו להקדים לפני שבוע זו"
+    },
+    {
+     "source": "hid",
+     "reference": "Hidabroot, question 286915",
+     "reference_he": "הידברות, ״ממתי אפשר לקרוא שניים מקרא ואחד תרגום?״, הרב הלל מאירס, י״ד כסלו התשפ״א, hidabroot.org/question/286915",
+     "edition": "hidabroot.org",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://www.hidabroot.org/question/286915",
+     "auteur": "Hillel Meirs",
+     "titre": "ממתי אפשר לקרוא שניים מקרא ואחד תרגום?",
+     "date": "30/11/2020",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "citation": "עד שהוא עצמו יתפלל מנחה",
+     "passage_resume": "אפשר להתחיל לקרוא רק אחרי מנחה של שבת [...] עד שהוא עצמו יתפלל מנחה"
+    },
+    {
+     "source": "hid",
+     "reference": "Hidabroot, question 235423",
+     "reference_he": "הידברות, ״שניים מקרא ואחד תרגום של פרשת בראשית״, הרב הלל מאירס, י״ג תשרי התשע״ח, hidabroot.org/question/235423",
+     "edition": "hidabroot.org",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://www.hidabroot.org/question/235423",
+     "auteur": "Hillel Meirs",
+     "titre": "שניים מקרא ואחד תרגום של פרשת בראשית",
+     "date": "03/10/2017",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "אי אפשר לקרוא עכשיו שניים מקרא ואחד תרגום של פרשת בראשית [...] רק אחרי שיתחילו לקרוא את פרשת בראשית בשמחת תורה"
+    }
+   ]
+  },
+  {
+   "id": "chm-20",
+   "section": 2,
+   "rite": "sefarade",
+   "rites_app": [
+    "edot"
+   ],
+   "references": [
+    {
+     "source": "ryd",
+     "reference": "Rav David Yossef, cours n° 351",
+     "reference_he": "הראשון לציון הרב דוד יוסף, ״השיעור השבועי״, גיליון 351 (מוצאי שבת במדבר התשפ״ו), בתרגום לאנגלית: halachayomit.co.il/he/pdf/6376.pdf",
+     "edition": "traduction anglaise publiée sur halachayomit.co.il/he/pdf/",
+     "licence": "Tous droits réservés : résumé et référence",
+     "url": "https://halachayomit.co.il/he/pdf/6376.pdf",
+     "auteur": "Rav David Yossef",
+     "titre": "The Time for Reading Shenayim Mikra Ve’Echad Targum This Shavuot",
+     "date": "motsaé Chabbat Bamidbar 5786",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "begins from Minchah on Shabbat [...] one should read it on Friday morning [...] who decided that one can read it on any of the preceding"
+    },
+    {
+     "source": "ryd",
+     "reference": "Rav David Yossef, cours n° 323",
+     "reference_he": "הראשון לציון הרב דוד יוסף, ״השיעור השבועי״, גיליון 323 (מוצאי שבת לך לך התשפ״ו), בתרגום לאנגלית: halachayomit.co.il/he/pdf/6322.pdf",
+     "edition": "traduction anglaise publiée sur halachayomit.co.il/he/pdf/",
+     "licence": "Tous droits réservés : résumé et référence",
+     "url": "https://halachayomit.co.il/he/pdf/6322.pdf",
+     "auteur": "Rav David Yossef",
+     "titre": "The Final Time for Reciting Shenayim Mikra Ve’Echad Targum",
+     "date": "motsaé Chabbat Lekh Lekha 5786",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "once the time for Minchah Gedolah has arrived, whoever has not read [...] wrote this in the book Halachah Berurah"
+    }
+   ]
+  },
+  {
+   "id": "chm-21",
+   "section": 2,
+   "rite": "tous",
+   "rites_app": [
+    "edot",
+    "sefard",
+    "ashkenaz"
+   ],
+   "references": [
+    {
+     "source": "hid",
+     "reference": "Hidabroot, question 203590",
+     "reference_he": "הידברות, ״שניי'ם מקרא ואחד תרגום״, הרב בנימין שמואלי, ג׳ ניסן התשע״ו, hidabroot.org/question/203590",
+     "edition": "hidabroot.org",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://www.hidabroot.org/question/203590",
+     "auteur": "Binyamin Chmouéli",
+     "titre": "שניי'ם מקרא ואחד תרגום",
+     "date": "11/04/2016",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "citation": "וכן פרשה אחת מתחילת התורה",
+     "passage_resume": "ניתן להשלים בדיעבד עד שמחת תורה את כל הפרשיות שלא קראת עדיין [...] וכן פרשה אחת מתחילת התורה"
+    }
+   ]
+  },
+  {
+   "id": "chm-22",
+   "section": 2,
+   "rite": "sefarade",
+   "rites_app": [
+    "edot"
+   ],
+   "references": [
+    {
+     "source": "hy",
+     "reference": "Halacha Yomit n° 1660 (questions-réponses)",
+     "reference_he": "הלכה יומית על פי פסקי מרן הרב עובדיה יוסף, ״פרטי דינים בהלכות שניים מקרא ואחד תרגום״, שאלות ותשובות, כ״ה תשרי התשפ״ז, halachayomit.co.il (HalachaID=1660)",
+     "edition": "halachayomit.co.il",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://halachayomit.co.il/he/Default.aspx?HalachaID=1660",
+     "auteur": "Halacha Yomit, réponses de la rédaction",
+     "titre": "פרטי דינים בהלכות שניים מקרא ואחד תרגום",
+     "date": "06/10/2026",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "צריך שנים מקרא ואחד תרגום במשך השבוע. פעם אחת. [...] ולא צריך לחזור פעם שלישית על שביעי, ולא צריך לקרוא מפטיר"
+    },
+    {
+     "source": "hy",
+     "reference": "Halacha Yomit n° 1660 (questions-réponses)",
+     "reference_he": "הלכה יומית על פי פסקי מרן הרב עובדיה יוסף, ״פרטי דינים בהלכות שניים מקרא ואחד תרגום״, שאלות ותשובות, כ״ה תשרי התשפ״ז, halachayomit.co.il (HalachaID=1660)",
+     "edition": "halachayomit.co.il",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://halachayomit.co.il/he/Default.aspx?HalachaID=1660",
+     "auteur": "Halacha Yomit, réponses de la rédaction",
+     "titre": "פרטי דינים בהלכות שניים מקרא ואחד תרגום",
+     "date": "06/10/2026",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "יכול אפילו לקרוא כל הפרשה ביום ראשון [...] אחרי ברכות התורה, אפשר."
+    }
+   ]
+  },
+  {
+   "id": "chm-23",
    "section": 3,
    "rite": "tous",
    "rites_app": [
@@ -1476,7 +1790,7 @@
    ]
   },
   {
-   "id": "chm-19",
+   "id": "chm-24",
    "section": 3,
    "rite": "ashkenaze",
    "rites_app": [
@@ -1547,7 +1861,7 @@
    ]
   },
   {
-   "id": "chm-20",
+   "id": "chm-25",
    "section": 3,
    "rite": "sefarade",
    "rites_app": [
@@ -1614,7 +1928,7 @@
    ]
   },
   {
-   "id": "chm-21",
+   "id": "chm-26",
    "section": 3,
    "rite": "tous",
    "rites_app": [
@@ -1687,7 +2001,7 @@
    ]
   },
   {
-   "id": "chm-22",
+   "id": "chm-27",
    "section": 3,
    "rite": "ashkenaze",
    "rites_app": [
@@ -1734,7 +2048,7 @@
    ]
   },
   {
-   "id": "chm-23",
+   "id": "chm-28",
    "section": 3,
    "rite": "sefarade",
    "rites_app": [
@@ -1796,7 +2110,7 @@
    ]
   },
   {
-   "id": "chm-24",
+   "id": "chm-29",
    "section": 3,
    "rite": "tous",
    "rites_app": [
@@ -1852,11 +2166,63 @@
      "lu_via": "https://www.sefaria.org/api/v3/texts/Moreh%20BeEtzba%20130?version=hebrew%7CMoreh%20BeEtzba%2C%20Livorno%2C%201842&return_format=text_only",
      "page": "https://www.sefaria.org/Moreh_BeEtzba_130?lang=he",
      "citation": "וכ״ש שלא ילמוד כל פרשת השבוע כולה שנים מקרא ואח״כ יקראנה כלה תרגום. לא אריך למעבד הכי"
+    },
+    {
+     "source": "hid",
+     "reference": "Hidabroot, question 255408",
+     "reference_he": "הידברות, ״סדר קריאת שניים מקרא ואחד תרגום״, הרב הלל מאירס, כ׳ חשון התשע״ט, hidabroot.org/question/255408",
+     "edition": "hidabroot.org",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://www.hidabroot.org/question/255408",
+     "auteur": "Hillel Meirs",
+     "titre": "סדר קריאת שניים מקרא ואחד תרגום",
+     "date": "29/10/2018",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "אי אפשר לקרוא את כל הפרשה מתחילה ועד סוף [...] ורק אחר כך לקרוא את התרגום"
+    },
+    {
+     "source": "hid",
+     "reference": "Hidabroot, question 27340",
+     "reference_he": "הידברות, ״מהו סדר קריאת שניים מקרא ואחד תרגום.?״, הרב בנימין שמואלי, כ״ה אדר א׳ התשע״ד, hidabroot.org/question/27340",
+     "edition": "hidabroot.org",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://www.hidabroot.org/question/27340",
+     "auteur": "Binyamin Chmouéli",
+     "titre": "מהו סדר קריאת שניים מקרא ואחד תרגום.?",
+     "date": "25/02/2014",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "ויש נוהגים להעביר את כל הסידרה כולה פעמים מקרא ואח\"כ את התרגום [...] ותנהג איך שהנהגו אבותיך"
+    },
+    {
+     "source": "hy",
+     "reference": "Halacha Yomit n° 1659",
+     "reference_he": "הלכה יומית על פי פסקי מרן הרב עובדיה יוסף, ״שניים מקרא ואחד תרגום״, כ״ד תשרי התשפ״ז, halachayomit.co.il (HalachaID=1659)",
+     "edition": "halachayomit.co.il",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://halachayomit.co.il/he/Default.aspx?HalachaID=1659",
+     "auteur": "Halacha Yomit",
+     "titre": "שניים מקרא ואחד תרגום",
+     "date": "05/10/2026",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "ולכתחילה יש לקרוא כל פסוק ופסוק שתי פעמים"
+    },
+    {
+     "source": "ryd",
+     "reference": "Rav David Yossef, cours n° 351",
+     "reference_he": "הראשון לציון הרב דוד יוסף, ״השיעור השבועי״, גיליון 351 (מוצאי שבת במדבר התשפ״ו), בתרגום לאנגלית: halachayomit.co.il/he/pdf/6376.pdf",
+     "edition": "traduction anglaise publiée sur halachayomit.co.il/he/pdf/",
+     "licence": "Tous droits réservés : résumé et référence",
+     "url": "https://halachayomit.co.il/he/pdf/6376.pdf",
+     "auteur": "Rav David Yossef",
+     "titre": "The Time for Reading Shenayim Mikra Ve’Echad Targum This Shavuot",
+     "date": "motsaé Chabbat Bamidbar 5786",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "entire parashah a second time, and then the Targum"
     }
    ]
   },
   {
-   "id": "chm-25",
+   "id": "chm-30",
    "section": 3,
    "rite": "ashkenaze",
    "rites_app": [
@@ -1903,7 +2269,7 @@
    ]
   },
   {
-   "id": "chm-26",
+   "id": "chm-31",
    "section": 3,
    "rite": "tous",
    "rites_app": [
@@ -1963,7 +2329,7 @@
    ]
   },
   {
-   "id": "chm-27",
+   "id": "chm-32",
    "section": 3,
    "rite": "ashkenaze",
    "rites_app": [
@@ -2022,7 +2388,7 @@
    ]
   },
   {
-   "id": "chm-28",
+   "id": "chm-33",
    "section": 3,
    "rite": "tous",
    "rites_app": [
@@ -2058,7 +2424,121 @@
    ]
   },
   {
-   "id": "chm-29",
+   "id": "chm-34",
+   "section": 3,
+   "rite": "tous",
+   "rites_app": [
+    "edot",
+    "sefard",
+    "ashkenaz"
+   ],
+   "references": [
+    {
+     "source": "ahs",
+     "reference": "Aroukh haChoul’han O.H. 285:3",
+     "reference_he": "ערוך השולחן או״ח רפ״ה, סעיף ג׳",
+     "edition": "Arukh HaShulchan, Orach Chayim -- Wikisource",
+     "licence": "CC-BY-SA",
+     "sefaria_ref": "Arukh HaShulchan, Orach Chaim 285:3",
+     "sefaria_version": "Arukh HaShulchan, Orach Chayim -- Wikisource",
+     "lu_via": "https://www.sefaria.org/api/v3/texts/Arukh%20HaShulchan%2C%20Orach%20Chaim%20285%3A3?version=hebrew%7CArukh%20HaShulchan%2C%20Orach%20Chayim%20--%20Wikisource&return_format=text_only",
+     "page": "https://www.sefaria.org/Arukh_HaShulchan%2C_Orach_Chaim_285%3A3?lang=he",
+     "citation": "ויש להסתפק: אי בעינן דווקא שנים מקרא מקודם, ואחר כך תרגום, או שיצא כשקרא מקרא ותרגום ומקרא. ומדברי הלבוש מתבאר שכן דעתו"
+    },
+    {
+     "source": "ahs",
+     "reference": "Aroukh haChoul’han O.H. 285:3",
+     "reference_he": "ערוך השולחן או״ח רפ״ה, סעיף ג׳",
+     "edition": "Arukh HaShulchan, Orach Chayim -- Wikisource",
+     "licence": "CC-BY-SA",
+     "sefaria_ref": "Arukh HaShulchan, Orach Chaim 285:3",
+     "sefaria_version": "Arukh HaShulchan, Orach Chayim -- Wikisource",
+     "lu_via": "https://www.sefaria.org/api/v3/texts/Arukh%20HaShulchan%2C%20Orach%20Chaim%20285%3A3?version=hebrew%7CArukh%20HaShulchan%2C%20Orach%20Chayim%20--%20Wikisource&return_format=text_only",
+     "page": "https://www.sefaria.org/Arukh_HaShulchan%2C_Orach_Chaim_285%3A3?lang=he",
+     "citation": "הרי שכתב מפורש דהתרגום יכול להיות באמצע"
+    },
+    {
+     "source": "hid",
+     "reference": "Hidabroot, question 259534",
+     "reference_he": "הידברות, ״אפשר לקרוא מקרא ואז תרגום ואז שוב מקרא?״, הרב הלל מאירס, כ״ה שבט התשע״ט, hidabroot.org/question/259534",
+     "edition": "hidabroot.org",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://www.hidabroot.org/question/259534",
+     "auteur": "Hillel Meirs",
+     "titre": "אפשר לקרוא מקרא ואז תרגום ואז שוב מקרא?",
+     "date": "31/01/2019",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "citation": "בדיעבד יצאת ידי חובה",
+     "passage_resume": "צריך לקרוא שניים מקרא תחילה ורק אח\"כ את התרגום [...] בדיעבד יצאת ידי חובה"
+    }
+   ]
+  },
+  {
+   "id": "chm-35",
+   "section": 3,
+   "rite": "tous",
+   "rites_app": [
+    "edot",
+    "sefard",
+    "ashkenaz"
+   ],
+   "references": [
+    {
+     "source": "hid",
+     "reference": "Hidabroot, question 15646",
+     "reference_he": "הידברות, ״האם מותר לי למחוק את שם ה-ו-י-ה, בתכנת וורד במחשב״, הרב בנימין שמואלי, כ״ה אדר א׳ התשע״ד, hidabroot.org/question/15646",
+     "edition": "hidabroot.org",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://www.hidabroot.org/question/15646",
+     "auteur": "Binyamin Chmouéli",
+     "titre": "האם מותר לי למחוק את שם ה-ו-י-ה, בתכנת וורד במחשב",
+     "date": "25/02/2014",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "citation": "יש לעצור באמצע שניים מקרא ואחד תרגום, לענית קדושה וקדיש"
+    },
+    {
+     "source": "hid",
+     "reference": "Hidabroot, question 274474",
+     "reference_he": "הידברות, ״קריאת שניים מקרא ואחד תרגום״, הרב בנימין שמואלי, ז׳ חשון התש״פ, hidabroot.org/question/274474",
+     "edition": "hidabroot.org",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://www.hidabroot.org/question/274474",
+     "auteur": "Binyamin Chmouéli",
+     "titre": "קריאת שניים מקרא ואחד תרגום",
+     "date": "05/11/2019",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "יש בזה מעלה גדולה בוודאי [...] ובתנאי שלא מפסיקים בדיבור עד סיום קריאת שמו\"ת"
+    }
+   ]
+  },
+  {
+   "id": "chm-36",
+   "section": 3,
+   "rite": "tous",
+   "rites_app": [
+    "edot",
+    "sefard",
+    "ashkenaz"
+   ],
+   "references": [
+    {
+     "source": "malka",
+     "reference": "Halakha lema’assé, question 564 (Rav E. Molkandov)",
+     "reference_he": "בית ההוראה ״הלכה למעשה״ של הרב אופיר מלכא, ״ספק בנוסח קריאת שמו\"ת – חזרה על מילים וסדר הנוסחים״, הרב עמנואל מולקנדוב, 04.11.2026, hl5047.co.il/questions/564",
+     "edition": "hl5047.co.il",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://hl5047.co.il/questions/564",
+     "auteur": "Rav Emmanuel Molkandov",
+     "titre": "ספק בנוסח קריאת שמו\"ת – חזרה על מילים וסדר הנוסחים",
+     "date": "04/11/2026",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "citation": "אין צורך לחזור מתחלת הפסוק, אלא מתחלת הענין",
+     "passage_resume": "לכתחלה יש לומר בתחלה את הפחות נכון ולבסוף את היותר נכון [...] אין צורך לחזור מתחלת הפסוק, אלא מתחלת הענין"
+    }
+   ]
+  },
+  {
+   "id": "chm-37",
    "section": 4,
    "rite": "tous",
    "rites_app": [
@@ -2121,7 +2601,7 @@
    ]
   },
   {
-   "id": "chm-30",
+   "id": "chm-38",
    "section": 4,
    "rite": "ashkenaze",
    "rites_app": [
@@ -2204,7 +2684,7 @@
    ]
   },
   {
-   "id": "chm-31",
+   "id": "chm-39",
    "section": 4,
    "rite": "sefarade",
    "rites_app": [
@@ -2256,11 +2736,37 @@
      "date": "13/07/2017",
      "nature": "paraphrase avec référence (œuvre protégée)",
      "passage_resume": "אף מי שאינו מבין כל כך [...] וגם פירוש רש\"י על הפרשה."
+    },
+    {
+     "source": "hy",
+     "reference": "Halacha Yomit n° 1659 (questions-réponses)",
+     "reference_he": "הלכה יומית על פי פסקי מרן הרב עובדיה יוסף, ״שניים מקרא ואחד תרגום״, שאלות ותשובות, כ״ד תשרי התשפ״ז, halachayomit.co.il (HalachaID=1659)",
+     "edition": "halachayomit.co.il",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://halachayomit.co.il/he/Default.aspx?HalachaID=1659",
+     "auteur": "Halacha Yomit, réponses de la rédaction",
+     "titre": "שניים מקרא ואחד תרגום",
+     "date": "05/10/2026",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "בכל מקרה צריך לקרוא את התרגום"
+    },
+    {
+     "source": "hy",
+     "reference": "Halacha Yomit n° 1660 (questions-réponses)",
+     "reference_he": "הלכה יומית על פי פסקי מרן הרב עובדיה יוסף, ״פרטי דינים בהלכות שניים מקרא ואחד תרגום״, שאלות ותשובות, כ״ה תשרי התשפ״ז, halachayomit.co.il (HalachaID=1660)",
+     "edition": "halachayomit.co.il",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://halachayomit.co.il/he/Default.aspx?HalachaID=1660",
+     "auteur": "Halacha Yomit, réponses de la rédaction",
+     "titre": "פרטי דינים בהלכות שניים מקרא ואחד תרגום",
+     "date": "06/10/2026",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "אחר שחז\"ל תיקנו לקרוא תרגום דוקא [...] פירוש רש\"י אינו פוטר מקריאת התרגום שהיא מעיקר תקנת רבותינו"
     }
    ]
   },
   {
-   "id": "chm-32",
+   "id": "chm-40",
    "section": 4,
    "rite": "tous",
    "rites_app": [
@@ -2332,7 +2838,7 @@
    ]
   },
   {
-   "id": "chm-33",
+   "id": "chm-41",
    "section": 4,
    "rite": "ashkenaze",
    "rites_app": [
@@ -2379,7 +2885,7 @@
    ]
   },
   {
-   "id": "chm-34",
+   "id": "chm-42",
    "section": 4,
    "rite": "sefarade",
    "rites_app": [
@@ -2425,7 +2931,7 @@
    ]
   },
   {
-   "id": "chm-35",
+   "id": "chm-43",
    "section": 4,
    "rite": "tous",
    "rites_app": [
@@ -2473,7 +2979,97 @@
    ]
   },
   {
-   "id": "chm-36",
+   "id": "chm-44",
+   "section": 4,
+   "rite": "tous",
+   "rites_app": [
+    "edot",
+    "sefard",
+    "ashkenaz"
+   ],
+   "references": [
+    {
+     "source": "hid",
+     "reference": "Hidabroot, question 290482",
+     "reference_he": "הידברות, ״איך לקרוא שניים מקרא ואחד תרגום?״, הרב הלל מאירס, ג׳ ניסן התשפ״א, hidabroot.org/question/290482",
+     "edition": "hidabroot.org",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://www.hidabroot.org/question/290482",
+     "auteur": "Hillel Meirs",
+     "titre": "איך לקרוא שניים מקרא ואחד תרגום?",
+     "date": "16/03/2021",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "במקרה כזה תוכל להקל [...] שהתרגום יהיה על ידי יהודי ירא שמים"
+    },
+    {
+     "source": "hid",
+     "reference": "Hidabroot, question 356365",
+     "reference_he": "הידברות, ״שמו\"ת״, הרב בנימין שמואלי, כ״ב שבט התשפ״ו, hidabroot.org/question/356365",
+     "edition": "hidabroot.org",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://www.hidabroot.org/question/356365",
+     "auteur": "Binyamin Chmouéli",
+     "titre": "שמו\"ת",
+     "date": "09/02/2026",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "יש להתיר את הדבר [...] כל פסוק בפני עצמו עם התרגום לרוסית"
+    },
+    {
+     "source": "hid",
+     "reference": "Hidabroot, question 233792",
+     "reference_he": "הידברות, ״האם אפשר לקרוא תרגום יונתן במקום תרגום אונקלוס?״, הרב הלל מאירס, ט״ו אלול התשע״ז, hidabroot.org/question/233792",
+     "edition": "hidabroot.org",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://www.hidabroot.org/question/233792",
+     "auteur": "Hillel Meirs",
+     "titre": "האם אפשר לקרוא תרגום יונתן במקום תרגום אונקלוס?",
+     "date": "06/09/2017",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "citation": "ולא ניתן לקרוא תרגום יונתן במקום זה",
+     "passage_resume": "חובה לקרוא תרגום אונקלוס [...] ולא ניתן לקרוא תרגום יונתן במקום זה"
+    }
+   ]
+  },
+  {
+   "id": "chm-45",
+   "section": 4,
+   "rite": "tous",
+   "rites_app": [
+    "edot",
+    "sefard",
+    "ashkenaz"
+   ],
+   "references": [
+    {
+     "source": "hid",
+     "reference": "Hidabroot, question 170276",
+     "reference_he": "הידברות, ״שם ה' בקריאת שניים מקרא ואחד תרגום״, הרב בנימין שמואלי, י״ז חשון התשע״ו, hidabroot.org/question/170276",
+     "edition": "hidabroot.org",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://www.hidabroot.org/question/170276",
+     "auteur": "Binyamin Chmouéli",
+     "titre": "שם ה' בקריאת שניים מקרא ואחד תרגום",
+     "date": "30/10/2015",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "יש לקרוא אדונ-י"
+    },
+    {
+     "source": "hy",
+     "reference": "Halacha Yomit n° 1660 (questions-réponses)",
+     "reference_he": "הלכה יומית על פי פסקי מרן הרב עובדיה יוסף, ״פרטי דינים בהלכות שניים מקרא ואחד תרגום״, שאלות ותשובות, כ״ה תשרי התשפ״ז, halachayomit.co.il (HalachaID=1660)",
+     "edition": "halachayomit.co.il",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://halachayomit.co.il/he/Default.aspx?HalachaID=1660",
+     "auteur": "Halacha Yomit, réponses de la rédaction",
+     "titre": "פרטי דינים בהלכות שניים מקרא ואחד תרגום",
+     "date": "06/10/2026",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "כשקוראים תרגום קוראים עם שם ה' כמו שקוראים במקרא עצמו"
+    }
+   ]
+  },
+  {
+   "id": "chm-46",
    "section": 5,
    "rite": "tous",
    "rites_app": [
@@ -2519,7 +3115,7 @@
    ]
   },
   {
-   "id": "chm-37",
+   "id": "chm-47",
    "section": 5,
    "rite": "sefarade",
    "rites_app": [
@@ -2562,7 +3158,7 @@
    ]
   },
   {
-   "id": "chm-38",
+   "id": "chm-48",
    "section": 5,
    "rite": "tous",
    "rites_app": [
@@ -2654,7 +3250,7 @@
    ]
   },
   {
-   "id": "chm-39",
+   "id": "chm-49",
    "section": 5,
    "rite": "ashkenaze",
    "rites_app": [
@@ -2677,7 +3273,7 @@
    ]
   },
   {
-   "id": "chm-40",
+   "id": "chm-50",
    "section": 5,
    "rite": "sefarade",
    "rites_app": [
@@ -2720,7 +3316,71 @@
    ]
   },
   {
-   "id": "chm-41",
+   "id": "chm-51",
+   "section": 5,
+   "rite": "tous",
+   "rites_app": [
+    "edot",
+    "sefard",
+    "ashkenaz"
+   ],
+   "references": [
+    {
+     "source": "hid",
+     "reference": "Hidabroot, question 260576",
+     "reference_he": "הידברות, ״שניים מקרא ואחד תרגום בלב״, הרב הלל מאירס, י״א אדר א׳ התשע״ט, hidabroot.org/question/260576",
+     "edition": "hidabroot.org",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://www.hidabroot.org/question/260576",
+     "auteur": "Hillel Meirs",
+     "titre": "שניים מקרא ואחד תרגום בלב",
+     "date": "16/02/2019",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "citation": "יש לקרוא בקול באופן שתשמע מה שאתה מוציא מפיך"
+    },
+    {
+     "source": "hid",
+     "reference": "Hidabroot, question 31258",
+     "reference_he": "הידברות, ״שניים מקרא ואחד תרגום, מה הכוונה?״, הרב בנימין שמואלי, כ״ה אדר א׳ התשע״ד, hidabroot.org/question/31258",
+     "edition": "hidabroot.org",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://www.hidabroot.org/question/31258",
+     "auteur": "Binyamin Chmouéli",
+     "titre": "שניים מקרא ואחד תרגום, מה הכוונה?",
+     "date": "25/02/2014",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "בדיבור ולא בעיניים"
+    },
+    {
+     "source": "hy",
+     "reference": "Halacha Yomit n° 1660 (questions-réponses)",
+     "reference_he": "הלכה יומית על פי פסקי מרן הרב עובדיה יוסף, ״פרטי דינים בהלכות שניים מקרא ואחד תרגום״, שאלות ותשובות, כ״ה תשרי התשפ״ז, halachayomit.co.il (HalachaID=1660)",
+     "edition": "halachayomit.co.il",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://halachayomit.co.il/he/Default.aspx?HalachaID=1660",
+     "auteur": "Halacha Yomit, réponses de la rédaction",
+     "titre": "פרטי דינים בהלכות שניים מקרא ואחד תרגום",
+     "date": "06/10/2026",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "חובה לקרוא בפיו ממש, ואין להסתפק בהרהור הלב בלבד"
+    },
+    {
+     "source": "hid",
+     "reference": "Hidabroot, question 241128",
+     "reference_he": "הידברות, ״האם יש איסור לקרוא שניים מקרא אחד תרגום מהמחשב או פלאפון?״, הרב בנימין שמואלי, ז׳ שבט התשע״ח, hidabroot.org/question/241128",
+     "edition": "hidabroot.org",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://www.hidabroot.org/question/241128",
+     "auteur": "Binyamin Chmouéli",
+     "titre": "האם יש איסור לקרוא שניים מקרא אחד תרגום מהמחשב או פלאפון?",
+     "date": "23/01/2018",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "1. אין איסור. [...] 2. אין הבדל."
+    }
+   ]
+  },
+  {
+   "id": "chm-52",
    "section": 6,
    "rite": "ashkenaze",
    "rites_app": [
@@ -2780,7 +3440,7 @@
    ]
   },
   {
-   "id": "chm-42",
+   "id": "chm-53",
    "section": 6,
    "rite": "sefarade",
    "rites_app": [
@@ -2799,7 +3459,7 @@
    ]
   },
   {
-   "id": "chm-43",
+   "id": "chm-54",
    "section": 6,
    "rite": "ashkenaze",
    "rites_app": [
@@ -2846,7 +3506,7 @@
    ]
   },
   {
-   "id": "chm-44",
+   "id": "chm-55",
    "section": 6,
    "rite": "sefarade",
    "rites_app": [
@@ -2894,11 +3554,24 @@
      "licence": "CC BY-NC-SA 2.5, licence publique de Torat Emet (toratemetfreeware.com/contents/copyrights2.html, lu le 26/11/2026) ; crédit « הרב יצחק יוסף שליט״א »",
      "lu_via": "livre_yalkut_yosef_kitsour.json (archive de My Hitbodedut), section « סימן רפה - לקרוא הפרשה ב' מקרא וא' תרגום », se'if יא",
      "citation": "ומכל מקום הנכון הוא שבכל הפרשיות ראוי למדקדק בדרכיו לכוין דעתו ולשמוע קריאת התורה מפי השליח צבור"
+    },
+    {
+     "source": "hy",
+     "reference": "Halacha Yomit n° 1660",
+     "reference_he": "הלכה יומית על פי פסקי מרן הרב עובדיה יוסף, ״פרטי דינים בהלכות שניים מקרא ואחד תרגום״, כ״ה תשרי התשפ״ז, halachayomit.co.il (HalachaID=1660)",
+     "edition": "halachayomit.co.il",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://halachayomit.co.il/he/Default.aspx?HalachaID=1660",
+     "auteur": "Halacha Yomit",
+     "titre": "פרטי דינים בהלכות שניים מקרא ואחד תרגום",
+     "date": "06/10/2026",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "מותר מן הדין לקרוא את הפרשה שניים מקרא ואחד תרגום בזמן קריאת [...] שיקרא מילה במילה עם השליח ציבור את כל הפרשה [...] וכן נוהגים רבים"
     }
    ]
   },
   {
-   "id": "chm-45",
+   "id": "chm-56",
    "section": 6,
    "rite": "tous",
    "rites_app": [
@@ -2954,11 +3627,24 @@
      "lu_via": "https://www.sefaria.org/api/v3/texts/Arukh%20HaShulchan%2C%20Orach%20Chaim%20285%3A3?version=hebrew%7CArukh%20HaShulchan%2C%20Orach%20Chayim%20--%20Wikisource&return_format=text_only",
      "page": "https://www.sefaria.org/Arukh_HaShulchan%2C_Orach_Chaim_285%3A3?lang=he",
      "citation": "וכן יש מי שאומר שאם שמע שנים מקרא ואחד תרגום – גם כן יצא, עם כיוון לשמוע (שערי תשובה בשם רדב\"ז). ולעניות דעתי בעינן דווקא לימוד, ולא שמיעה"
+    },
+    {
+     "source": "hid",
+     "reference": "Hidabroot, question 217642",
+     "reference_he": "הידברות, ״שומע כעונה בשניים מקרא ואחד תרגום״, הרב הלל מאירס, ט״ו חשון התשע״ז, hidabroot.org/question/217642",
+     "edition": "hidabroot.org",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://www.hidabroot.org/question/217642",
+     "auteur": "Hillel Meirs",
+     "titre": "שומע כעונה בשניים מקרא ואחד תרגום",
+     "date": "16/11/2016",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "ובלבד שיכוון לשמוע מילה במילה [...] לכתחילה יותר עדיף לקרוא שניים מקרא ואחד תרגום בעצמו [...] אלא אם כן קרא בפיו ביחד עם החזן"
     }
    ]
   },
   {
-   "id": "chm-46",
+   "id": "chm-57",
    "section": 6,
    "rite": "ashkenaze",
    "rites_app": [
@@ -3041,7 +3727,7 @@
    ]
   },
   {
-   "id": "chm-47",
+   "id": "chm-58",
    "section": 6,
    "rite": "sefarade",
    "rites_app": [
@@ -3087,7 +3773,7 @@
    ]
   },
   {
-   "id": "chm-48",
+   "id": "chm-59",
    "section": 6,
    "rite": "ashkenaze",
    "rites_app": [
@@ -3182,7 +3868,7 @@
    ]
   },
   {
-   "id": "chm-49",
+   "id": "chm-60",
    "section": 6,
    "rite": "tous",
    "rites_app": [
@@ -3218,7 +3904,7 @@
    ]
   },
   {
-   "id": "chm-50",
+   "id": "chm-61",
    "section": 6,
    "rite": "ashkenaze",
    "rites_app": [
@@ -3277,7 +3963,66 @@
    ]
   },
   {
-   "id": "chm-51",
+   "id": "chm-62",
+   "section": 6,
+   "rite": "sefarade",
+   "rites_app": [
+    "edot"
+   ],
+   "references": [
+    {
+     "source": "kav",
+     "reference": "Kav haHalakha haSefaradi (Rav Y. Achkenazi, 12/07/2017)",
+     "reference_he": "קו ההלכה הספרדי, ״הלכה יומית - הרב ירון אשכנזי - שאין לסיים העליה כשיש פחות מג' פסוקים לסוף הפרשה״, הרב ירון אשכנזי, י״ח תמוז התשע״ז (kavhalacha.co.il)",
+     "edition": "kavhalacha.co.il",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://kavhalacha.co.il/%D7%90%D7%A7%D7%98%D7%95%D7%90%D7%9C%D7%99%D7%94-%D7%91%D7%94%D7%9C%D7%9B%D7%94/%D7%9E%D7%90%D7%92%D7%A8-%D7%94%D7%94%D7%9C%D7%9B%D7%95%D7%AA/%D7%A7%D7%A8%D7%99%D7%90%D7%AA-%D7%94%D7%AA%D7%95%D7%A8%D7%94/2017-05-30-05-42-84",
+     "auteur": "Rav Yaron Achkenazi",
+     "titre": "הלכה יומית - הרב ירון אשכנזי - שאין לסיים העליה כשיש פחות מג' פסוקים לסוף הפרשה",
+     "date": "12/07/2017",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "יכול להסתפק בקריאת שנים מקרא ואחד תרגום [...] יוצא ידי חובת הסידור [...] ובליל שבת מותר להכין הפרשה כולה"
+    },
+    {
+     "source": "hy",
+     "reference": "Halacha Yomit n° 1660 (questions-réponses)",
+     "reference_he": "הלכה יומית על פי פסקי מרן הרב עובדיה יוסף, ״פרטי דינים בהלכות שניים מקרא ואחד תרגום״, שאלות ותשובות, כ״ה תשרי התשפ״ז, halachayomit.co.il (HalachaID=1660)",
+     "edition": "halachayomit.co.il",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://halachayomit.co.il/he/Default.aspx?HalachaID=1660",
+     "auteur": "Halacha Yomit, réponses de la rédaction",
+     "titre": "פרטי דינים בהלכות שניים מקרא ואחד תרגום",
+     "date": "06/10/2026",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "בעל קורא שחוזר על הפרשה כמה וכמה פעמים [...] בודאי שכן."
+    }
+   ]
+  },
+  {
+   "id": "chm-63",
+   "section": 6,
+   "rite": "sefarade",
+   "rites_app": [
+    "edot"
+   ],
+   "references": [
+    {
+     "source": "ryd",
+     "reference": "Rav David Yossef, cours n° 351",
+     "reference_he": "הראשון לציון הרב דוד יוסף, ״השיעור השבועי״, גיליון 351 (מוצאי שבת במדבר התשפ״ו), בתרגום לאנגלית: halachayomit.co.il/he/pdf/6376.pdf",
+     "edition": "traduction anglaise publiée sur halachayomit.co.il/he/pdf/",
+     "licence": "Tous droits réservés : résumé et référence",
+     "url": "https://halachayomit.co.il/he/pdf/6376.pdf",
+     "auteur": "Rav David Yossef",
+     "titre": "The Time for Reading Shenayim Mikra Ve’Echad Targum This Shavuot",
+     "date": "motsaé Chabbat Bamidbar 5786",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "he would prepare the parashah on Friday night [...] entire parashah a second time, and then the Targum [...] before eating the Shabbat meal"
+    }
+   ]
+  },
+  {
+   "id": "chm-64",
    "section": 7,
    "rite": "tous",
    "rites_app": [
@@ -3347,7 +4092,7 @@
    ]
   },
   {
-   "id": "chm-52",
+   "id": "chm-65",
    "section": 7,
    "rite": "sefarade",
    "rites_app": [
@@ -3389,11 +4134,24 @@
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A36?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A36?lang=he",
      "citation": "וכן עמא דבר"
+    },
+    {
+     "source": "hid",
+     "reference": "Hidabroot, question 234777",
+     "reference_he": "הידברות, ״האם מותר לקרוא שמות בחול המועד״, הרב בנימין שמואלי, ה׳ תשרי התשע״ח, hidabroot.org/question/234777",
+     "edition": "hidabroot.org",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://www.hidabroot.org/question/234777",
+     "auteur": "Binyamin Chmouéli",
+     "titre": "האם מותר לקרוא שמות בחול המועד",
+     "date": "25/09/2017",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "קוראים רק את ההפטרה שיקראו בבית הכנסת"
     }
    ]
   },
   {
-   "id": "chm-53",
+   "id": "chm-66",
    "section": 7,
    "rite": "ashkenaze",
    "rites_app": [
@@ -3428,7 +4186,7 @@
    ]
   },
   {
-   "id": "chm-54",
+   "id": "chm-67",
    "section": 7,
    "rite": "tous",
    "rites_app": [
@@ -3497,7 +4255,7 @@
    ]
   },
   {
-   "id": "chm-55",
+   "id": "chm-68",
    "section": 7,
    "rite": "tous",
    "rites_app": [
@@ -3601,7 +4359,7 @@
    ]
   },
   {
-   "id": "chm-56",
+   "id": "chm-69",
    "section": 7,
    "rite": "ashkenaze",
    "rites_app": [
@@ -3660,7 +4418,7 @@
    ]
   },
   {
-   "id": "chm-57",
+   "id": "chm-70",
    "section": 7,
    "rite": "sefarade",
    "rites_app": [
@@ -3718,7 +4476,7 @@
    ]
   },
   {
-   "id": "chm-58",
+   "id": "chm-71",
    "section": 7,
    "rite": "sefarade",
    "rites_app": [
@@ -3752,7 +4510,7 @@
    ]
   },
   {
-   "id": "chm-59",
+   "id": "chm-72",
    "section": 7,
    "rite": "tous",
    "rites_app": [
@@ -3836,7 +4594,7 @@
    ]
   },
   {
-   "id": "chm-60",
+   "id": "chm-73",
    "section": 7,
    "rite": "ashkenaze",
    "rites_app": [
@@ -3871,7 +4629,7 @@
    ]
   },
   {
-   "id": "chm-61",
+   "id": "chm-74",
    "section": 7,
    "rite": "ashkenaze",
    "rites_app": [
@@ -3918,7 +4676,69 @@
    ]
   },
   {
-   "id": "chm-62",
+   "id": "chm-75",
+   "section": 7,
+   "rite": "sefarade",
+   "rites_app": [
+    "edot"
+   ],
+   "references": [
+    {
+     "source": "kav",
+     "reference": "Kav haHalakha haSefaradi (Rav D. Yaakov, 01/10/2026)",
+     "reference_he": "קו ההלכה הספרדי, ״הושענא רבה ושמחת תורה - הרב דוד יעקב״, הרב דוד יעקב, כ׳ תשרי התשפ״ז (kavhalacha.co.il)",
+     "edition": "kavhalacha.co.il",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://kavhalacha.co.il/%D7%90%D7%A7%D7%98%D7%95%D7%90%D7%9C%D7%99%D7%94-%D7%91%D7%94%D7%9C%D7%9B%D7%94/%D7%97%D7%92%D7%99%D7%9D-%D7%95%D7%9E%D7%95%D7%A2%D7%93%D7%99%D7%9D/2017-10-02-07-45-35/%D7%94%D7%95%D7%A9%D7%A2%D7%A0%D7%90-%D7%A8%D7%91%D7%94-%D7%95%D7%A9%D7%9E%D7%97%D7%AA-%D7%AA%D7%95%D7%A8%D7%94-%D7%94%D7%A8%D7%91-%D7%93%D7%95%D7%93-%D7%99%D7%A2%D7%A7%D7%91",
+     "auteur": "Rav David Yaakov",
+     "titre": "הושענא רבה ושמחת תורה - הרב דוד יעקב",
+     "date": "01/10/2026",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "citation": "יקראנה בליל שמיני עצרת או בבוקר לפני תפילת שחרית"
+    },
+    {
+     "source": "hy",
+     "reference": "Halacha Yomit n° 2740",
+     "reference_he": "הלכה יומית על פי פסקי מרן הרב עובדיה יוסף, ״הושענא רבה״, כ׳ תשרי התשפ״ז, halachayomit.co.il (HalachaID=2740)",
+     "edition": "halachayomit.co.il",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://halachayomit.co.il/he/Default.aspx?HalachaID=2740",
+     "auteur": "Halacha Yomit",
+     "titre": "הושענא רבה",
+     "date": "01/10/2026",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "ביום הושענא רבה יקרא פרשת וזאת הברכה שנים מקרא ואחד תרגום [...] יקרא בליל שמיני עצרת, או בבוקר השכם לפני התפלה"
+    },
+    {
+     "source": "ryd",
+     "reference": "Rav David Yossef, cours n° 369",
+     "reference_he": "הראשון לציון הרב דוד יוסף, ״השיעור השבועי״, גיליון 369 (קובץ לחג הסוכות ושמחת תורה), בתרגום לאנגלית: halachayomit.co.il/he/pdf/6414.pdf",
+     "edition": "traduction anglaise publiée sur halachayomit.co.il/he/pdf/",
+     "licence": "Tous droits réservés : résumé et référence",
+     "url": "https://halachayomit.co.il/he/pdf/6414.pdf",
+     "auteur": "Rav David Yossef",
+     "titre": "Chag HaSukkot – Simchat Torah, § 149",
+     "date": "recueil pour Souccot et Sim'hat Torah",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "It is fitting on the day of Hoshana Rabbah to read Parashat [...] or on Yom Tov morning before the Shacharit prayer"
+    },
+    {
+     "source": "hid",
+     "reference": "Hidabroot, question 234777",
+     "reference_he": "הידברות, ״האם מותר לקרוא שמות בחול המועד״, הרב בנימין שמואלי, ה׳ תשרי התשע״ח, hidabroot.org/question/234777",
+     "edition": "hidabroot.org",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://www.hidabroot.org/question/234777",
+     "auteur": "Binyamin Chmouéli",
+     "titre": "האם מותר לקרוא שמות בחול המועד",
+     "date": "25/09/2017",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "של שמחת תורה בליל הושענא רבה [...] מעת שקראו פעם ראשונה במנחה את פרשת וזאת הברכה"
+    }
+   ]
+  },
+  {
+   "id": "chm-76",
    "section": 8,
    "rite": "tous",
    "rites_app": [
@@ -4007,11 +4827,24 @@
      "lu_via": "https://www.sefaria.org/api/v3/texts/Rabbi%20Akiva%20Eiger%20on%20Shulchan%20Arukh%2C%20Yoreh%20De%27ah%20400%3A1?version=hebrew%7CAshlei%20Ravrevei%3A%20Shulchan%20Aruch%20Yoreh%20Deah%2C%20Lemberg%2C%201888&return_format=text_only",
      "page": "https://www.sefaria.org/Rabbi_Akiva_Eiger_on_Shulchan_Arukh%2C_Yoreh_De%27ah_400%3A1?lang=he",
      "citation": "דאפשר אם חל יום ז' בשבת צריך להמתין עד אחר יציאה מבהכ\"נ וישלים קודם אכילה"
+    },
+    {
+     "source": "kav",
+     "reference": "Kav haHalakha haSefaradi (Rav Y. Achkenazi, 27/05/2017)",
+     "reference_he": "קו ההלכה הספרדי, ״הלכה יומית - הרב ירון אשכנזי - האם קריאת התורה חובת ציבור או חובת יחיד״, הרב ירון אשכנזי, ב׳ סיון התשע״ז (kavhalacha.co.il)",
+     "edition": "kavhalacha.co.il",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://kavhalacha.co.il/%D7%90%D7%A7%D7%98%D7%95%D7%90%D7%9C%D7%99%D7%94-%D7%91%D7%94%D7%9C%D7%9B%D7%94/%D7%9E%D7%90%D7%92%D7%A8-%D7%94%D7%94%D7%9C%D7%9B%D7%95%D7%AA/%D7%A7%D7%A8%D7%99%D7%90%D7%AA-%D7%94%D7%AA%D7%95%D7%A8%D7%94/2017-05-30-05-42-72",
+     "auteur": "Rav Yaron Achkenazi",
+     "titre": "הלכה יומית - הרב ירון אשכנזי - האם קריאת התורה חובת ציבור או חובת יחיד",
+     "date": "27/05/2017",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "שמותר לאבל תוך שבעה לחזור הפרשה [...] דאיירי גבי חיוב היחיד בקריאת שנים מקרא ואחד תרגום"
     }
    ]
   },
   {
-   "id": "chm-63",
+   "id": "chm-77",
    "section": 8,
    "rite": "tous",
    "rites_app": [
@@ -4067,11 +4900,24 @@
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20553%3A19?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20V-VIII%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_553%3A19?lang=he",
      "citation": "דאם עבר ולא קראה עד אחר חצות נראה פשוט דיכול לקרותה אח\"כ אפי' אם ט\"ב בשבת עצמו"
+    },
+    {
+     "source": "hid",
+     "reference": "Hidabroot, question 307701",
+     "reference_he": "הידברות, ״שניים מקרא ואחד תרגום בתשעה באב״, הרב בנימין שמואלי, י״ב אלול התשפ״ב, hidabroot.org/question/307701",
+     "edition": "hidabroot.org",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://www.hidabroot.org/question/307701",
+     "auteur": "Binyamin Chmouéli",
+     "titre": "שניים מקרא ואחד תרגום בתשעה באב",
+     "date": "08/09/2022",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "בשבת שחל בו תשעה באב [...] עד חצות של יום שבת"
     }
    ]
   },
   {
-   "id": "chm-64",
+   "id": "chm-78",
    "section": 8,
    "rite": "sefarade",
    "rites_app": [
@@ -4105,7 +4951,7 @@
    ]
   },
   {
-   "id": "chm-65",
+   "id": "chm-79",
    "section": 8,
    "rite": "sefarade",
    "rites_app": [
@@ -4123,6 +4969,142 @@
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%2025%3A27?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_25%3A27?lang=he",
      "citation": "בשעת קריאת שנים מקרא ואחד תרגום בפ' קדש והיה כי יביאך א\"צ להיות עליו ולא הוי כעדות שקר כיון שאומר רק דרך קריאה"
+    }
+   ]
+  },
+  {
+   "id": "chm-80",
+   "section": 8,
+   "rite": "tous",
+   "rites_app": [
+    "edot",
+    "sefard",
+    "ashkenaz"
+   ],
+   "references": [
+    {
+     "source": "hid",
+     "reference": "Hidabroot, question 226173",
+     "reference_he": "הידברות, ״שניים מקרא ואחד תרגום בפרשיות מחוברות״, הרב הלל מאירס, ד׳ אייר התשע״ז, hidabroot.org/question/226173",
+     "edition": "hidabroot.org",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://www.hidabroot.org/question/226173",
+     "auteur": "Hillel Meirs",
+     "titre": "שניים מקרא ואחד תרגום בפרשיות מחוברות",
+     "date": "30/04/2017",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "citation": "צריך לקרוא את שתי הפרשיות שניים מקרא ואחד תרגום"
+    }
+   ]
+  },
+  {
+   "id": "chm-81",
+   "section": 8,
+   "rite": "tous",
+   "rites_app": [
+    "edot",
+    "sefard",
+    "ashkenaz"
+   ],
+   "references": [
+    {
+     "source": "hid",
+     "reference": "Hidabroot, question 111245",
+     "reference_he": "הידברות, ״שניים מקרא ואחד תרגום ביום טוב שחל בשבת״, הרב הלל מאירס, י״ב ניסן התשע״ה, hidabroot.org/question/111245",
+     "edition": "hidabroot.org",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://www.hidabroot.org/question/111245",
+     "auteur": "Hillel Meirs",
+     "titre": "שניים מקרא ואחד תרגום ביום טוב שחל בשבת",
+     "date": "01/04/2015",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "citation": "השבוע אין צורך לקרוא שניים מקרא ואחד תרגום",
+     "passage_resume": "השבוע אין צורך לקרוא שניים מקרא ואחד תרגום [...] ואין צורך לקרוא פרשה זו שניים מקרא ואחד תרגום"
+    },
+    {
+     "source": "hid",
+     "reference": "Hidabroot, question 356863",
+     "reference_he": "הידברות, ״שמו\"ת״, הרב בנימין שמואלי, ח׳ ניסן התשפ״ו, hidabroot.org/question/356863",
+     "edition": "hidabroot.org",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://www.hidabroot.org/question/356863",
+     "auteur": "Binyamin Chmouéli",
+     "titre": "שמו\"ת",
+     "date": "26/03/2026",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "citation": "בפרשת חול המועד אין קוראים שמו\"ת כי אין פרשת השבוע"
+    }
+   ]
+  },
+  {
+   "id": "chm-82",
+   "section": 8,
+   "rite": "sefarade",
+   "rites_app": [
+    "edot"
+   ],
+   "references": [
+    {
+     "source": "ryd",
+     "reference": "Rav David Yossef, cours n° 351",
+     "reference_he": "הראשון לציון הרב דוד יוסף, ״השיעור השבועי״, גיליון 351 (מוצאי שבת במדבר התשפ״ו), בתרגום לאנגלית: halachayomit.co.il/he/pdf/6376.pdf",
+     "edition": "traduction anglaise publiée sur halachayomit.co.il/he/pdf/",
+     "licence": "Tous droits réservés : résumé et référence",
+     "url": "https://halachayomit.co.il/he/pdf/6376.pdf",
+     "auteur": "Rav David Yossef",
+     "titre": "The Time for Reading Shenayim Mikra Ve’Echad Targum This Shavuot",
+     "date": "motsaé Chabbat Bamidbar 5786",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "writes not to read it on Yom Tov, mainly because of the [...] there is no real prohibition to read it on Yom"
+    },
+    {
+     "source": "hid",
+     "reference": "Hidabroot, question 324169",
+     "reference_he": "הידברות, ״האם מותר לקרוא שניים מקרא ואחד תרגום כשביום שישי חל חג?״, הרב בנימין שמואלי, ה׳ סיון התשפ״ג, hidabroot.org/question/324169",
+     "edition": "hidabroot.org",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://www.hidabroot.org/question/324169",
+     "auteur": "Binyamin Chmouéli",
+     "titre": "האם מותר לקרוא שניים מקרא ואחד תרגום כשביום שישי חל חג?",
+     "date": "25/05/2023",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "citation": "על פי הפשט יש לקרוא כרגיל ביום שישי",
+     "passage_resume": "המקובלים מורים לקרוא ביום שבת בבוקר [...] על פי הפשט יש לקרוא כרגיל ביום שישי"
+    }
+   ]
+  },
+  {
+   "id": "chm-83",
+   "section": 8,
+   "rite": "sefarade",
+   "rites_app": [
+    "edot"
+   ],
+   "references": [
+    {
+     "source": "tsh",
+     "reference": "Tsiporen Chamir (’Hida) §56",
+     "reference_he": "צפורן שמיר לחיד״א, אות נ״ו",
+     "edition": "Avodat HaKodesh, Pressburg, 1859",
+     "licence": "Public Domain",
+     "sefaria_ref": "Tziporen Shamir 56",
+     "sefaria_version": "Avodat HaKodesh, Pressburg, 1859",
+     "lu_via": "https://www.sefaria.org/api/v3/texts/Tziporen%20Shamir%2056?version=hebrew%7CAvodat%20HaKodesh%2C%20Pressburg%2C%201859&return_format=text_only",
+     "page": "https://www.sefaria.org/Tziporen_Shamir_56?lang=he",
+     "citation": "בסדר לימוד הפסוקים שמו״ת אשר יסד רבינו האר״י ז״ל ומסודר בסדר חק לישראל אור הששי לא ילמוד כי אם כ״ו פסוקים שנים מקרא לבד בלי תרגום"
+    },
+    {
+     "source": "hy",
+     "reference": "Halacha Yomit n° 1660 (questions-réponses)",
+     "reference_he": "הלכה יומית על פי פסקי מרן הרב עובדיה יוסף, ״פרטי דינים בהלכות שניים מקרא ואחד תרגום״, שאלות ותשובות, כ״ה תשרי התשפ״ז, halachayomit.co.il (HalachaID=1660)",
+     "edition": "halachayomit.co.il",
+     "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
+     "url": "https://halachayomit.co.il/he/Default.aspx?HalachaID=1660",
+     "auteur": "Halacha Yomit, réponses de la rédaction",
+     "titre": "פרטי דינים בהלכות שניים מקרא ואחד תרגום",
+     "date": "06/10/2026",
+     "nature": "paraphrase avec référence (œuvre protégée)",
+     "passage_resume": "האם קריאת חוק לישראל פוטרת מקריאת שניים מקרא ואחד תרגום [...] כן, בהחלט."
     }
    ]
   }

@@ -29,7 +29,7 @@ test('le livre a ses trois titres et ses neuf chapitres, et l\'application le ch
 });
 
 test('chaque halakha a son hébreu, son français, son anglais, ses références et son rite', () => {
-  assert.equal(halakhot.length, 65);
+  assert.equal(halakhot.length, 83);
   assert.deepEqual(halakhot.map((h) => h.id), halakhot.map((_, i) => `chm-${String(i + 1).padStart(2, '0')}`));
   halakhot.forEach((h, i) => {
     for (const champ of ['t', 'fr', 'en']) assert.ok(h[champ]?.trim(), `${h.id} ${champ}`);
@@ -41,9 +41,10 @@ test('chaque halakha a son hébreu, son français, son anglais, ses références
     for (const t of [h.t, h.fr, h.en]) assert.ok(!/<(?!\/?(b|small)>|br>)/.test(t), h.id);
   });
   assert.deepEqual(new Set(halakhot.map((h) => h.rite)), new Set(['tous', 'sefarade', 'ashkenaze']));
-  // Les 31 du cahier de reprise (13 pour tous, 10 séfarades, 8 ashkénazes) et les 34 ajoutées le 26/11/2026 (12, 11, 11).
+  // Les 31 du cahier de reprise (13 pour tous, 10 séfarades, 8 ashkénazes) et les 52 ajoutées le 26/11/2026 :
+  // 34 d'après les sources classiques (12, 11, 11), 18 d'après les réponses d'aujourd'hui (11, 7, 0).
   const compte = (r) => halakhot.filter((h) => h.rite === r).length;
-  assert.deepEqual([compte('tous'), compte('sefarade'), compte('ashkenaze')], [25, 21, 19]);
+  assert.deepEqual([compte('tous'), compte('sefarade'), compte('ashkenaze')], [36, 28, 19]);
 });
 
 test('le rite se lit en tête de la halakha, dans les trois langues', () => {
@@ -68,7 +69,7 @@ test('la table de vérification suit le livre, citation par citation', () => {
     for (const r of l.references) {
       assert.ok(h.refs.includes(r.reference), `${h.id} ${r.reference}`);
       if (r.citation) assert.ok(h.t.includes(r.citation), `${h.id} ${r.citation.slice(0, 30)}`);
-      if (['hid', 'kav', 'malka', 'kikar'].includes(r.source)) {
+      if (['hid', 'kav', 'malka', 'kikar', 'hy', 'ryd'].includes(r.source)) {
         // Réponses d'aujourd'hui, protégées : résumées et référencées, une courte phrase citée au plus.
         assert.match(r.url, /^https:\/\//);
         assert.equal(r.nature, 'paraphrase avec référence (œuvre protégée)');
