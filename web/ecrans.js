@@ -60,6 +60,12 @@ SCREENS["halakhot"] = { title: "Halakhot", tpl: `
         <sc-for list="{{c.items}}" as="h" hint-placeholder-count="4">
           <article style="border-top: 1px solid var(--line); padding: 14px 0 8px; display: flex; flex-direction: column; gap: 6px">
             <p ref="{{h.fill}}" lang="{{h.lang}}" dir="{{h.dir}}" style="{{h.style}}"></p>
+            <sc-if value="{{h.hasPlus}}" hint-placeholder-val="{{false}}">
+              <button onClick="{{h.togglePlus}}" aria-expanded="{{h.ariaPlus}}" style="align-self: flex-start; min-height: 44px; padding: 0; border: none; background: none; color: var(--accent); font-family: inherit; font-size: 13px; font-weight: 600; text-align: start">{{h.plusLabel}}</button>
+            </sc-if>
+            <sc-if value="{{h.plusOpen}}" hint-placeholder-val="{{false}}">
+              <p ref="{{h.fillPlus}}" lang="{{h.lang}}" dir="{{h.dir}}" style="{{h.style}}"></p>
+            </sc-if>
             <sc-if value="{{h.hasSrc}}" hint-placeholder-val="{{true}}">
               <button onClick="{{h.toggle}}" aria-expanded="{{h.aria}}" style="align-self: flex-start; min-height: 44px; padding: 0; border: none; background: none; color: var(--accent); font-family: inherit; font-size: 13px; font-weight: 600">{{h.label}}</button>
             </sc-if>
@@ -87,9 +93,14 @@ class Component extends DCLogic {
     let n = 0;
     const chapters = !livre ? [] : livre.sections.map(sec => {
       const items = sec.blocs.filter(pour).map(h => { if (h.id) n++; const k = h.id || 'intro'; const isOpen = !!open[k];
+        /* Une suite repliée (h.plus) : son titre sert de bouton ; son hébreu ne rejoint les sources que si elle est ouverte. */
+        const kp = k + '+'; const plusOpen = !!h.plus && !!open[kp];
         return { hasSrc: L !== 'he' && !!h.id, open: L !== 'he' && isOpen, aria: String(isOpen), label: isOpen ? t.hide : t.src, lang: L, dir: L === 'he' ? 'rtl' : 'ltr', style,
-          fill: (el) => riche(el, L === 'he' ? h.t : h[L]), fillHe: (el) => riche(el, h.t),
-          toggle: () => this.setState({ open: Object.assign({}, open, { [k]: !isOpen }) }) }; });
+          fill: (el) => riche(el, L === 'he' ? h.t : h[L]), fillHe: (el) => riche(el, h.t + (plusOpen ? '<br>' + h.plus.t : '')),
+          toggle: () => this.setState({ open: Object.assign({}, open, { [k]: !isOpen }) }),
+          hasPlus: !!h.plus, plusOpen, ariaPlus: String(plusOpen), plusLabel: h.plus ? (plusOpen ? '− ' : '+ ') + h.plus.titre[L] : '',
+          fillPlus: (el) => riche(el, L === 'he' ? h.plus.t : h.plus[L]),
+          togglePlus: () => this.setState({ open: Object.assign({}, open, { [kp]: !plusOpen }) }) }; });
       return { title: L === 'he' ? sec.titre : sec['titre_' + L], heb: L === 'he' ? '' : sec.titre, items, any: items.length > 0 };
     }).filter(c => c.any);
     return { themeClass: 'th-' + mode, isParch: mode === 'parchemin', rootStyle: rootVars(mode), dir: (lang === 'he' || lang === 'tn' || lang === 'ma') ? 'rtl' : 'ltr', t,

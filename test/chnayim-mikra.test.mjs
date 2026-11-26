@@ -44,7 +44,26 @@ test('chaque halakha a son hébreu, son français, son anglais, ses références
   // Les 31 du cahier de reprise (13 pour tous, 10 séfarades, 8 ashkénazes) et les 52 ajoutées le 26/11/2026 :
   // 34 d'après les sources classiques (12, 11, 11), 18 d'après les réponses d'aujourd'hui (11, 7, 0).
   const compte = (r) => halakhot.filter((h) => h.rite === r).length;
-  assert.deepEqual([compte('tous'), compte('sefarade'), compte('ashkenaze')], [36, 28, 19]);
+  // Le rite suit le contenu de la halakha, non le rite de ses sources (décision du propriétaire, 26/11/2026) :
+  // trois halakhot aux sources séfarades, dont le contenu vaut pour tous, sont passées de « sefarade » à « tous ».
+  assert.deepEqual([compte('tous'), compte('sefarade'), compte('ashkenaze')], [39, 25, 19]);
+});
+
+test('une suite repliée a son titre et son texte dans les trois langues, et son hébreu', () => {
+  const avecSuite = halakhot.filter((h) => h.plus);
+  // La formule « Léchem yi'houd » du Kaf ha'Haïm : gardée pour tous, repliée (décision du propriétaire, 26/11/2026).
+  assert.deepEqual(avecSuite.map((h) => h.id), ['chm-04']);
+  for (const h of avecSuite) {
+    for (const langue of ['he', 'fr', 'en']) assert.ok(h.plus.titre[langue]?.trim(), `${h.id} titre ${langue}`);
+    for (const champ of ['t', 'fr', 'en']) {
+      assert.ok(h.plus[champ]?.trim(), `${h.id} plus.${champ}`);
+      assert.ok(!/<(?!\/?(b|small)>|br>)/.test(h.plus[champ]), h.id);
+    }
+    // Ce qui est replié n'est pas répété dans le texte principal.
+    assert.ok(!h.fr.includes('Léchem yi’houd') && !h.en.includes('Leshem yichud') && !h.t.includes('לשם יחוד'), h.id);
+    assert.ok(h.plus.fr.includes('Léchem yi’houd') && h.plus.en.includes('Leshem yichud') && h.plus.t.includes('לשם יחוד'), h.id);
+    assert.ok(table.halakhot.find((l) => l.id === h.id).references.some((r) => r.replie && h.plus.t.includes(r.citation)), h.id);
+  }
 });
 
 test('le rite se lit en tête de la halakha, dans les trois langues', () => {
@@ -68,7 +87,8 @@ test('la table de vérification suit le livre, citation par citation', () => {
     assert.equal(l.rite, h.rite);
     for (const r of l.references) {
       assert.ok(h.refs.includes(r.reference), `${h.id} ${r.reference}`);
-      if (r.citation) assert.ok(h.t.includes(r.citation), `${h.id} ${r.citation.slice(0, 30)}`);
+      // Une citation marquée « replie » est dans la suite repliée de la halakha, les autres dans son hébreu.
+      if (r.citation) assert.ok((r.replie ? h.plus.t : h.t).includes(r.citation), `${h.id} ${r.citation.slice(0, 30)}`);
       if (['hid', 'kav', 'malka', 'kikar', 'hy', 'ryd'].includes(r.source)) {
         // Réponses d'aujourd'hui, protégées : résumées et référencées, une courte phrase citée au plus.
         assert.match(r.url, /^https:\/\//);

@@ -50,7 +50,7 @@ Corrigé au passage dans le lecteur : une alya était comptée comme lue dès le
 
 Demande du propriétaire : enrichir le recueil (« il y en a beaucoup plus que 31 »), vérifier toutes les sources, exploiter la Michna Beroura, Hidabroot et « Halakha Beroura ». Le siman 285 a été repris paragraphe par paragraphe dans chaque ouvrage ; les réponses d'aujourd'hui ont été cherchées question par question.
 
-Le recueil a maintenant **83 halakhot** en 8 chapitres : 36 pour tous les rites, 28 séfarades, 19 ashkénazes. Le chapitre « Cas particuliers » est nouveau (parachiot jumelées, Yom Tov un Chabbat ou un vendredi, 'Hok leIsraël, endeuillé, 9 Av, voyageur…).
+Le recueil a maintenant **83 halakhot** en 8 chapitres : 39 pour tous les rites, 25 séfarades, 19 ashkénazes. Le chapitre « Cas particuliers » est nouveau (parachiot jumelées, Yom Tov un Chabbat ou un vendredi, 'Hok leIsraël, endeuillé, 9 Av, voyageur…).
 
 ### Ce que le recueil exploite
 
@@ -63,7 +63,7 @@ Le recueil a maintenant **83 halakhot** en 8 chapitres : 36 pour tous les rites,
 | Choul'han Aroukh haRav 285 | paragraphes 2 à 10 |
 | Aroukh haChoul'han | 285:1-5, 7, 9-13 ; 139:2 |
 | Autres classiques | Maguen Avraham, Taz, Baèr Hétev, Cha'arei Techouva, Eliya Rabba, 'Hayé Adam, Kitsour Choul'han Aroukh, Ben Ich 'Haï, le 'Hida (Moré beEtsba, Tsiporen Chamir), Séfer 'Hassidim, Rambam ; pour l'endeuillé, Yoré Déa 400 avec le Taz, le Chakh et Rabbi Akiva Eiger |
-| Hidabroot, « שאל את הרב » | 34 réponses (Rav Hillel Meirs, Rav Binyamin Chmouéli) |
+| Hidabroot, « שאל את הרב » | 34 réponses, attribuées au site |
 | Kav haHalakha haSefaradi | 7 réponses |
 | Beit hora'a « Halakha lema'assé » du Rav Ofir Malka | 4 réponses |
 | Rav Binyamin 'Hota | 2 réponses écrites |
@@ -84,11 +84,11 @@ Les 10 réponses déjà citées ont été relues à leur page, puis 24 réponses
 
 Le siman 285 est paru, au volume 17 (simanim 275 à 286, Makhon Ye'havé Daat ; trois libraires concordent). Son texte ne se lit pas librement en ligne : il est dans Otzar HaHochma, sur abonnement. **Rien n'est cité du livre.**
 
-À la place, le recueil reprend trois cours hebdomadaires du Rav David Yossef, lus dans leur traduction anglaise publiée par Halacha Yomit. Dans le cours n° 323, il dit lui-même ce qu'il a écrit dans le livre sur la fin du temps de lecture (halakha 20). Si le propriétaire a le volume 17, les halakhot du siman 285 pourront être ajoutées et contrôlées contre l'imprimé.
+À la place, le recueil reprend trois cours hebdomadaires du Rav David Yossef, lus dans leur traduction anglaise publiée par Halacha Yomit. Dans le cours n° 323, il dit lui-même ce qu'il a écrit dans le livre sur la fin du temps de lecture (halakha 20). Le propriétaire n'a pas le volume 17 : le recueil reste ainsi. Si le volume devient disponible, les halakhot du siman 285 pourront être ajoutées et contrôlées contre l'imprimé.
 
 ### Halacha Yomit
 
-Ce site (« d'après les décisions du Rav Ovadia Yossef ») n'a pas été nommé par le propriétaire. Il est repris parce qu'il publie des articles complets sur Chnayim mikra et les cours du Rav David Yossef. Les questions-réponses publiées sous les articles sont des rédacteurs du site : le recueil les attribue à « Halacha Yomit », jamais au Rav Ovadia Yossef. **À retirer si le propriétaire n'en veut pas** : 12 halakhot le citent ; une seule (22) ne repose que sur lui.
+Ce site (« d'après les décisions du Rav Ovadia Yossef ») n'avait pas été nommé par le propriétaire. Il est repris parce qu'il publie des articles complets sur Chnayim mikra et les cours du Rav David Yossef. Les questions-réponses publiées sous les articles sont des rédacteurs du site : le recueil les attribue à « Halacha Yomit », jamais au Rav Ovadia Yossef. **Le propriétaire a décidé de le garder** : 12 halakhot le citent ; une seule (22) ne repose que sur lui.
 
 ## Vérification des sources
 
@@ -145,22 +145,36 @@ Les corrections demandées ont été appliquées, chacune relue à la source ava
 
 Les rapports des relecteurs ne sont pas dans le dépôt. Les textes corrigés n'ont pas été relus une nouvelle fois par un relecteur : le script a relu leurs citations.
 
-### À faire confirmer par un rav ou par le propriétaire
+### Décisions du propriétaire (26/11/2026)
 
-1. **Halakha 2, rite « tous »** (les femmes sont dispensées) : les sources lues sont séfarades ; l'étiquette repose sur le renvoi de Hidabroot au Michné Halakhot 6:60, non lu.
-2. **Halakhot 26 et 40, rite « tous »** : elles rapportent des avis nommés de chaque rite plutôt qu'un accord.
-3. **Rite des halakhot tirées des seules réponses d'aujourd'hui.** Huit sont classées « tous » (21, 35, 36, 44, 45, 51, 80, 81) alors que leurs sources sont Hidabroot ou un beit hora'a séfarade. La règle n'est pas uniforme : la halakha 5, aux sources toutes séfarades, est « sefarade » ; les halakhot 7 et 36 sont « tous ». Les halakhot 78 et 79 sont « sefarade » parce que leur seule source est le Kaf ha'Haïm, bien que leur contenu vaille pour tous. La halakha 4, « tous », rapporte la formule « Léchem yi'houd », que seul le Kaf ha'Haïm donne. Aucun classement n'est faux ; le choix de la règle revient au propriétaire.
-4. **Halakha 52** : « סברא הראשונה » du Choul'han Aroukh haRav 285:8 est lu comme l'avis qui compte l'écoute pour une lecture.
-5. **Halakha 55** : l'abréviation « קשל"ה » est lue « Kitsour Chla » ; « והכי נקטינן » est attribué au Yafé laLev d'après le seul Kaf ha'Haïm.
-6. **Abréviations développées par le rédacteur**, à confirmer : « עו"ת » lu « 'Olat Tamid » (halakhot 42 et 58 ; pour les lois du Chabbat le même auteur a écrit « 'Olat Chabbat », et l'ouvrage n'a pas été lu) ; « ב"ד סי' קי"א » lu « Beit David, siman 111 », et « מ"ב » lu « Massat Binyamin » (31) ; « בה"י » lu « Beit Hillel » (76) ; « וש"ך » de l'Eliya Rabba 139:1 lu « Chiyouré Knesset haGuedola » (61) ; « זכ"ל » lu « Zekhor leAvraham » (77) ; « מס' האיטלייא » (71), non identifié, rendu par « une autre haftara ».
-7. **Coquilles probables de l'édition numérique du Kaf ha'Haïm**, affichées telles quelles : « כ"י כתבו » (285:14, sans doute « כי »), « פסוק אחר » (285:15, peut-être « אחד »), « תחינות » (285:39, sans doute « חתונות » ; halakha 72).
-8. **Avis opposés rapportés sans trancher** : lire toute la paracha puis tout le targoum (29) ; s'acquitter en écoutant un autre (56) ; quelle haftara lire quand la synagogue en lit une particulière (65 et 66) ; Yom Tov un vendredi (82). Le recueil dit qui tient quoi et ne décide pas.
-9. **Le titre « Rav »** des auteurs de Hidabroot : les pages sont signées « הלל מאירס » et « בנימין שמואלי », sans titre, sous la rubrique « שאל את הרב ».
-10. **Ouvrages cités de seconde main**, non lus : Ma'assé Rav, Maté Yehouda, Kol Bo, Séder haYom, Korban Chabbat, Birké Yossef, Ma'hazik Berakha, Yafé laLev, Knesset haGuedola et ses Chiyourim, Beit David, Massat Binyamin, Maharam Mintz, Roua'h 'Haïm, Binyan Olam, Michné Halakhot, 'Hazon Ovadia, Yabia Omer, Rav Pe'alim, Chivat Tsion.
-11. **Le Kitsour Yalkout Yossef** n'a été contrôlé que contre la copie Torat Emet, pas contre l'imprimé.
-12. **Les cours du Rav David Yossef** sont lus dans leur traduction anglaise, non dans l'hébreu d'origine.
-13. **Cinq halakhot sans texte hébreu** (20, 22, 45, 62, 63) : elles reposent sur des réponses résumées ; seuls le français et l'anglais portent le contenu, avec la référence en hébreu.
-14. **Halacha Yomit** : à garder ou à retirer (voir plus haut).
+Les points ouverts lui ont été posés un par un.
+
+| Point | Décision |
+|---|---|
+| Halacha Yomit, qu'il n'avait pas nommé | Le garder |
+| « Halakha Beroura », volume 17 | Il ne l'a pas : le recueil garde les cours du Rav David Yossef à la place |
+| Rite d'une halakha tirée seulement de sources séfarades | Le rite suit le contenu, non le rite des sources. Les halakhot 5, 78 et 79 passent de « séfarade » à « pour tous » |
+| Formule « Léchem yi'houd » du Kaf ha'Haïm (halakha 4) | La garder pour tous, repliée : elle s'ouvre par un bouton sous la halakha |
+| Titre des auteurs de Hidabroot, signés sans titre sur les pages | Écrire « Hidabroot », sans nommer l'auteur. Son nom reste dans la table de vérification |
+| Cinq halakhot sans citation en hébreu (20, 22, 45, 62, 63) | Les garder ainsi |
+| Abréviations du Kaf ha'Haïm développées sans avoir pu ouvrir l'ouvrage | Garder les noms développés |
+| Trois coquilles probables de l'édition numérique du Kaf ha'Haïm | Les laisser telles quelles |
+| « מס' האיטלייא » (Kaf ha'Haïm 285:37, halakha 71) | Se lit « בתפוצות איטלייא » : la haftara en usage dans les communautés d'Italie |
+| « סברא הראשונה » (Choul'han Aroukh haRav 285:8, halakha 52) | C'est bien le premier avis : l'écoute de l'officiant compte pour une lecture |
+| « קשל"ה » et « והכי נקטינן » (Kaf ha'Haïm 285:31, halakha 55) | Kitsour Chla ; « c'est ainsi que nous tenons » est du Yafé laLev |
+
+Après ces décisions, le script a relu de nouveau les 338 références : toutes les citations sont dans leurs sources.
+
+### Ce qui reste à montrer à un rav
+
+1. **Abréviations développées par le rédacteur** : « עו"ת » lu « 'Olat Tamid » (halakhot 42 et 58 ; pour les lois du Chabbat le même auteur a écrit « 'Olat Chabbat », et l'ouvrage n'a pas été lu) ; « ב"ד סי' קי"א » lu « Beit David, siman 111 », et « מ"ב » lu « Massat Binyamin » (31) ; « בה"י » lu « Beit Hillel » (76) ; « וש"ך » de l'Eliya Rabba 139:1 lu « Chiyouré Knesset haGuedola » (61) ; « זכ"ל » lu « Zekhor leAvraham » (77).
+2. **Coquilles probables de l'édition numérique du Kaf ha'Haïm**, affichées telles quelles : « כ"י כתבו » (285:14, sans doute « כי »), « פסוק אחר » (285:15, peut-être « אחד »), « תחינות » (285:39, sans doute « חתונות » ; halakha 72).
+3. **Avis opposés rapportés sans trancher** : lire toute la paracha puis tout le targoum (29) ; s'acquitter en écoutant un autre (56) ; quelle haftara lire quand la synagogue en lit une particulière (65 et 66) ; Yom Tov un vendredi (82). Le recueil dit qui tient quoi et ne décide pas.
+4. **Halakhot 2, 26 et 40, « pour tous »** : la 2 (les femmes sont dispensées) repose sur des sources séfarades et sur un renvoi de Hidabroot au Michné Halakhot 6:60, non lu ; les 26 et 40 rapportent des avis nommés de chaque rite plutôt qu'un accord.
+5. **Les halakhot restées « séfarade » d'après les seules réponses d'aujourd'hui** (20, 22, 62, 63, 75, 82) : elles rapportent des décisions ou des usages séfarades (le Rav Ovadia Yossef, le Rav David Yossef, les kabbalistes). La règle « selon le contenu » pourrait en faire passer certaines « pour tous ».
+6. **Ouvrages cités de seconde main**, non lus : Ma'assé Rav, Maté Yehouda, Kol Bo, Séder haYom, Korban Chabbat, Birké Yossef, Ma'hazik Berakha, Yafé laLev, Knesset haGuedola et ses Chiyourim, Beit David, Massat Binyamin, Maharam Mintz, Roua'h 'Haïm, Binyan Olam, Michné Halakhot, 'Hazon Ovadia, Yabia Omer, Rav Pe'alim, Chivat Tsion.
+7. **Le Kitsour Yalkout Yossef** n'a été contrôlé que contre la copie Torat Emet, pas contre l'imprimé.
+8. **Les cours du Rav David Yossef** sont lus dans leur traduction anglaise, non dans l'hébreu d'origine.
 
 ## Rav Binyamin 'Hota
 

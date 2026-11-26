@@ -182,7 +182,8 @@
   },
   "non_retenus": [
    "« Halakha Beroura » du Rav David Yossef (demande du propriétaire, 26/11/2026) : le siman 285 est paru au volume 17 (simanim 275-286, Makhon Ye'havé Daat ; trois libraires concordent), mais son texte ne se lit pas en ligne (Otzar HaHochma sur abonnement ; rien sur le site de l'éditeur ni sur HebrewBooks). Rien n'en est cité. Sont repris à la place : ses cours hebdomadaires (traduction anglaise publiée par Halacha Yomit), dont le n° 323 où il dit lui-même ce qu'il a écrit dans le livre sur la fin du temps de lecture ; et les articles de Halacha Yomit, d'après les décisions du Rav Ovadia Yossef. Le « Kitsour Choul'han Aroukh Halakha Beroura » (deux volumes, simanim 1-239) ne contient pas le siman 285.",
-   "Halacha Yomit n'est pas une source nommée par le propriétaire : ajoutée le 26/11/2026 pour approcher Halakha Beroura ; à retirer s'il ne la veut pas (références « hy »).",
+   "Halacha Yomit n'est pas une source que le propriétaire avait nommée : ajoutée le 26/11/2026 pour approcher Halakha Beroura ; le propriétaire a décidé le même jour de la garder (références « hy »).",
+   "Décisions du propriétaire (26/11/2026, point par point) : il n'a pas le volume 17 de Halakha Beroura ; le rite suit le contenu de la halakha et non le rite de ses sources (halakhot 5, 78 et 79 pour tous) ; la formule « Léchem yi'houd » du Kaf ha'Haïm reste pour tous, repliée sous la halakha 4 ; les réponses de Hidabroot sont attribuées au site, sans nommer leur auteur dans le texte (l'auteur reste dans cette table) ; les halakhot sans citation hébraïque restent ; les abréviations du Kaf ha'Haïm gardent leur nom développé ; les coquilles probables de l'édition numérique restent telles quelles ; « מס' האיטלייא » (Kaf ha'Haïm 285:37) se lit « בתפוצות איטלייא », dans les communautés d'Italie ; « סברא הראשונה » (Choul'han Aroukh haRav 285:8) est bien le premier avis ; « קשל\"ה » est le Kitsour Chla et « והכי נקטינן » est du Yafé laLev.",
    "Trois pages sans rav nommé, écartées : Hidabroot 174052 (voyageur d'Israël en diaspora quand les parachiot sont décalées), et deux pages de Kav haHalakha haSefaradi (« השבת בשבעה », l'endeuillé ; « האומר שמע שמע », le verset Chema lu deux fois). Le voyageur est traité d'après le Kaf ha'Haïm 496:62, l'endeuillé d'après le Choul'han Aroukh Y.D. 400.",
    "Sujets cherchés sans réponse écrite et signée dans les sources désignées : l'onen ; celui qui devient bar mitsva en cours d'année ; l'enregistrement audio ; lire pendant la répétition de l'officiant. Pour les enfants, seules deux mentions ont été trouvées (Rav Azoulay ; un garçon de treize ans sur Hidabroot).",
    "Rav Binyamin 'Hota : deux réponses de « הלכה ב-60 שניות » (Kikar haChabbat) dont la page donne le texte sont reprises (chapitre « Quand lire »). Les autres sont en vidéo ou en enregistrement seulement (Kikar haChabbat 2022-2023 et 13/02/2026, chaîne du kollel 'Hazon Ovadia, Kol haLachon, hm-news) : rien n'en est tiré, faute de texte à relire. Ses livres « כי בו שבת » ne sont pas en ligne.",
@@ -250,7 +251,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 262097",
-     "reference_he": "הידברות, ״האם גם נשים חייבות בשניים מקרא ואחד תרגום?״, הרב הלל מאירס, י׳ אדר ב׳ התשע״ט, hidabroot.org/question/262097",
+     "reference_he": "הידברות, ״שאל את הרב״, ״האם גם נשים חייבות בשניים מקרא ואחד תרגום?״, י׳ אדר ב׳ התשע״ט, hidabroot.org/question/262097",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/262097",
@@ -264,7 +265,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 253987",
-     "reference_he": "הידברות, ״האם חולה יכול לשמוע שניים מקרא ואחד תרגום מאשתו?״, הרב הלל מאירס, כ״ב תשרי התשע״ט, hidabroot.org/question/253987",
+     "reference_he": "הידברות, ״שאל את הרב״, ״האם חולה יכול לשמוע שניים מקרא ואחד תרגום מאשתו?״, כ״ב תשרי התשע״ט, hidabroot.org/question/253987",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/253987",
@@ -477,16 +478,19 @@
      "sefaria_version": "Kaf Hachayim, Orach Chayim vol. I-IV, Jerusalem 1910-1933",
      "lu_via": "https://www.sefaria.org/api/v3/texts/Kaf%20HaChayim%20on%20Shulchan%20Arukh%2C%20Orach%20Chayim%20285%3A4?version=hebrew%7CKaf%20Hachayim%2C%20Orach%20Chayim%20vol.%20I-IV%2C%20Jerusalem%201910-1933&return_format=text_only",
      "page": "https://www.sefaria.org/Kaf_HaChayim_on_Shulchan_Arukh%2C_Orach_Chayim_285%3A4?lang=he",
-     "citation": "וע\"כ קודם שיקרא הפ' שמו\"ת י\"ל לשם יחוד קבה\"ו וכו' הריני בא לקרות הפ' של השבוע שמו\"ת לתקן את שורשה במקום עליון. ויהי נועם וכו'"
+     "citation": "וע\"כ קודם שיקרא הפ' שמו\"ת י\"ל לשם יחוד קבה\"ו וכו' הריני בא לקרות הפ' של השבוע שמו\"ת לתקן את שורשה במקום עליון. ויהי נועם וכו'",
+     "replie": true
     }
    ]
   },
   {
    "id": "chm-05",
    "section": 1,
-   "rite": "sefarade",
+   "rite": "tous",
    "rites_app": [
-    "edot"
+    "edot",
+    "sefard",
+    "ashkenaz"
    ],
    "references": [
     {
@@ -662,7 +666,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 331141",
-     "reference_he": "הידברות, ״אם אני לא יכול לקרוא שניים מקרא ואחד תרגום האם יש משהו קצר יותר שאפשר לקרוא במקום?״, הרב בנימין שמואלי, ו׳ אייר התשפ״ד, hidabroot.org/question/331141",
+     "reference_he": "הידברות, ״שאל את הרב״, ״אם אני לא יכול לקרוא שניים מקרא ואחד תרגום האם יש משהו קצר יותר שאפשר לקרוא במקום?״, ו׳ אייר התשפ״ד, hidabroot.org/question/331141",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/331141",
@@ -759,7 +763,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 221007",
-     "reference_he": "הידברות, ״הלכה לגבי קריאת שניים מקרא ואחד תרגום״, הרב הלל מאירס, כ״ה טבת התשע״ז, hidabroot.org/question/221007",
+     "reference_he": "הידברות, ״שאל את הרב״, ״הלכה לגבי קריאת שניים מקרא ואחד תרגום״, כ״ה טבת התשע״ז, hidabroot.org/question/221007",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/221007",
@@ -773,7 +777,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 354260",
-     "reference_he": "הידברות, ״שניים מקרא״, הרב בנימין שמואלי, כ״ז אב התשפ״ה, hidabroot.org/question/354260",
+     "reference_he": "הידברות, ״שאל את הרב״, ״שניים מקרא״, כ״ז אב התשפ״ה, hidabroot.org/question/354260",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/354260",
@@ -900,7 +904,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 354076",
-     "reference_he": "הידברות, ״קריאת שניים מקרא ואחד תרגום״, הרב בנימין שמואלי, י״ד אב התשפ״ה, hidabroot.org/question/354076",
+     "reference_he": "הידברות, ״שאל את הרב״, ״קריאת שניים מקרא ואחד תרגום״, י״ד אב התשפ״ה, hidabroot.org/question/354076",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/354076",
@@ -998,7 +1002,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 301252",
-     "reference_he": "הידברות, ״לגבי שניים מקרא ואחד תרגום״, הרב בנימין שמואלי, י׳ אדר א׳ התשפ״ב, hidabroot.org/question/301252",
+     "reference_he": "הידברות, ״שאל את הרב״, ״לגבי שניים מקרא ואחד תרגום״, י׳ אדר א׳ התשפ״ב, hidabroot.org/question/301252",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/301252",
@@ -1205,7 +1209,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 303250",
-     "reference_he": "הידברות, ״פרשות השבוע, שניים מקרא ואחד תרגום״, הרב בנימין שמואלי, י׳ ניסן התשפ״ב, hidabroot.org/question/303250",
+     "reference_he": "הידברות, ״שאל את הרב״, ״פרשות השבוע, שניים מקרא ואחד תרגום״, י׳ ניסן התשפ״ב, hidabroot.org/question/303250",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/303250",
@@ -1550,7 +1554,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 298335",
-     "reference_he": "הידברות, ״האם מי שקרא שמו\"ת יכול לטבול לכבוד שבת לפני חצות היום?״, הרב הלל מאירס, ב׳ כסלו התשפ״ב, hidabroot.org/question/298335",
+     "reference_he": "הידברות, ״שאל את הרב״, ״האם מי שקרא שמו\"ת יכול לטבול לכבוד שבת לפני חצות היום?״, ב׳ כסלו התשפ״ב, hidabroot.org/question/298335",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/298335",
@@ -1612,7 +1616,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 286915",
-     "reference_he": "הידברות, ״ממתי אפשר לקרוא שניים מקרא ואחד תרגום?״, הרב הלל מאירס, י״ד כסלו התשפ״א, hidabroot.org/question/286915",
+     "reference_he": "הידברות, ״שאל את הרב״, ״ממתי אפשר לקרוא שניים מקרא ואחד תרגום?״, י״ד כסלו התשפ״א, hidabroot.org/question/286915",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/286915",
@@ -1626,7 +1630,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 235423",
-     "reference_he": "הידברות, ״שניים מקרא ואחד תרגום של פרשת בראשית״, הרב הלל מאירס, י״ג תשרי התשע״ח, hidabroot.org/question/235423",
+     "reference_he": "הידברות, ״שאל את הרב״, ״שניים מקרא ואחד תרגום של פרשת בראשית״, י״ג תשרי התשע״ח, hidabroot.org/question/235423",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/235423",
@@ -1687,7 +1691,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 203590",
-     "reference_he": "הידברות, ״שניי'ם מקרא ואחד תרגום״, הרב בנימין שמואלי, ג׳ ניסן התשע״ו, hidabroot.org/question/203590",
+     "reference_he": "הידברות, ״שאל את הרב״, ״שניי'ם מקרא ואחד תרגום״, ג׳ ניסן התשע״ו, hidabroot.org/question/203590",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/203590",
@@ -1846,7 +1850,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 299490",
-     "reference_he": "הידברות, ״איך לקרוא שניים מקרא אחד תרגום?״, הרב בנימין שמואלי, ט׳ טבת התשפ״ב, hidabroot.org/question/299490",
+     "reference_he": "הידברות, ״שאל את הרב״, ״איך לקרוא שניים מקרא אחד תרגום?״, ט׳ טבת התשפ״ב, hidabroot.org/question/299490",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/299490",
@@ -1984,7 +1988,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 354076",
-     "reference_he": "הידברות, ״קריאת שניים מקרא ואחד תרגום״, הרב בנימין שמואלי, י״ד אב התשפ״ה, hidabroot.org/question/354076",
+     "reference_he": "הידברות, ״שאל את הרב״, ״קריאת שניים מקרא ואחד תרגום״, י״ד אב התשפ״ה, hidabroot.org/question/354076",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/354076",
@@ -2239,7 +2243,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 255408",
-     "reference_he": "הידברות, ״סדר קריאת שניים מקרא ואחד תרגום״, הרב הלל מאירס, כ׳ חשון התשע״ט, hidabroot.org/question/255408",
+     "reference_he": "הידברות, ״שאל את הרב״, ״סדר קריאת שניים מקרא ואחד תרגום״, כ׳ חשון התשע״ט, hidabroot.org/question/255408",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/255408",
@@ -2252,7 +2256,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 27340",
-     "reference_he": "הידברות, ״מהו סדר קריאת שניים מקרא ואחד תרגום.?״, הרב בנימין שמואלי, כ״ה אדר א׳ התשע״ד, hidabroot.org/question/27340",
+     "reference_he": "הידברות, ״שאל את הרב״, ״מהו סדר קריאת שניים מקרא ואחד תרגום.?״, כ״ה אדר א׳ התשע״ד, hidabroot.org/question/27340",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/27340",
@@ -2553,7 +2557,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 259534",
-     "reference_he": "הידברות, ״אפשר לקרוא מקרא ואז תרגום ואז שוב מקרא?״, הרב הלל מאירס, כ״ה שבט התשע״ט, hidabroot.org/question/259534",
+     "reference_he": "הידברות, ״שאל את הרב״, ״אפשר לקרוא מקרא ואז תרגום ואז שוב מקרא?״, כ״ה שבט התשע״ט, hidabroot.org/question/259534",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/259534",
@@ -2579,7 +2583,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 15646",
-     "reference_he": "הידברות, ״האם מותר לי למחוק את שם ה-ו-י-ה, בתכנת וורד במחשב״, הרב בנימין שמואלי, כ״ה אדר א׳ התשע״ד, hidabroot.org/question/15646",
+     "reference_he": "הידברות, ״שאל את הרב״, ״האם מותר לי למחוק את שם ה-ו-י-ה, בתכנת וורד במחשב״, כ״ה אדר א׳ התשע״ד, hidabroot.org/question/15646",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/15646",
@@ -2592,7 +2596,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 274474",
-     "reference_he": "הידברות, ״קריאת שניים מקרא ואחד תרגום״, הרב בנימין שמואלי, ז׳ חשון התש״פ, hidabroot.org/question/274474",
+     "reference_he": "הידברות, ״שאל את הרב״, ״קריאת שניים מקרא ואחד תרגום״, ז׳ חשון התש״פ, hidabroot.org/question/274474",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/274474",
@@ -2655,7 +2659,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 299490",
-     "reference_he": "הידברות, ״איך לקרוא שניים מקרא אחד תרגום?״, הרב בנימין שמואלי, ט׳ טבת התשפ״ב, hidabroot.org/question/299490",
+     "reference_he": "הידברות, ״שאל את הרב״, ״איך לקרוא שניים מקרא אחד תרגום?״, ט׳ טבת התשפ״ב, hidabroot.org/question/299490",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/299490",
@@ -2681,7 +2685,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 262007",
-     "reference_he": "הידברות, ״הלכות שניים מקרא ואחד תרגום״, הרב הלל מאירס, ז׳ אדר ב׳ התשע״ט, hidabroot.org/question/262007",
+     "reference_he": "הידברות, ״שאל את הרב״, ״הלכות שניים מקרא ואחד תרגום״, ז׳ אדר ב׳ התשע״ט, hidabroot.org/question/262007",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/262007",
@@ -3084,7 +3088,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 290482",
-     "reference_he": "הידברות, ״איך לקרוא שניים מקרא ואחד תרגום?״, הרב הלל מאירס, ג׳ ניסן התשפ״א, hidabroot.org/question/290482",
+     "reference_he": "הידברות, ״שאל את הרב״, ״איך לקרוא שניים מקרא ואחד תרגום?״, ג׳ ניסן התשפ״א, hidabroot.org/question/290482",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/290482",
@@ -3097,7 +3101,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 356365",
-     "reference_he": "הידברות, ״שמו\"ת״, הרב בנימין שמואלי, כ״ב שבט התשפ״ו, hidabroot.org/question/356365",
+     "reference_he": "הידברות, ״שאל את הרב״, ״שמו\"ת״, כ״ב שבט התשפ״ו, hidabroot.org/question/356365",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/356365",
@@ -3110,7 +3114,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 233792",
-     "reference_he": "הידברות, ״האם אפשר לקרוא תרגום יונתן במקום תרגום אונקלוס?״, הרב הלל מאירס, ט״ו אלול התשע״ז, hidabroot.org/question/233792",
+     "reference_he": "הידברות, ״שאל את הרב״, ״האם אפשר לקרוא תרגום יונתן במקום תרגום אונקלוס?״, ט״ו אלול התשע״ז, hidabroot.org/question/233792",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/233792",
@@ -3136,7 +3140,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 170276",
-     "reference_he": "הידברות, ״שם ה' בקריאת שניים מקרא ואחד תרגום״, הרב בנימין שמואלי, י״ז חשון התשע״ו, hidabroot.org/question/170276",
+     "reference_he": "הידברות, ״שאל את הרב״, ״שם ה' בקריאת שניים מקרא ואחד תרגום״, י״ז חשון התשע״ו, hidabroot.org/question/170276",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/170276",
@@ -3195,7 +3199,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 15385",
-     "reference_he": "הידברות, ״שניים מקרא ואחד תרגום וטעמים״, הרב בנימין שמואלי, כ״ה אדר א׳ התשע״ד, hidabroot.org/question/15385",
+     "reference_he": "הידברות, ״שאל את הרב״, ״שניים מקרא ואחד תרגום וטעמים״, כ״ה אדר א׳ התשע״ד, hidabroot.org/question/15385",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/15385",
@@ -3421,7 +3425,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 260576",
-     "reference_he": "הידברות, ״שניים מקרא ואחד תרגום בלב״, הרב הלל מאירס, י״א אדר א׳ התשע״ט, hidabroot.org/question/260576",
+     "reference_he": "הידברות, ״שאל את הרב״, ״שניים מקרא ואחד תרגום בלב״, י״א אדר א׳ התשע״ט, hidabroot.org/question/260576",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/260576",
@@ -3434,7 +3438,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 31258",
-     "reference_he": "הידברות, ״שניים מקרא ואחד תרגום, מה הכוונה?״, הרב בנימין שמואלי, כ״ה אדר א׳ התשע״ד, hidabroot.org/question/31258",
+     "reference_he": "הידברות, ״שאל את הרב״, ״שניים מקרא ואחד תרגום, מה הכוונה?״, כ״ה אדר א׳ התשע״ד, hidabroot.org/question/31258",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/31258",
@@ -3460,7 +3464,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 241128",
-     "reference_he": "הידברות, ״האם יש איסור לקרוא שניים מקרא אחד תרגום מהמחשב או פלאפון?״, הרב בנימין שמואלי, ז׳ שבט התשע״ח, hidabroot.org/question/241128",
+     "reference_he": "הידברות, ״שאל את הרב״, ״האם יש איסור לקרוא שניים מקרא אחד תרגום מהמחשב או פלאפון?״, ז׳ שבט התשע״ח, hidabroot.org/question/241128",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/241128",
@@ -3520,7 +3524,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 262007",
-     "reference_he": "הידברות, ״הלכות שניים מקרא ואחד תרגום״, הרב הלל מאירס, ז׳ אדר ב׳ התשע״ט, hidabroot.org/question/262007",
+     "reference_he": "הידברות, ״שאל את הרב״, ״הלכות שניים מקרא ואחד תרגום״, ז׳ אדר ב׳ התשע״ט, hidabroot.org/question/262007",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/262007",
@@ -3712,7 +3716,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 217642",
-     "reference_he": "הידברות, ״שומע כעונה בשניים מקרא ואחד תרגום״, הרב הלל מאירס, ט״ו חשון התשע״ז, hidabroot.org/question/217642",
+     "reference_he": "הידברות, ״שאל את הרב״, ״שומע כעונה בשניים מקרא ואחד תרגום״, ט״ו חשון התשע״ז, hidabroot.org/question/217642",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/217642",
@@ -4207,7 +4211,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 234777",
-     "reference_he": "הידברות, ״האם מותר לקרוא שמות בחול המועד״, הרב בנימין שמואלי, ה׳ תשרי התשע״ח, hidabroot.org/question/234777",
+     "reference_he": "הידברות, ״שאל את הרב״, ״האם מותר לקרוא שמות בחול המועד״, ה׳ תשרי התשע״ח, hidabroot.org/question/234777",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/234777",
@@ -4782,7 +4786,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 234777",
-     "reference_he": "הידברות, ״האם מותר לקרוא שמות בחול המועד״, הרב בנימין שמואלי, ה׳ תשרי התשע״ח, hidabroot.org/question/234777",
+     "reference_he": "הידברות, ״שאל את הרב״, ״האם מותר לקרוא שמות בחול המועד״, ה׳ תשרי התשע״ח, hidabroot.org/question/234777",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/234777",
@@ -4985,7 +4989,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 307701",
-     "reference_he": "הידברות, ״שניים מקרא ואחד תרגום בתשעה באב״, הרב בנימין שמואלי, י״ב אלול התשפ״ב, hidabroot.org/question/307701",
+     "reference_he": "הידברות, ״שאל את הרב״, ״שניים מקרא ואחד תרגום בתשעה באב״, י״ב אלול התשפ״ב, hidabroot.org/question/307701",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/307701",
@@ -5000,9 +5004,11 @@
   {
    "id": "chm-78",
    "section": 8,
-   "rite": "sefarade",
+   "rite": "tous",
    "rites_app": [
-    "edot"
+    "edot",
+    "sefard",
+    "ashkenaz"
    ],
    "references": [
     {
@@ -5022,9 +5028,11 @@
   {
    "id": "chm-79",
    "section": 8,
-   "rite": "sefarade",
+   "rite": "tous",
    "rites_app": [
-    "edot"
+    "edot",
+    "sefard",
+    "ashkenaz"
    ],
    "references": [
     {
@@ -5054,7 +5062,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 226173",
-     "reference_he": "הידברות, ״שניים מקרא ואחד תרגום בפרשיות מחוברות״, הרב הלל מאירס, ד׳ אייר התשע״ז, hidabroot.org/question/226173",
+     "reference_he": "הידברות, ״שאל את הרב״, ״שניים מקרא ואחד תרגום בפרשיות מחוברות״, ד׳ אייר התשע״ז, hidabroot.org/question/226173",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/226173",
@@ -5079,7 +5087,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 111245",
-     "reference_he": "הידברות, ״שניים מקרא ואחד תרגום ביום טוב שחל בשבת״, הרב הלל מאירס, י״ב ניסן התשע״ה, hidabroot.org/question/111245",
+     "reference_he": "הידברות, ״שאל את הרב״, ״שניים מקרא ואחד תרגום ביום טוב שחל בשבת״, י״ב ניסן התשע״ה, hidabroot.org/question/111245",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/111245",
@@ -5093,7 +5101,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 356863",
-     "reference_he": "הידברות, ״שמו\"ת״, הרב בנימין שמואלי, ח׳ ניסן התשפ״ו, hidabroot.org/question/356863",
+     "reference_he": "הידברות, ״שאל את הרב״, ״שמו\"ת״, ח׳ ניסן התשפ״ו, hidabroot.org/question/356863",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/356863",
@@ -5129,7 +5137,7 @@
     {
      "source": "hid",
      "reference": "Hidabroot, question 324169",
-     "reference_he": "הידברות, ״האם מותר לקרוא שניים מקרא ואחד תרגום כשביום שישי חל חג?״, הרב בנימין שמואלי, ה׳ סיון התשפ״ג, hidabroot.org/question/324169",
+     "reference_he": "הידברות, ״שאל את הרב״, ״האם מותר לקרוא שניים מקרא ואחד תרגום כשביום שישי חל חג?״, ה׳ סיון התשפ״ג, hidabroot.org/question/324169",
      "edition": "hidabroot.org",
      "licence": "Tous droits réservés : résumé et référence, au plus une courte phrase citée",
      "url": "https://www.hidabroot.org/question/324169",
