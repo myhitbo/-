@@ -16,6 +16,8 @@ npm test                         # 40 tests, sans réseau
 node tools/construit_donnees.js  # écrit web/data/ ; puis ouvrir web/index.html
 ```
 
+Dans une session Claude Code cloud, `.claude/hooks/session-start.sh` fait l'installation et écrit `web/data/` au démarrage ; il saute ce qui est déjà fait.
+
 L'APK de test est compilé par GitHub Actions à chaque fusion dans `main` et publié dans les Releases.
 
 ## Documents
