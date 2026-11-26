@@ -33,7 +33,14 @@ Cinq chaînes sont prévues. Elles peuvent s'ouvrir l'une après l'autre : les m
 
 ### Qui publie
 - Une seule personne peut publier dans toutes les chaînes : la page de publication montre les messages de toutes les chaînes, l'un sous l'autre.
-- Ou une personne par langue : le propriétaire d'une chaîne peut inviter d'autres administrateurs (dans les informations de la chaîne ; une quinzaine au maximum). Chacun n'affiche alors que ses chaînes sur la page de publication.
+- Ou une personne par langue : le propriétaire d'une chaîne peut inviter jusqu'à 16 personnes à devenir admins (dans la chaîne, toucher son nom, puis « Inviter des admins » ; l'invitation est valable sept jours). Chacun n'affiche alors que ses chaînes sur la page de publication.
+
+À savoir sur les admins (règles de WhatsApp) :
+- Un admin publie, modifie et supprime les messages sans validation du propriétaire. Un message envoyé peut être corrigé ou supprimé pendant 30 jours : utile en cas d'erreur de chaîne.
+- Seul le propriétaire invite ou retire des admins, supprime la chaîne ou la transmet à quelqu'un d'autre. Mieux vaut donc que le propriétaire de chaque chaîne soit un compte de l'association, pas le téléphone personnel d'un bénévole.
+- Les abonnés ne voient jamais le numéro des admins. Les admins d'une même chaîne, eux, voient le numéro et le nom les uns des autres.
+- WhatsApp recommande à tous les admins d'activer la vérification en deux étapes sur leur compte.
+- Toutes les chaînes sont publiques : on ne peut pas en réserver l'accès par un code.
 
 ## Ce que chaque chaîne publie
 
@@ -62,7 +69,7 @@ Une seule fois :
 2. **Garder cette page sous la main** : l'ouvrir sur le téléphone de chaque personne qui publie, puis « Ajouter à l'écran d'accueil ».
 
 Pour chaque chaîne :
-1. **Créer la chaîne** : dans WhatsApp, onglet Actus → Chaînes → « + » → Créer une chaîne. Nom : voir le tableau ci-dessus. Image : `docs/icone-google-play-512.png`.
+1. **Créer la chaîne** : dans WhatsApp, onglet Actus, puis le bouton « + » à côté de « Chaînes » (ou le menu ⋮, selon le téléphone) → Créer une chaîne → Continuer. Nom : voir le tableau ci-dessus. Image : `docs/icone-google-play-512.png`.
 2. **Donner l'adresse de la chaîne** (dans la chaîne, toucher son nom, puis « Copier le lien »). Elle s'écrit à un seul endroit, `web/config.js` (`channelUrl`, une ligne par chaîne). Deux boutons apparaissent alors :
    - sur la page de publication, « Ouvrir la chaîne » sous chaque message de cette chaîne ;
    - dans les Réglages de l'app, « Rejoindre la chaîne » pour les utilisateurs de cette langue. Les chaînes des autres langues sont proposées juste en dessous (« Dans une autre langue »). Tant qu'aucune chaîne n'a d'adresse, l'app n'affiche rien.
@@ -103,4 +110,7 @@ L'association fournit les textes. Ils sont rangés dans `chaine/dvar-torah/`, **
 - [Tarifs de la plateforme WhatsApp Business (Meta)](https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing)
 - [Tarification des messages hors modèle, à partir du 1er octobre 2026 (Meta)](https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing/non-template-messages/)
 - [Limites de l'API des bots Telegram](https://core.telegram.org/bots/faq)
-- [Plusieurs administrateurs par chaîne WhatsApp (TechCrunch, 17 janvier 2024)](https://techcrunch.com/2024/01/17/whatsapp-launches-voice-updates-and-polls-for-channels)
+- [Comment créer une chaîne WhatsApp (Pages d'aide WhatsApp)](https://faq.whatsapp.com/794229125227200/?cms_platform=android&locale=fr_FR)
+- [À propos de la gestion des chaînes par les admins (Pages d'aide WhatsApp)](https://faq.whatsapp.com/360977646301595/?locale=fr_FR)
+- [Sécurité et confidentialité des admins de chaîne (Pages d'aide WhatsApp)](https://faq.whatsapp.com/671443411431514)
+- [Inviter et retirer des admins de chaîne (Pages d'aide WhatsApp)](https://faq.whatsapp.com/1142317320080231/?cms_platform=web&locale=es_LA)
