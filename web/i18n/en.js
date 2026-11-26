@@ -27,6 +27,8 @@ window.SM_I18N.en = {
   streak: 'Streak', weeks: 'weeks', thisYear: 'This year', finishedPl: 'completed',
   nextParashiyot: 'Coming parashiyot', readAhead: 'Read ahead', shabbatDate: 'Shabbat, {date}',
   toast: 'Yasher koach! {name} is read',
+  beforeST: 'Before Simchat Torah', goalBeforeST: 'Goal: finish before Simchat Torah', goalSTLast: 'Simchat Torah: last chance to finish',
+  stStarts: 'Simchat Torah begins on the evening of {date}, at {time} · {city}', stIn: 'Simchat Torah in {dur}', stNow: 'Simchat Torah', stDate: 'Simchat Torah, {date}',
   goalBefore: 'Goal: finish before Shabbat', goalShabbat: 'Still possible this Shabbat, before the midday meal',
   candleFri: 'Candle lighting Friday at {time} · {city} (sunset − {min} min)', candle: 'Candle lighting at {time} · {city} (sunset − {min} min)',
   candleNoData: 'Candle lighting for your city (texts are downloading)',

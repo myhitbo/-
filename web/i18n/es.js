@@ -27,6 +27,8 @@ window.SM_I18N.es = {
   streak: 'Racha', weeks: 'semanas', thisYear: 'Este año', finishedPl: 'completadas',
   nextParashiyot: 'Próximas parashiot', readAhead: 'Leer por adelantado', shabbatDate: 'Shabat {date}',
   toast: '¡Yasher kóaj! {name} está leída',
+  beforeST: 'Antes de Simjat Torá', goalBeforeST: 'Meta: terminar antes de Simjat Torá', goalSTLast: 'Simjat Torá: último momento para terminar',
+  stStarts: 'Simjat Torá comienza la noche del {date}, a las {time} · {city}', stIn: 'Simjat Torá en {dur}', stNow: 'Simjat Torá', stDate: 'Simjat Torá, {date}',
   goalBefore: 'Meta: terminar antes de Shabat', goalShabbat: 'Todavía es posible este Shabat, antes del almuerzo',
   candleFri: 'Encendido de velas el viernes a las {time} · {city} (puesta del sol − {min} min)', candle: 'Encendido de velas a las {time} · {city} (puesta del sol − {min} min)',
   candleNoData: 'Encendido de velas según tu ciudad (los textos se están descargando)',

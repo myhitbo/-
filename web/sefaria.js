@@ -78,19 +78,8 @@
     const [, c1, v1, c2, v2] = m; return (!c2 || c2 === c1) ? c1 + ':' + v1 + ' – ' + v2 : c1 + ':' + v1 + ' – ' + c2 + ':' + v2;
   }
   function iso(d) { return d.getUTCFullYear() + '-' + String(d.getUTCMonth() + 1).padStart(2, '0') + '-' + String(d.getUTCDate()).padStart(2, '0'); }
-  /* day : Date (UTC, minuit). diaspora : true/false */
-  async function week(day, diaspora, log) {
-    const cal = await get('/calendars', { diaspora: diaspora ? 1 : 0, year: day.getUTCFullYear(), month: day.getUTCMonth() + 1, day: day.getUTCDate() });
-    const item = cal.calendar_items.find(i => i.title.en === 'Parashat Hashavua');
-    const sh = new Date(day.getTime() + ((6 - day.getUTCDay() + 7) % 7) * 864e5);
-    const base = { shabbatISO: iso(sh), shabbat: sh.getUTCDate() + ' ' + MOIS[sh.getUTCMonth()] };
-    const en = item.displayValue.en, he = item.displayValue.he, ref = item.ref;
-    const parts = EN.indexOf(en) >= 0 ? [en] : en.split('-').map(p => p.trim());
-    if (EN.indexOf(parts[0]) < 0) return Object.assign(base, { holiday: true, parasha: en, parashaEn: en, parashaHe: he });
-    const fr = parts.map(p => EN.indexOf(p) >= 0 ? FR[EN.indexOf(p)] : p).join(' – ');
-    const book = ref.split(' ')[0];
-    const arefs = ((item.extraDetails || {}).aliyot || []).slice(0, 7);
-    if (arefs.length < 7) throw new Error('alyot manquantes pour ' + en);
+  /* Les 7 alyot d'une suite de références : texte hébreu, Onkelos, versets sans Targoum ; et les éditions reçues */
+  async function buildAlyot(arefs, log) {
     const alyot = [], src = {};
     for (let i = 0; i < 7; i++) {
       const aref = arefs[i]; const bk = aref.split(' ')[0];
@@ -106,6 +95,43 @@
       alyot.push({ name: ALYA[i][0], heb: ALYA[i][1], day: DAYS[i], verses: span(aref), min: Math.max(3, Math.round(vs.length * 0.4)), ref: aref, v: vs });
       log && log('  ' + ALYA[i][0] + ': ' + aref + ' — ' + vs.length + ' versets, Onkelos ' + Object.keys(onk).length + ', sans Targoum ' + vs.filter(x => x.nt).length);
     }
+    return { alyot, src };
+  }
+  /* ---------- Vezot Haberakha ----------
+     La dernière paracha se lit à Sim'hat Torah (22 Tichri en Israël, 23 en diaspora) et non un Shabbat : le calendrier de
+     Sefaria ne la donne donc jamais comme paracha de la semaine. On en fait une « semaine » à part (special: 'st'),
+     dont l'échéance est le jour de Sim'hat Torah ; ses alyot viennent de l'index du livre. */
+  let hebCal; try { hebCal = new Intl.DateTimeFormat('en-u-ca-hebrew', { day: 'numeric', month: 'long', timeZone: 'UTC' }); } catch (e) {}
+  function simhatTorahIn(from, days, diaspora) {
+    if (!hebCal) return ''; const want = diaspora ? 23 : 22;
+    for (let k = 0; k < days; k++) { const d = new Date(from.getTime() + k * 864e5); const p = {}; hebCal.formatToParts(d).forEach(x => p[x.type] = x.value);
+      if (p.month === 'Tishri' && +p.day === want) return iso(d); }
+    return '';
+  }
+  async function vezot(stISO, log) {
+    const idx = await get('/v2/raw/index/Deuteronomy');
+    const node = ((((idx.alt_structs || {}).Parasha || {}).nodes) || []).find(n => n.sharedTitle === EN[53]);
+    const arefs = ((node && node.refs) || []).map(r => r.replace(/\u2013/g, '-')).slice(0, 7);
+    if (arefs.length < 7) throw new Error('alyot manquantes pour ' + EN[53]);
+    const built = await buildAlyot(arefs, log), d = new Date(stISO + 'T00:00:00Z');
+    return { shabbatISO: stISO, shabbat: d.getUTCDate() + ' ' + MOIS[d.getUTCMonth()], special: 'st', parasha: FR[53], parashaEn: EN[53], parashaHe: 'וזאת הברכה',
+      parashaRef: BOOKS.Deuteronomy + ' 33:1 – 34:12', parashaIndex: 53, alyot: built.alyot, src: built.src };
+  }
+
+  /* day : Date (UTC, minuit). diaspora : true/false */
+  async function week(day, diaspora, log) {
+    const cal = await get('/calendars', { diaspora: diaspora ? 1 : 0, year: day.getUTCFullYear(), month: day.getUTCMonth() + 1, day: day.getUTCDate() });
+    const item = cal.calendar_items.find(i => i.title.en === 'Parashat Hashavua');
+    const sh = new Date(day.getTime() + ((6 - day.getUTCDay() + 7) % 7) * 864e5);
+    const base = { shabbatISO: iso(sh), shabbat: sh.getUTCDate() + ' ' + MOIS[sh.getUTCMonth()] };
+    const en = item.displayValue.en, he = item.displayValue.he, ref = item.ref;
+    const parts = EN.indexOf(en) >= 0 ? [en] : en.split('-').map(p => p.trim());
+    if (EN.indexOf(parts[0]) < 0) return Object.assign(base, { holiday: true, parasha: en, parashaEn: en, parashaHe: he });
+    const fr = parts.map(p => EN.indexOf(p) >= 0 ? FR[EN.indexOf(p)] : p).join(' – ');
+    const book = ref.split(' ')[0];
+    const arefs = ((item.extraDetails || {}).aliyot || []).slice(0, 7);
+    if (arefs.length < 7) throw new Error('alyot manquantes pour ' + en);
+    const built = await buildAlyot(arefs, log), alyot = built.alyot, src = built.src;
     return Object.assign(base, { parasha: fr, parashaEn: en, parashaHe: he, parashaRef: (BOOKS[book] || book) + ' ' + span(ref), parashaIndex: EN.indexOf(parts[0]), alyot, src });
   }
   /* Semaines à partir de `from` (Date), `count` semaines, dédoublonnées par Shabbat */
@@ -117,6 +143,12 @@
         log && log('Semaine ' + w.shabbatISO + ' : ' + w.parasha + (w.holiday ? ' (fête)' : ''));
       } catch (e) { log && log('Semaine ' + k + ' ignorée : ' + e.message); }
     }
+    /* Vezot Haberakha, si Sim'hat Torah tombe dans la période demandée (elle remplace alors le Shabbat de fête du même jour) */
+    try {
+      const st = simhatTorahIn(from, 7 * count + 7, diaspora);
+      if (st) { const w = await vezot(st, log); const i = out.findIndex(x => x.shabbatISO === st); if (i >= 0) out.splice(i, 1);
+        out.push(w); out.sort((a, b) => a.shabbatISO < b.shabbatISO ? -1 : 1); log && log('Sim\'hat Torah ' + st + ' : ' + w.parasha); }
+    } catch (e) { log && log('Vezot Haberakha ignorée : ' + e.message); }
     return out;
   }
   const API_OBJ = { weeks, week, noTargum, skel, EN, FR };

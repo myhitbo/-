@@ -165,7 +165,8 @@ class Component extends DCLogic {
       style: 'height: ' + ROWH + 'px; border: none; background: none; padding: 0 4px 0 0; display: flex; align-items: center; justify-content: flex-end; text-align: right; font-family: Inter, sans-serif; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; ' +
         (a.i === s.sel ? 'color: var(--text); font-weight: 800; font-size: 12px;' : a.i < s.done ? 'color: var(--accent); font-weight: 600;' : 'color: var(--soft); font-weight: 500;') }));
     const ticks = []; for (let k = 0; k <= 28; k++) { const y = k * (H / 28); ticks.push({ y: y.toFixed(1), x1: k % 4 === 2 ? 4 : 9 }); }
-    const a = { ...ALYOT[s.sel], name: SM_ALYA(s.sel), day: s.sel === 6 ? SM_TR().shabbat : SM_WEEKDAY(s.sel) };
+    const special = !!(window.SM_PLAN && SM_PLAN().special);
+    const a = { ...ALYOT[s.sel], name: SM_ALYA(s.sel), day: special ? SM_TR().beforeST : s.sel === 6 ? SM_TR().shabbat : SM_WEEKDAY(s.sel) };
     a.day = a.day.charAt(0).toUpperCase() + a.day.slice(1); a.heb = SM_HEB(a.name, a.heb);
     /* Prochaine séance selon le rythme choisi : une alya, plusieurs, ou toute la paracha */
     const t = SM_TR(), F = SM_FMT, plan = window.SM_PLAN ? SM_PLAN() : { rh: 0, from: Math.min(s.done, 6), to: Math.min(s.done, 6), today: new Date().getDay() };

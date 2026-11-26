@@ -12,7 +12,8 @@ const log = (m) => console.error(m);
     const r = await fetch('https://www.sefaria.org/api/calendars', { headers: { Origin: 'null' } });
     log('CORS Sefaria (access-control-allow-origin) : ' + r.headers.get('access-control-allow-origin'));
   } catch (e) { log('Vérification CORS impossible : ' + e.message); }
-  const now = new Date(); const from = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() - 7));
+  const now = process.env.SM_FROM ? new Date(process.env.SM_FROM + 'T00:00:00Z') : new Date();   /* SM_FROM=AAAA-MM-JJ : pour essayer une autre période */
+  const from = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() - 7));
   const data = { source: 'Sefaria (sefaria.org)', builtAt: now.toISOString() };
   for (const [key, dia] of [['diaspora', true], ['israel', false]]) {
     log('=== ' + key);

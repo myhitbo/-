@@ -23,6 +23,8 @@ window.SM_I18N.he = {
   streak: 'רצף', weeks: 'שבועות', thisYear: 'השנה', finishedPl: 'הושלמו',
   nextParashiyot: 'הפרשיות הבאות', readAhead: 'לקרוא מראש', shabbatDate: 'שבת {date}',
   toast: 'יישר כוח! {name} נקראה',
+  beforeST: 'לפני שמחת תורה', goalBeforeST: 'היעד: לסיים לפני שמחת תורה', goalSTLast: 'שמחת תורה: הזדמנות אחרונה לסיים',
+  stStarts: 'שמחת תורה נכנסת בערב {date}, ב־{time} · {city}', stIn: 'שמחת תורה בעוד {dur}', stNow: 'שמחת תורה', stDate: 'שמחת תורה, {date}',
   goalBefore: 'היעד: לסיים לפני שבת', goalShabbat: 'עדיין אפשר בשבת, לפני סעודת היום',
   candleFri: 'הדלקת נרות ביום שישי ב־{time} · {city} (שקיעה − {min} דק׳)', candle: 'הדלקת נרות ב־{time} · {city} (שקיעה − {min} דק׳)',
   candleNoData: 'הדלקת נרות לפי העיר שלך (הטקסטים בהורדה)',

@@ -26,6 +26,8 @@
       streak: 'Série', weeks: 'semaines', thisYear: 'Cette année', finishedPl: 'terminées',
       nextParashiyot: 'Prochaines parachiyot', readAhead: 'Lire en avance', shabbatDate: 'Shabbat {date}',
       toast: 'Yasher koah ! {name} est lue',
+      beforeST: 'Avant Sim\'hat Torah', goalBeforeST: 'Objectif : finir avant Sim\'hat Torah', goalSTLast: 'Sim\'hat Torah : dernier moment pour terminer',
+      stStarts: 'Sim\'hat Torah commence {date} au soir, à {time} · {city}', stIn: 'Sim\'hat Torah dans {dur}', stNow: 'Sim\'hat Torah', stDate: 'Sim\'hat Torah, {date}',
       goalBefore: 'Objectif : finir avant Chabbat', goalShabbat: 'Encore possible ce Chabbat, avant le repas de midi',
       candleFri: 'Allumage vendredi à {time} · {city} (coucher du soleil − {min} min)', candle: 'Allumage à {time} · {city} (coucher du soleil − {min} min)',
       candleNoData: 'Allumage selon ta ville (textes en cours de téléchargement)',

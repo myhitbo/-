@@ -58,6 +58,11 @@
 - Le tounsi est un brouillon à faire relire (`docs/traductions-a-relire.csv`).
 - Les textes sont dans `web/i18n.js` (français) et `web/i18n/<langue>.js`.
 
+### Vezot Haberakha
+- La dernière paracha se lit à Sim'hat Torah et non un Shabbat : le calendrier de Sefaria ne la donne jamais comme paracha de la semaine. L'app en fait une période à part, entre le Shabbat de Haazinou et Sim'hat Torah (22 Tichri en Israël, 23 en diaspora).
+- Accueil : « Objectif : finir avant Sim'hat Torah », compte à rebours jusqu'à la veille au soir ; pas de jour fixé par alya, pas de retard, pas d'heure d'allumage de Shabbat. Rappels : un par jour avec la prochaine alya, jamais un Shabbat ni un jour de fête.
+- L'année de lecture change le lendemain de Sim'hat Torah : ce jour-là, Vezot Haberakha compte encore pour l'année qui finit, et l'Année peut atteindre 54 sur 54.
+
 ### Écran Année : la vraie progression
 - Une paracha est « terminée » quand ses 7 alyot sont lues depuis le dernier Sim'hat Torah ; l'année hébraïque affichée est celle de ce cycle.
 - Les semaines passées non terminées sont marquées « à compléter », avec le nombre d'alyot lues.

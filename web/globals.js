@@ -182,13 +182,14 @@
   /* Prochaine séance de la semaine en cours, et nombre d'alyot en retard sur le rythme choisi */
   window.SM_PLAN = function () {
     const s = state(), n = progN(s.cur), rh = get('rh') || 0, d = dayInWeek(s), cur = sessionAt(n);
-    const due = rh === 3 ? 0 : sessions().filter(x => x.day < d).reduce((a, x) => Math.max(a, x.to + 1), 0);
-    return { rh, from: Math.min(6, n), to: cur.to, day: cur.day, today: d, late: n >= 7 ? 0 : Math.max(0, due - n), done: n >= 7, min: rangeMin(s.cur, Math.min(6, n), cur.to), names: [0, 1, 2, 3, 4, 5, 6].map(AN) };
+    const special = !!(s.cur && s.cur.special);   /* Vezot Haberakha : l'échéance est Sim'hat Torah, pas de jour fixé par alya */
+    const due = (rh === 3 || special) ? 0 : sessions().filter(x => x.day < d).reduce((a, x) => Math.max(a, x.to + 1), 0);
+    return { rh, special, from: Math.min(6, n), to: cur.to, day: cur.day, today: special ? -1 : d, late: n >= 7 ? 0 : Math.max(0, due - n), done: n >= 7, min: rangeMin(s.cur, Math.min(6, n), cur.to), names: [0, 1, 2, 3, 4, 5, 6].map(AN) };
   };
 
   /* Année en cours (depuis le dernier Sim'hat Torah) : parachiyot vraiment terminées, commencées, et celle(s) de la semaine */
   window.SM_YEAR = function () {
-    const s = state(), stPrev = simhatTorah(localISO(s.t, s.c.tz), -1, isIL());
+    const s = state(), stPrev = simhatTorah(addDays(localISO(s.t, s.c.tz), -1), -1, isIL());
     let year = ''; try { if (hebY && stPrev) year = hebY.formatToParts(new Date(stPrev + 'T12:00:00Z')).find(x => x.type === 'year').value; } catch (e) {}
     const p = progAll(), done = {}, part = {};
     Object.keys(p).forEach(iso => { if (stPrev && iso <= stPrev) return;
@@ -211,22 +212,30 @@
     if (s.cur) {
       const cl = candle(s.cur.shabbatISO, c), left = cl - s.t, n = progN(s.cur);
       out.candle = hhmm(cl, c.tz);
-      out.candleLine = F(left > 0 ? T.candleFri : T.candle, { time: out.candle, city: window.SM_CITY_NAME(c), min: c.off });
-      out.countdown = left > 0 ? F(T.shabbatIn, { dur: inDur(left) }) : T.shabbatShalom;
-      out.goal = n >= 7 ? T.doneAll : left > 0 ? T.goalBefore : T.goalShabbat;
-      out.friday = left > 0 && left < 30 * 3600e3 && dow(todayIso) === 5 && n < 7;
+      if (s.cur.special) {   /* Vezot Haberakha : à finir avant Sim'hat Torah, qui commence la veille au soir */
+        const eve = addDays(s.cur.shabbatISO, -1), start = sunset(eve, c), l2 = start - s.t;
+        out.candleLine = F(T.stStarts, { date: dayLabel(eve), time: hhmm(start, c.tz), city: window.SM_CITY_NAME(c) });
+        out.countdown = l2 > 0 ? F(T.stIn, { dur: inDur(l2) }) : T.stNow;
+        out.goal = n >= 7 ? T.doneAll : l2 > 0 ? T.goalBeforeST : T.goalSTLast;
+        out.friday = false;
+      } else {
+        out.candleLine = F(left > 0 ? T.candleFri : T.candle, { time: out.candle, city: window.SM_CITY_NAME(c), min: c.off });
+        out.countdown = left > 0 ? F(T.shabbatIn, { dur: inDur(left) }) : T.shabbatShalom;
+        out.goal = n >= 7 ? T.doneAll : left > 0 ? T.goalBefore : T.goalShabbat;
+        out.friday = left > 0 && left < 30 * 3600e3 && dow(todayIso) === 5 && n < 7;
+      }
     } else { out.candleLine = T.candleNoData; out.countdown = ''; out.goal = ''; out.friday = false; }
     /* Rattrapage de la semaine passée : jusqu'à mardi soir */
     out.prev = null;
     const P = s.W[s.ci - 1];
-    if (P && progN(P) < 7 && progAll()[P.shabbatISO]) {
+    if (P && !P.special && progN(P) < 7 && progAll()[P.shabbatISO]) {
       const end = tuesdayEnd(P.shabbatISO, c);
       if (s.t < end && s.t > shabbatEnd(P.shabbatISO, c)) { const n = progN(P);
         out.prev = { name: pn(P), n, left: 7 - n, title: F(T.prevUntil, { time: hhmm(end, c.tz) }), line: F(T.prevLine, { n, left: 7 - n }), href: 'V2-Lecteur.dc.html?par=' + P.shabbatISO + '&alya=' + Math.min(6, n), canRead: !!P.alyot }; }
     }
     out.hasPrev = !!out.prev;
     /* Carnet : semaines non terminées, à compléter avant Sim'hat Torah */
-    const st = simhatTorah(todayIso, 1, isIL()), stPrev = simhatTorah(todayIso, -1, isIL());
+    const st = simhatTorah(todayIso, 1, isIL()), stPrev = simhatTorah(addDays(todayIso, -1), -1, isIL());
     const p = progAll(); const avail = {}; weeks().forEach(x => avail[x.shabbatISO] = x);
     out.carnet = Object.keys(p).sort().filter(iso => p[iso].n < 7 && (!s.cur || iso < s.cur.shabbatISO) && (!out.prev || iso !== P.shabbatISO) && (!stPrev || iso > stPrev))
       .map(iso => ({ name: pn(p[iso]), n: p[iso].n, label: F(T.nOf7, { n: p[iso].n }), href: avail[iso] && avail[iso].alyot ? 'V2-Lecteur.dc.html?par=' + iso + '&alya=' + Math.min(6, p[iso].n) : '', canRead: !!(avail[iso] && avail[iso].alyot) }));
@@ -302,7 +311,7 @@
       const n = progN(w); if (n >= 7) continue;
       const d = Math.round((Date.parse(D + 'T12:00:00Z') - Date.parse(addDays(w.shabbatISO, -6) + 'T12:00:00Z')) / 864e5);
       let to, late = 0;
-      if (rh === 3) to = Math.min(6, n);
+      if (rh === 3 || w.special) to = Math.min(6, n);
       else { const due = ss.filter(x => x.day <= d); if (!due.length) continue;
         to = due.reduce((a, x) => Math.max(a, x.to), 0); if (n > to) continue;
         late = Math.max(0, ss.filter(x => x.day < d).reduce((a, x) => Math.max(a, x.to + 1), 0) - n); }
@@ -322,7 +331,7 @@
   window.SM_NEXT = function () {
     const s = state(); const list = s.W.slice(s.ci + 1, s.ci + 4);
     const T = window.SM_TR();
-    return list.map((w, k) => ({ name: pn(w), heb: window.SM_HEB(pn(w), w.parashaHe), ref: pref(w), when: window.SM_FMT(T.shabbatDate, { date: window.SM_DATE(noon(w.shabbatISO), { day: 'numeric', month: 'long' }) }),
+    return list.map((w, k) => ({ name: pn(w), heb: window.SM_HEB(pn(w), w.parashaHe), ref: pref(w), when: window.SM_FMT(w.special ? T.stDate : T.shabbatDate, { date: window.SM_DATE(noon(w.shabbatISO), { day: 'numeric', month: 'long' }) }),
       href: w.alyot ? 'V2-Lecteur.dc.html?par=' + (k + 1) + '&alya=0' : '#', canRead: !!w.alyot }));
   };
 
