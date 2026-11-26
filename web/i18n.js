@@ -12,6 +12,7 @@
       alyot: ['Rishon', 'Sheni', 'Shlishi', 'Revi\'i', 'Hamishi', 'Shishi', 'Shvi\'i'],
       books: ['Béréchit', 'Chemot', 'Vayikra', 'Bamidbar', 'Devarim'],
       parashiyot: null, cities: {},
+      days: null, months: null,   /* noms des jours et des mois : seulement pour une langue qu'Intl ne sait pas dater */
 
       /* Accueil */
       shabbat: 'Shabbat', parashaOfWeek: 'Paracha de la semaine', catchUp: 'Rattrapage',
@@ -126,7 +127,21 @@
   /* Dates dans la langue en cours. `opts` = options d'Intl.DateTimeFormat. */
   const fmts = {};
   window.SM_DATE = function (ms, opts, tz) {
-    const loc = window.SM_TR().locale || 'fr-FR', key = loc + '|' + (tz || 'UTC') + '|' + JSON.stringify(opts);
+    const T = window.SM_TR();
+    /* Langue qui fournit ses propres noms de jours et de mois (judéo-arabe en lettres hébraïques) : date composée à la main */
+    if (T.days && T.months) {
+      try {
+        const p = {}; (fmts['~' + (tz || 'UTC')] || (fmts['~' + (tz || 'UTC')] = new Intl.DateTimeFormat('en-GB', { timeZone: tz || 'UTC', weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false }))).formatToParts(ms).forEach(function (x) { p[x.type] = x.value; });
+        const out = [];
+        if (opts.weekday) out.push(T.days[['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(p.weekday)]);
+        if (opts.day) out.push(String(+p.day));
+        if (opts.month) out.push(T.months[+p.month - 1]);
+        if (opts.year) out.push(p.year);
+        if (opts.hour) out.push((p.hour === '24' ? '00' : p.hour) + ':' + p.minute);
+        return out.join(' ');
+      } catch (e) { return ''; }
+    }
+    const loc = T.locale || 'fr-FR', key = loc + '|' + (tz || 'UTC') + '|' + JSON.stringify(opts);
     try { return (fmts[key] || (fmts[key] = new Intl.DateTimeFormat(loc, Object.assign({ timeZone: tz || 'UTC' }, opts)))).format(ms); } catch (e) { return ''; }
   };
   /* Nom d'un jour de la semaine (0 = dimanche) */

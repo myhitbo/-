@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+/* Écrit en lettres hébraïques (judéo-arabe) un texte arabe dialectal écrit en lettres arabes.
+   Sert à convertir les brouillons de traduction ; le résultat reste à relire par un locuteur.
+   Conventions : ج ג׳ · خ כ׳ · غ ע׳ · ث ת׳ · ذ ד׳ · ض צ׳ · ظ ט׳ ; les mots hébreux reprennent leur orthographe hébraïque
+   (שבת, פרשה, עליה, תרגום…) ; lettres finales ך ם ן ף ץ en fin de mot. */
+const HEBREW_WORDS = [
+  ['سمحات توراه', 'שמחת תורה'], ['يشار كوّاح', 'יישר כח'], ['شبات', 'שבת'], ['شالوم', 'שלום'],
+  ['براشيوت', 'פרשיות'], ['براشا', 'פרשה'], ['عليوت', 'עליות'], ['عليا', 'עליה'], ['ترجوم', 'תרגום'],
+  ['حوماش', 'חומש'], ['توراه', 'תורה'], ['أونقلوس', 'אונקלוס'], ['يروشلمي', 'ירושלמי'],
+  ['بمدبار', 'במדבר'], ['ديبون', 'דיבן'], ['بتوحا', 'פתוחה'], ['ستوما', 'סתומה'], ['طعميم', 'טעמים'], ['إسرائيل', 'ישראל'], ['سفاريا', 'ספריא']
+];
+const MAP = { 'ا': 'א', 'أ': 'א', 'إ': 'א', 'آ': 'א', 'ٱ': 'א', 'ب': 'ב', 'ت': 'ת', 'ث': 'ת׳', 'ج': 'ג׳', 'ح': 'ח', 'خ': 'כ׳', 'د': 'ד', 'ذ': 'ד׳', 'ر': 'ר', 'ز': 'ז',
+  'س': 'ס', 'ش': 'ש', 'ص': 'צ', 'ض': 'צ׳', 'ط': 'ט', 'ظ': 'ט׳', 'ع': 'ע', 'غ': 'ע׳', 'ف': 'פ', 'ق': 'ק', 'ك': 'כ', 'ل': 'ל', 'م': 'מ', 'ن': 'נ', 'ه': 'ה', 'و': 'ו', 'ي': 'י',
+  'ة': 'ה', 'ى': 'א', 'ؤ': 'ו', 'ئ': 'י', 'ء': '', 'ڨ': 'ג', 'ڤ': 'ב׳', 'پ': 'פ', '،': ',', '؟': '?', '؛': ';' };
+const FINAL = { 'כ': 'ך', 'מ': 'ם', 'נ': 'ן', 'פ': 'ף', 'צ': 'ץ' };
+function judeoArabe(s) {
+  s = String(s);
+  HEBREW_WORDS.forEach(([a, h]) => { s = s.split(a).join(h); });
+  s = s.replace(/ئي/g, 'אי').replace(/ـ /g, '־').replace(/ـ/g, '').replace(/[ً-ْٰ]/g, '');   /* voyelles brèves, chadda */
+  s = s.replace(/[؀-ۿ]/g, (c) => (c in MAP ? MAP[c] : c));
+  /* lettres finales : dernière lettre d'un mot (avant un éventuel ׳) */
+  return s.replace(/([כמנפצ])(׳?)(?![א-ת׳])/g, (m, l, g) => FINAL[l] + g);
+}
+module.exports = { judeoArabe };
+if (require.main === module) console.log(judeoArabe(process.argv.slice(2).join(' ')));
