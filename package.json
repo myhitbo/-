@@ -1,0 +1,13 @@
+{
+  "name": "shnayim-mikra",
+  "private": true,
+  "description": "Shnayim Mikra : la paracha de la semaine, deux fois le texte et une fois le Targoum. Outils et tests ; l'application est dans web/.",
+  "scripts": {
+    "donnees": "node tools/construit_donnees.js",
+    "test": "node --test \"test/*.test.mjs\""
+  },
+  "devDependencies": {
+    "@hebcal/core": "6.14.1",
+    "@hebcal/leyning": "10.1.0"
+  }
+}

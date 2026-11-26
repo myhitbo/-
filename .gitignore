@@ -2,3 +2,6 @@ android/app/build/
 android/.gradle/
 android/app/src/main/assets/www/
 __pycache__/
+node_modules/
+# Données de l'application, écrites par tools/construit_donnees.js à partir de data/
+web/data/
