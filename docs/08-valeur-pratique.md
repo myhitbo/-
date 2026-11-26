@@ -5,7 +5,8 @@
 ### Verset sans Targoum : 3 fois, ou Targoum Yerouchalmi
 - Un verset est « sans Targoum » quand Onkelos est absent ou identique à l'hébreu (seulement des noms), et toujours Bamidbar 32:3 (« Atarot ve-Divon », Berakhot 8a).
 - Réglage « Verset sans Targoum » : lire l'hébreu 3 fois / lire le Targoum Yerouchalmi / les deux (par défaut).
-- Le Targoum Yerouchalmi est pris sur Sefaria (« Targum Jerusalem », sinon « Targum Jonathan »).
+- Le Targoum Yerouchalmi est pris sur Sefaria (« Targum Jerusalem », sinon « Targum Jonathan ») quand le téléphone est en ligne, puis gardé. Hors ligne, ces versets se lisent trois fois. Bamidbar 32:3 a le sien dans l'édition embarquée.
+- Avec le texte embarqué (26/11/2026) : 18 versets où Onkelos reprend l'hébreu lettre pour lettre, plus Bamidbar 32:3.
 - Dans le lecteur : bloc « 3ᵉ lecture · pas de Targoum » et/ou bloc « Targoum Yerouchalmi ». Sur la feuille imprimée : ✱.
 - À faire valider par un rav : présentation et choix par défaut.
 
@@ -26,9 +27,9 @@
 - Sur Android, la fenêtre d'impression propose aussi « Enregistrer en PDF ».
 
 ### Israël / diaspora
-- Les textes sont construits pour les deux calendriers. Le lieu choisi à l'accueil ou dans les Réglages décide de la paracha.
-- Les semaines de fête (pas de paracha ordinaire) sont sautées. Les parachot doubles viennent du calendrier de Sefaria.
-- Mise à jour en ligne : l'app retélécharge les semaines depuis Sefaria quand le texte embarqué arrive à sa fin. Si elle est hors ligne, elle garde le texte embarqué.
+- Le lieu choisi à l'accueil ou dans les Réglages décide de la paracha.
+- Les semaines de fête (pas de paracha ordinaire) sont sautées. Les parachot doubles sont calculées par l'application.
+- Tout le texte est embarqué (26/11/2026) : plus de téléchargement sur Sefaria, voir [10](10-lectures-haftara-halakhot.md).
 
 ## Prochaines idées
 - Compter en minutes (vitesse de lecture mesurée) au lieu de versets.

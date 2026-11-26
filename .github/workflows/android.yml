@@ -3,7 +3,7 @@ name: APK de test
 on:
   push:
     branches: [main]
-    paths: ['web/**', 'android/**', 'tools/**', '.github/workflows/android.yml']
+    paths: ['web/**', 'android/**', 'tools/**', 'data/**', 'test/**', 'package.json', 'package-lock.json', '.github/workflows/android.yml']
   workflow_dispatch:
 
 permissions:
@@ -19,8 +19,13 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Textes depuis Sefaria (Israël et diaspora)
-        run: node tools/fetch_sefaria.js
+      - name: Tests (moteur des lectures contre hebcal, application, halakhot)
+        run: |
+          npm ci
+          npm test
+
+      - name: Données de l'application (texte, Targoum, lectures, halakhot ; sans réseau)
+        run: node tools/construit_donnees.js
 
       - name: Copier l'application web dans l'APK
         run: |
@@ -51,6 +56,6 @@ jobs:
         run: |
           cp android/app/build/outputs/apk/debug/app-debug.apk shnayim-mikra-test.apk
           TAG="test-${{ github.run_number }}"
-          PARASHA=$(node -e "global.window={};require('./web/data/text.js');const T=window.SM_TEXT;const t=new Date().toISOString().slice(0,10);const w=T&&T.diaspora?T.diaspora.weeks.find(x=>x.shabbatISO>=t&&!x.holiday):null;console.log(w?w.parasha:'textes d exemple')")
+          PARASHA=$(node -e "const L=require('./web/lecture.js');const D=require('./data/lecture_torah.json');console.log(L.parachaSemaine(D,new Date().toISOString().slice(0,10),{enIsrael:false}).lecture.titre.fr)")
           gh release create "$TAG" shnayim-mikra-test.apk --prerelease --title "APK de test n°${{ github.run_number }} — $PARASHA" \
-            --notes "Version de test. Paracha : $PARASHA (textes de Sefaria). Sur Android : télécharger shnayim-mikra-test.apk puis autoriser l'installation depuis cette source."
+            --notes "Version de test. Paracha de la semaine : $PARASHA. Toute la Torah, le Targoum Onkelos et les haftarot sont dans l'application, hors connexion. Sur Android : télécharger shnayim-mikra-test.apk puis autoriser l'installation depuis cette source."

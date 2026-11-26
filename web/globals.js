@@ -1,10 +1,14 @@
-/* Shnayim Mikra — données partagées : semaines (Sefaria), Israël/diaspora, heure d'allumage,
-   échéances, progression par semaine, textes du lecteur, impression. */
+/* Shnayim Mikra — données partagées : semaines (moteur des lectures et texte embarqués, hors connexion),
+   Israël/diaspora, rite, heure d'allumage, échéances, progression par semaine, textes du lecteur,
+   haftara, impression. */
 (function () {
   const NAMES = ['Rishon', 'Sheni', 'Shlishi', "Revi'i", 'Hamishi', 'Shishi', "Shvi'i"];
   const MONTHS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
   const DAYS = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
-  const FALLBACK = { parasha: 'Vayétsé', parashaHe: 'וַיֵּצֵא', parashaRef: 'Béréchit 28:10 – 32:3' };
+  const HEB = ['רִאשׁוֹן', 'שֵׁנִי', 'שְׁלִישִׁי', 'רְבִיעִי', 'חֲמִישִׁי', 'שִׁשִּׁי', 'שְׁבִיעִי'];
+  const JOURS = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Shabbat'];
+  const RITES = { edot: "Edot hamizra'h", sefard: 'Sfard', ashkenaz: 'Ashkenaz' };
+  const FALLBACK = { parasha: '—', parashaHe: '', parashaRef: 'Données absentes' };
   const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
   /* ---------- Villes : coordonnées, fuseau, minutes avant le coucher du soleil ---------- */
@@ -74,22 +78,87 @@
     return null;
   }
 
-  /* ---------- Données : texte embarqué + cache téléchargé, par lieu ---------- */
-  const key = () => isIL() ? 'israel' : 'diaspora';
-  function cacheGet() { try { return JSON.parse(localStorage.getItem('sm.text.' + key()) || 'null'); } catch (e) { return null; } }
+  /* ---------- Données embarquées : les lectures au démarrage, le texte et le Targoum à la demande ---------- */
+  const L = window.SM_LECTURE;
+  const lue = (nom) => (window.SM_DONNEES ? SM_DONNEES.lue(nom) : undefined);
+  const fichier = (livre) => L.fichierLivre(livre);
+  /* Le nom hébreu des livres et des parachiot, écrit à la manière de la langue de l'interface
+     (he, fr ou en dans les données ; l'espagnol suit l'anglais, le tunisien et le marocain le français). */
+  const NOMS = { he: 'he', en: 'en', es: 'en' };
+  const nom = (t) => (t ? t[NOMS[get('lang')] || 'fr'] || t.fr : '');
+  const rite = () => { const r = get('rite'); return L && L.NUSAH.indexOf(r) >= 0 ? r : 'edot'; };
+  window.SM_RITE = () => ({ id: rite(), name: RITES[rite()] });
+  /* Jérusalem, ville murée : Pourim le 15 (le Pourim triple change le maftir et la haftara du Chabbat) */
+  const options = () => ({ enIsrael: isIL(), mukafChoma: isIL() && city().id === 'jerusalem', nusah: rite() });
+  const span = (debut, fin) => { const a = debut.split(':'), b = fin.split(':'); return debut === fin ? debut : a[0] === b[0] ? debut + ' – ' + b[1] : debut + ' – ' + fin; };
+
+  /* Verset sans Targoum : Onkelos reprend l'hébreu lettre pour lettre (seulement des noms, « Réouven, Chimon »),
+     et toujours Bamidbar 32:3 (« Atarot ve-Divon », Berakhot 8a), où l'édition imprime le Targoum Yerouchalmi. */
+  const YER_EDITION = { 'Numbers 32:3': 1 };
+  const skel = (x) => String(x || '').replace(/[־׀]/g, ' ').replace(/[֑-ׇ׳״]/g, '').replace(/[^א-ת ]/g, ' ').replace(/\s+/g, ' ').trim();
+  function yerCache() { try { return JSON.parse(localStorage.getItem('sm.yer') || '{}'); } catch (e) { return {}; } }
+
+  /* Les versets d'un passage de la Torah, avec leur Targoum : null tant que le livre n'est pas chargé */
+  function verses(a) {
+    if (a._v) return a._v;
+    const T = lue('texte/' + fichier(a.livre)), G = lue('targoum/' + fichier(a.livre)); if (!T || !G) return null;
+    const he = L.versets(a.livre, a.debut, a.fin, T), tg = L.versets(a.livre, a.debut, a.fin, G), yc = yerCache();
+    a._v = he.map((x, k) => { const r = x.c + ':' + x.v, full = a.livre + ' ' + r, o = tg[k].t; const v = { ref: r, he: x.t, onk: o };
+      if (YER_EDITION[full]) { v.nt = 1; v.yer = o; } else if (skel(x.t) === skel(o)) { v.nt = 1; v.yer = yc[full] || ''; }
+      return v; });
+    return a._v;
+  }
+  /* Les versets d'un passage lu une fois, sans Targoum (haftara, maftir d'un Chabbat spécial) */
+  function versesOnce(p) { const T = lue('texte/' + fichier(p.livre)); return T ? L.versets(p.livre, p.debut, p.fin, T).map(x => ({ ref: x.c + ':' + x.v, he: x.t })) : null; }
+
+  /* Une semaine : la paracha du Chabbat [p.date], ses 7 alyot, son maftir et sa haftara selon le rite */
+  function week(d, p, o) {
+    const l = p.lecture, P = d.parachiot[p.paracha], reg = P['alyot_' + o.nusah] || P.alyot;
+    const sept = reg.filter(a => /^[1-7]$/.test(a[0])), t = new Date(p.date + 'T12:00:00Z');
+    const alyot = sept.map((a, i) => { const n = L.nombreVersets(a[2], a[3], d.longueurs[a[1]]);
+      return { name: NAMES[i], heb: HEB[i], day: JOURS[i], verses: span(a[2], a[3]), min: Math.max(3, Math.round(n * 0.4)), count: n,
+        ref: a[1] + ' ' + a[2] + '-' + a[3], livre: a[1], debut: a[2], fin: a[3], get v() { return verses(this); } }; });
+    /* Chabbat spécial : le maftir (et, avec trois Sifrei Torah, la septième montée) qui ne sont pas de la paracha */
+    const base = {}; reg.forEach(a => { base[a[0]] = a.slice(1).join(' '); });
+    const extra = l.montees.filter(m => (m.cle === '7' || m.cle === 'M') && base[m.cle] !== [m.livre, m.debut, m.fin].join(' '))
+      .map(m => ({ label: nom(m.libelle), livre: m.livre, debut: m.debut, fin: m.fin, ref: L.reference(d, m.livre, m.debut, m.fin, nom), count: L.nombreVersets(m.debut, m.fin, d.longueurs[m.livre]) }));
+    const parts = l.haftara.map(h => ({ livre: h.livre, debut: h.debut, fin: h.fin, ref: L.reference(d, h.livre, h.debut, h.fin, nom), count: L.nombreVersets(h.debut, h.fin, d.longueurs[h.livre]) }));
+    const count = parts.concat(extra).reduce((a, x) => a + x.count, 0);
+    const index = L.PARSHIOT.indexOf((L.JOINTES[p.paracha] || [p.paracha])[0]) - 1;
+    return { shabbatISO: p.date, shabbat: t.getUTCDate() + ' ' + MONTHS[t.getUTCMonth()], key: p.paracha, cle: l.cle,
+      parasha: nom(l.titre), parashaHe: l.titre.he, parashaEn: l.titre.en, parashaIndex: index,
+      parashaRef: L.reference(d, sept[0][1], sept[0][2], sept[6][3], nom).replace('–', ' – '), alyot,
+      haftara: { parts, extra, ref: parts.map(x => x.ref).join(' ; '), extraRef: extra.map(x => x.label + ' : ' + x.ref).join(' ; '), reasons: l.raisons.map(nom), rite: RITES[o.nusah],
+        min: Math.max(2, Math.round(count * 0.15)), count } };
+  }
+
+  /* Les semaines autour d'aujourd'hui : un Chabbat de Yom tov ou de 'Hol hamoed n'a pas de paracha, on passe
+     à la suivante (jamais une lecture de fête : on ne lit pas Chnayim mikra pour Yom tov). */
+  const AVANT = 60, APRES = 8;
   let memo = null;
   function weeks() {
-    const k = key(), c = cacheGet(), stamp = k + (c ? c.at : '');
+    const d = lue('lecture'); if (!d || !L) return [];
+    const o = options(), today = localISO(now(), city().tz);
+    const stamp = [o.enIsrael, o.mukafChoma, o.nusah, get('lang'), today].join('|');
     if (memo && memo.stamp === stamp) return memo.list;
-    const T = window.SM_TEXT; const by = {};
-    const base = T ? (T[k] ? T[k].weeks : (T.weeks || [])) : [];
-    base.concat(c ? c.weeks : []).forEach(w => { if (w && w.shabbatISO) by[w.shabbatISO] = w; });
-    const list = Object.keys(by).sort().map(i => by[i]);
+    const list = [], seen = {}, end = addDays(today, 7 * APRES);
+    for (let iso = L.chabbatSuivant(addDays(today, -7 * AVANT)); iso <= end; iso = addDays(iso, 7)) {
+      const p = L.parachaSemaine(d, iso, o); if (seen[p.date]) continue; seen[p.date] = 1; list.push(week(d, p, o));
+    }
     memo = { stamp, list }; return list;
   }
+  /* Ce qu'il faut charger pour lire une semaine : le texte et le Targoum de son livre, et les livres de la haftara */
+  function needs(w, haftara) {
+    const n = {}; w.alyot.forEach(a => { n['texte/' + fichier(a.livre)] = 1; n['targoum/' + fichier(a.livre)] = 1; });
+    if (haftara) w.haftara.parts.concat(w.haftara.extra).forEach(x => { n['texte/' + fichier(x.livre)] = 1; });
+    return Object.keys(n);
+  }
+  const ready = (w, haftara) => needs(w, haftara).every(lue);
+  const ensure = (w, haftara) => (ready(w, haftara) ? Promise.resolve() : Promise.all(needs(w, haftara).map(n => SM_DONNEES.charge(n))));
+
   /* Semaine en cours : la première dont le Shabbat n'est pas encore sorti (les semaines de fête sont sautées) */
   function state() {
-    const c = city(), t = now(), W = weeks().filter(w => !w.holiday);
+    const c = city(), t = now(), W = weeks();
     let ci = W.findIndex(w => shabbatEnd(w.shabbatISO, c) > t);
     if (ci < 0) ci = W.length - 1;
     return { c, t, W, ci, cur: W[ci] || null };
@@ -97,9 +166,11 @@
 
   /* ---------- Progression : alyot lues par semaine (clé = date du Shabbat) ---------- */
   function progAll() { try { return JSON.parse(localStorage.getItem('sm.prog') || '{}'); } catch (e) { return {}; } }
-  function progSet(w, n) { if (!w) return; const p = progAll(); const old = p[w.shabbatISO] || {}; p[w.shabbatISO] = { n: Math.max(0, Math.min(7, n)), name: w.parasha, he: w.parashaHe };
-    if (old.n === p[w.shabbatISO].n && old.name) return; try { localStorage.setItem('sm.prog', JSON.stringify(p)); } catch (e) {} }
+  function progSet(w, n, haftara) { if (!w) return; const p = progAll(); const old = p[w.shabbatISO] || {};
+    const val = { n: Math.max(0, Math.min(7, n)), name: w.parasha, he: w.parashaHe }; if (old.h || haftara) val.h = 1;
+    if (old.n === val.n && old.name === val.name && !!old.h === !!val.h) return; p[w.shabbatISO] = val; try { localStorage.setItem('sm.prog', JSON.stringify(p)); } catch (e) {} }
   const progN = (w) => w ? ((progAll()[w.shabbatISO] || {}).n || 0) : 0;
+  const progH = (w) => !!(w && (progAll()[w.shabbatISO] || {}).h);
   function touch(w) { if (w && !progAll()[w.shabbatISO]) progSet(w, 0); }
   window.SM_DONE = { get: () => progN(state().cur), set: (n) => progSet(state().cur, n) };
 
@@ -112,8 +183,8 @@
   function alyaIndex() { const a = get('alya'); return (a === undefined || a === null) ? Math.min(6, progN(state().cur)) : a; }
   window.SM_WEEK = (par) => weekFor(par === undefined ? get('par') : par);
   window.SM_ALYOT = () => { const w = state().cur; return w && w.alyot ? w.alyot : null; };
-  /* Fin d'une alya dans le lecteur */
-  window.SM_MARK = function () { const w = weekFor(get('par')); const i = alyaIndex(); if (w) progSet(w, Math.max(progN(w), i + 1)); };
+  /* Fin d'une alya dans le lecteur ; la haftara (alya = 7) est notée à part, hors des 7 alyot */
+  window.SM_MARK = function () { const w = weekFor(get('par')); const i = alyaIndex(); if (!w) return; if (i >= 7) progSet(w, progN(w), true); else progSet(w, Math.max(progN(w), i + 1)); };
 
   window.SM_G = function () {
     const s = state(), c = s.c, w = s.cur || FALLBACK, R = weekFor(get('par')) || w, al = R.alyot || null, i = alyaIndex();
@@ -122,8 +193,13 @@
     const next = nRead < 7 && al ? NAMES[Math.min(6, nRead)] + ', ' + al[Math.min(6, nRead)].min + ' min' : null;
     const d = new Date(s.t), todayIso = localISO(s.t, c.tz);
     const out = { parasha: w.parasha, parashaHe: w.parashaHe, parashaRef: w.parashaRef, readParasha: R.parasha, readIso: R.shabbatISO || '',
-      date: cap(DAYS[dow(todayIso)]) + ' ' + d.getDate() + ' ' + MONTHS[d.getMonth()], alyaName: NAMES[i] || NAMES[0],
-      afterText: next ? 'Prochaine alya : ' + next + '.' : 'La paracha est terminée. Shabbat Shalom !', cityName: c.name, place: isIL() ? 'Israël' : 'Diaspora' };
+      date: cap(DAYS[dow(todayIso)]) + ' ' + d.getDate() + ' ' + MONTHS[d.getMonth()], alyaName: i >= 7 ? 'Haftara' : (NAMES[i] || NAMES[0]), doneTitle: i >= 7 ? 'Haftara terminée' : (NAMES[i] || NAMES[0]) + ' terminé',
+      afterText: (i >= 7 ? 'La haftara est lue. ' : '') + (next ? 'Prochaine alya : ' + next + '.' : 'La paracha est terminée. Shabbat Shalom !'), cityName: c.name, place: isIL() ? 'Israël' : 'Diaspora' };
+    /* Haftara de la semaine, selon le rite : lue une fois, sans Targoum, hors des 7 alyot */
+    const hf = s.cur && s.cur.haftara && s.cur.haftara.parts.length ? s.cur.haftara : null;
+    out.hasHaftara = !!hf;
+    out.haftara = hf ? { ref: hf.ref, rite: hf.rite, min: hf.min, done: progH(s.cur), todo: !progH(s.cur), href: 'V2-Lecteur.dc.html?par=0&alya=7',
+      reason: hf.reasons.join(' · '), hasReason: hf.reasons.length > 0, extra: hf.extraRef, hasExtra: hf.extra.length > 0 } : null;
     /* Allumage et compte à rebours */
     if (s.cur) {
       const cl = candle(s.cur.shabbatISO, c), left = cl - s.t, n = progN(s.cur);
@@ -132,7 +208,7 @@
       out.countdown = left > 0 ? 'Chabbat dans ' + inDur(left) : 'Chabbat Chalom';
       out.goal = n >= 7 ? 'Paracha terminée' : left > 0 ? 'Objectif : finir avant Chabbat' : 'Encore possible ce Chabbat, avant le repas de midi';
       out.friday = left > 0 && left < 30 * 3600e3 && dow(todayIso) === 5 && n < 7;
-    } else { out.candleLine = 'Allumage selon ta ville (textes en cours de téléchargement)'; out.countdown = ''; out.goal = ''; out.friday = false; }
+    } else { out.candleLine = 'Allumage selon ta ville'; out.countdown = ''; out.goal = ''; out.friday = false; }
     /* Rattrapage de la semaine passée : jusqu'à mardi soir */
     out.prev = null;
     const P = s.W[s.ci - 1];
@@ -157,14 +233,28 @@
   };
 
   /* ---------- Textes du lecteur ---------- */
+  /* La haftara : le maftir d'un Chabbat spécial s'il y en a un, puis la haftara ; chaque verset une fois */
+  function haftaraBlocks(W) {
+    const out = []; const h = W.haftara;
+    for (const x of h.extra.map(e => [e, e.label]).concat(h.parts.map(e => [e, 'Haftara']))) {
+      const vs = versesOnce(x[0]); if (!vs) return null;
+      vs.forEach(v => out.push({ kind: 'mikra', n: 1, ref: v.ref, text: v.he, label: x[1] }));
+    }
+    return out.length ? out : null;
+  }
   window.SM_BLOCKS = function () {
-    const W = weekFor(get('par')); if (!W || !W.alyot) return null; const a = W.alyot[alyaIndex()]; if (!a) return null;
+    const W = weekFor(get('par')); if (!W || !W.alyot) return null; const i = alyaIndex();
+    if (i >= 7) return haftaraBlocks(W);
+    const a = W.alyot[i], vs = a && a.v; if (!vs) return null;
     const ntMode = get('nt') || 'deux'; const out = [];
-    a.v.forEach(v => {
-      out.push({ kind: 'mikra', n: 1, ref: v.ref, text: v.he }); out.push({ kind: 'mikra', n: 2, ref: v.ref, text: v.he });
+    /* Réglage « ×1 » : l'hébreu n'est affiché qu'une fois, l'étiquette rappelle combien de fois le lire */
+    const une = !!get('une');
+    vs.forEach(v => {
+      const yer = v.nt && ntMode !== 'trois' && v.yer, trois = v.nt && (ntMode !== 'yer' || !yer);
+      if (une) out.push({ kind: 'mikra', n: 1, ref: v.ref, text: v.he, label: trois ? 'Mikra · à lire 3 fois, pas de Targoum' : 'Mikra · à lire 2 fois' });
+      else { out.push({ kind: 'mikra', n: 1, ref: v.ref, text: v.he }); out.push({ kind: 'mikra', n: 2, ref: v.ref, text: v.he }); }
       if (!v.nt) { out.push({ kind: 'targum', n: 3, ref: v.ref, text: v.onk }); return; }
-      const yer = ntMode !== 'trois' && v.yer;
-      if (ntMode !== 'yer' || !yer) out.push({ kind: 'mikra', n: 3, ref: v.ref, text: v.he, label: '3ᵉ lecture · pas de Targoum' });
+      if (trois && !une) out.push({ kind: 'mikra', n: 3, ref: v.ref, text: v.he, label: '3ᵉ lecture · pas de Targoum' });
       if (yer) out.push({ kind: 'targum', n: 4, ref: v.ref, text: v.yer, label: 'Targoum Yerouchalmi' });
     });
     return out;
@@ -176,12 +266,13 @@
       href: w.alyot ? 'V2-Lecteur.dc.html?par=' + (k + 1) + '&alya=0' : '#', canRead: !!w.alyot }));
   };
 
-  /* ---------- Impression : ce qu'il reste (ou toute la paracha) ---------- */
+  /* ---------- Impression : ce qu'il reste (ou toute la paracha), puis la haftara ---------- */
   window.SM_PRINT_INFO = function (all) {
-    const w = state().cur; if (!w || !w.alyot) return null; const from = all ? 0 : Math.min(6, progN(w));
-    const al = w.alyot.slice(from); const chars = al.reduce((a, x) => a + x.v.reduce((b, v) => b + v.he.length + (v.onk || '').length, 0), 0);
+    const w = state().cur; if (!w || !w.alyot || !ready(w, false)) return null; const from = all ? 0 : Math.min(6, progN(w));
+    const al = w.alyot.slice(from); let chars = al.reduce((a, x) => a + x.v.reduce((b, v) => b + v.he.length + (v.onk || '').length, 0), 0);
+    const hb = haftaraBlocks(w); if (hb) chars += hb.reduce((a, b) => a + b.text.length, 0);
     return { from, names: al.map(a => a.name), range: al.length > 1 ? al[0].name + ' – ' + al[al.length - 1].name : al[0].name, first: al[0].name + ' · ' + al[0].v[0].ref,
-      min: al.reduce((a, x) => a + x.min, 0), pages: Math.max(1, Math.ceil(chars / 3400)), count: al.length };
+      min: al.reduce((a, x) => a + x.min, 0), pages: Math.max(1, Math.ceil(chars / 3400)), count: al.length, haftara: hb ? w.haftara.ref : '' };
   };
   const esc = (s) => String(s || '').replace(/[&<>]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[ch]);
   window.SM_PRINT = function (all) {
@@ -198,30 +289,51 @@
         h += '</div>';
       });
     });
+    /* La haftara (et le maftir d'un Chabbat spécial) : une fois, sans Targoum */
+    const hb = haftaraBlocks(w);
+    if (hb) {
+      const hf = w.haftara; let label = null;
+      h += '<p class="how">Haftara selon le rite ' + esc(hf.rite) + (hf.reasons.length ? ' · ' + esc(hf.reasons.join(' · ')) : '') + ' : une fois, sans Targoum.</p>';
+      hb.forEach(b => {
+        if (b.label !== label) { label = b.label; h += '<h2><span>' + esc(label) + ' · ' + esc(label === 'Haftara' ? hf.ref : hf.extraRef) + '</span><span lang="he" dir="rtl">' + (label === 'Haftara' ? 'הַפְטָרָה' : '') + '</span></h2>'; }
+        h += '<div class="pv"><p class="he" dir="rtl" lang="he"><b>' + esc(b.ref) + '</b> ' + esc(b.text) + '</p></div>';
+      });
+    }
     let el = document.getElementById('print'); if (!el) { el = document.createElement('div'); el.id = 'print'; document.body.appendChild(el); }
     el.innerHTML = h; document.title = 'Shnayim Mikra — ' + w.parasha;
     if (window.SMAndroid && SMAndroid.print) SMAndroid.print('Shnayim Mikra — ' + w.parasha); else window.print();
     return true;
   };
 
-  /* ---------- Mise à jour en ligne (Sefaria), en arrière-plan ---------- */
-  window.SM_REFRESH = async function (force) {
-    if (!window.SM_SEFARIA || (navigator.onLine === false)) return;
-    const k = key(), c = cacheGet(), s = state(), today = localISO(now(), s.c.tz);
-    const last = weeks().slice(-1)[0];
-    const fresh = c && (now() - c.at) < 3 * 864e5;
-    if (!force && fresh) return;
-    if (!force && s.cur && last && last.shabbatISO >= addDays(today, 14)) return;
-    if (window.__smRefreshing) return; window.__smRefreshing = true;
-    try {
-      const from = new Date(addDays(today, -7) + 'T00:00:00Z');
-      const ws = await SM_SEFARIA.weeks(from, 5, k === 'diaspora');
-      if (!ws.some(w => w.alyot)) return;
-      const keep = (c ? c.weeks : []).filter(w => (progAll()[w.shabbatISO] || {}).n < 7 && !ws.some(x => x.shabbatISO === w.shabbatISO));
-      const val = { at: now(), weeks: keep.concat(ws) };
-      try { localStorage.setItem('sm.text.' + k, JSON.stringify(val)); } catch (e) { localStorage.setItem('sm.text.' + k, JSON.stringify({ at: now(), weeks: ws })); }
-      memo = null; if (window.SM_RERENDER) SM_RERENDER();
-    } catch (e) { /* hors ligne ou Sefaria indisponible : on garde le texte embarqué */ }
+  /* ---------- Chargement du texte (embarqué) avant d'ouvrir un écran qui le lit ---------- */
+  /* null : rien à attendre ; sinon une promesse, tenue quand le texte de la semaine est chargé */
+  window.SM_PREPARE = function (name) {
+    if (!window.SM_DONNEES || !lue('lecture')) return null;
+    const w = name === 'lecteur' ? weekFor(get('par')) : name === 'imprimer' ? state().cur : null; if (!w) return null;
+    const haftara = name === 'imprimer' || alyaIndex() >= 7;
+    return ready(w, haftara) ? null : ensure(w, haftara);
+  };
+  window.SM_OK = () => !!(L && lue('lecture'));
+
+  /* ---------- En arrière-plan : le texte de la semaine en cours, puis le Targoum Yerouchalmi (en ligne) ---------- */
+  /* Le Targoum Yerouchalmi des versets sans Targoum vient de Sefaria quand le téléphone est en ligne, puis reste
+     gardé (sm.yer). Hors ligne, ces versets se lisent trois fois ; Bamidbar 32:3 a le sien dans l'édition. */
+  async function yerushalmi(w) {
+    if (!window.SM_SEFARIA || navigator.onLine === false) return false;
+    const c = yerCache(); let changed = false;
+    for (const a of w.alyot) for (const v of (a.v || [])) {
+      const full = a.livre + ' ' + v.ref; if (!v.nt || v.yer || full in c) continue;
+      try { c[full] = await SM_SEFARIA.yerushalmi(full); changed = true; } catch (e) { break; }
+    }
+    if (changed) { try { localStorage.setItem('sm.yer', JSON.stringify(c)); } catch (e) {} memo = null; }
+    return changed;
+  }
+  window.SM_REFRESH = async function () {
+    const w = state().cur; if (!w || window.__smRefreshing) return; window.__smRefreshing = true;
+    try { await ensure(w, true); if (await yerushalmi(w)) { if (window.SM_RERENDER) SM_RERENDER(); } }
+    catch (e) { /* données absentes : l'accueil le dit */ }
     finally { window.__smRefreshing = false; }
   };
+  /* Les anciens textes téléchargés de Sefaria (versions de test d'avant le texte embarqué) ne servent plus */
+  try { localStorage.removeItem('sm.text.israel'); localStorage.removeItem('sm.text.diaspora'); } catch (e) {}
 })();

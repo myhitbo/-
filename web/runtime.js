@@ -1,12 +1,12 @@
 /* Shnayim Mikra — mini runtime: templates {{ }}, sc-for, sc-if, DOM patching, router, settings */
 (function () {
-  const DEF = { mode: 'clair', lang: 'fr', font: 'frank', fs: 25, place: 0, city: null, nt: 'deux', onboarded: false };
+  const DEF = { mode: 'clair', lang: 'fr', font: 'frank', fs: 25, place: 0, city: null, nt: 'deux', rite: 'edot', une: false, onboarded: false };
   let data; try { data = Object.assign({}, DEF, JSON.parse(localStorage.getItem('sm.settings') || '{}')); } catch (e) { data = Object.assign({}, DEF); }
   const APP = window.APP = {
     get: (k) => (k === 'done' && window.SM_DONE) ? SM_DONE.get() : data[k],
-    set: (k, v) => { if (k === 'done' && window.SM_DONE) { SM_DONE.set(v); return; } if (data[k] === v) return; data[k] = v; try { localStorage.setItem('sm.settings', JSON.stringify(data)); } catch (e) {} if (k === 'mode') rerenderWithProps(); if (k === 'place') { schedule(); if (window.SM_REFRESH) SM_REFRESH(); } if (k === 'city' || k === 'nt') schedule(); }
+    set: (k, v) => { if (k === 'done' && window.SM_DONE) { SM_DONE.set(v); return; } if (data[k] === v) return; data[k] = v; try { localStorage.setItem('sm.settings', JSON.stringify(data)); } catch (e) {} if (k === 'mode') rerenderWithProps(); if (k === 'place' || k === 'rite' || k === 'city') { schedule(); if (window.SM_REFRESH) SM_REFRESH(); } if (k === 'nt' || k === 'lang') schedule(); }
   };
-  const SYNC = ['mode', 'lang', 'font', 'fs', 'place', 'city', 'nt', 'done'];
+  const SYNC = ['mode', 'lang', 'font', 'fs', 'place', 'city', 'nt', 'rite', 'done'];
 
   window.DCLogic = class {
     constructor(props) { this.props = props; this.state = undefined; }
@@ -66,7 +66,7 @@
     patchChildren(root(), out); refs.forEach(([fn, el]) => fn(el.__target || el)); }
   function rerenderWithProps() { if (cur) { cur.props = Object.assign({}, cur.props, { mode: APP.get('mode') }); schedule(); } }
 
-  const MAP = { Accueil: 'accueil', Lecteur: 'lecteur', Annee: 'annee', Groupes: 'groupes', Reglages: 'reglages', Imprimer: 'imprimer', Bienvenue: 'bienvenue' };
+  const MAP = { Accueil: 'accueil', Lecteur: 'lecteur', Annee: 'annee', Groupes: 'groupes', Reglages: 'reglages', Imprimer: 'imprimer', Bienvenue: 'bienvenue', Halakhot: 'halakhot' };
   function mount(name) {
     const S = window.SCREENS[name] || window.SCREENS.accueil;
     if (cur && cur.componentWillUnmount) cur.componentWillUnmount();
@@ -77,7 +77,21 @@
     if (cur.componentDidMount) cur.componentDidMount();
     document.title = S.title;
   }
-  function route() { const h = location.hash.replace(/^#\/?/, ''); const name = window.SCREENS[h] ? h : (APP.get('onboarded') ? 'accueil' : 'bienvenue'); mount(name); }
+  /* Sans les données embarquées (web/data/, écrites par tools/construit_donnees.js), rien à lire : on le dit. */
+  function absentes() {
+    if (cur && cur.componentWillUnmount) cur.componentWillUnmount(); cur = null;
+    root().innerHTML = '<div style="max-width:520px;margin:0 auto;padding:48px 24px;font:16px/1.5 Inter,sans-serif;color:#1C1A17"><h1 style="font:500 28px Newsreader,Georgia,serif;margin:0 0 12px">Textes absents</h1><p>Les textes de la paracha ne sont pas dans cette copie de l’application.</p><p style="color:#6B645A;font-size:14px">Pour les construire : <code>node tools/construit_donnees.js</code></p></div>';
+  }
+  /* Le texte est embarqué mais lu à la demande, livre par livre : l'écran qui le lit attend son chargement. */
+  let tour = 0;
+  function route() {
+    const h = location.hash.replace(/^#\/?/, ''); const name = window.SCREENS[h] ? h : (APP.get('onboarded') ? 'accueil' : 'bienvenue');
+    if (window.SM_OK && !SM_OK()) { absentes(); return; }
+    const attente = window.SM_PREPARE ? SM_PREPARE(name) : null; const moi = ++tour;
+    if (!attente) { mount(name); return; }
+    const suite = () => { if (moi === tour) mount(name); };
+    attente.then(suite, suite);
+  }
   document.addEventListener('click', (e) => {
     const a = e.target.closest && e.target.closest('a[href]'); if (!a) return;
     const href = a.getAttribute('href');
@@ -89,4 +103,5 @@
   window.addEventListener('hashchange', route);
   window.addEventListener('DOMContentLoaded', () => { route(); if (window.SM_REFRESH) setTimeout(() => SM_REFRESH(), 1500); });
   window.SM_RERENDER = schedule;
+  window.SM_REMOUNT = route;
 })();
