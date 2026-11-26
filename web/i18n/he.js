@@ -86,7 +86,7 @@ window.SM_I18N.he = {
   srcYerNote: 'לפסוקים שאונקלוס אינו מתרגם',
   srcPD: 'נחלת הכלל', srcNC: 'שימוש לא מסחרי', srcLicense: 'רישיון',
   srcSefaria: 'כל הטקסטים מגיעים מספריא, ספרייה חופשית של טקסטים יהודיים:',
-  srcFonts: 'גופנים', srcFontsLine: 'Inter, Newsreader, Frank Ruhl Libre, David Libre, Noto Serif Hebrew, Heebo ו־Noto Sans Arabic, ברישיון',
+  srcFonts: 'גופנים', srcFontsLine: 'Inter, Newsreader, Frank Ruhl Libre, David Libre, Noto Serif Hebrew ו־Heebo, ברישיון',
 
   donate: 'לתמוך באפליקציה', donateSub: 'האפליקציה חינמית וללא פרסומות. תרומה עוזרת לה להמשיך.', donateBtn: 'לתרום'
 };

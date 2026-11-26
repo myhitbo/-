@@ -9,7 +9,6 @@ Fichiers téléchargés depuis Google Fonts par `tools/fetch_fonts.js`.
 - Copyright 2016 The David Libre Project Authors (https://github.com/meirsadan/david-libre), with reserved font name "Hadash", "Gentium" and 'SIL'.
 - Copyright 2022 The Noto Project Authors (https://github.com/notofonts/hebrew)
 - Copyright 2014 The Heebo Project Authors (https://github.com/OdedEzer/heebo)
-- Copyright 2022 The Noto Project Authors (https://github.com/notofonts/arabic)
 
 ```
 This Font Software is licensed under the SIL Open Font License, Version 1.1.

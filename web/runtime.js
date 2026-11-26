@@ -3,6 +3,7 @@
   const DEF = { mode: 'clair', lang: 'fr', font: 'frank', fs: 25, place: 0, city: null, nt: 'deux', rh: 0, rhDay: 4, rhN: 3, order: 0, rem: true, remAt: '07:30', spd: 2, tf: 0.8, onboarded: false };
   let data; try { data = Object.assign({}, DEF, JSON.parse(localStorage.getItem('sm.settings') || '{}')); } catch (e) { data = Object.assign({}, DEF); }
   if (data.font === 'rashi') data.font = 'frank'; /* police retirée (pas de Rachi dans cette version) */
+  if (data.lang === 'ma') data.lang = 'fr';       /* langue retirée (darija) */
   const APP = window.APP = {
     get: (k) => (k === 'done' && window.SM_DONE) ? SM_DONE.get() : data[k],
     set: (k, v) => { if (k === 'done' && window.SM_DONE) { SM_DONE.set(v); return; } if (data[k] === v) return; data[k] = v; try { localStorage.setItem('sm.settings', JSON.stringify(data)); } catch (e) {} if (k === 'mode') rerenderWithProps(); if (k === 'place') { schedule(); if (window.SM_REFRESH) SM_REFRESH(); } if (k === 'city' || k === 'nt') schedule();
@@ -70,7 +71,7 @@
   const root = () => document.getElementById('app');
   let cur = null, curName = '', tplEl = null, pending = false;
   function schedule() { if (pending) return; pending = true; requestAnimationFrame(() => { pending = false; draw(); }); }
-  function draw() { if (!cur) return; refs = []; const rtl = !!(window.SM_RTL && SM_RTL()); if (document.documentElement.dir !== (rtl ? 'rtl' : 'ltr')) { document.documentElement.dir = rtl ? 'rtl' : 'ltr'; document.documentElement.lang = ({ tn: 'ar-TN', ma: 'ar-MA' })[data.lang] || data.lang || 'fr'; }
+  function draw() { if (!cur) return; refs = []; const rtl = !!(window.SM_RTL && SM_RTL()); if (document.documentElement.dir !== (rtl ? 'rtl' : 'ltr')) { document.documentElement.dir = rtl ? 'rtl' : 'ltr'; document.documentElement.lang = ({ tn: 'ajt' })[data.lang] || data.lang || 'fr'; }
     const vals = Object.assign({}, cur.props, { G: window.SM_G ? SM_G() : {}, t: window.SM_TR ? SM_TR() : {}, dir: rtl ? 'rtl' : 'ltr' }, cur.renderVals()); const out = []; tplEl.childNodes.forEach(c => render(c, vals, out));
     patchChildren(root(), out); refs.forEach(([fn, el]) => fn(el.__target || el)); }
   function rerenderWithProps() { if (cur) { cur.props = Object.assign({}, cur.props, { mode: APP.get('mode') }); schedule(); } }

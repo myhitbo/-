@@ -21,14 +21,5 @@ function judeoArabe(s) {
   /* lettres finales : dernière lettre d'un mot (avant un éventuel ׳) */
   return s.replace(/([כמנפצ])(׳?)(?![א-ת׳])/g, (m, l, g) => FINAL[l] + g);
 }
-/* Variante : le texte reste en lettres arabes, seuls les termes religieux hébreux passent en lettres hébraïques.
-   Un préfixe arabe (article, préposition) reste attaché au mot par un trait : البراشا → الـפרשה, لشبات → لـשבת. */
-function termesHebreux(s) {
-  s = String(s).split('عطروت وديبون').join('עטרות ודיבן');
-  HEBREW_WORDS.filter(([a]) => a !== 'إسرائيل' && a !== 'سفاريا' && a !== 'ديبون').forEach(([a, h]) => {
-    s = s.replace(new RegExp('(^|[^\\u0600-\\u06FF])((?:و)?(?:[بفكل])?(?:ال|ل)?)' + a, 'g'), (m, before, pre) => before + (pre ? pre + 'ـ' : '') + h);
-  });
-  return s;
-}
-module.exports = { judeoArabe, termesHebreux };
+module.exports = { judeoArabe };
 if (require.main === module) console.log(judeoArabe(process.argv.slice(2).join(' ')));

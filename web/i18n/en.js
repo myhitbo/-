@@ -90,7 +90,7 @@ window.SM_I18N.en = {
   srcYerNote: 'for the verses Onkelos does not translate',
   srcPD: 'Public domain', srcNC: 'non-commercial use', srcLicense: 'License',
   srcSefaria: 'All texts are provided by Sefaria, a free library of Jewish texts:',
-  srcFonts: 'Fonts', srcFontsLine: 'Inter, Newsreader, Frank Ruhl Libre, David Libre, Noto Serif Hebrew, Heebo and Noto Sans Arabic, under the',
+  srcFonts: 'Fonts', srcFontsLine: 'Inter, Newsreader, Frank Ruhl Libre, David Libre, Noto Serif Hebrew and Heebo, under the',
 
   donate: 'Support the app', donateSub: 'The app is free and has no ads. A donation helps keep it going.', donateBtn: 'Donate'
 };

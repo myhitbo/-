@@ -90,7 +90,7 @@ window.SM_I18N.es = {
   srcYerNote: 'para los versículos que Onkelos no traduce',
   srcPD: 'Dominio público', srcNC: 'uso no comercial', srcLicense: 'Licencia',
   srcSefaria: 'Todos los textos provienen de Sefaria, biblioteca libre de textos judíos:',
-  srcFonts: 'Tipos de letra', srcFontsLine: 'Inter, Newsreader, Frank Ruhl Libre, David Libre, Noto Serif Hebrew, Heebo y Noto Sans Arabic, bajo la licencia',
+  srcFonts: 'Tipos de letra', srcFontsLine: 'Inter, Newsreader, Frank Ruhl Libre, David Libre, Noto Serif Hebrew y Heebo, bajo la licencia',
 
   donate: 'Apoyar la app', donateSub: 'La app es gratuita y sin publicidad. Una donación ayuda a mantenerla.', donateBtn: 'Donar'
 };

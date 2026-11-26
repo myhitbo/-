@@ -65,7 +65,7 @@ Avec le compte d'organisation :
 
 ## Ce qu'il reste à fournir
 - L'adresse de la page de don (à mettre dans `web/config.js`).
-- La relecture du tounsi et de la darija par des locuteurs natifs : le fichier `docs/traductions-a-relire.csv` s'ouvre dans un tableur, avec une colonne « Correction » à remplir pour chaque langue. Une relecture de l'hébreu, de l'anglais et de l'espagnol est aussi souhaitable.
+- La relecture du tounsi par un locuteur natif : le fichier `docs/traductions-a-relire.csv` s'ouvre dans un tableur, avec une colonne « Correction » à remplir. Une relecture de l'hébreu, de l'anglais et de l'espagnol est aussi souhaitable.
 
 ## Déjà fourni
 - L'adresse e-mail de contact : myhitbodedut26@gmail.com (politique de confidentialité, fiche Play, lettre à l'éditeur du Houmash).

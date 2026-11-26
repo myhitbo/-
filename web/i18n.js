@@ -97,13 +97,13 @@
       srcYerNote: 'pour les versets qu\'Onkelos ne traduit pas',
       srcPD: 'Domaine public', srcNC: 'usage non commercial', srcLicense: 'Licence',
       srcSefaria: 'Tous les textes sont fournis par Sefaria, bibliothèque libre de textes juifs :',
-      srcFonts: 'Polices', srcFontsLine: 'Inter, Newsreader, Frank Ruhl Libre, David Libre, Noto Serif Hebrew, Heebo et Noto Sans Arabic, sous licence',
+      srcFonts: 'Polices', srcFontsLine: 'Inter, Newsreader, Frank Ruhl Libre, David Libre, Noto Serif Hebrew et Heebo, sous licence',
 
       /* Don */
       donate: 'Soutenir l\'app', donateSub: 'L\'app est gratuite et sans publicité. Un don aide à la faire vivre.', donateBtn: 'Faire un don'
     }
   };
-  const RTL = { he: 1, tn: 1, ma: 1 };
+  const RTL = { he: 1, tn: 1 };
   const memo = {};
   window.SM_I18N = T;
   window.SM_LANG = function () { return (window.APP && APP.get('lang')) || 'fr'; };
@@ -121,7 +121,7 @@
     const names = (idx || []).map(function (i) { return list[i]; }).filter(Boolean);
     return names.length ? names.join(' – ') : (fallback || '');
   };
-  /* Nom hébreu à afficher à côté d'un nom : rien si le nom est déjà écrit en lettres hébraïques (hébreu, tounsi, darija) */
+  /* Nom hébreu à afficher à côté d'un nom : rien si le nom est déjà écrit en lettres hébraïques (hébreu, tounsi) */
   window.SM_HEB = function (name, heb) { return /[\u0590-\u05FF]/.test(String(name || '')) ? '' : (heb || ''); };
   window.SM_CITY_NAME = function (c) { return (c && (window.SM_TR().cities[c.id] || c.name)) || ''; };
   /* Dates dans la langue en cours. `opts` = options d'Intl.DateTimeFormat. */

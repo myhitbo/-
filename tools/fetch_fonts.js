@@ -5,8 +5,8 @@ const fs = require('fs'), path = require('path');
 const OUT = path.join(__dirname, '..', 'web', 'fonts');
 const CSS = 'https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500;600;700' +
   '&family=Frank+Ruhl+Libre:wght@400;500&family=David+Libre:wght@400;500&family=Noto+Serif+Hebrew:wght@400;500&family=Heebo:wght@400;500' +
-  '&family=Noto+Sans+Arabic:wght@400;600;700&display=swap';
-const KEEP = ['latin', 'latin-ext', 'hebrew', 'arabic'];
+  '&display=swap';
+const KEEP = ['latin', 'latin-ext', 'hebrew'];
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36';
 (async () => {
   const css = await (await fetch(CSS, { headers: { 'User-Agent': UA } })).text();

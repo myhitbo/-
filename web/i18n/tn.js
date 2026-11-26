@@ -181,7 +181,7 @@ window.SM_I18N.tn = {
   srcLicense: 'אלרכ׳צה',
   srcSefaria: 'אלנצוץ אלכל ג׳איה מן ספריא, מכתבה חרה מתאע נצוץ יהודיה:',
   srcFonts: 'אלכ׳טוט',
-  srcFontsLine: 'Inter, Newsreader, Frank Ruhl Libre, David Libre, Noto Serif Hebrew, Heebo ו Noto Sans Arabic, תחת רכ׳צה',
+  srcFontsLine: 'Inter, Newsreader, Frank Ruhl Libre, David Libre, Noto Serif Hebrew ו Heebo, תחת רכ׳צה',
   donate: 'עאון אלתטביקה',
   donateSub: 'אלתטביקה בלאש ומן ע׳יר אשהאר. אלתברע יעאונהא באש תעיש.',
   donateBtn: 'תברע'

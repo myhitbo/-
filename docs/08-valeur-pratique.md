@@ -51,11 +51,11 @@
 - Un rappel arrivé à échéance n'est jamais perdu : si Android a pris du retard et que l'app est rouverte entre-temps, il est affiché à ce moment-là.
 - Réglages : la ligne « Prochain rappel » indique quand il arrivera, et le bouton « Tester » envoie une notification tout de suite.
 
-### Six langues
-- Français, hébreu, anglais, espagnol (Amérique latine), tounsi, darija : tous les écrans, la feuille imprimée et les rappels.
-- Hébreu, tounsi et darija s'affichent de droite à gauche. Les dates suivent la langue ; les noms des parachiyot, des alyot et des villes aussi.
-- **Le tounsi et la darija sont écrits en lettres hébraïques** (judéo-arabe tunisien et marocain), y compris les jours et les mois. Conventions : ג׳ pour le j, כ׳ pour le kh, ע׳ pour le gh, ת׳ ד׳ צ׳ ט׳ pour ث ذ ض ظ ; les mots hébreux gardent leur orthographe (שבת, פרשה, עליה, תרגום) ; les villes portent leur nom hébreu. Outil : `tools/judeo_arabe.js`.
-- Tounsi et darija sont des brouillons à faire relire (`docs/traductions-a-relire.csv`).
+### Cinq langues
+- Français, hébreu, anglais, espagnol (Amérique latine), tounsi : tous les écrans, la feuille imprimée et les rappels. La darija a été retirée.
+- L'hébreu et le tounsi s'affichent de droite à gauche. Les dates suivent la langue ; les noms des parachiyot, des alyot et des villes aussi.
+- **Le tounsi est écrit en lettres hébraïques** (judéo-arabe tunisien), y compris les jours et les mois. Conventions : ג׳ pour le j, כ׳ pour le kh, ע׳ pour le gh, ת׳ ד׳ צ׳ ט׳ pour ث ذ ض ظ ; les mots hébreux gardent leur orthographe (שבת, פרשה, עליה, תרגום) ; les villes portent leur nom hébreu. Outil : `tools/judeo_arabe.js`.
+- Le tounsi est un brouillon à faire relire (`docs/traductions-a-relire.csv`).
 - Les textes sont dans `web/i18n.js` (français) et `web/i18n/<langue>.js`.
 
 ### Écran Année : la vraie progression
