@@ -4,7 +4,7 @@
 Tout public, toutes nationalités.
 - Interface en **6 langues** : français, hébreu, anglais, espagnol, arabe tunisien (tounsi), arabe marocain (darija).
   - Hébreu et arabe : interface entièrement inversée (droite à gauche).
-  - Arabe tunisien et marocain : dialectes peu standardisés à l'écrit → traductions par des locuteurs natifs de chaque communauté, à faire relire. Écriture (décidé le 26/11/2026) : **le tounsi s'écrit en lettres hébraïques** (judéo-arabe) ; **la darija en lettres arabes, avec les termes religieux en lettres hébraïques**.
+  - Arabe tunisien et marocain : dialectes peu standardisés à l'écrit → traductions par des locuteurs natifs de chaque communauté, à faire relire. Écriture (décidé le 26/11/2026) : **le tounsi et la darija s'écrivent en lettres hébraïques** (judéo-arabe).
   - Espagnol : **variante d'Amérique latine** (validé).
   - Noms des parachiyot et des alyot adaptés à chaque langue (Vayétsé, Vayetzei, ויצא…).
   - Police d'interface couvrant latin, hébreu et arabe (ex. Heebo + Noto Sans Arabic).
