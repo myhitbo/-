@@ -1,0 +1,56 @@
+name: Page de confidentialité
+
+# Met en ligne docs/confidentialite.html sur GitHub Pages (adresse à donner à Google Play).
+# À faire une seule fois sur GitHub : Settings → Pages → Source : « GitHub Actions ».
+# Tant que ce n'est pas fait, cette tâche ne publie rien et le signale sans échouer.
+on:
+  push:
+    branches: [main]
+    paths: ['docs/confidentialite.html', '.github/workflows/pages.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: GitHub Pages est-il activé ?
+        id: pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh api "repos/${{ github.repository }}/pages" > /dev/null 2>&1; then
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::GitHub Pages n'est pas activé : Settings → Pages → Source « GitHub Actions », puis relancer cette tâche."
+          fi
+
+      # La même page à la racine du site et sous son nom.
+      - name: Préparer la page
+        if: steps.pages.outputs.ok == 'true'
+        run: |
+          mkdir _site
+          cp docs/confidentialite.html _site/index.html
+          cp docs/confidentialite.html _site/confidentialite.html
+
+      - uses: actions/upload-pages-artifact@v4
+        if: steps.pages.outputs.ok == 'true'
+        with:
+          path: _site
+
+      - id: deploy
+        if: steps.pages.outputs.ok == 'true'
+        uses: actions/deploy-pages@v4

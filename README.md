@@ -26,5 +26,7 @@ Application Android en version de test (lecteur seul), en préparation pour Goog
 | 8 | [Valeur pratique](docs/08-valeur-pratique.md) | En cours |
 | 9 | [Licences des textes et demande à Metsudah](docs/09-licences-textes.md) | Décidé, lettre à envoyer |
 | 10 | [Publication sur Google Play](docs/10-publication.md) | Marche à suivre |
+| — | [Fiche Google Play : textes, bannière, captures](docs/fiche-google-play/textes.md) | Prêt à copier |
+| — | [Politique de confidentialité](docs/confidentialite.html) | Prête à mettre en ligne |
 
 Les maquettes visuelles (canevas de design) sont tenues à part, hors de ce dépôt.

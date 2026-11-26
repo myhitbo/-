@@ -33,10 +33,11 @@ Avec le compte d'organisation :
 3. L'identifiant de l'app est `org.shnayimmikra.app`. **Il devient définitif à la première publication** : pour en changer (par exemple pour le nom de domaine de l'organisation), le dire avant.
 
 ## Étape 3 — Renseigner la fiche
-- **Icône 512 × 512** : `docs/icone-google-play-512.png` (dessin « bleu nuit »). **Description et captures d'écran** : à préparer.
+- **Icône 512 × 512** : `docs/icone-google-play-512.png` (dessin « bleu nuit »).
+- **Nom, descriptions, bannière et captures d'écran** : tout est dans `docs/fiche-google-play/` — les textes à copier dans `textes.md` (français, anglais, espagnol, hébreu), la bannière `banniere-1024x500.png`, et six captures par langue dans `captures/`. Le tounsi n'a pas de fiche : Google Play ne le propose pas.
 - **Catégorie** : Livres et références. **Classification du contenu** : questionnaire à remplir (aucun contenu sensible).
 - **Sécurité des données** : l'app ne demande pas de compte, ne collecte et ne partage aucune donnée personnelle ; la progression et les réglages restent sur le téléphone. Seul échange réseau : le téléchargement des textes sur sefaria.org.
-- **Politique de confidentialité** : adresse d'une page publique. Texte proposé plus bas.
+- **Politique de confidentialité** : adresse d'une page publique. La page est prête : `docs/confidentialite.html` (voir plus bas pour la mettre en ligne).
 - **Dons** : le bouton ouvre la page de don de l'organisme hors de l'app. Google l'autorise pour un organisme exonéré d'impôt : fournir le justificatif dans la déclaration sur les paiements.
 - **Notifications** : l'app demande l'autorisation pour le rappel de lecture. Elle déclare aussi l'accès « Alarmes et rappels » (`SCHEDULE_EXACT_ALARM`), pour que le rappel choisi par l'utilisateur arrive à l'heure ; si Google Play pose la question, c'est l'usage à indiquer.
 
@@ -48,20 +49,16 @@ Avec le compte d'organisation :
 - l'impression et « Enregistrer en PDF » ;
 - les liens (don, sources) s'ouvrent dans le navigateur.
 
-## Politique de confidentialité (texte proposé)
-> **Shnayim Mikra — confidentialité**
->
-> L'application Shnayim Mikra est éditée par l'Association Hachiveinou Letoratekha. Contact : myhitbodedut26@gmail.com.
->
-> L'application fonctionne sans compte. Elle ne collecte, ne transmet et ne vend aucune donnée personnelle, et ne contient ni publicité ni outil de mesure d'audience.
->
-> Vos réglages (langue, ville, rythme de lecture, heure du rappel) et votre progression sont enregistrés uniquement sur votre téléphone. Ils sont effacés si vous désinstallez l'application.
->
-> Pour télécharger les textes de la semaine, l'application contacte le site sefaria.org. Comme pour toute consultation d'un site, celui-ci reçoit alors l'adresse IP de votre appareil ; l'application ne lui envoie aucune autre information.
->
-> Le bouton « Faire un don » ouvre, dans votre navigateur, la page de don de l'Association Hachiveinou Letoratekha, qui a sa propre politique de confidentialité.
->
-> Dernière mise à jour : [date].
+## Politique de confidentialité
+La page est prête : `docs/confidentialite.html`, en français, anglais, espagnol et hébreu. C'est un fichier unique, sans dépendance : il peut être déposé tel quel sur n'importe quel site.
+
+Elle dit ce que fait réellement l'app : pas de compte, aucune donnée collectée, réglages et progression gardés sur le téléphone (et dans la sauvegarde Android de l'utilisateur si elle est activée), textes téléchargés sur sefaria.org, ville choisie dans une liste sans localisation, rappel préparé sur le téléphone, don sur une page externe. **Si l'app change sur l'un de ces points, mettre la page à jour, avec sa date.**
+
+Deux façons de la mettre en ligne :
+1. **Sur GitHub (gratuit, sans autre site)** — une seule fois, sur la page du projet : Settings → Pages → Source : « GitHub Actions ». La tâche « Page de confidentialité » la publie ensuite à chaque modification. Adresse : `https://myhitbo.github.io/-/`.
+2. **Sur le site de l'association** — déposer le fichier `confidentialite.html` à côté de la page de don.
+
+L'adresse obtenue est à coller dans Google Play Console (Contenu de l'application → Règles de confidentialité).
 
 ## Ce qu'il reste à fournir
 - L'adresse de la page de don (à mettre dans `web/config.js`).
