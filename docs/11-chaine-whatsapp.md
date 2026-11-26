@@ -33,7 +33,7 @@ Cinq chaînes sont prévues. Elles peuvent s'ouvrir l'une après l'autre : les m
 
 ### Qui publie
 - Une seule personne peut publier dans toutes les chaînes : la page de publication montre les messages de toutes les chaînes, l'un sous l'autre.
-- Ou une personne par langue : le propriétaire d'une chaîne peut inviter jusqu'à 16 personnes à devenir admins (dans la chaîne, toucher son nom, puis « Inviter des admins » ; l'invitation est valable sept jours). Chacun n'affiche alors que ses chaînes sur la page de publication.
+- Ou une personne par langue : le propriétaire d'une chaîne peut inviter jusqu'à 16 personnes à devenir admins (dans la chaîne, toucher son nom, puis choisir d'inviter des admins ; l'invitation est valable sept jours). Chacun n'affiche alors que ses chaînes sur la page de publication.
 
 À savoir sur les admins (règles de WhatsApp) :
 - Un admin publie, modifie et supprime les messages sans validation du propriétaire. Un message envoyé peut être corrigé ou supprimé pendant 30 jours : utile en cas d'erreur de chaîne.
