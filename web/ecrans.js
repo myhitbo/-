@@ -18,13 +18,13 @@ function riche(el, html) {
 
 /* ---------- Halakhot de Chnayim mikra ---------- */
 const T = {
-  fr: { back: 'Retour', cap: 'Halakhot', title: 'Les lois de Chnayim mikra', draft: 'Chaque citation a été relue à sa source. Le texte a été relu contre les sources par une seconde relecture automatique pour les 31 premières halakhot ; elle est en cours pour celles ajoutées le 26/11/2026. Il n’a pas été relu par un rav.',
+  fr: { back: 'Retour', cap: 'Halakhot', title: 'Les lois de Chnayim mikra', draft: 'Chaque citation a été relue à sa source. Le texte de chaque halakha a ensuite été relu contre ses sources par une seconde relecture automatique (26/11/2026). Il n’a pas été relu par un rav.',
     rav: 'Ce recueil ne tranche rien : chaque question pratique se pose à un rav.', filter: 'Rite', mine: 'Mon rite', all: 'Tous les rites', n: 'halakhot', src: 'Sources en hébreu', hide: 'Masquer les sources', wait: 'Chargement…',
     rites: { edot: 'Edot hamizra’h', sefard: 'Sfard', ashkenaz: 'Ashkenaz' } },
-  en: { back: 'Back', cap: 'Halacha', title: 'The laws of Shnayim mikra', draft: 'Every quotation was re-read at its source. The text was checked against the sources by a second automatic review for the first 31 laws; that review is under way for those added on 26 Nov 2026. It has not been reviewed by a rabbi.',
+  en: { back: 'Back', cap: 'Halacha', title: 'The laws of Shnayim mikra', draft: 'Every quotation was re-read at its source. The text of each law was then checked against its sources by a second automatic review (26 Nov 2026). It has not been reviewed by a rabbi.',
     rav: 'This collection decides nothing: for a practical question, ask a rabbi.', filter: 'Rite', mine: 'My rite', all: 'All rites', n: 'laws', src: 'Hebrew sources', hide: 'Hide sources', wait: 'Loading…',
     rites: { edot: 'Edot HaMizrach', sefard: 'Sfard', ashkenaz: 'Ashkenaz' } },
-  he: { back: 'חזרה', cap: 'הלכה', title: 'הלכות שנים מקרא ואחד תרגום', draft: 'כל ציטוט נבדק מול מקורו. הנוסח נבדק מול המקורות בבדיקה ממוחשבת שנייה ב־31 ההלכות הראשונות; הבדיקה נמשכת בהלכות שנוספו בט״ז בכסלו תשפ״ז. לא עבר הגהת רב.',
+  he: { back: 'חזרה', cap: 'הלכה', title: 'הלכות שנים מקרא ואחד תרגום', draft: 'כל ציטוט נבדק מול מקורו. לאחר מכן נבדק נוסח כל הלכה מול מקורותיה בבדיקה ממוחשבת שנייה (ט״ז בכסלו תשפ״ז). הנוסח לא עבר הגהת רב.',
     rav: 'אין כאן הכרעה: כל שאלה למעשה תישאל לרב.', filter: 'נוסח', mine: 'הנוסח שלי', all: 'כל העדות', n: 'הלכות', src: 'המקורות', hide: 'הסתר מקורות', wait: 'טוען…',
     rites: { edot: 'עדות המזרח', sefard: 'ספרד', ashkenaz: 'אשכנז' } }
 };

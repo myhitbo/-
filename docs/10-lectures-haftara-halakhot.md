@@ -11,7 +11,7 @@
 - **Réglage « Rite »** (Réglages) : Edot hamizra'h (par défaut), Sfard, Ashkenaz.
 - **Réglage « Hébreu affiché ×2 / ×1 »** (panneau « Aa » du lecteur) : en ×1, chaque verset n'est affiché qu'une fois, avec le rappel « à lire 2 fois ».
 - **Noms hébreux** des livres et des parachiot, écrits selon la langue : Berèchit / Bereshit / בראשית, Ovadia / Ovadia / עובדיה. L'espagnol suit l'anglais ; le tunisien et le marocain suivent le français.
-- **Écran « Halakhot »** : les 31 halakhot, filtrées par rite, avec les sources en hébreu repliées sous chaque halakha.
+- **Écran « Halakhot »** : les 83 halakhot en 8 chapitres, filtrées par rite, avec les sources en hébreu repliées sous chaque halakha.
 - **Sources et licences** en bas des Réglages.
 
 Corrigé au passage dans le lecteur : une alya était comptée comme lue dès le démarrage du défilement automatique, et jamais quand on lisait à la main. Elle est maintenant comptée quand on arrive au bout, dans les deux cas.
@@ -42,13 +42,67 @@ Corrigé au passage dans le lecteur : une alya était comptée comme lue dès le
 
 - Les deux outils Python ont été relancés depuis leurs sources : les trois fichiers de données sortent **identiques** à ceux de l'archive.
 - Le moteur donne la même réponse qu'hebcal chaque jour de septembre 2025 à décembre 2031, sauf les écarts voulus, comptés par catégorie. Les vecteurs de parité de l'archive passent sans changement.
-- `construction.py --verifie` a relu les 141 références des 31 halakhot à leur source : toutes les citations y sont. La fidélité du français a été relue à part (voir plus bas).
-- Les écrans ont été ouverts dans Chromium depuis un fichier, comme dans l'APK : accueil, lecteur, haftara, halakhot, réglages, impression.
+- `construction.py --verifie` a relu les 338 références des 83 halakhot à leur source : toutes les citations y sont. La fidélité du français et de l'anglais a été relue à part (voir plus bas).
+- Les écrans ont été ouverts dans Chromium depuis un fichier, comme dans l'APK : accueil, lecteur, haftara, halakhot, réglages, impression. L'écran des 83 halakhot a été rouvert en français, en anglais et en hébreu, pour les trois rites, sans erreur.
 - Non fait : compiler l'APK. La compilation se fait sur GitHub, à la fusion dans `main`.
 
-## Halakhot : la relecture indépendante (26/11/2026)
+## Halakhot : de 31 à 83 (26/11/2026)
 
-Quatre relecteurs automatiques indépendants (aucun humain, aucun rav) ont relu les 31 halakhot contre leurs sources, chacun sur un quart du recueil, sans connaître le travail du rédacteur. Chacun a lu en entier chaque source citée.
+Demande du propriétaire : enrichir le recueil (« il y en a beaucoup plus que 31 »), vérifier toutes les sources, exploiter la Michna Beroura, Hidabroot et « Halakha Beroura ». Le siman 285 a été repris paragraphe par paragraphe dans chaque ouvrage ; les réponses d'aujourd'hui ont été cherchées question par question.
+
+Le recueil a maintenant **83 halakhot** en 8 chapitres : 36 pour tous les rites, 28 séfarades, 19 ashkénazes. Le chapitre « Cas particuliers » est nouveau (parachiot jumelées, Yom Tov un Chabbat ou un vendredi, 'Hok leIsraël, endeuillé, 9 Av, voyageur…).
+
+### Ce que le recueil exploite
+
+| Ouvrage | Ce qui est repris |
+|---|---|
+| Choul'han Aroukh et Rema, O.H. 285 | les 7 se'ifim ; Rema 139:1 (le lecteur), Choul'han Aroukh 146:2 (pendant la lecture de la Torah), Rema 553:2 (veille du 9 Av) |
+| Michna Beroura 285 | les 20 paragraphes ; Béour Halakha 285 et 494 ; Michna Beroura 553:10 et 669:4 |
+| Kitsour Yalkout Yossef 285 | les 19 paragraphes |
+| Kaf ha'Haïm 285 | 35 paragraphes sur 39 (les paragraphes 2, 21, 30 et 34 n'ajoutent rien) ; 25:27, 128:158, 496:62, 553:19 |
+| Choul'han Aroukh haRav 285 | paragraphes 2 à 10 |
+| Aroukh haChoul'han | 285:1-5, 7, 9-13 ; 139:2 |
+| Autres classiques | Maguen Avraham, Taz, Baèr Hétev, Cha'arei Techouva, Eliya Rabba, 'Hayé Adam, Kitsour Choul'han Aroukh, Ben Ich 'Haï, le 'Hida (Moré beEtsba, Tsiporen Chamir), Séfer 'Hassidim, Rambam ; pour l'endeuillé, Yoré Déa 400 avec le Taz, le Chakh et Rabbi Akiva Eiger |
+| Hidabroot, « שאל את הרב » | 34 réponses (Rav Hillel Meirs, Rav Binyamin Chmouéli) |
+| Kav haHalakha haSefaradi | 7 réponses |
+| Beit hora'a « Halakha lema'assé » du Rav Ofir Malka | 4 réponses |
+| Rav Binyamin 'Hota | 2 réponses écrites |
+| Halacha Yomit | 3 articles (n° 1659, 1660, 2740) et les questions-réponses publiées sous deux d'entre eux |
+| Rav David Yossef | 3 cours hebdomadaires (n° 323, 351, 369) |
+
+Les réponses d'aujourd'hui sont protégées : elles sont résumées et référencées, jamais recopiées. Une citation tient en 16 mots au plus ; la table de vérification ne garde que des repères de 25 mots au plus.
+
+### Michna Beroura
+
+Tout le siman 285 est exploité : les 20 paragraphes, le Béour Halakha du siman, celui du siman 494 pour les Dix Paroles, 553:10 pour la veille du 9 Av et 669:4 pour Vézot haBérakha. La Michna Beroura des simanim 139 (le lecteur) et 146 (lire pendant la lecture de la Torah) n'est pas citée : Sefaria ne la donne que dans une saisie dont la licence est inconnue. Ces sujets sont traités d'après le Choul'han Aroukh, le Rema, la Michna Beroura 285:14-15, le Béour Halakha, le Kaf ha'Haïm et le Kitsour Yalkout Yossef.
+
+### Hidabroot
+
+Les 10 réponses déjà citées ont été relues à leur page, puis 24 réponses ont été ajoutées. Trois pages sans rav nommé ont été écartées : une de Hidabroot, deux de Kav haHalakha haSefaradi.
+
+### « Halakha Beroura » du Rav David Yossef
+
+Le siman 285 est paru, au volume 17 (simanim 275 à 286, Makhon Ye'havé Daat ; trois libraires concordent). Son texte ne se lit pas librement en ligne : il est dans Otzar HaHochma, sur abonnement. **Rien n'est cité du livre.**
+
+À la place, le recueil reprend trois cours hebdomadaires du Rav David Yossef, lus dans leur traduction anglaise publiée par Halacha Yomit. Dans le cours n° 323, il dit lui-même ce qu'il a écrit dans le livre sur la fin du temps de lecture (halakha 20). Si le propriétaire a le volume 17, les halakhot du siman 285 pourront être ajoutées et contrôlées contre l'imprimé.
+
+### Halacha Yomit
+
+Ce site (« d'après les décisions du Rav Ovadia Yossef ») n'a pas été nommé par le propriétaire. Il est repris parce qu'il publie des articles complets sur Chnayim mikra et les cours du Rav David Yossef. Les questions-réponses publiées sous les articles sont des rédacteurs du site : le recueil les attribue à « Halacha Yomit », jamais au Rav Ovadia Yossef. **À retirer si le propriétaire n'en veut pas** : 12 halakhot le citent ; une seule (22) ne repose que sur lui.
+
+## Vérification des sources
+
+Trois contrôles. Aucun n'est celui d'un rav.
+
+### 1. Le script relit chaque citation à sa source
+
+`construction.py --verifie --yalkut <fichier>` retélécharge chaque source – Sefaria dans l'édition indiquée, la page de chaque réponse, le PDF de chaque cours – et y cherche chaque citation et chaque repère, mot pour mot. Le Kitsour Yalkout Yossef est relu dans la copie de My Hitbodedut.
+
+Dernier passage, après toutes les corrections : **338 références relues, toutes les citations sont dans leurs sources.**
+
+### 2. Première relecture indépendante : les 31 halakhot d'origine
+
+Quatre relecteurs automatiques indépendants ont relu les 31 halakhot contre leurs sources, chacun sur un quart du recueil, sans connaître le travail du rédacteur. Chacun a lu en entier chaque source citée.
 
 | Résultat | Nombre |
 |---|---|
@@ -57,54 +111,90 @@ Quatre relecteurs automatiques indépendants (aucun humain, aucun rav) ont relu 
 | Citations hébraïques fausses ou mal référencées | 0 |
 | Contresens | 0 |
 
-Ce qui a été corrigé :
+Ce qui a été corrigé (numéros d'aujourd'hui) :
 
 - **Une erreur de référence** (halakha 2) : 'Hazon Ovadia, page 328 et non 228.
-- **Deux attributions** : le Rav Azoulay parle de la Torah écrite la nuit, non du targoum (halakha 9) ; le Kaf ha'Haïm cite le Kitsour Chla, non le Chla (halakha 26).
-- **Des conditions oubliées** : « a posteriori » (6), « a priori » (10), « le mieux est » (8), « il semble » (2), « il convient » (24, 26).
-- **Qui dit quoi** : le dernier verset (10), Rachi et le targoum (17, 18), 'Houmach sans targoum (19), les te'amim du targoum (21), la bénédiction dans le séfer Torah (22), la lecture pendant l'office (25), Yom Tov (30).
-- **Des citations hébraïques coupées** qui perdaient une condition ou un avis : halakhot 5, 21, 23, 24, 25, 31.
-- **La table de vérification** ne garde plus que les repères des réponses protégées (25 mots au plus), au lieu du passage entier.
+- **Deux attributions** : le Rav Azoulay parle de la Torah écrite la nuit, non du targoum (halakha 14) ; le Kaf ha'Haïm cite le Kitsour Chla, non le Chla (halakha 55).
+- **Des conditions oubliées** : « a posteriori » (11), « a priori » (23), « le mieux est » (13), « il semble » (2), « il convient » (53, 55).
+- **Qui dit quoi** : le dernier verset (23), Rachi et le targoum (38, 39), 'Houmach sans targoum (40), les te'amim du targoum (47), la bénédiction dans le séfer Torah (48), la lecture pendant l'office (54), Yom Tov (67).
+- **Des citations hébraïques coupées** qui perdaient une condition ou un avis : halakhot 10, 47, 52, 53, 54, 68.
 
-Après correction, `construction.py --verifie` a relu les 141 références : toutes les citations sont dans leurs sources.
+### 3. Seconde relecture indépendante : les 52 halakhot ajoutées
+
+Cinq relecteurs automatiques indépendants, sur des copies figées du recueil. Les lots A à C couvrent les 34 halakhot ajoutées d'après les sources classiques. Les lots D et E couvrent les 18 halakhot ajoutées d'après les réponses d'aujourd'hui, et 11 halakhot complétées par ces réponses (5 des 31 d'origine, 6 des lots A à C). Chaque relecteur a relu chaque source en entier, avec les paragraphes voisins.
+
+| Lot | Sources | Halakhot | Conformes | Corrigées |
+|---|---|---|---|---|
+| A | classiques | 11 | 2 | 9 |
+| B | classiques | 12 | 7 | 5 |
+| C | classiques | 11 | 6 | 5 |
+| D | réponses d'aujourd'hui | 14 | 6 | 8 |
+| E | réponses d'aujourd'hui | 15 | 10 | 5 |
+| Total | | 63 | 31 | 32 |
+
+Ces 63 relectures portent sur 57 halakhot : six ont été relues deux fois, pour leurs sources classiques puis pour les réponses d'aujourd'hui. 30 halakhot différentes ont été corrigées.
+
+- **Citations** : aucune n'est fausse ni mal référencée. Toutes se retrouvent mot pour mot à l'adresse et dans l'édition indiquées.
+- **Limites de 16 et 25 mots** pour les réponses protégées : aucun dépassement.
+- **Une erreur d'attribution** (halakha 61) : une glose du Rema (O.H. 139:1) était donnée comme du Choul'han Aroukh. Corrigée.
+- **Les autres corrections sont des nuances** : un avis rapporté par le Kaf ha'Haïm et donné comme le sien (Maté Yehouda, Beit David, Maharam Mintz, Roua'h 'Haïm) ; une réserve tombée dans la coupe d'une citation (Aroukh haChoul'han 285:5, 285:7, 285:9-10, 139:2) ; une condition omise (« a priori », « il semble », « même selon le Ari », « pour les habitants d'Erets Israël ») ; le cas précis d'une question (lecture de nuit « même selon la Kabbale », vendredi matin).
+- **Une abréviation mal lue** (halakha 61) : « וש"ך » de l'Eliya Rabba 139:1 est le Chiyouré Knesset haGuedola, non le Chakh. Un avis laissé anonyme est maintenant nommé : « בה"י », le Beit Hillel (halakha 76).
+- **Une exception oubliée** (halakha 59) : les parachiot Zakhor et Para, qu'il faut écouter de la bouche du lecteur (Choul'han Aroukh 146:2).
+
+Les corrections demandées ont été appliquées, chacune relue à la source avant d'être portée dans le recueil. Trois choses ne l'ont pas été : l'ajout de la Michna Beroura 139:3, que Sefaria ne donne que dans une saisie sans licence connue ; les renvois d'une halakha à une autre par son numéro, parce que les numéros bougent ; quelques suggestions de style données comme facultatives.
+
+Les rapports des relecteurs ne sont pas dans le dépôt. Les textes corrigés n'ont pas été relus une nouvelle fois par un relecteur : le script a relu leurs citations.
 
 ### À faire confirmer par un rav ou par le propriétaire
 
-1. **Halakha 2, rite « tous »** (les femmes sont dispensées) : les sources lues sont séfarades ; l'étiquette repose sur le renvoi de Hidabroot au Mishné Halakhot 6:60, non lu.
-2. **Halakhot 13 et 19, rite « tous »** : elles rapportent des avis nommés de chaque rite plutôt qu'un accord.
-3. **Halakha 23** : « סברא הראשונה » du Choul'han Aroukh haRav 285:8 est lu comme l'avis qui compte l'écoute pour une lecture.
-4. **Halakha 26** : l'abréviation « קשל"ה » est lue « Kitsour Chla » ; « והכי נקטינן » est attribué au Yafé laLev d'après le seul Kaf ha'Haïm.
-5. **Deux coquilles probables de l'édition numérique du Kaf ha'Haïm**, affichées telles quelles : « כ"י כתבו » (285:14, sans doute « כי ») et « פסוק אחר » (285:15, peut-être « אחד »).
-6. **Le titre « Rav »** des auteurs de Hidabroot : les pages sont signées « הלל מאירס » et « בנימין שמואלי », sans titre, sous la rubrique « שאל את הרב ».
-7. **Ouvrages cités de seconde main**, non lus : Ma'assé Rav, Maté Yehouda, Kol Bo, Séder haYom, Korban Chabbat, Birké Yossef, Yafé laLev, Knesset haGuedola, Mishné Halakhot, 'Hazon Ovadia.
-8. **Le Kitsour Yalkout Yossef** n'a été contrôlé que contre la copie Torat Emet, pas contre l'imprimé.
+1. **Halakha 2, rite « tous »** (les femmes sont dispensées) : les sources lues sont séfarades ; l'étiquette repose sur le renvoi de Hidabroot au Michné Halakhot 6:60, non lu.
+2. **Halakhot 26 et 40, rite « tous »** : elles rapportent des avis nommés de chaque rite plutôt qu'un accord.
+3. **Rite des halakhot tirées des seules réponses d'aujourd'hui.** Huit sont classées « tous » (21, 35, 36, 44, 45, 51, 80, 81) alors que leurs sources sont Hidabroot ou un beit hora'a séfarade. La règle n'est pas uniforme : la halakha 5, aux sources toutes séfarades, est « sefarade » ; les halakhot 7 et 36 sont « tous ». Les halakhot 78 et 79 sont « sefarade » parce que leur seule source est le Kaf ha'Haïm, bien que leur contenu vaille pour tous. La halakha 4, « tous », rapporte la formule « Léchem yi'houd », que seul le Kaf ha'Haïm donne. Aucun classement n'est faux ; le choix de la règle revient au propriétaire.
+4. **Halakha 52** : « סברא הראשונה » du Choul'han Aroukh haRav 285:8 est lu comme l'avis qui compte l'écoute pour une lecture.
+5. **Halakha 55** : l'abréviation « קשל"ה » est lue « Kitsour Chla » ; « והכי נקטינן » est attribué au Yafé laLev d'après le seul Kaf ha'Haïm.
+6. **Abréviations développées par le rédacteur**, à confirmer : « עו"ת » lu « 'Olat Tamid » (halakhot 42 et 58 ; pour les lois du Chabbat le même auteur a écrit « 'Olat Chabbat », et l'ouvrage n'a pas été lu) ; « ב"ד סי' קי"א » lu « Beit David, siman 111 », et « מ"ב » lu « Massat Binyamin » (31) ; « בה"י » lu « Beit Hillel » (76) ; « וש"ך » de l'Eliya Rabba 139:1 lu « Chiyouré Knesset haGuedola » (61) ; « זכ"ל » lu « Zekhor leAvraham » (77) ; « מס' האיטלייא » (71), non identifié, rendu par « une autre haftara ».
+7. **Coquilles probables de l'édition numérique du Kaf ha'Haïm**, affichées telles quelles : « כ"י כתבו » (285:14, sans doute « כי »), « פסוק אחר » (285:15, peut-être « אחד »), « תחינות » (285:39, sans doute « חתונות » ; halakha 72).
+8. **Avis opposés rapportés sans trancher** : lire toute la paracha puis tout le targoum (29) ; s'acquitter en écoutant un autre (56) ; quelle haftara lire quand la synagogue en lit une particulière (65 et 66) ; Yom Tov un vendredi (82). Le recueil dit qui tient quoi et ne décide pas.
+9. **Le titre « Rav »** des auteurs de Hidabroot : les pages sont signées « הלל מאירס » et « בנימין שמואלי », sans titre, sous la rubrique « שאל את הרב ».
+10. **Ouvrages cités de seconde main**, non lus : Ma'assé Rav, Maté Yehouda, Kol Bo, Séder haYom, Korban Chabbat, Birké Yossef, Ma'hazik Berakha, Yafé laLev, Knesset haGuedola et ses Chiyourim, Beit David, Massat Binyamin, Maharam Mintz, Roua'h 'Haïm, Binyan Olam, Michné Halakhot, 'Hazon Ovadia, Yabia Omer, Rav Pe'alim, Chivat Tsion.
+11. **Le Kitsour Yalkout Yossef** n'a été contrôlé que contre la copie Torat Emet, pas contre l'imprimé.
+12. **Les cours du Rav David Yossef** sont lus dans leur traduction anglaise, non dans l'hébreu d'origine.
+13. **Cinq halakhot sans texte hébreu** (20, 22, 45, 62, 63) : elles reposent sur des réponses résumées ; seuls le français et l'anglais portent le contenu, avec la référence en hébreu.
+14. **Halacha Yomit** : à garder ou à retirer (voir plus haut).
 
 ## Rav Binyamin 'Hota
 
 Deux réponses de sa rubrique « הלכה ב-60 שניות » (Kikar haChabbat) ont un texte écrit sur la page. Elles sont résumées et référencées :
 
-- **Halakha 5** : lire Chnayim mikra accomplit la préparation du Chabbat « par la parole » (13/06/2025).
-- **Halakha 6** : le dernier délai de l'année est la lecture de la Torah à la synagogue, à Sim'hat Torah (12/10/2025).
+- **Halakha 10** : lire Chnayim mikra accomplit la préparation du Chabbat « par la parole » (13/06/2025).
+- **Halakha 11** : le dernier délai de l'année est la lecture de la Torah à la synagogue, à Sim'hat Torah (12/10/2025).
 
 Ses autres réponses sur le sujet sont en vidéo ou en enregistrement seulement (Kikar haChabbat 2022-2023 et 13/02/2026, kollel 'Hazon Ovadia, Kol haLachon). Rien n'en est tiré : un sous-titrage automatique n'est pas un texte fiable à attribuer à un rav. Ses livres « כי בו שבת » ne sont pas en ligne.
 
-## Licence du Kitsour Yalkout Yossef
+## Licences des textes cités
 
-Vérifiée à la source : la page de licence de Torat Emet (`toratemetfreeware.com/contents/copyrights2.html`, lue le 26/11/2026). Tous les livres de la base, hors Wikisource, sont sous **CC BY-NC-SA 2.5** ; on peut les diffuser **sans demander d'autorisation**, à trois conditions.
+**Kitsour Yalkout Yossef.** Le propriétaire a indiqué le 26/11/2026 que cette licence a déjà été vérifiée dans le projet My Hitbodedut : ce n'est plus une question ouverte. Rappel de ce qu'elle demande (page de licence de Torat Emet, `toratemetfreeware.com/contents/copyrights2.html`) : les livres de la base, hors Wikisource, sont sous **CC BY-NC-SA 2.5** et se diffusent sans autorisation à demander, à trois conditions.
 
 | Condition | Dans ce projet |
 |---|---|
 | Mention des droits et des conditions de la licence, bien visibles | Fait : introduction du recueil, Réglages › Sources et licences, `web/licences/CC-BY-NC-SA-2.5.txt` |
-| Usage non commercial | Tenu aujourd'hui : application gratuite, sans publicité. **À décider par le propriétaire** : une licence payante pour synagogues ou écoles ([06](06-autres-aspects.md), § 8) ne serait pas compatible avec ces citations |
-| Partage à l'identique des œuvres dérivées | **À décider par le propriétaire** : placer le recueil des halakhot sous la même licence, ou retirer les citations mot pour mot du Yalkout Yossef |
+| Usage non commercial | Tenu : application gratuite, sans publicité. Une licence payante pour synagogues ou écoles ([06](06-autres-aspects.md), § 8) ne serait pas compatible avec ces citations |
+| Partage à l'identique des œuvres dérivées | Le recueil des halakhot cite le Yalkout Yossef mot pour mot, avec la mention des droits en tête : il est concerné par cette condition |
 
-Le Choul'han Aroukh haRav (saisie Kehot, CC BY-NC) pose la même condition d'usage non commercial.
+**Autres textes.**
+
+- Choul'han Aroukh haRav : saisie Kehot, CC BY-NC ; même condition d'usage non commercial.
+- Aroukh haChoul'han : texte du domaine public ; Sefaria ne le donne que dans la saisie de Wikisource, sous CC BY-SA. Courtes citations, créditées en tête du recueil.
+- Les autres classiques cités sont lus dans des éditions du domaine public.
+- Réponses d'aujourd'hui : tous droits réservés ; résumées et référencées, jamais recopiées.
 
 ## Contexte des haftarot
 
 - **Socle** : `data/contexte_haftarot.json`, le contrôle `tools/contexte_haftarot.mjs` (`--sources` relit chaque citation sur Sefaria), l'encadré « Contexte de la haftara » replié sous la haftara de l'accueil.
 - **Portée** : l'application peut afficher 105 haftarot (origine et premier passage, tous rites confondus), soit environ 70 contextes à écrire.
-- **État** : voir `_meta.etat` dans le fichier et la sortie du contrôle.
+- **État au 26/11/2026** : 7 contextes écrits (Vayichla'h, les deux Chabbat de 'Hanouka, Vayigach, Vaye'hi, Chemot selon chaque rite). Ils couvrent 12 des 105 haftarot affichées ; 93 restent sans contexte.
+- **Relecture indépendante** : un relecteur automatique a relu les 42 phrases contre leurs sources. 29 étaient conformes, 13 ont été corrigées. Aucun rav ne les a relues.
+- **Éditions** : les versets viennent de « Tanach with Ta'amei Hamikra » (domaine public). Le Talmud est cité dans l'édition William Davidson et Beréchit Rabba dans celle de Torat Emet, toutes deux sous CC BY-NC : usage non commercial, comme pour les halakhot. Pour le Radak (trois courtes citations), Sefaria ne déclare pas de licence.
 
 ## Prochaines étapes (cahier, section 8)
 
