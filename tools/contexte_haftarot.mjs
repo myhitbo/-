@@ -3,6 +3,8 @@
 //   node tools/contexte_haftarot.mjs              contrôle hors ligne : forme, sources, noms, couverture
 //   node tools/contexte_haftarot.mjs --strict     échoue aussi si une haftara affichée n'a pas son contexte
 //   node tools/contexte_haftarot.mjs --sources    relit chaque citation classique sur Sefaria (réseau)
+//   node tools/contexte_haftarot.mjs --fichier <chemin>   contrôle un autre fichier de même forme (un lot en cours
+//                                              de rédaction) : mêmes contrôles, sans la liste de ce qui reste à écrire
 //
 // La forme d'un contexte :
 //   { "id": "vayichlah",
@@ -215,12 +217,15 @@ export async function relit(fichier) {
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
-  const fichier = JSON.parse(readFileSync(FICHIER, 'utf8'));
+  const autre = process.argv.indexOf('--fichier');
+  const chemin = autre > 0 ? process.argv[autre + 1] : FICHIER;
+  if (!chemin) { console.log('ERREUR --fichier demande un chemin'); process.exit(1); }
+  const fichier = JSON.parse(readFileSync(chemin, 'utf8'));
   const donnees = JSON.parse(readFileSync(DONNEES, 'utf8'));
   const { erreurs, manquantes, couvertes, total } = controle(fichier, donnees);
   console.log(`${fichier.contextes.length} contextes ; ${couvertes} haftarot affichées couvertes sur ${total}`);
   for (const e of erreurs) console.log(`ERREUR ${e}`);
-  if (manquantes.length) {
+  if (manquantes.length && autre < 0) {
     console.log(`${manquantes.length} sans contexte :`);
     for (const m of manquantes.sort((a, b) => a.date.localeCompare(b.date))) console.log(`  ${m.origine} | ${m.passage} | ${[...m.rites].join(', ')} | première fois le ${m.date}`);
   }
@@ -229,7 +234,7 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
     const { fautes, lues, change } = await relit(fichier);
     console.log(`${lues} citations relues sur Sefaria`);
     for (const f of fautes) console.log(`ERREUR ${f}`);
-    if (change) { writeFileSync(FICHIER, `${JSON.stringify(fichier, null, 1)}\n`); console.log('versions et licences notées dans le fichier'); }
+    if (change) { writeFileSync(chemin, `${JSON.stringify(fichier, null, 1)}\n`); console.log('versions et licences notées dans le fichier'); }
     echec = echec || fautes.length > 0;
   }
   if (echec) process.exit(1);
