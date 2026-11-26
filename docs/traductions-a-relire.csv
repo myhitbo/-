@@ -187,6 +187,9 @@
 "donate";"Soutenir l'app";"עאון אלתטביקה";""
 "donateSub";"L'app est gratuite et sans publicité. Un don aide à la faire vivre.";"אלתטביקה בלאש ומן ע׳יר אשהאר. אלתברע יעאונהא באש תעיש.";""
 "donateBtn";"Faire un don";"תברע";""
+"channel";"Chaîne WhatsApp";"קנאה וואטסאפ";""
+"channelSub";"L'alya du jour chaque matin, et un message avant Chabbat.";"אלעליה מתאע אליום כל צבאח, ומסאג׳ קבל שבת.";""
+"channelBtn";"Rejoindre la chaîne";"אדכ׳ל ללקנאה";""
 "reglages.title";"Réglages";"אלאעדאדאת";""
 "reglages.appearance";"Apparence";"אלשכל";""
 "reglages.lang";"Langue de l'application";"לע׳ה אלתטביקה";""
@@ -250,3 +253,33 @@
 "ville.djerba";"djerba";"ג'רבה";""
 "ville.johannesburg";"johannesburg";"יוהנסבורג";""
 "ville.melbourne";"melbourne";"מלבורן";""
+"chaine.newWeek";"🗓 *Nouvelle paracha : {parasha}*
+{ref} · 7 alyot · environ {total} min en tout";"🗓 *פרשה ג׳דידה: {parasha}*
+{ref} · 7 עליות · תקריב {total} דק׳ פי אלכל";""
+"chaine.today";"📖 Aujourd'hui : {alyot} · environ {min} min";"📖 אליום: {alyot} · תקריב {min} דק׳";""
+"chaine.day";"📖 *{parasha}* — {alyot} · environ {min} min";"📖 *{parasha}* — {alyot} · תקריב {min} דק׳";""
+"chaine.and";" et ";" ו";""
+"chaine.link";"🔗 Lire dans l'app : {url}";"🔗 אקרא פי אלתטביקה: {url}";""
+"chaine.react";"✅ Réagis à ce message quand c'est fait";"✅ עלם עלא אלמסאג׳ הד׳א כי תכמל";""
+"chaine.candles";"🕯 Allumage des bougies : {list}";"🕯 תשעיל אלשמע: {list}";""
+"chaine.shabbat";"Chabbat Chalom";"שבת שלום";""
+"chaine.hag";"'Hag Saméa'h";"חג שמח";""
+"chaine.rh";"Chana Tova";"שנה טובה";""
+"chaine.yk";"Gmar 'Hatima Tova";"גמר חתימה טובה";""
+"chaine.greet";"*{a} !*";"*{a}!*";""
+"chaine.greet2";"*{a} et {b} !*";"*{a} ו{b}!*";""
+"chaine.eveTitle";"⏳ *Chabbat approche*";"⏳ *שבת קרבת*";""
+"chaine.eveBody";"Demain, les dernières alyot de {parasha} : {alyot} · environ {min} min.
+Pas encore à jour ? Toute la paracha se lit en {total} min environ, et l'app peut imprimer ce qu'il te reste pour Chabbat.";"ע׳דוה, אלעליות אלאכ׳רין מתאע {parasha}: {alyot} · תקריב {min} דק׳.
+מאזלת מא כמלתש? אלפרשה אלכל תתקרא פי תקריב {total} דק׳, ואלתטביקה תנג׳ם תטבעלך אלבאקי לשבת.";""
+"chaine.stIntro";"🍂 *Avant Sim'hat Torah*
+C'est le moment de rattraper les parachiyot que tu n'as pas terminées cette année.
+La dernière paracha, {parasha}, commence ici {date}.";"🍂 *קבל שמחת תורה*
+הד׳א וקת אלתדארך: כמל אלפרשיות אלי מא כמלתהמש אלעאם הד׳א.
+אלפרשה אלאכ׳רה, {parasha}, תבדא הנא נהאר {date}.";""
+"chaine.stWeek";"🗓 *Dernière paracha de l'année : {parasha}*
+{ref} · 7 alyot · environ {total} min en tout
+À terminer avant Sim'hat Torah ({date}).";"🗓 *אלפרשה אלאכ׳רה מתאע אלעאם: {parasha}*
+{ref} · 7 עליות · תקריב {total} דק׳ פי אלכל
+תכמלהא קבל שמחת תורה ({date}).";""
+"chaine.dvar";"💬 *Dvar Torah*";"💬 *דבר תורה*";""

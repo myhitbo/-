@@ -1,12 +1,28 @@
-name: Page de confidentialité
+name: Site public (confidentialité, chaîne WhatsApp)
 
-# Met en ligne docs/confidentialite.html sur GitHub Pages (adresse à donner à Google Play).
+# Met en ligne sur GitHub Pages :
+#   - la politique de confidentialité (docs/confidentialite.html), à la racine du site ;
+#   - la page des messages de la chaîne WhatsApp, sous /chaine/ (préparés par tools/make_channel.js).
 # À faire une seule fois sur GitHub : Settings → Pages → Source : « GitHub Actions ».
 # Tant que ce n'est pas fait, cette tâche ne publie rien et le signale sans échouer.
+#
+# Les messages de la chaîne couvrent la semaine passée et les quatre suivantes : la tâche tourne deux fois
+# par semaine pour avancer avec le calendrier. Si Sefaria ne répond pas, elle échoue et le site reste tel quel.
 on:
   push:
     branches: [main]
-    paths: ['docs/confidentialite.html', '.github/workflows/pages.yml']
+    paths:
+      - 'docs/confidentialite.html'
+      - 'chaine/**'
+      - 'tools/make_channel.js'
+      - 'tools/fetch_sefaria.js'
+      - 'web/sefaria.js'
+      - 'web/globals.js'
+      - 'web/i18n.js'
+      - 'web/i18n/**'
+      - '.github/workflows/pages.yml'
+  schedule:
+    - cron: '17 1 * * 0,3'   # dimanche et mercredi, 1 h 17 (UTC)
   workflow_dispatch:
 
 permissions:
@@ -38,13 +54,22 @@ jobs:
             echo "::notice::GitHub Pages n'est pas activé : Settings → Pages → Source « GitHub Actions », puis relancer cette tâche."
           fi
 
-      # La même page à la racine du site et sous son nom.
-      - name: Préparer la page
+      - uses: actions/setup-node@v5
+        if: steps.pages.outputs.ok == 'true'
+        with:
+          node-version: '22'
+
+      - name: Textes depuis Sefaria (Israël et diaspora)
+        if: steps.pages.outputs.ok == 'true'
+        run: node tools/fetch_sefaria.js
+
+      - name: Préparer le site
         if: steps.pages.outputs.ok == 'true'
         run: |
           mkdir _site
           cp docs/confidentialite.html _site/index.html
           cp docs/confidentialite.html _site/confidentialite.html
+          node tools/make_channel.js _site/chaine
 
       - uses: actions/upload-pages-artifact@v4
         if: steps.pages.outputs.ok == 'true'

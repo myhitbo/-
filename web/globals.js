@@ -294,6 +294,10 @@
     return (h0 && h1) || (h0 && t < sunset(D, c) + 42 * 60e3) || (h1 && t >= sunset(D, c) - c.off * 60e3);
   }
   window.SM_IS_REST = (t) => isRest(t === undefined ? now() : t, city());
+  /* Pour les outils hors de l'app (messages de la chaîne WhatsApp, tools/make_channel.js) :
+     nom, référence et numéros d'une semaine dans la langue courante ; et si une date est un jour de fête */
+  window.SM_WEEK_INFO = (w) => ({ name: pn(w), ref: pref(w), idx: idxOf(w) });
+  window.SM_IS_YOMTOV = (iso) => yomTov(iso, isIL());
   /* Les rappels des 21 prochains jours : [{ at, title, text }].
      Un rappel par jour où une séance est prévue et pas encore lue (les séances en retard s'y ajoutent) ;
      en rythme libre, un rappel par jour tant que la paracha n'est pas finie. Rien pendant Shabbat et les fêtes.

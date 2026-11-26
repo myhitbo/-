@@ -5,3 +5,4 @@ android/local.properties
 android/app/src/main/assets/www/
 __pycache__/
 *.jks
+_site/

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* Écrit docs/traductions-a-relire.csv : tous les textes de l'interface en français et en tounsi,
+/* Écrit docs/traductions-a-relire.csv : tous les textes de l'interface et de la chaîne WhatsApp, en français et en tounsi,
    avec une colonne vide pour les corrections des relecteurs. À relancer après chaque changement de texte. */
 const fs = require('fs'), path = require('path'), vm = require('vm');
 const web = path.join(__dirname, '..', 'web');
@@ -19,6 +19,9 @@ for (const k of Object.keys(R.fr)) { if (k === 'draft' || k === 'cityVal' || k =
 rows.push(['reglages.nt.title', NT.fr.title, NT.tn.title, '']); rows.push(['reglages.nt.help', NT.fr.help, NT.tn.help, '']);
 NT.fr.o.forEach((x, i) => rows.push(['reglages.nt.' + (i + 1), x, NT.tn.o[i], '']));
 for (const id of Object.keys(T.tn.cities)) rows.push(['ville.' + id, id, T.tn.cities[id], '']);
+/* Les messages de la chaîne WhatsApp sont dans chaine/textes.js */
+const CH = require(path.join(__dirname, '..', 'chaine', 'textes.js'));
+for (const k of Object.keys(CH.fr)) rows.push(['chaine.' + k, CH.fr[k], CH.tn[k] || '', '']);
 const csv = rows.map(r => r.map(c => '"' + String(c).replace(/"/g, '""') + '"').join(';')).join('\r\n');
 fs.writeFileSync(path.join(__dirname, '..', 'docs', 'traductions-a-relire.csv'), '﻿' + csv + '\r\n');
 console.error((rows.length - 1) + ' lignes');

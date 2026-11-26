@@ -1,0 +1,11 @@
+{
+  "appUrl": "",
+  "calendrier": { "fr": "diaspora", "he": "israel", "en": "diaspora", "es": "diaspora", "tn": "diaspora" },
+  "villes": {
+    "fr": ["paris", "marseille", "lyon", "strasbourg", "bruxelles", "montreal"],
+    "he": ["jerusalem", "telaviv", "haifa", "beersheva"],
+    "en": ["newyork", "losangeles", "miami", "londres", "toronto", "melbourne"],
+    "es": ["buenosaires", "mexico", "panama", "bogota", "caracas", "santiago"],
+    "tn": ["tunis", "djerba", "paris", "marseille", "jerusalem"]
+  }
+}

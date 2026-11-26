@@ -102,7 +102,8 @@
       srcFonts: 'Polices', srcFontsLine: 'Inter, Newsreader, Frank Ruhl Libre, David Libre, Noto Serif Hebrew et Heebo, sous licence',
 
       /* Don */
-      donate: 'Soutenir l\'app', donateSub: 'L\'app est gratuite et sans publicité. Un don aide à la faire vivre.', donateBtn: 'Faire un don'
+      donate: 'Soutenir l\'app', donateSub: 'L\'app est gratuite et sans publicité. Un don aide à la faire vivre.', donateBtn: 'Faire un don',
+      channel: 'Chaîne WhatsApp', channelSub: 'L\'alya du jour chaque matin, et un message avant Chabbat.', channelBtn: 'Rejoindre la chaîne'
     }
   };
   const RTL = { he: 1, tn: 1 };

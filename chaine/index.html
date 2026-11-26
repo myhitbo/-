@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Shnayim Mikra — messages de la chaîne WhatsApp</title>
+<style>
+  :root { --bg: #F6F2EC; --card: #FFFFFF; --text: #1C1A17; --soft: #6B645A; --line: #E2D9CB; --accent: #A24E14; --navy: #16264A; --on: #FFFFFF; --bubble: #E7F6DF; --ok: #1E6B3A; --warn-bg: #FBE4D2; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #1A1916; --card: #24221E; --text: #EDE7DB; --soft: #A59D90; --line: rgba(237,231,219,0.16); --accent: #E3B577; --navy: #EDE7DB; --on: #1A1916; --bubble: #1F3A2A; --ok: #8FD3A6; --warn-bg: rgba(217,163,91,0.18); }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Hebrew", Arial, sans-serif; }
+  main { max-width: 640px; margin: 0 auto; padding: 22px 16px 56px; }
+  h1 { margin: 0; font-size: 22px; line-height: 1.25; color: var(--navy); }
+  h2 { margin: 26px 0 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--soft); }
+  p { margin: 0; }
+  .lead { margin-top: 6px; color: var(--soft); font-size: 15px; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .chip { min-height: 44px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 22px; background: var(--card); color: var(--text); font: inherit; font-weight: 600; cursor: pointer; }
+  .chip[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: var(--on); }
+  .card { margin-top: 10px; padding: 14px; border: 1px solid var(--line); border-radius: 18px; background: var(--card); }
+  .when { margin-bottom: 8px; font-size: 13px; font-weight: 700; color: var(--accent); }
+  .msg { padding: 12px 14px; border-radius: 14px; background: var(--bubble); white-space: pre-wrap; overflow-wrap: anywhere; font-size: 16px; line-height: 1.45; }
+  .copy { display: block; width: 100%; min-height: 48px; margin-top: 10px; border: 0; border-radius: 24px; background: var(--navy); color: var(--on); font: inherit; font-weight: 700; cursor: pointer; }
+  .copy.done { background: var(--ok); }
+  .none { color: var(--soft); }
+  .warn { margin-top: 14px; padding: 12px 14px; border-radius: 14px; background: var(--warn-bg); font-size: 15px; }
+  details { margin-top: 8px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); }
+  summary { display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 8px 14px; cursor: pointer; font-weight: 600; list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+  summary .sub { margin-inline-start: auto; font-weight: 400; font-size: 14px; color: var(--soft); text-align: end; }
+  details > .in { padding: 0 14px 14px; }
+  footer { margin-top: 28px; font-size: 13px; color: var(--soft); }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Messages de la chaîne WhatsApp</h1>
+  <p class="lead">Choisir la langue, toucher « Copier », puis coller le message dans la chaîne.</p>
+
+  <div class="row" id="langs" role="group" aria-label="Langue du message"></div>
+  <div class="row" id="cals" role="group" aria-label="Calendrier des lectures"></div>
+  <div id="stale"></div>
+
+  <h2 id="todayTitle">Aujourd'hui</h2>
+  <div id="today"></div>
+
+  <h2>Jours suivants</h2>
+  <div id="next"></div>
+
+  <h2>Jours précédents</h2>
+  <div id="prev"></div>
+
+  <footer id="foot"></footer>
+</main>
+
+<script src="messages.js"></script>
+<script>
+(function () {
+  var C = window.SM_CHAINE, $ = function (id) { return document.getElementById(id); };
+  if (!C || !C.days) { $('today').innerHTML = '<p class="warn">Les messages ne sont pas disponibles pour le moment.</p>'; return; }
+
+  var LANGS = [['fr', 'Français', 'ltr'], ['he', 'עברית', 'rtl'], ['en', 'English', 'ltr'], ['es', 'Español', 'ltr'], ['tn', 'תונסי', 'rtl']];
+  var CALS = [['diaspora', 'Diaspora'], ['israel', 'Israël']];
+  var NOTES = { chabbat: 'Chabbat : pas de message.', fete: 'Jour de fête : pas de message.', rien: 'Pas de message prévu ce jour-là.' };
+  var store = { get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
+  var lang = store.get('chaine.lang'); if (!LANGS.some(function (l) { return l[0] === lang; })) lang = 'fr';
+  var calChosen = {}; try { calChosen = JSON.parse(store.get('chaine.cal') || '{}') || {}; } catch (e) {}
+  function cal() { var c = calChosen[lang] || (C.calendrier || {})[lang] || 'diaspora'; return C.days[c] ? c : Object.keys(C.days)[0]; }
+
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function todayISO() { var n = new Date(); return n.getFullYear() + '-' + pad(n.getMonth() + 1) + '-' + pad(n.getDate()); }
+  function addDays(iso, n) { var p = iso.split('-').map(Number); return new Date(Date.UTC(p[0], p[1] - 1, p[2] + n)).toISOString().slice(0, 10); }
+  var fmt = new Intl.DateTimeFormat('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' });
+  function label(iso) { var s = fmt.format(new Date(iso + 'T12:00:00Z')); return s.charAt(0).toUpperCase() + s.slice(1); }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  /* Aperçu : les *étoiles* deviennent du gras, comme dans WhatsApp */
+  function preview(s) { return esc(s).replace(/\*([^*\n]+)\*/g, '<strong>$1</strong>'); }
+
+  function copy(text, btn) {
+    function ok() { btn.textContent = 'Copié ✓'; btn.classList.add('done'); setTimeout(function () { btn.textContent = 'Copier'; btn.classList.remove('done'); }, 2500); }
+    function old() { var t = document.createElement('textarea'); t.value = text; t.style.position = 'fixed'; t.style.opacity = '0'; document.body.appendChild(t); t.focus(); t.select();
+      try { document.execCommand('copy'); ok(); } catch (e) { btn.textContent = 'Copie impossible : sélectionner le texte à la main'; } document.body.removeChild(t); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, old); else old();
+  }
+
+  function dayHtml(iso) {
+    var d = (C.days[cal()][lang] || {})[iso], dir = (LANGS.filter(function (l) { return l[0] === lang; })[0] || [])[2] || 'ltr';
+    if (!d) return '<p class="none">Les messages de ce jour ne sont pas encore prêts.</p>';
+    if (!d.msgs) return '<p class="none">' + (NOTES[d.note] || NOTES.rien) + '</p>';
+    return d.msgs.map(function (m, i) {
+      var when = d.msgs.length > 1 ? '<p class="when">' + (m.k === 'soir' ? 'Le soir' : 'Le matin') + '</p>' : '';
+      return '<div class="card">' + when + '<div class="msg" dir="' + dir + '" lang="' + (lang === 'tn' ? 'ajt' : lang) + '">' + preview(m.text) + '</div>' +
+        '<button class="copy" type="button" data-iso="' + iso + '" data-i="' + i + '">Copier</button></div>';
+    }).join('');
+  }
+  function summary(iso) {
+    var d = (C.days[cal()][lang] || {})[iso];
+    return !d ? 'pas encore prêt' : d.msgs ? (d.msgs.length > 1 ? '2 messages' : '1 message') : d.note === 'chabbat' ? 'Chabbat' : d.note === 'fete' ? 'fête' : 'rien';
+  }
+  function listHtml(isos) {
+    return isos.map(function (iso) { return '<details><summary>' + esc(label(iso)) + '<span class="sub">' + summary(iso) + '</span></summary><div class="in">' + dayHtml(iso) + '</div></details>'; }).join('') ||
+      '<p class="none">Rien à afficher.</p>';
+  }
+
+  function draw() {
+    var t = todayISO(), c = cal();
+    $('langs').innerHTML = LANGS.map(function (l) { return '<button class="chip" type="button" data-lang="' + l[0] + '" aria-pressed="' + (l[0] === lang) + '" dir="' + l[2] + '">' + l[1] + '</button>'; }).join('');
+    $('cals').innerHTML = CALS.filter(function (x) { return C.days[x[0]]; }).map(function (x) { return '<button class="chip" type="button" data-cal="' + x[0] + '" aria-pressed="' + (x[0] === c) + '">' + x[1] + '</button>'; }).join('');
+    $('todayTitle').textContent = 'Aujourd\'hui · ' + label(t);
+    $('today').innerHTML = dayHtml(t);
+    var next = [], prev = [], i;
+    for (i = 1; i <= 35 && addDays(t, i) <= C.to; i++) next.push(addDays(t, i));
+    for (i = 1; i <= 7 && addDays(t, -i) >= C.from; i++) prev.push(addDays(t, -i));
+    $('next').innerHTML = listHtml(next); $('prev').innerHTML = listHtml(prev);
+    var left = Math.round((Date.parse(C.to) - Date.parse(t)) / 864e5);
+    $('stale').innerHTML = left < 3 ? '<p class="warn">Les messages préparés s\'arrêtent le ' + esc(label(C.to).toLowerCase()) + '. La mise à jour automatique n\'a pas eu lieu : prévenir la personne qui s\'occupe du projet.</p>' : '';
+    var built = C.builtAt ? new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long', timeStyle: 'short' }).format(new Date(C.builtAt)) : '';
+    $('foot').textContent = (built ? 'Messages préparés le ' + built + '. ' : '') + 'Durées calculées comme dans l\'app, à la vitesse de lecture normale.';
+  }
+
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest ? e.target.closest('button') : null; if (!b) return;
+    if (b.dataset.lang) { lang = b.dataset.lang; store.set('chaine.lang', lang); draw(); }
+    else if (b.dataset.cal) { calChosen[lang] = b.dataset.cal; store.set('chaine.cal', JSON.stringify(calChosen)); draw(); }
+    else if (b.dataset.iso) { var d = C.days[cal()][lang][b.dataset.iso]; if (d && d.msgs) copy(d.msgs[+b.dataset.i].text, b); }
+  });
+  draw();
+})();
+</script>
+</body>
+</html>

@@ -52,16 +52,18 @@ Avec le compte d'organisation :
 ## Politique de confidentialité
 La page est prête : `docs/confidentialite.html`, en français, anglais, espagnol et hébreu. C'est un fichier unique, sans dépendance : il peut être déposé tel quel sur n'importe quel site.
 
-Elle dit ce que fait réellement l'app : pas de compte, aucune donnée collectée, réglages et progression gardés sur le téléphone (et dans la sauvegarde Android de l'utilisateur si elle est activée), textes téléchargés sur sefaria.org, ville choisie dans une liste sans localisation, rappel préparé sur le téléphone, don sur une page externe. **Si l'app change sur l'un de ces points, mettre la page à jour, avec sa date.**
+Elle dit ce que fait réellement l'app : pas de compte, aucune donnée collectée, réglages et progression gardés sur le téléphone (et dans la sauvegarde Android de l'utilisateur si elle est activée), textes téléchargés sur sefaria.org, ville choisie dans une liste sans localisation, rappel préparé sur le téléphone, don et chaîne WhatsApp ouverts hors de l'app. **Si l'app change sur l'un de ces points, mettre la page à jour, avec sa date.**
 
 Deux façons de la mettre en ligne :
-1. **Sur GitHub (gratuit, sans autre site)** — une seule fois, sur la page du projet : Settings → Pages → Source : « GitHub Actions ». La tâche « Page de confidentialité » la publie ensuite à chaque modification. Adresse : `https://myhitbo.github.io/-/`.
+1. **Sur GitHub (gratuit, sans autre site)** — une seule fois, sur la page du projet : Settings → Pages → Source : « GitHub Actions ». La tâche « Site public » la publie ensuite à chaque modification. Adresse : `https://myhitbo.github.io/-/`. Le même réglage met en ligne la page des messages de la chaîne WhatsApp (voir `docs/11-chaine-whatsapp.md`).
 2. **Sur le site de l'association** — déposer le fichier `confidentialite.html` à côté de la page de don.
 
 L'adresse obtenue est à coller dans Google Play Console (Contenu de l'application → Règles de confidentialité).
 
 ## Ce qu'il reste à fournir
 - L'adresse de la page de don (à mettre dans `web/config.js`).
+- L'adresse de la chaîne WhatsApp, une fois créée (à mettre dans `web/config.js`), et les divré Torah du vendredi (`chaine/dvar-torah/`) : voir `docs/11-chaine-whatsapp.md`.
+- Après la publication : l'adresse de l'app sur Google Play, à mettre dans `chaine/config.json` pour que les messages de la chaîne y renvoient.
 - La relecture du tounsi par un locuteur natif : le fichier `docs/traductions-a-relire.csv` s'ouvre dans un tableur, avec une colonne « Correction » à remplir. Une relecture de l'hébreu, de l'anglais et de l'espagnol est aussi souhaitable.
 
 ## Déjà fourni

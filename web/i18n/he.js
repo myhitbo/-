@@ -90,5 +90,6 @@ window.SM_I18N.he = {
   srcSefaria: 'כל הטקסטים מגיעים מספריא, ספרייה חופשית של טקסטים יהודיים:',
   srcFonts: 'גופנים', srcFontsLine: 'Inter, Newsreader, Frank Ruhl Libre, David Libre, Noto Serif Hebrew ו־Heebo, ברישיון',
 
-  donate: 'לתמוך באפליקציה', donateSub: 'האפליקציה חינמית וללא פרסומות. תרומה עוזרת לה להמשיך.', donateBtn: 'לתרום'
+  donate: 'לתמוך באפליקציה', donateSub: 'האפליקציה חינמית וללא פרסומות. תרומה עוזרת לה להמשיך.', donateBtn: 'לתרום',
+  channel: 'ערוץ וואטסאפ', channelSub: 'העלייה של היום בכל בוקר, והודעה לפני שבת.', channelBtn: 'להצטרפות לערוץ'
 };

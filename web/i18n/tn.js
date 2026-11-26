@@ -191,5 +191,8 @@ window.SM_I18N.tn = {
   srcFontsLine: 'Inter, Newsreader, Frank Ruhl Libre, David Libre, Noto Serif Hebrew ו Heebo, תחת רכ׳צה',
   donate: 'עאון אלתטביקה',
   donateSub: 'אלתטביקה בלאש ומן ע׳יר אשהאר. אלתברע יעאונהא באש תעיש.',
-  donateBtn: 'תברע'
+  donateBtn: 'תברע',
+  channel: 'קנאה וואטסאפ',
+  channelSub: 'אלעליה מתאע אליום כל צבאח, ומסאג׳ קבל שבת.',
+  channelBtn: 'אדכ׳ל ללקנאה'
 };
