@@ -95,5 +95,5 @@ window.SM_I18N.en = {
   srcFonts: 'Fonts', srcFontsLine: 'Inter, Newsreader, Frank Ruhl Libre, David Libre, Noto Serif Hebrew and Heebo, under the',
 
   donate: 'Support the app', donateSub: 'The app is free and has no ads. A donation helps keep it going.', donateBtn: 'Donate',
-  channel: 'WhatsApp channel', channelSub: 'The day\'s aliyah every morning, and a message before Shabbat.', channelBtn: 'Join the channel'
+  channel: 'WhatsApp channel', channelSub: 'The day\'s aliyah every morning, and a message before Shabbat.', channelBtn: 'Join the channel', channelOther: 'In another language'
 };

@@ -194,5 +194,6 @@ window.SM_I18N.tn = {
   donateBtn: 'תברע',
   channel: 'קנאה וואטסאפ',
   channelSub: 'אלעליה מתאע אליום כל צבאח, ומסאג׳ קבל שבת.',
-  channelBtn: 'אדכ׳ל ללקנאה'
+  channelBtn: 'אדכ׳ל ללקנאה',
+  channelOther: 'בלע׳ה אכ׳רא'
 };

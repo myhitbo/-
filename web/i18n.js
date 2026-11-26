@@ -103,7 +103,7 @@
 
       /* Don */
       donate: 'Soutenir l\'app', donateSub: 'L\'app est gratuite et sans publicité. Un don aide à la faire vivre.', donateBtn: 'Faire un don',
-      channel: 'Chaîne WhatsApp', channelSub: 'L\'alya du jour chaque matin, et un message avant Chabbat.', channelBtn: 'Rejoindre la chaîne'
+      channel: 'Chaîne WhatsApp', channelSub: 'L\'alya du jour chaque matin, et un message avant Chabbat.', channelBtn: 'Rejoindre la chaîne', channelOther: 'Dans une autre langue'
     }
   };
   const RTL = { he: 1, tn: 1 };

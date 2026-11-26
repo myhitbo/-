@@ -91,5 +91,5 @@ window.SM_I18N.he = {
   srcFonts: 'גופנים', srcFontsLine: 'Inter, Newsreader, Frank Ruhl Libre, David Libre, Noto Serif Hebrew ו־Heebo, ברישיון',
 
   donate: 'לתמוך באפליקציה', donateSub: 'האפליקציה חינמית וללא פרסומות. תרומה עוזרת לה להמשיך.', donateBtn: 'לתרום',
-  channel: 'ערוץ וואטסאפ', channelSub: 'העלייה של היום בכל בוקר, והודעה לפני שבת.', channelBtn: 'להצטרפות לערוץ'
+  channel: 'ערוץ וואטסאפ', channelSub: 'העלייה של היום בכל בוקר, והודעה לפני שבת.', channelBtn: 'להצטרפות לערוץ', channelOther: 'בשפה אחרת'
 };

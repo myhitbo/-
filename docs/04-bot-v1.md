@@ -1,6 +1,6 @@
 # 4. Bot — version 1 (validé)
 
-> **Décision du 26 novembre 2026** — Le bot WhatsApp n'est pas construit pour l'instant : depuis octobre 2026, Meta fait payer chaque message envoyé par un bot. Il est remplacé par une **chaîne WhatsApp** gratuite, dont les messages sont préparés automatiquement : voir [11. Chaîne WhatsApp](11-chaine-whatsapp.md). Ce document reste la référence si un bot (Telegram, ou WhatsApp avec un budget) est décidé plus tard.
+> **Décision du 26 novembre 2026** — Le bot WhatsApp n'est pas construit pour l'instant : depuis octobre 2026, Meta fait payer chaque message envoyé par un bot. Il est remplacé par des **chaînes WhatsApp** gratuites, une par langue, dont les messages sont préparés automatiquement : voir [11. Chaînes WhatsApp](11-chaine-whatsapp.md). Ce document reste la référence si un bot (Telegram, ou WhatsApp avec un budget) est décidé plus tard.
 
 ## Canaux
 - WhatsApp en priorité, puis Telegram

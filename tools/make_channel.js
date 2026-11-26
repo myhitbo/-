@@ -1,8 +1,11 @@
 #!/usr/bin/env node
-/* Prépare les messages de la chaîne WhatsApp, jour par jour, dans les cinq langues.
+/* Prépare les messages des chaînes WhatsApp de l'association, jour par jour : une chaîne par langue.
    Usage : node tools/make_channel.js <dossier de sortie> [fichier text.js]
    (lancer d'abord `node tools/fetch_sefaria.js`, qui écrit web/data/text.js).
-   Écrit <sortie>/messages.js et y copie la page chaine/index.html, où l'on copie le message du jour.
+   Écrit <sortie>/messages.js et y copie la page chaine/index.html, où l'on copie le message du jour de chaque chaîne.
+
+   Les chaînes sont décrites dans chaine/config.json (langue, calendrier Israël ou diaspora, villes de l'allumage) ;
+   leur adresse WhatsApp est dans web/config.js (channelUrl), le seul endroit où elle s'écrit.
 
    Les calculs sont ceux de l'app, chargée telle quelle : paracha de la semaine (Israël ou diaspora), durée des alyot,
    heure d'allumage, jours de Chabbat et de fête. La chaîne et l'app disent donc la même chose.
@@ -19,14 +22,32 @@ const root = path.join(__dirname, '..'), web = path.join(root, 'web'), src = pat
 const out = path.resolve(process.argv[2] || path.join(root, '_site', 'chaine'));
 const data = path.resolve(process.argv[3] || path.join(web, 'data', 'text.js'));
 const TX = require(path.join(src, 'textes.js')), CFG = JSON.parse(fs.readFileSync(path.join(src, 'config.json'), 'utf8'));
-const LANGS = ['fr', 'he', 'en', 'es', 'tn'], CALS = ['diaspora', 'israel'];
+const CALS = ['diaspora', 'israel'];
+const fail = (m) => { console.error(m); process.exit(1); };
 
 /* ---------- L'app, chargée dans un bac à part ; S = ses réglages (langue, lieu) ---------- */
 const w = { console, setTimeout: () => 0, clearTimeout: () => {} }; w.window = w; const ctx = vm.createContext(w);
 const S = { lang: 'fr', place: 1 }; w.APP = { get: (k) => S[k] };
 for (const f of [data, 'config.js', 'i18n.js', 'i18n/en.js', 'i18n/es.js', 'i18n/he.js', 'i18n/tn.js', 'sefaria.js', 'globals.js'])
   vm.runInContext(fs.readFileSync(path.isAbsolute(f) ? f : path.join(web, f), 'utf8'), ctx, { filename: f });
-if (!w.SM_TEXT || !w.SM_TEXT.diaspora) { console.error('Pas de textes dans ' + data + ' : lancer d\'abord node tools/fetch_sefaria.js'); process.exit(1); }
+if (!w.SM_TEXT || !w.SM_TEXT.diaspora) fail('Pas de textes dans ' + data + ' : lancer d\'abord node tools/fetch_sefaria.js');
+
+/* ---------- Les chaînes (chaine/config.json) et leur adresse (web/config.js) ---------- */
+const links = (w.SM_CONFIG || {}).channelUrl || {};
+const CHANNELS = (CFG.chaines || []).map((c) => {
+  if (!/^[a-z0-9-]+$/.test(c.id || '')) fail('chaine/config.json : chaque chaîne a un « id » en minuscules, sans espace ni accent.');
+  const where = 'chaine/config.json, chaîne « ' + c.id + ' » : ';
+  if (!TX[c.langue]) fail(where + 'langue inconnue « ' + c.langue + ' » (langues possibles : ' + Object.keys(TX).join(', ') + ').');
+  if (!CALS.includes(c.calendrier)) fail(where + 'le calendrier est « diaspora » ou « israel ».');
+  const cities = (c.villes || []).map((id) => w.SM_CITIES.find(x => x.id === id) || fail(where + 'ville inconnue « ' + id + ' ».'));
+  const url = typeof links === 'string' ? links : (links[c.id] || '');
+  if (url && !/^https:\/\//.test(url)) fail('web/config.js, channelUrl « ' + c.id + ' » : l\'adresse doit commencer par https://');
+  return { id: c.id, name: c.nom || c.id, lang: c.langue, cal: c.calendrier, cities, url };
+});
+if (!CHANNELS.length) fail('chaine/config.json : aucune chaîne.');
+if (new Set(CHANNELS.map(c => c.id)).size !== CHANNELS.length) fail('chaine/config.json : deux chaînes ont le même « id ».');
+/* une adresse écrite pour une chaîne qui n'existe pas : sans doute une faute de frappe */
+if (typeof links !== 'string') for (const k of Object.keys(links)) if (links[k] && !CHANNELS.some(c => c.id === k)) console.log('::warning::web/config.js : channelUrl « ' + k + ' » ne correspond à aucune chaîne de chaine/config.json.');
 
 const Z = w.SM_ZMAN, addDays = Z.addDays, F = w.SM_FMT;
 const at = (iso) => Date.parse(iso + 'T10:00:00Z');            /* milieu de journée, en France comme en Israël */
@@ -69,10 +90,10 @@ function plan(cal) {
   return { days, byIso, P };
 }
 
-/* ---------- Messages d'un calendrier dans une langue ---------- */
-function render(cal, lang, pl) {
-  S.place = cal === 'israel' ? 0 : 1; S.lang = lang;
-  const T = TX[lang], dvars = dvarFile(lang), cities = (CFG.villes[lang] || []).map(id => w.SM_CITIES.find(c => c.id === id)).filter(Boolean), res = {};
+/* ---------- Messages d'une chaîne ---------- */
+function render(ch, pl) {
+  S.place = ch.cal === 'israel' ? 0 : 1; S.lang = ch.lang;
+  const T = TX[ch.lang], dvars = dvarFile(ch.lang), cities = ch.cities, res = {};
   const dateLabel = (iso) => w.SM_DATE(Date.parse(iso + 'T12:00:00Z'), { weekday: 'long', day: 'numeric', month: 'long' });
   const list = (a) => a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + T.and + a[a.length - 1];
   for (const d of pl.days) {
@@ -110,16 +131,17 @@ function render(cal, lang, pl) {
   return res;
 }
 
-const result = { builtAt: new Date().toISOString(), textAt: w.SM_TEXT.builtAt || '', appUrl: CFG.appUrl || '', calendrier: CFG.calendrier, days: {} };
-for (const cal of CALS) {
-  const pl = plan(cal); if (!pl) continue; result.days[cal] = {};
-  for (const lang of LANGS) result.days[cal][lang] = render(cal, lang, pl);
-  const isos = pl.days.map(d => d.iso); result.from = result.from && result.from < isos[0] ? result.from : isos[0];
-  const last = isos[isos.length - 1]; result.to = result.to && result.to > last ? result.to : last;
+const plans = {}, planOf = (cal) => (cal in plans ? plans[cal] : (plans[cal] = plan(cal)));
+const result = { builtAt: new Date().toISOString(), textAt: w.SM_TEXT.builtAt || '', appUrl: CFG.appUrl || '', channels: [] };
+for (const ch of CHANNELS) {
+  const pl = planOf(ch.cal); if (!pl) fail('Aucune semaine dans les textes pour le calendrier « ' + ch.cal + ' ».');
+  result.channels.push({ id: ch.id, name: ch.name, lang: ch.lang, cal: ch.cal, url: ch.url, days: render(ch, pl) });
+  /* période couverte par toutes les chaînes */
+  const first = pl.days[0].iso, last = pl.days[pl.days.length - 1].iso;
+  result.from = result.from && result.from > first ? result.from : first; result.to = result.to && result.to < last ? result.to : last;
 }
-if (!Object.keys(result.days).length) { console.error('Aucune semaine dans les textes.'); process.exit(1); }
 fs.mkdirSync(out, { recursive: true });
 fs.writeFileSync(path.join(out, 'messages.js'), 'window.SM_CHAINE = ' + JSON.stringify(result) + ';\n');
 fs.copyFileSync(path.join(src, 'index.html'), path.join(out, 'index.html'));
-const n = Object.values(result.days.diaspora.fr).filter(x => x.msgs).length;
-console.error('Chaîne : ' + n + ' jours avec message, du ' + result.from + ' au ' + result.to + ' → ' + out);
+const n = Object.values(result.channels[0].days).filter(x => x.msgs).length;
+console.error('Chaînes : ' + CHANNELS.map(c => c.id + (c.url ? '' : ' (sans adresse)')).join(', ') + ' — ' + n + ' jours avec message, du ' + result.from + ' au ' + result.to + ' → ' + out);

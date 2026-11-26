@@ -95,5 +95,5 @@ window.SM_I18N.es = {
   srcFonts: 'Tipos de letra', srcFontsLine: 'Inter, Newsreader, Frank Ruhl Libre, David Libre, Noto Serif Hebrew y Heebo, bajo la licencia',
 
   donate: 'Apoyar la app', donateSub: 'La app es gratuita y sin publicidad. Una donación ayuda a mantenerla.', donateBtn: 'Donar',
-  channel: 'Canal de WhatsApp', channelSub: 'La aliá del día cada mañana, y un mensaje antes de Shabat.', channelBtn: 'Unirse al canal'
+  channel: 'Canal de WhatsApp', channelSub: 'La aliá del día cada mañana, y un mensaje antes de Shabat.', channelBtn: 'Unirse al canal', channelOther: 'En otro idioma'
 };

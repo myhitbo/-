@@ -1,11 +1,25 @@
 {
   "appUrl": "",
-  "calendrier": { "fr": "diaspora", "he": "israel", "en": "diaspora", "es": "diaspora", "tn": "diaspora" },
-  "villes": {
-    "fr": ["paris", "marseille", "lyon", "strasbourg", "bruxelles", "montreal"],
-    "he": ["jerusalem", "telaviv", "haifa", "beersheva"],
-    "en": ["newyork", "losangeles", "miami", "londres", "toronto", "melbourne"],
-    "es": ["buenosaires", "mexico", "panama", "bogota", "caracas", "santiago"],
-    "tn": ["tunis", "djerba", "paris", "marseille", "jerusalem"]
-  }
+  "chaines": [
+    {
+      "id": "fr", "nom": "Français", "langue": "fr", "calendrier": "diaspora",
+      "villes": ["paris", "marseille", "lyon", "strasbourg", "bruxelles", "montreal"]
+    },
+    {
+      "id": "he", "nom": "Hébreu", "langue": "he", "calendrier": "israel",
+      "villes": ["jerusalem", "telaviv", "haifa", "beersheva"]
+    },
+    {
+      "id": "en", "nom": "Anglais", "langue": "en", "calendrier": "diaspora",
+      "villes": ["newyork", "losangeles", "miami", "londres", "toronto", "melbourne"]
+    },
+    {
+      "id": "es", "nom": "Espagnol", "langue": "es", "calendrier": "diaspora",
+      "villes": ["buenosaires", "mexico", "panama", "bogota", "caracas", "santiago"]
+    },
+    {
+      "id": "tn", "nom": "Tounsi (arabe tunisien)", "langue": "tn", "calendrier": "diaspora",
+      "villes": ["tunis", "djerba", "paris", "marseille", "jerusalem"]
+    }
+  ]
 }

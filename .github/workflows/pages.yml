@@ -1,12 +1,12 @@
-name: Site public (confidentialité, chaîne WhatsApp)
+name: Site public (confidentialité, chaînes WhatsApp)
 
 # Met en ligne sur GitHub Pages :
 #   - la politique de confidentialité (docs/confidentialite.html), à la racine du site ;
-#   - la page des messages de la chaîne WhatsApp, sous /chaine/ (préparés par tools/make_channel.js).
+#   - la page des messages des chaînes WhatsApp, sous /chaine/ (préparés par tools/make_channel.js).
 # À faire une seule fois sur GitHub : Settings → Pages → Source : « GitHub Actions ».
 # Tant que ce n'est pas fait, cette tâche ne publie rien et le signale sans échouer.
 #
-# Les messages de la chaîne couvrent la semaine passée et les quatre suivantes : la tâche tourne deux fois
+# Les messages des chaînes couvrent la semaine passée et les quatre suivantes : la tâche tourne deux fois
 # par semaine pour avancer avec le calendrier. Si Sefaria ne répond pas, elle échoue et le site reste tel quel.
 on:
   push:
@@ -18,6 +18,7 @@ on:
       - 'tools/fetch_sefaria.js'
       - 'web/sefaria.js'
       - 'web/globals.js'
+      - 'web/config.js'
       - 'web/i18n.js'
       - 'web/i18n/**'
       - '.github/workflows/pages.yml'

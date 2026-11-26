@@ -82,11 +82,19 @@ SCREENS.reglages = {
     <sc-for list="{{ntOpts}}" as="o" hint-placeholder-count="3"><button role="radio" aria-checked="{{o.on}}" onClick="{{o.pick}}" style="{{o.style}}"><span style="{{o.dot}}"></span><span style="flex: 1; min-width: 0; text-align: start; font-size: 15px; font-weight: 600">{{o.title}}</span></button></sc-for>
   </div>
 </section>
-<sc-if value="{{hasChannel}}" hint-placeholder-val="{{false}}">
+<sc-if value="{{hasChannelCard}}" hint-placeholder-val="{{false}}">
 <section aria-label="{{t.channel}}" class="glass" style="border-radius: 22px; padding: 16px 18px; display: flex; flex-direction: column; gap: 10px">
   <h2 class="cap" style="margin: 0">{{t.channel}}</h2>
   <p style="margin: 0; font-size: 14px; line-height: 1.5; color: var(--soft)">{{t.channelSub}}</p>
-  <a href="{{channelUrl}}" target="_blank" rel="noopener" style="height: 52px; border-radius: 26px; border: 1px solid var(--line2); color: var(--text); display: flex; align-items: center; justify-content: center; text-decoration: none; font: 600 15px Inter, sans-serif">{{t.channelBtn}}</a>
+  <sc-if value="{{hasChannel}}" hint-placeholder-val="{{false}}"><a href="{{channelUrl}}" target="_blank" rel="noopener" style="height: 52px; border-radius: 26px; border: 1px solid var(--line2); color: var(--text); display: flex; align-items: center; justify-content: center; text-decoration: none; font: 600 15px Inter, sans-serif">{{t.channelBtn}}</a></sc-if>
+  <sc-if value="{{hasChannelOthers}}" hint-placeholder-val="{{false}}">
+  <div style="display: flex; flex-direction: column; gap: 8px">
+    <span style="font-size: 13px; color: var(--soft)">{{t.channelOther}}</span>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px">
+      <sc-for list="{{channelOthers}}" as="c" hint-placeholder-count="2"><a href="{{c.url}}" target="_blank" rel="noopener" aria-label="{{c.label}}" style="min-height: 44px; padding: 0 16px; border-radius: 22px; border: 1px solid var(--line2); color: var(--text); display: inline-flex; align-items: center; text-decoration: none; font-size: 14px; font-weight: 600"><span dir="{{c.dir}}">{{c.name}}</span></a></sc-for>
+    </div>
+  </div>
+  </sc-if>
 </section>
 </sc-if>
 <sc-if value="{{hasDonate}}" hint-placeholder-val="{{false}}">
@@ -139,7 +147,10 @@ class Component extends DCLogic {
       remBlocked: rem && !!(window.SMAndroid && SMAndroid.canNotify) && !SMAndroid.canNotify(), askNotify: () => { if (window.SMAndroid && SMAndroid.askNotify) SMAndroid.askNotify(); },
       remSwitch: 'flex-shrink: 0; width: 52px; height: 32px; padding: 0; border-radius: 16px; border: none; position: relative; transition: background-color .2s; background: ' + (rem ? 'var(--accent-line)' : 'var(--line2)'),
       remKnob: 'position: absolute; top: 3px; left: 3px; width: 26px; height: 26px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.25); transition: transform .2s; transform: translateX(' + (rem ? '20px' : '0') + ')' };
-    const nt = NT[lang] || NT.fr; const ntm = s.nt ?? APP.get('nt'); const donateUrl = (window.SM_CONFIG && SM_CONFIG.donateUrl) || ''; const ch = (window.SM_CONFIG && SM_CONFIG.channelUrl) || ''; const channelUrl = typeof ch === 'string' ? ch : (ch[lang] || ch.fr || ''); return { ...reading, ...reminder, donateUrl, hasDonate: /^https:\/\//.test(donateUrl), channelUrl, hasChannel: /^https:\/\//.test(channelUrl), nt, fillCities: (el) => { const L = SM_CITY_LIST(); el.innerHTML = L.map(c => '<option value="' + c.id + '">' + c.name + '</option>').join(''); const on = L.find(c => c.on); if (on) el.value = on.id; }, pickCity: (e) => this.setState({ city: e.target.value }), ntOpts: ['trois', 'yer', 'deux'].map((k, i) => ({ title: nt.o[i], on: k === ntm, pick: () => this.setState({ nt: k }), style: RADIO(k === ntm), dot: DOT(k === ntm) })), themeClass: 'th-' + mode, isParch: mode === 'parchemin', rootStyle: rootVars(mode), t, hasDraft: !!t.draft, fs,
+    const nt = NT[lang] || NT.fr; const ntm = s.nt ?? APP.get('nt'); const donateUrl = (window.SM_CONFIG && SM_CONFIG.donateUrl) || ''; /* Chaînes WhatsApp : celle de la langue de l'app en bouton principal, celles des autres langues en dessous */
+    const ch = (window.SM_CONFIG && SM_CONFIG.channelUrl) || ''; const isUrl = (u) => /^https:\/\//.test(u || ''); const channelUrl = typeof ch === 'string' ? ch : (ch[lang] || '');
+    const channelOthers = typeof ch === 'string' ? [] : LANGS.filter(l => l.id !== lang && isUrl(ch[l.id])).map(l => ({ url: ch[l.id], name: l.native, dir: l.dir, label: t.channel + ' — ' + l.native }));
+    return { ...reading, ...reminder, donateUrl, hasDonate: isUrl(donateUrl), channelUrl, hasChannel: isUrl(channelUrl), channelOthers, hasChannelOthers: channelOthers.length > 0, hasChannelCard: isUrl(channelUrl) || channelOthers.length > 0, nt, fillCities: (el) => { const L = SM_CITY_LIST(); el.innerHTML = L.map(c => '<option value="' + c.id + '">' + c.name + '</option>').join(''); const on = L.find(c => c.on); if (on) el.value = on.id; }, pickCity: (e) => this.setState({ city: e.target.value }), ntOpts: ['trois', 'yer', 'deux'].map((k, i) => ({ title: nt.o[i], on: k === ntm, pick: () => this.setState({ nt: k }), style: RADIO(k === ntm), dot: DOT(k === ntm) })), themeClass: 'th-' + mode, isParch: mode === 'parchemin', rootStyle: rootVars(mode), t, hasDraft: !!t.draft, fs,
       smaller: () => this.setState({ fs: Math.max(20, fs - 2) }), bigger: () => this.setState({ fs: Math.min(40, fs + 2) }),
       modes: ['clair', 'sombre', 'texte', 'parchemin'].map(m => { const th = THEMES[m]; const on = m === mode; return { name: t[m], on, pick: () => this.setState({ mode: m }), style: 'height: 72px; min-width: 0; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 0 2px; font-family: inherit; background: ' + th['--bg'] + '; color: ' + th['--text'] + '; border: ' + (on ? '2px solid var(--accent-line)' : '1px solid ' + th['--line2']) }; }),
       langs: LANGS.map(l => ({ ...l, on: l.id === lang, pick: () => this.setState({ lang: l.id }), style: card(l.id === lang) })),

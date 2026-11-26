@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Shnayim Mikra — messages de la chaîne WhatsApp</title>
+<title>Shnayim Mikra — messages des chaînes WhatsApp</title>
 <style>
   :root { --bg: #F6F2EC; --card: #FFFFFF; --text: #1C1A17; --soft: #6B645A; --line: #E2D9CB; --accent: #A24E14; --navy: #16264A; --on: #FFFFFF; --bubble: #E7F6DF; --ok: #1E6B3A; --warn-bg: #FBE4D2; }
   @media (prefers-color-scheme: dark) {
@@ -15,37 +15,54 @@
   main { max-width: 640px; margin: 0 auto; padding: 22px 16px 56px; }
   h1 { margin: 0; font-size: 22px; line-height: 1.25; color: var(--navy); }
   h2 { margin: 26px 0 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--soft); }
+  h3 { display: flex; align-items: baseline; gap: 10px; margin: 18px 0 0; font-size: 17px; line-height: 1.3; color: var(--navy); }
+  h3 .tag { font-size: 13px; font-weight: 400; color: var(--soft); }
   p { margin: 0; }
   .lead { margin-top: 6px; color: var(--soft); font-size: 15px; }
-  .row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-  .chip { min-height: 44px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 22px; background: var(--card); color: var(--text); font: inherit; font-weight: 600; cursor: pointer; }
+  .hint { margin-top: 8px; color: var(--soft); font-size: 14px; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { min-height: 44px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 22px; background: var(--card); color: var(--soft); font: inherit; font-weight: 600; cursor: pointer; }
   .chip[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: var(--on); }
+  .progress { margin-bottom: 4px; font-size: 15px; font-weight: 600; color: var(--accent); }
+  .progress.all { color: var(--ok); }
+  .block:first-child h3 { margin-top: 4px; }
   .card { margin-top: 10px; padding: 14px; border: 1px solid var(--line); border-radius: 18px; background: var(--card); }
   .when { margin-bottom: 8px; font-size: 13px; font-weight: 700; color: var(--accent); }
   .msg { padding: 12px 14px; border-radius: 14px; background: var(--bubble); white-space: pre-wrap; overflow-wrap: anywhere; font-size: 16px; line-height: 1.45; }
+  .card.pub .msg { opacity: 0.55; }
   .copy { display: block; width: 100%; min-height: 48px; margin-top: 10px; border: 0; border-radius: 24px; background: var(--navy); color: var(--on); font: inherit; font-weight: 700; cursor: pointer; }
   .copy.done { background: var(--ok); }
-  .none { color: var(--soft); }
+  .acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .btn { flex: 1 1 150px; display: flex; align-items: center; justify-content: center; min-height: 44px; padding: 6px 14px; border: 1px solid var(--line); border-radius: 22px; background: transparent; color: var(--text); font: inherit; font-size: 15px; font-weight: 600; text-align: center; text-decoration: none; cursor: pointer; }
+  .btn[aria-pressed="true"] { border-color: var(--ok); color: var(--ok); }
+  .none { margin-top: 10px; color: var(--soft); }
   .warn { margin-top: 14px; padding: 12px 14px; border-radius: 14px; background: var(--warn-bg); font-size: 15px; }
   details { margin-top: 8px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); }
+  details .card { background: transparent; }
   summary { display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 8px 14px; cursor: pointer; font-weight: 600; list-style: none; }
   summary::-webkit-details-marker { display: none; }
   summary .sub { margin-inline-start: auto; font-weight: 400; font-size: 14px; color: var(--soft); text-align: end; }
   details > .in { padding: 0 14px 14px; }
+  details > .in > .none:first-child { margin-top: 0; }
   footer { margin-top: 28px; font-size: 13px; color: var(--soft); }
+  footer p + p { margin-top: 6px; }
   :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 </style>
 </head>
 <body>
 <main>
-  <h1>Messages de la chaîne WhatsApp</h1>
-  <p class="lead">Choisir la langue, toucher « Copier », puis coller le message dans la chaîne.</p>
+  <h1>Messages des chaînes WhatsApp</h1>
+  <p class="lead">Pour chaque chaîne : copier le message, ouvrir la chaîne, coller, envoyer.</p>
 
-  <div class="row" id="langs" role="group" aria-label="Langue du message"></div>
-  <div class="row" id="cals" role="group" aria-label="Calendrier des lectures"></div>
+  <div id="pick" hidden>
+    <h2 id="pickTitle">Mes chaînes</h2>
+    <div class="row" id="chans" role="group" aria-labelledby="pickTitle"></div>
+    <p class="hint">Toucher une chaîne pour l'afficher ou la masquer. Ce choix reste sur cet appareil.</p>
+  </div>
   <div id="stale"></div>
 
   <h2 id="todayTitle">Aujourd'hui</h2>
+  <p class="progress" id="progress" role="status" hidden></p>
   <div id="today"></div>
 
   <h2>Jours suivants</h2>
@@ -61,15 +78,13 @@
 <script>
 (function () {
   var C = window.SM_CHAINE, $ = function (id) { return document.getElementById(id); };
-  if (!C || !C.days) { $('today').innerHTML = '<p class="warn">Les messages ne sont pas disponibles pour le moment.</p>'; return; }
+  if (!C || !C.channels || !C.channels.length) { $('today').innerHTML = '<p class="warn">Les messages ne sont pas disponibles pour le moment.</p>'; return; }
 
-  var LANGS = [['fr', 'Français', 'ltr'], ['he', 'עברית', 'rtl'], ['en', 'English', 'ltr'], ['es', 'Español', 'ltr'], ['tn', 'תונסי', 'rtl']];
-  var CALS = [['diaspora', 'Diaspora'], ['israel', 'Israël']];
   var NOTES = { chabbat: 'Chabbat : pas de message.', fete: 'Jour de fête : pas de message.', rien: 'Pas de message prévu ce jour-là.' };
+  var NOT_READY = 'Les messages de ce jour ne sont pas encore prêts.';
+  var RTL = { he: 1, tn: 1 }, MANY = C.channels.length > 1;
   var store = { get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
-  var lang = store.get('chaine.lang'); if (!LANGS.some(function (l) { return l[0] === lang; })) lang = 'fr';
-  var calChosen = {}; try { calChosen = JSON.parse(store.get('chaine.cal') || '{}') || {}; } catch (e) {}
-  function cal() { var c = calChosen[lang] || (C.calendrier || {})[lang] || 'diaspora'; return C.days[c] ? c : Object.keys(C.days)[0]; }
+  function read(k) { try { var v = JSON.parse(store.get(k) || '{}'); return v && typeof v === 'object' ? v : {}; } catch (e) { return {}; } }
 
   function pad(n) { return (n < 10 ? '0' : '') + n; }
   function todayISO() { var n = new Date(); return n.getFullYear() + '-' + pad(n.getMonth() + 1) + '-' + pad(n.getDate()); }
@@ -80,6 +95,13 @@
   /* Aperçu : les *étoiles* deviennent du gras, comme dans WhatsApp */
   function preview(s) { return esc(s).replace(/\*([^*\n]+)\*/g, '<strong>$1</strong>'); }
 
+  /* Chaînes masquées sur cet appareil (une chaîne ajoutée plus tard s'affiche donc d'elle-même)
+     et messages cochés « publié » ; les coches de plus de dix jours sont oubliées. */
+  var hidden = read('chaines.masquees'), fait = read('chaines.publie');
+  (function () { var limit = addDays(todayISO(), -10), k; for (k in fait) if (k.slice(0, 10) < limit) delete fait[k]; })();
+  function shown() { return C.channels.filter(function (c) { return !hidden[c.id]; }); }
+  function byId(id) { return C.channels.filter(function (c) { return c.id === id; })[0]; }
+
   function copy(text, btn) {
     function ok() { btn.textContent = 'Copié ✓'; btn.classList.add('done'); setTimeout(function () { btn.textContent = 'Copier'; btn.classList.remove('done'); }, 2500); }
     function old() { var t = document.createElement('textarea'); t.value = text; t.style.position = 'fixed'; t.style.opacity = '0'; document.body.appendChild(t); t.focus(); t.select();
@@ -87,46 +109,74 @@
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, old); else old();
   }
 
-  function dayHtml(iso) {
-    var d = (C.days[cal()][lang] || {})[iso], dir = (LANGS.filter(function (l) { return l[0] === lang; })[0] || [])[2] || 'ltr';
-    if (!d) return '<p class="none">Les messages de ce jour ne sont pas encore prêts.</p>';
-    if (!d.msgs) return '<p class="none">' + (NOTES[d.note] || NOTES.rien) + '</p>';
-    return d.msgs.map(function (m, i) {
-      var when = d.msgs.length > 1 ? '<p class="when">' + (m.k === 'soir' ? 'Le soir' : 'Le matin') + '</p>' : '';
-      return '<div class="card">' + when + '<div class="msg" dir="' + dir + '" lang="' + (lang === 'tn' ? 'ajt' : lang) + '">' + preview(m.text) + '</div>' +
-        '<button class="copy" type="button" data-iso="' + iso + '" data-i="' + i + '">Copier</button></div>';
+  /* Une chaîne, un jour. track : on peut cocher « publié » (aujourd'hui et les jours passés). */
+  function chanHtml(c, iso, track) {
+    var d = c.days[iso], head = MANY ? '<h3>' + esc(c.name) + '<span class="tag">' + (c.cal === 'israel' ? 'Israël' : 'Diaspora') + '</span></h3>' : '';
+    var body = !d ? '<p class="none">' + NOT_READY + '</p>' : !d.msgs ? '<p class="none">' + (NOTES[d.note] || NOTES.rien) + '</p>' : d.msgs.map(function (m, i) {
+      var key = iso + '|' + c.id + '|' + i, done = track && !!fait[key];
+      return '<div class="card' + (done ? ' pub' : '') + '">' + (d.msgs.length > 1 ? '<p class="when">' + (m.k === 'soir' ? 'Le soir' : 'Le matin') + '</p>' : '') +
+        '<div class="msg" dir="' + (RTL[c.lang] ? 'rtl' : 'ltr') + '" lang="' + (c.lang === 'tn' ? 'ajt' : esc(c.lang)) + '">' + preview(m.text) + '</div>' +
+        '<button class="copy" type="button" data-ch="' + esc(c.id) + '" data-iso="' + iso + '" data-i="' + i + '">Copier</button>' +
+        '<div class="acts">' + (c.url ? '<a class="btn" href="' + esc(c.url) + '" target="_blank" rel="noopener">Ouvrir la chaîne</a>' : '') +
+        (track ? '<button class="btn" type="button" data-done="' + esc(key) + '" aria-pressed="' + done + '">' + (done ? 'Publié ✓' : 'Marquer comme publié') + '</button>' : '') + '</div></div>';
     }).join('');
+    return '<section class="block"' + (MANY ? ' aria-label="' + esc(c.name) + '"' : '') + '>' + head + body + '</section>';
+  }
+  function dayHtml(iso, track) {
+    var list = shown(); if (!list.length) return '<p class="none">Choisir au moins une chaîne ci-dessus.</p>';
+    var ds = list.map(function (c) { return c.days[iso]; });
+    /* même situation partout, sans rien à publier : une seule ligne pour toutes les chaînes */
+    if (ds.every(function (d) { return !d; })) return '<p class="none">' + NOT_READY + '</p>';
+    if (ds.every(function (d) { return d && !d.msgs && d.note === ds[0].note; })) return '<p class="none">' + (NOTES[ds[0].note] || NOTES.rien) + '</p>';
+    return list.map(function (c) { return chanHtml(c, iso, track); }).join('');
   }
   function summary(iso) {
-    var d = (C.days[cal()][lang] || {})[iso];
-    return !d ? 'pas encore prêt' : d.msgs ? (d.msgs.length > 1 ? '2 messages' : '1 message') : d.note === 'chabbat' ? 'Chabbat' : d.note === 'fete' ? 'fête' : 'rien';
+    var list = shown(); if (!list.length) return '';
+    var s = list.map(function (c) { var d = c.days[iso]; return !d ? 'pas encore prêt' : d.msgs ? d.msgs.length + (d.msgs.length > 1 ? ' messages' : ' message') : d.note === 'chabbat' ? 'Chabbat' : d.note === 'fete' ? 'fête' : 'rien'; });
+    if (!s.every(function (x) { return x === s[0]; })) return 'selon la chaîne';
+    return s[0] + (list.length > 1 && /message/.test(s[0]) ? ' par chaîne' : '');
   }
-  function listHtml(isos) {
-    return isos.map(function (iso) { return '<details><summary>' + esc(label(iso)) + '<span class="sub">' + summary(iso) + '</span></summary><div class="in">' + dayHtml(iso) + '</div></details>'; }).join('') ||
+  function listHtml(isos, track) {
+    return isos.map(function (iso) { return '<details><summary>' + esc(label(iso)) + '<span class="sub">' + summary(iso) + '</span></summary><div class="in">' + dayHtml(iso, track) + '</div></details>'; }).join('') ||
       '<p class="none">Rien à afficher.</p>';
+  }
+  function progress() {
+    var t = todayISO(), total = 0, done = 0, el = $('progress');
+    shown().forEach(function (c) { var d = c.days[t]; if (d && d.msgs) d.msgs.forEach(function (m, i) { total++; if (fait[t + '|' + c.id + '|' + i]) done++; }); });
+    el.hidden = !total || (!MANY && !done);
+    el.className = 'progress' + (total && done === total ? ' all' : '');
+    el.textContent = done === total ? 'Tout est publié pour aujourd\'hui ✓' : done + (done > 1 ? ' messages publiés' : ' message publié') + ' sur ' + total;
   }
 
   function draw() {
-    var t = todayISO(), c = cal();
-    $('langs').innerHTML = LANGS.map(function (l) { return '<button class="chip" type="button" data-lang="' + l[0] + '" aria-pressed="' + (l[0] === lang) + '" dir="' + l[2] + '">' + l[1] + '</button>'; }).join('');
-    $('cals').innerHTML = CALS.filter(function (x) { return C.days[x[0]]; }).map(function (x) { return '<button class="chip" type="button" data-cal="' + x[0] + '" aria-pressed="' + (x[0] === c) + '">' + x[1] + '</button>'; }).join('');
+    var t = todayISO(), i;
+    $('pick').hidden = !MANY;
+    $('chans').innerHTML = C.channels.map(function (c) { return '<button class="chip" type="button" data-pick="' + esc(c.id) + '" aria-pressed="' + !hidden[c.id] + '">' + esc(c.name) + '</button>'; }).join('');
     $('todayTitle').textContent = 'Aujourd\'hui · ' + label(t);
-    $('today').innerHTML = dayHtml(t);
-    var next = [], prev = [], i;
+    $('today').innerHTML = dayHtml(t, true);
+    var next = [], prev = [];
     for (i = 1; i <= 35 && addDays(t, i) <= C.to; i++) next.push(addDays(t, i));
     for (i = 1; i <= 7 && addDays(t, -i) >= C.from; i++) prev.push(addDays(t, -i));
-    $('next').innerHTML = listHtml(next); $('prev').innerHTML = listHtml(prev);
+    $('next').innerHTML = listHtml(next, false); $('prev').innerHTML = listHtml(prev, true);
+    progress();
     var left = Math.round((Date.parse(C.to) - Date.parse(t)) / 864e5);
     $('stale').innerHTML = left < 3 ? '<p class="warn">Les messages préparés s\'arrêtent le ' + esc(label(C.to).toLowerCase()) + '. La mise à jour automatique n\'a pas eu lieu : prévenir la personne qui s\'occupe du projet.</p>' : '';
     var built = C.builtAt ? new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long', timeStyle: 'short' }).format(new Date(C.builtAt)) : '';
-    $('foot').textContent = (built ? 'Messages préparés le ' + built + '. ' : '') + 'Durées calculées comme dans l\'app, à la vitesse de lecture normale.';
+    var noUrl = C.channels.filter(function (c) { return !c.url; }).map(function (c) { return c.name; });
+    $('foot').innerHTML = '<p>' + (built ? 'Messages préparés le ' + esc(built) + '. ' : '') + 'Durées calculées comme dans l\'app, à la vitesse de lecture normale.</p>' +
+      (MANY ? '<p>Les coches « publié » restent sur cet appareil : une autre personne ne les voit pas.</p>' : '') +
+      (noUrl.length ? '<p>Lien de la chaîne pas encore enregistré : ' + esc(noUrl.join(', ')) + '. Une fois la chaîne créée, envoyer son lien à la personne qui s\'occupe du projet : le bouton « Ouvrir la chaîne » apparaîtra ici, et le bouton « Rejoindre la chaîne » dans l\'app.</p>' : '');
   }
 
   document.addEventListener('click', function (e) {
-    var b = e.target.closest ? e.target.closest('button') : null; if (!b) return;
-    if (b.dataset.lang) { lang = b.dataset.lang; store.set('chaine.lang', lang); draw(); }
-    else if (b.dataset.cal) { calChosen[lang] = b.dataset.cal; store.set('chaine.cal', JSON.stringify(calChosen)); draw(); }
-    else if (b.dataset.iso) { var d = C.days[cal()][lang][b.dataset.iso]; if (d && d.msgs) copy(d.msgs[+b.dataset.i].text, b); }
+    var b = e.target.closest ? e.target.closest('button') : null, c, d; if (!b) return;
+    if (b.dataset.pick) { if (hidden[b.dataset.pick]) delete hidden[b.dataset.pick]; else hidden[b.dataset.pick] = 1; store.set('chaines.masquees', JSON.stringify(hidden)); draw(); }
+    else if (b.dataset.done) {
+      /* coche sur place, sans redessiner : les jours ouverts restent ouverts */
+      var on = !fait[b.dataset.done]; if (on) fait[b.dataset.done] = 1; else delete fait[b.dataset.done]; store.set('chaines.publie', JSON.stringify(fait));
+      b.setAttribute('aria-pressed', on); b.textContent = on ? 'Publié ✓' : 'Marquer comme publié'; b.closest('.card').classList.toggle('pub', on); progress();
+    }
+    else if (b.dataset.iso) { c = byId(b.dataset.ch); d = c && c.days[b.dataset.iso]; if (d && d.msgs) copy(d.msgs[+b.dataset.i].text, b); }
   });
   draw();
 })();
