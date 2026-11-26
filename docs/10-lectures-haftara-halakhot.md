@@ -34,7 +34,7 @@ Corrigé au passage dans le lecteur : une alya était comptée comme lue dès le
 | Construction des données | `tools/lecture_torah_construction.py`, `tools/lecture_torah_targoum.py` (options `--test`) ; `tools/construit_donnees.js` écrit `web/data/` |
 | Halakhot | `tools/chnayim_mikra/construction.py` (`--verifie`), `tools/chnayim_mikra/sources.json`, écran dans `web/ecrans.js` |
 | Contexte des haftarot | `data/contexte_haftarot.json`, `tools/contexte_haftarot.mjs` |
-| Tests | `test/` : `npm install` puis `npm test` (40 tests) |
+| Tests | `test/` : `npm install` puis `npm test` (41 tests) |
 | Vecteurs de parité | `test/vecteurs_lecture_torah.json`, régénérés par `tools/vecteurs_lecture.mjs` |
 | Licences | `web/licences/BSD-2-hebcal-leyning.txt`, `web/vendor/LICENCES.txt` |
 

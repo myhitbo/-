@@ -12,7 +12,7 @@ Version de test : une application web (`web/`) embarquée dans un APK Android. D
 
 ```sh
 npm install                      # dépendances de test (hebcal)
-npm test                         # 40 tests, sans réseau
+npm test                         # 41 tests, sans réseau
 node tools/construit_donnees.js  # écrit web/data/ ; puis ouvrir web/index.html
 ```
 
